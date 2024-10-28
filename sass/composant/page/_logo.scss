@@ -1,0 +1,36 @@
+#logo {
+  //j'ai mis un margin au logo pour que ça soit décollé du bord.
+  margin-right: 1%;
+  // border: 1px solid red;
+  width: 4rem;
+}
+
+div#logo a {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  //j'ai enlevé les positions pour rendre le tout adaptatif *Alejandro*
+  //position: absolute;
+  // right: 1.5rem;
+  z-index: 4;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  #logo {
+    width: 6rem;
+  }
+}
+
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+  #logo {
+    width: 8rem;
+  }
+}
