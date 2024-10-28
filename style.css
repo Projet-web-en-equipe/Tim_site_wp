@@ -12,4 +12,850 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tim
 Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w5
-*//*# sourceMappingURL=style.css.map */
+*/
+/* Normalize */
+/* Base */
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+a,
+h3 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+section#info h1,
+section#info p {
+  color: black;
+}
+
+h1 {
+  color: white;
+  font-size: clamp(1.5rem, 6vw + 0.5rem, 2.5rem);
+}
+
+h2,
+a {
+  font-size: clamp(1.25rem, 5vw + 0.5rem, 2rem);
+}
+
+a {
+  text-decoration: none;
+}
+
+h3,
+p {
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+}
+
+p {
+  font-family: "breakers-slab", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header ul {
+  font-size: 1.5rem;
+  color: orange;
+}
+
+header ul li a {
+  transition: color 0.3s ease;
+}
+header ul li a:active {
+  color: purple;
+}
+header ul li a:focus {
+  color: purple;
+}
+header ul li a:hover {
+  color: purple;
+}
+
+/* Désactive le scroll sur la page principale */
+.no-scroll {
+  overflow: hidden;
+}
+
+/********************** AUTRES RESOLUTIONS ********************/
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  header ul {
+    font-size: 3rem;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
+  }
+  h2,
+  a {
+    font-size: clamp(1.5rem, 2.5vw + 0.75rem, 3rem);
+  }
+  h3,
+  p {
+    font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+  }
+}
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+  header ul {
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  }
+  h2,
+  a {
+    font-size: clamp(1.5rem, 3vw + 1rem, 3rem);
+  }
+  h3,
+  p {
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+  }
+}
+body {
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/pexels-felixmittermeier-956999-scaled.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+/*Composants page*/
+div#burger {
+  width: 6%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-left: 1%;
+  z-index: 4;
+  background: #003d5b;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.5rem;
+}
+
+div.barre {
+  width: 100%;
+  height: 0.2rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+.barre:nth-child(1) {
+  transform-origin: center; /* Adjust origin for proper rotation */
+}
+
+.barre:nth-child(3) {
+  transform-origin: center; /* Adjust origin for proper rotation */
+}
+
+div#burger div.barre.active:nth-child(1) {
+  transform: rotate(45deg) translate(0.45rem, 0.45rem);
+}
+
+div#burger div.barre.active:nth-child(2) {
+  opacity: 0;
+}
+
+div#burger div.barre.active:nth-child(3) {
+  transform: rotate(-45deg) translate(0.45rem, -0.45rem);
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  div#burger {
+    width: 4%;
+    height: 28%;
+  }
+  div#burger div.barre.active:nth-child(1) {
+    transform: rotate(45deg) translate(0.4rem, 0.4rem);
+  }
+  div#burger div.barre.active:nth-child(3) {
+    transform: rotate(-45deg) translate(0.4rem, -0.4rem);
+  }
+}
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+  div#burger {
+    width: 2rem;
+    height: 1.25rem;
+  }
+  div#burger div.barre.active:nth-child(1) {
+    transform: rotate(45deg) translate(0.3rem, 0.4rem);
+  }
+  div#burger div.barre.active:nth-child(3) {
+    transform: rotate(-45deg) translate(0.3rem, -0.4rem);
+  }
+}
+#logo {
+  margin-right: 1%;
+  width: 4rem;
+}
+
+div#logo a {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 4;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  #logo {
+    width: 6rem;
+  }
+}
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+  #logo {
+    width: 8rem;
+  }
+}
+header {
+  height: 10%;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+}
+
+/* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
+header section {
+  position: relative;
+  top: 0.5rem;
+  left: 0.5rem;
+}*/
+#nav-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 90%;
+  height: 100%;
+  background-color: #333;
+  opacity: 0;
+  z-index: 3;
+  transition: left 0.5s ease, opacity 0.5s ease;
+  background: #003d5b;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 0 10px 10px 0;
+}
+
+#nav-menu.active {
+  left: 0;
+  opacity: 1;
+}
+
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+  #nav-menu {
+    width: 40%;
+  }
+}
+nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header nav ul {
+  width: 80%;
+  height: 70%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4%;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  list-style: none;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 3%;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  text-shadow: 0px 0px 20px #000000;
+}
+
+header nav ul li img {
+  height: 35px; /* Set a consistent height for all images */
+  width: auto;
+}
+
+.fa-duotone.fa-ice-cream {
+  --fa-primary-color: #ffd18f; /* Cone color */
+  --fa-secondary-color: #ffd2e1; /* Ice cream (pink) */
+}
+
+main section#carrousel {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+main section#carrousel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main section#carrousel::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main section#carrousel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #202020;
+}
+
+main section .banniere {
+  position: relative;
+  width: 50vw;
+}
+
+main section img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+}
+
+main section h2 {
+  background-color: rgba(65, 65, 65, 0.521);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 0;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  main section h2 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  main section h2 {
+    font-size: 2rem;
+  }
+  main section#carrousel {
+    padding: 0;
+    margin: 2rem;
+    max-height: 80vh;
+    overflow-y: scroll;
+    width: 25%;
+  }
+  main section .banniere {
+    position: relative;
+    width: 15vw;
+    margin: 0 auto;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+main div {
+  width: 100%;
+}
+main div section#info {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  overflow-y: scroll;
+  height: 90vh;
+  width: 98vw;
+  background: rgba(255, 255, 255, 0.479);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px 10px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: height 0.5s ease;
+}
+main div section#info::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main div section#info::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main div section#info::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #535353;
+}
+main div section#info.show {
+  display: block;
+  animation: slideUp 0.5s ease forwards;
+}
+main div section#info.hide {
+  animation: slideDown 0.5s ease forwards;
+}
+main div section#info img {
+  display: block;
+  width: auto;
+  height: 50%;
+  max-width: 80vw;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 1rem;
+}
+main div #close-info {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(192, 192, 192, 0.521);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+main div #close-info:hover {
+  background-color: rgba(255, 194, 194, 0.521);
+}
+main div section#info p {
+  margin: 0 auto;
+  width: 90vw;
+}
+
+@media only screen and (min-width: 1025px) {
+  main div {
+    width: 100vw;
+  }
+  main div section#info {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 75vw;
+    border-radius: 10px;
+  }
+  main div h1 {
+    margin: 0 auto;
+  }
+  main div div.text {
+    margin: 1rem auto;
+    width: 90%;
+  }
+  main div section#info p {
+    margin: 0 auto;
+    width: 100%;
+  }
+  main div #close-info {
+    display: none;
+  }
+}
+/*Composants principaux*/
+footer {
+  position: absolute;
+  background-color: #003d5b;
+  width: 100%;
+  height: 30%;
+  bottom: -27%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: bottom 0.7s ease-out;
+  color: white;
+  padding-bottom: 3%;
+  padding-top: 3%;
+}
+footer .conteneurSousTitre,
+footer .liens,
+footer .sociaux,
+footer .equipe,
+footer .contact {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+}
+footer .conteneurSousTitre .material-symbols-rounded,
+footer .liens .material-symbols-rounded,
+footer .sociaux .material-symbols-rounded,
+footer .equipe .material-symbols-rounded,
+footer .contact .material-symbols-rounded {
+  font-size: 3rem;
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: 5%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  cursor: pointer;
+}
+footer .conteneurSousTitre h3,
+footer .liens h3,
+footer .sociaux h3,
+footer .equipe h3,
+footer .contact h3 {
+  margin: 0;
+  width: 25%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/*******************************************************************************************/
+/************************ ici je vais travailler sur le checkbox ***************************/
+/*******************************************************************************************/
+#checkFoot {
+  display: none;
+}
+
+/* ça me montre le footer quand qu'y est checked*/
+#checkFoot:checked + label footer {
+  bottom: 0;
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer h3 {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+  cursor: default;
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer .material-symbols-rounded {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+}
+
+/* quand le le footer n'est pas checked */
+#checkFoot:not(:checked) + label footer h3 {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s; /* pas de delai*/
+}
+
+.liens p a,
+footer p {
+  font-family: "breakers-slab", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+}
+
+footer .equipe p {
+  font-size: clamp(0.625rem, 1.2vw + 0.4rem, 0.875rem);
+  font-style: italic;
+}
+
+.sociaux .fa-brands {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
+  cursor: pointer;
+}
+
+.sociaux .fa-brands:hover {
+  scale: 110%;
+}
+
+/*******************************************************************************************/
+/******* ici je vais travailler sur la partie du footer qui contient tout sauf le titre ****/
+/*******************************************************************************************/
+.contenuFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+/* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
+#checkFoot:not(:checked) + label footer .contenuFooter {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s 0.5s;
+}
+
+/* seulement quand je click sur le footer, je vais afficher le contenu et je veux que ça réagise avec la transition de l'opacité que le h3 possède*/
+#checkFoot:checked + label footer .contenuFooter {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  height: 100vh;
+}
+main::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #202020;
+}
+main #titre {
+  z-index: 2;
+  top: 1rem;
+  position: sticky;
+  background: rgba(58, 58, 58, 0.479);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0 0.5rem;
+}
+
+@media only screen and (min-width: 1025px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 2rem;
+  }
+  main #titre {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  main .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: rgb(0, 0, 74);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: -1000;
+  border: 1px solid white;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 134, 217);
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+}
+
+#ctnAnim {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOut 5s 5s forwards;
+}
+
+#ctnTitre {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titreH1 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(50px, 10vw, 300px);
+}
+
+.titreH2 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(80px, 12vw, 400px);
+}
+
+.titreH3 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(50px, 15vw, 150px);
+}
+
+.anim1 {
+  animation: fadeIn 2s forwards;
+}
+
+.anim2 {
+  animation: fadeIn 2s 0.2s forwards;
+}
+
+.anim3 {
+  animation: fadeIn 2s 0.4s forwards;
+}
+
+.anim4 {
+  animation: fadeIn 2s 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  20% {
+    opacity: 0;
+  }
+  to {
+    opacity: 85%;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1000px);
+  }
+}
+/*couleurs*/
+:root {
+  --primaire: #00798C;
+  --secondaire: #30638E;
+  --tertiaire: #003D5B;
+  --complementaire: #EDAE49;
+  --accent: #D1495B;
+  --couleur-teal-clair: #006B7A;
+  --couleur-teal-moyen: #005A67;
+  --couleur-teal-fonce: #00474E;
+  --couleur-bleu-clair: #2A556F;
+  --couleur-bleu-moyen: #244B60;
+  --couleur-bleu-fonce: #1E3F52;
+  --couleur-marine-clair: #00304A;
+  --couleur-marine-moyen: #00243A;
+  --couleur-marine-fonce: #001B2D;
+  --couleur-or-clair: #D89B3E;
+  --couleur-or-moyen: #B88630;
+  --couleur-or-fonce: #A27224;
+  --couleur-rouge-clair: #B63D4A;
+  --couleur-rouge-moyen: #A03240;
+  --couleur-rouge-fonce: #8C2A36;
+}/*# sourceMappingURL=style.css.map */
