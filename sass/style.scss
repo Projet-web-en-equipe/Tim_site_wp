@@ -1,0 +1,41 @@
+/*
+Theme Name: siteTIM
+Theme URI: https://referenced.ca
+Authors: Tony, Lenny, Lohan, Camilia, Alejandro
+Author URI: https://wordpress.org/
+Description: Thème de base développé dans le cours 5w5
+Version: 1.0
+
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tim
+Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w5
+*/
+
+// https://developer.wordpress.org/themes/basics/main-stylesheet-style-css/
+
+/* Normalize */
+// @import "../normalize.css";
+
+/* Base */
+@import "base/h";
+@import "base/fond";
+
+/*Composants page*/
+@import "composant/page/burger";
+@import "composant/page/logo";
+@import "composant/page/menu";
+@import "composant/page/carrousel";
+@import "composant/page/info";
+
+/*Composants principaux*/
+@import "composant/principal/footer";
+@import "composant/principal/main";
+@import "composant/principal/header";
+@import "composant/principal/accueil";
+@import "composant/principal/animIntro";
+
+/*couleurs*/
+@import "variables/paletteCouleurs";
+@import "variables/polices";
