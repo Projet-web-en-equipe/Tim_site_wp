@@ -1,3 +1,7 @@
-<?php get_header();?>
-<h1>hello world!</h1>
-<?php get_footer();?>
+<?php 
+the_title();
+
+
+?>
+
+<h1>maybe</h1>
