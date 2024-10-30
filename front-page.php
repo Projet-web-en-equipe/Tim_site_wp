@@ -10,7 +10,7 @@ get_header();
     </div>
 </div>
 <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png" alt="inshallah" id="perso" />
-<canvas width="800" height="800"></canvas>
+<canvas width="900" height="900"></canvas>
 
 
 <?php
