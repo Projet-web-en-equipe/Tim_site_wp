@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title()?></h1>
+<h1 id="titre"><?php single_cat_title()?></h1>
     <div class="content-wrapper">
         <section id="carrousel">
 
