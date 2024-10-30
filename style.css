@@ -1,6 +1,4 @@
-@charset "UTF-8";
-/*
-Theme Name: siteTIM
+/*# sourceMappingURL=style.css.map */TIM
 Theme URI: https://referenced.ca
 Authors: Tony, Lenny, Lohan, Camilia, Alejandro
 Author URI: https://wordpress.org/
@@ -126,7 +124,7 @@ header ul li a:hover {
   }
 }
 body {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/pexels-felixmittermeier-956999-scaled.jpg");
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg);
   background-size: cover;
   background-repeat: repeat;
 }
@@ -736,7 +734,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/ileSansFond.png);
   margin: 0;
   padding: 0;
   z-index: -1;

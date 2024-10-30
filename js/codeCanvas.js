@@ -79,7 +79,7 @@ perso.y = listePoints[perso.pos].y;
 //le guide
 var guide = {
   img: new Image(),
-  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/GUIDE.png",
+  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/grille_Ile.png",
 };
 guide.img.src = guide.urlImage;
 //le renderer du canvas
