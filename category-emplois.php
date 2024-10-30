@@ -7,7 +7,7 @@
 
             <?php
             $args = array(
-                'category_name' => 'Cours', 
+                'category_name' => single_cat_title(), 
                 'posts_per_page' => -1 
             );
             $query = new WP_Query($args);
