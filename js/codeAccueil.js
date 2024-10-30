@@ -5,8 +5,8 @@ var leCanvas = {
   html: document.querySelector("canvas"),
   x: 0,
   y: 0,
-  width: 800,
-  height: 800,
+  width: 900,
+  height: 900,
   lock: true,
 };
 //les anciennes positions de la souris/doigt

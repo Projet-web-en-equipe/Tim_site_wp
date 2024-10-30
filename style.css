@@ -126,7 +126,7 @@ header ul li a:hover {
   }
 }
 body {
-  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg);
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
   background-size: cover;
   background-repeat: repeat;
 }
@@ -233,22 +233,6 @@ div#logo a {
     width: 8rem;
   }
 }
-header {
-  height: 10%;
-  width: 98%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1%;
-  position: absolute;
-}
-
-/* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
-header section {
-  position: relative;
-  top: 0.5rem;
-  left: 0.5rem;
-}*/
 #nav-menu {
   position: fixed;
   top: 0;
@@ -506,6 +490,101 @@ main div section#info p {
     display: none;
   }
 }
+#ctnAnim {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOut 5s 5s forwards;
+}
+
+#ctnTitre {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titreH1 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(50px, 10vw, 300px);
+}
+
+.titreH2 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(80px, 12vw, 400px);
+}
+
+.titreH3 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(50px, 15vw, 150px);
+}
+
+.anim1 {
+  animation: fadeIn 2s forwards;
+}
+
+.anim2 {
+  animation: fadeIn 2s 0.2s forwards;
+}
+
+.anim3 {
+  animation: fadeIn 2s 0.4s forwards;
+}
+
+.anim4 {
+  animation: fadeIn 2s 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  20% {
+    opacity: 0;
+  }
+  to {
+    opacity: 85%;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1000px);
+  }
+}
 /*Composants principaux*/
 footer {
   position: absolute;
@@ -707,6 +786,22 @@ main #titre {
     width: 100%;
   }
 }
+header {
+  height: 10%;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  position: absolute;
+}
+
+/* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
+  header section {
+    position: relative;
+    top: 0.5rem;
+    left: 0.5rem;
+  }*/
 html,
 body {
   overflow-x: hidden;
@@ -740,103 +835,9 @@ canvas {
   margin: 0;
   padding: 0;
   z-index: -1;
+  border: 3px solid red;
 }
 
-#ctnAnim {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  animation: fadeOut 3s 5s forwards;
-}
-
-#ctnTitre {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.titreH1 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(50px, 10vw, 300px);
-}
-
-.titreH2 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(80px, 12vw, 400px);
-}
-
-.titreH3 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(50px, 15vw, 150px);
-}
-
-.anim1 {
-  animation: fadeIn 2s forwards;
-}
-
-.anim2 {
-  animation: fadeIn 2s 0.2s forwards;
-}
-
-.anim3 {
-  animation: fadeIn 2s 0.4s forwards;
-}
-
-.anim4 {
-  animation: fadeIn 2s 0.6s forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-200px);
-  }
-  20% {
-    opacity: 0;
-  }
-  to {
-    opacity: 85%;
-    transform: translateY(0);
-  }
-}
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-2000px);
-  }
-}
 /*couleurs*/
 :root {
   --primaire: #00798C;
