@@ -1,5 +1,5 @@
 ////////////////VARIABLES DE DEPART//////////////////
-
+console.log("OK");
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 //variable des coorconnees
@@ -155,8 +155,9 @@ function renderer() {
 canvas.addEventListener("click", (event) => {
   const pos = {
     x: event.clientX - canvas.offsetLeft,
-    y: event.clientY - canvas.offsetTop,
+    y: event.clientY - canvas.offsetTop - 30,
   };
+  console.log(event.clientY)
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
   if(perso.surIle && !enMouvement){
     listePoints.forEach((point) => {
