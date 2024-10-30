@@ -126,9 +126,7 @@ header ul li a:hover {
   }
 }
 body {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/pexels-felixmittermeier-956999-scaled.jpg");
-  background-size: cover;
-  background-repeat: repeat;
+  background-color: black;
 }
 
 /*Composants page*/
@@ -217,7 +215,8 @@ div#logo a {
   cursor: pointer;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -240,6 +239,7 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 1%;
+  position: absolute;
 }
 
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
@@ -455,8 +455,7 @@ main div section#info img {
   width: auto;
   height: 50%;
   max-width: 80vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   padding: 1rem;
 }
 main div #close-info {
