@@ -126,7 +126,7 @@ header ul li a:hover {
   }
 }
 body {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/pexels-felixmittermeier-956999-scaled.jpg");
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
   background-size: cover;
   background-repeat: repeat;
 }
@@ -240,6 +240,7 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 1%;
+  position: absolute;
 }
 
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
@@ -735,7 +736,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgb(0, 134, 217);
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/ileSansFond.png);
   margin: 0;
   padding: 0;
   z-index: -1;
@@ -749,7 +750,7 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadeOut 5s 5s forwards;
+  animation: fadeOut 3s 5s forwards;
 }
 
 #ctnTitre {
@@ -833,7 +834,7 @@ canvas {
   }
   to {
     opacity: 0;
-    transform: translateY(-1000px);
+    transform: translateY(-2000px);
   }
 }
 /*couleurs*/
