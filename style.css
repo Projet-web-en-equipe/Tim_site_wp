@@ -129,7 +129,7 @@ body {
   background-color: black;
 }
 
-/*Composants page*/
+/*Composants secondaires*/
 div#burger {
   width: 6%;
   height: 30%;
@@ -589,7 +589,7 @@ footer {
   background-color: #003d5b;
   width: 100%;
   height: 30%;
-  bottom: -27%;
+  bottom: -29%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -598,6 +598,11 @@ footer {
   color: white;
   padding-bottom: 3%;
   padding-top: 3%;
+}
+footer .conteneurSousTitre {
+  position: absolute;
+  top: 2%;
+  left: 0;
 }
 footer .conteneurSousTitre,
 footer .liens,
@@ -683,17 +688,16 @@ footer .contact h3 {
   transition-delay: 0s; /* pas de delai*/
 }
 
-.liens p a,
 footer p {
   font-family: "breakers-slab", sans-serif;
-  font-weight: 400;
   font-style: normal;
   font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
 }
 
-footer .equipe p {
-  font-size: clamp(0.625rem, 1.2vw + 0.4rem, 0.875rem);
-  font-style: italic;
+footer a {
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+  cursor: pointer;
+  font-family: "breakers-slab", sans-serif;
 }
 
 .sociaux .fa-brands {
@@ -732,6 +736,21 @@ footer .equipe p {
   transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
 }
 
+/**********************************************************************/
+/************************** Ajustement des resolutions *****************/
+/**********************************************************************/
+/************************** Pour les tablettes *****************/
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  footer {
+    bottom: -32%;
+  }
+}
+/************************** Pour les bureaux *****************/
+@media only screen and (min-width: 1025px) {
+  footer {
+    bottom: -34%;
+  }
+}
 main {
   display: flex;
   flex-direction: column;
