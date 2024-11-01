@@ -155,7 +155,7 @@ function renderer() {
 canvas.addEventListener("click", (event) => {
   const pos = {
     x: event.clientX - canvas.offsetLeft,
-    y: event.clientY - canvas.offsetTop - 30,
+    y: event.clientY - canvas.offsetTop,
   };
   console.log(event.clientY)
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
