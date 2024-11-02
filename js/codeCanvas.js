@@ -1,5 +1,5 @@
 ////////////////VARIABLES DE DEPART//////////////////
-console.log("OK");
+
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 //variable des coorconnees

@@ -5,7 +5,7 @@ function coffeeShop_files(){
     wp_enqueue_script('menu',get_theme_file_uri('/js/fermetureMenus.js'), array(),NULL,true);
     wp_enqueue_script('animation',get_theme_file_uri('/js/animation.js'), array(),NULL,true);
     wp_enqueue_script('animPerso',get_theme_file_uri('/js/animPerso.js'), array(),NULL,true);
-    wp_enqueue_script('codeAccueil',get_theme_file_uri('/js/codeAccueil.js'), array(),NULL,true);
+    wp_enqueue_script('codeAccueil',get_theme_file_uri('/js/codeAccueilTEST.js'), array(),NULL,true);
     wp_enqueue_script('codeCanvas',get_theme_file_uri('/js/codeCanvas.js'), array(),NULL,true);
     wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/4f23b00084.js', array(), NULL, true);
 
