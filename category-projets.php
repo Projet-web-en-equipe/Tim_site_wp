@@ -19,7 +19,9 @@
             ?>
                     <div class="banniere" data-id="<?php the_ID(); ?>">
                         <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
-                        <h2><?php echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
+                        <h2><?php
+                        the_title() 
+                        //echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
                     </div>
 
                     <div id="post-content-<?php the_ID(); ?>" style="display: none;">
