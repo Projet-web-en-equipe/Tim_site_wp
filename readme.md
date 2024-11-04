@@ -13,3 +13,5 @@
 
 - https://projet-web-en-equipe.github.io/Tim_prototype/
 - https://gftnth00.mywhc.ca/tim14/
+
+## Test git checkout
