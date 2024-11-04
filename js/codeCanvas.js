@@ -10,7 +10,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Evenement",
-    lien: "/category/cours"  // remplace par l'URL de la catégorie Projets
+    lien: "/category/cours", // remplace par l'URL de la catégorie Projets
   },
   {
     x: 650,
@@ -18,7 +18,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
-    lien: "/category/cours"  // remplace par l'URL de la catégorie Cours
+    lien: "/category/cours", // remplace par l'URL de la catégorie Cours
   },
   {
     x: 725,
@@ -26,7 +26,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
-    lien: "/category/cours"  // remplace par l'URL de la catégorie Profs
+    lien: "/category/cours", // remplace par l'URL de la catégorie Profs
   },
   {
     x: 550,
@@ -34,7 +34,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
-    lien: "/category/cours"  // remplace par l'URL de la catégorie Emplois
+    lien: "/category/cours", // remplace par l'URL de la catégorie Emplois
   },
   {
     x: 275,
@@ -42,7 +42,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie etudiante",
-    lien: "/category/cours"  // remplace par l'URL de la catégorie Évènements
+    lien: "/category/cours", // remplace par l'URL de la catégorie Évènements
   },
   {
     x: 175,
@@ -50,13 +50,14 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
-    lien: "/category/cours"  // remplace par l'URL de la catégorie Vie étudiante
+    lien: "/category/cours", // remplace par l'URL de la catégorie Vie étudiante
   },
 ];
 //variable du personnage
 var perso = {
   img: new Image(),
-  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png",
+  urlImage:
+    "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png",
   x: 0,
   y: 0,
   largeur: 75,
@@ -79,11 +80,12 @@ perso.y = listePoints[perso.pos].y;
 //le guide
 var guide = {
   img: new Image(),
-  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/grille_Ile.png",
+  urlImage:
+    "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/grille_Ile.png",
 };
 guide.img.src = guide.urlImage;
 //le renderer du canvas
-var render= setInterval(renderer, 1000 / 60);
+var render = setInterval(renderer, 1000 / 60);
 //bool qui detecte si le canvas doit etre afficher
 var isGuide = false;
 //bool qui detecte si le personnage bouge
@@ -118,7 +120,7 @@ function renderer() {
     );
   });
   //dessiner perso
-  if(perso.surIle){
+  if (perso.surIle) {
     ctx.drawImage(
       perso.img,
       perso.sourceX,
@@ -157,9 +159,9 @@ canvas.addEventListener("click", (event) => {
     x: event.clientX - canvas.offsetLeft,
     y: event.clientY - canvas.offsetTop,
   };
-  console.log(pos.x, pos.y);
+  console.log(event.clientY);
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
-  if(perso.surIle && !enMouvement){
+  if (perso.surIle && !enMouvement) {
     listePoints.forEach((point) => {
       if (intersecte(pos, point)) {
         if (listePoints.indexOf(point) == perso.pos) {
@@ -199,7 +201,7 @@ function trouverChemin(nouvellePosition) {
     }
     cheminDroite.push(futurPosDroite);
   }
-  //comparer les deux pour retourner celui qui est le plus petit 
+  //comparer les deux pour retourner celui qui est le plus petit
   //(s'ils sont egaux clockwise va gagner)
   if (
     cheminGauche.length < cheminDroite.length ||
@@ -251,7 +253,7 @@ function bougerPerso() {
       listePoints[cheminPerso[destination]].x,
       listePoints[cheminPerso[destination]].y
     ) *
-    perso.x +
+      perso.x +
     trouverFonctionB(
       listePoints[perso.pos].x,
       listePoints[perso.pos].y,
@@ -270,10 +272,12 @@ function bougerPerso() {
       enMouvement = false;
       destination = 0;
       //savoir quel direction du idle utiliser
-      if(perso.gauche){
-        perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png"
+      if (perso.gauche) {
+        perso.urlImage =
+          "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png";
       } else {
-        perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricD.png"
+        perso.urlImage =
+          "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricD.png";
       }
       perso.img.src = perso.urlImage;
     } else {
@@ -295,9 +299,11 @@ function trouverDirection(cx1, cy1, cx2, cy2) {
     perso.gauche = false;
   }
   if (perso.gauche) {
-    perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/laVersionMini-Copie.png"
+    perso.urlImage =
+      "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/laVersionMini-Copie.png";
   } else {
-    perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/laVersionMini.png"
+    perso.urlImage =
+      "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/laVersionMini.png";
   }
   perso.img.src = perso.urlImage;
   //TEST pour trouver la direction avec angle exacte
@@ -335,7 +341,7 @@ function animerPerso() {
     perso.sourceX = 0;
   }
 
-  if(perso.indexAnim == perso.vitesseAnim){
+  if (perso.indexAnim == perso.vitesseAnim) {
     perso.indexVignette += 1;
     perso.indexAnim = 0;
   } else {
@@ -389,4 +395,4 @@ function trouverAngle(cx1, cy1, cx2, cy2) {
   var coteX = Math.abs(cx1 - cx2);
   var coteY = Math.abs(cy1 - cy2);
   return (Math.atan(coteX / coteY) * 180) / Math.PI;
-} 
+}

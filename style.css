@@ -305,7 +305,8 @@ header nav ul li img {
 
 .fa-duotone.fa-ice-cream {
   --fa-primary-color: #ffd18f; /* Cone color */
-  --fa-secondary-color: #ffd2e1; /* Ice cream (pink) */
+  --fa-secondary-color: #ff92b1; /* Ice cream (pink) */
+  --fa-secondary-opacity: 1;
 }
 
 main section#carrousel {
@@ -499,6 +500,7 @@ main div section#info p {
   align-items: center;
   justify-content: center;
   animation: fadeOut 5s 5s forwards;
+  z-index: 10000;
 }
 
 #ctnTitre {
