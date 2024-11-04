@@ -83,17 +83,18 @@ window.addEventListener("touchend", () => {
 if (!mobile) {
   //addeventlistener pour desktop
   window.addEventListener("mousemove", (e) => {
-    console.log(leCanvas.x)
     if (!leCanvas.lock) {
       //si les limites du x du canvas sont a l'exterieurs de la page
       if (leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth) {
+        console.log(leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth)
         //deplace le x du canvas selon la pos de la souris - son ancienne pos
         leCanvas.x += (e.clientX - exPosX) / 2;
         //limite le deplacement du canvas aux limites + un petit margin
-        if (leCanvas.x >= 0 + posExtreme + (leCanvas.width - 900) && leCanvas.x + leCanvas.width + posExtreme > window.innerWidth) {
-          leCanvas.x = 0 + posExtreme + (leCanvas.width - 900);
+        if (leCanvas.x >= posExtreme + (leCanvas.width - 900)) {
+          leCanvas.x = posExtreme + (leCanvas.width - 900);
         }
         if (leCanvas.x + leCanvas.width + posExtreme <= window.innerWidth) {
+
           leCanvas.x = window.innerWidth - leCanvas.width - posExtreme;
         }
       }
@@ -102,8 +103,8 @@ if (!mobile) {
         //deplace le y du canvas selon la pos de la souris - son ancienne pos
         leCanvas.y += (e.clientY - exPosY) / 2;
         //limite le deplacement du canvas aux limites + un petit margin
-        if (leCanvas.y >= 0 + posExtreme + (leCanvas.height - 900)) {
-          leCanvas.y = 0 + posExtreme + (leCanvas.height - 900);
+        if (leCanvas.y >= posExtreme + (leCanvas.height - 900)) {
+          leCanvas.y = posExtreme + (leCanvas.height - 900);
         }
         if (leCanvas.y + leCanvas.height + posExtreme <= window.innerHeight) {
           leCanvas.y = window.innerHeight - leCanvas.height - posExtreme;
