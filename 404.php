@@ -10,22 +10,22 @@
 
         <!-- Bouton pour retourner à la page d'accueil -->
         <span></span>
-        <a href="#entete"><button id="retourAccueil"> <a href="<?php echo get_bloginfo('url'); ?>"> <?php echo get_bloginfo('name'); ?></a> </button></a>
+        <a href="#entete"><button id="retourAccueil"> <a href="<?php //echo get_bloginfo('url'); ?>"> <?php //echo get_bloginfo('name'); ?></a> </button></a>
 
         <!-- Récupérer le formulaire de recherche -->
         <span></span>
-        <?php  get_search_form(); ?>  
+        <?php //get_search_form(); ?>  
 
         
         <!-- Ajouter le menu avec toutes les catégories -->
         <div id="liensCatFooter">
-            <?php wp_nav_menu(array("container" => "nav", "menu" => "principal")); ?>
+            <?php //wp_nav_menu(array("container" => "nav", "menu" => "principal")); ?>
         </div>
 
     </section>
         
         <!-- Image de la librairie médias -->
-        <a href="<?php echo get_bloginfo('url'); ?>"><img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/04/logoIntra.png"></a>
+        <!-- <a href="<?php //echo get_bloginfo('url'); ?>"><img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/04/logoIntra.png"></a> -->
         
 </div>
 
