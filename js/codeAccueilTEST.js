@@ -8,6 +8,7 @@ var leCanvas = {
   width: 900,
   height: 900,
   lock: true,
+  zoom: 100,
 };
 //les anciennes positions de la souris/doigt
 var exPosX;
@@ -27,14 +28,14 @@ leCanvas.html.style.left = leCanvas.x + "px";
 leCanvas.html.style.top = leCanvas.y + "px";
 //si le canvas est plus haut que la taille de l'ecran: 
 //faire en sorte qu'on voit juste le top du canvas
-if(leCanvas.height > window.innerHeight){
+if (leCanvas.height > window.innerHeight) {
   leCanvas.y = posExtreme;
   leCanvas.html.style.top = leCanvas.y + "px";
 }
 //detecter si la page est host sur mobile et declarer dans la bool mobile
-if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
   mobile = true;
-}else{
+} else {
   mobile = false;
 }
 
@@ -46,6 +47,15 @@ window.addEventListener("resize", () => {
   leCanvas.y = window.innerHeight / 2 - leCanvas.height / 2;
   leCanvas.html.style.left = leCanvas.x + "px";
   leCanvas.html.style.top = leCanvas.y + "px";
+});
+//addeventlistener qui detect quand l'utilisateur scroll sur la carte
+window.addEventListener('wheel', function (event) {
+  //ajouter la valeur du deltaY au zoom
+  //deltaY est positif quand le scroll est vers le haut et negatif vers le bas
+  leCanvas.zoom -= event.deltaY / 100;
+  posExtreme = posExtreme * (leCanvas.zoom / 100);
+  leCanvas.html.style.transform = "scale(" + leCanvas.zoom + "%)";
+  console.log(leCanvas.zoom, posExtreme);
 });
 //addeventlistener qui detecte le maintient d'un clic et unlock le canvas
 leCanvas.html.addEventListener("mousedown", () => {
@@ -66,9 +76,10 @@ window.addEventListener("touchend", () => {
   leCanvas.lock = true;
 });
 //addeventlistener pour detecter comment le canvas bouge selon la souris/doigt
-if(!mobile){
+if (!mobile) {
   //addeventlistener pour desktop
   window.addEventListener("mousemove", (e) => {
+    console.log(leCanvas.x, leCanvas.y);
     if (!leCanvas.lock) {
       //si les limites du x du canvas sont a l'exterieurs de la page
       if (leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth) {

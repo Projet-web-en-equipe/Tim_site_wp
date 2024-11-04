@@ -22,20 +22,23 @@ Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w
 @import "base/h";
 @import "base/fond";
 
-/*Composants page*/
-@import "composant/page/burger";
-@import "composant/page/logo";
-@import "composant/page/menu";
-@import "composant/page/carrousel";
-@import "composant/page/info";
+/*Composants secondaires*/
+@import "composant/secondaires/burger";
+@import "composant/secondaires/logo";
+@import "composant/secondaires/menu";
+@import "composant/secondaires/carrousel";
+@import "composant/secondaires/info";
+@import "composant/secondaires/animIntro";
 
 /*Composants principaux*/
-@import "composant/principal/footer";
-@import "composant/principal/main";
-@import "composant/principal/header";
-@import "composant/principal/accueil";
-@import "composant/principal/animIntro";
+@import "composant/principaux/footer";
+@import "composant/principaux/main";
+@import "composant/principaux/header";
+@import "composant/principaux/bodyCanvas";
 
 /*couleurs*/
 @import "variables/paletteCouleurs";
 @import "variables/polices";
+
+/*Divers*/
+@import "404";

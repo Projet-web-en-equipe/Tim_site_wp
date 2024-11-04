@@ -5,11 +5,11 @@ var ctx = canvas.getContext("2d");
 //variable des coorconnees
 var listePoints = [
   {
-    x: 400,
-    y: 150,
+    x: 300,
+    y: 325,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
-    tag: "Projets",
+    tag: "Evenement",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Projets
   },
   {
@@ -21,35 +21,35 @@ var listePoints = [
     lien: "/category/cours"  // remplace par l'URL de la catégorie Cours
   },
   {
-    x: 600,
-    y: 500,
+    x: 725,
+    y: 525,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
-    tag: "Profs",
+    tag: "Projets",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Profs
   },
   {
-    x: 400,
-    y: 700,
+    x: 550,
+    y: 650,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
-    tag: "Emplois",
+    tag: "Futur",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Emplois
   },
   {
-    x: 150,
-    y: 550,
+    x: 275,
+    y: 650,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
-    tag: "Évènements",
+    tag: "Vie etudiante",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Évènements
   },
   {
-    x: 250,
-    y: 250,
+    x: 175,
+    y: 550,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
-    tag: "Vie étudiante",
+    tag: "Profs",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Vie étudiante
   },
 ];
@@ -79,7 +79,7 @@ perso.y = listePoints[perso.pos].y;
 //le guide
 var guide = {
   img: new Image(),
-  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/GUIDE.png",
+  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/grille_Ile.png",
 };
 guide.img.src = guide.urlImage;
 //le renderer du canvas
@@ -157,6 +157,7 @@ canvas.addEventListener("click", (event) => {
     x: event.clientX - canvas.offsetLeft,
     y: event.clientY - canvas.offsetTop,
   };
+  console.log(pos.x, pos.y);
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
   if(perso.surIle && !enMouvement){
     listePoints.forEach((point) => {
