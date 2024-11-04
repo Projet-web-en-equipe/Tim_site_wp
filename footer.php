@@ -21,12 +21,12 @@
 
       <div class="equipe">
         <p>Site web réalisé Par
-          <a href="">Camilia El moustarih, </a>
-          <a href="">Tony Ton,</a>
-          <a href="">Lohan
+          <a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia El moustarih, </a>
+          <a href="https://www.behance.net/tonyton3">Tony Ton,</a>
+          <a href="https://www.behance.net/lohanmoutquin">Lohan
             Moutquin, </a>
-          <a href="">Lenny Tran, </a>
-          <a href="">Alejandro yanez Del rio</a>
+          <a href="https://e2269994.myportfolio.com/">Lenny Tran, </a>
+          <a href="https://www.behance.net/alex_ydr3dc3">Alejandro yanez Del rio</a>
 
 
         </p>

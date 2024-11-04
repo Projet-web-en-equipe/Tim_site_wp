@@ -1,3 +1,20 @@
+header {
+  //j'ai enlevé toutes les positions absolutes et tout rendu en flex pour que ça soit fluide.
+  //border: 1px solid red;
+  height: 10%; //en pourcentage et adaptatif
+  width: 98%; //en pourcentage et adaptatif.. si je donne 100, le logo part vers la droite cher pas pk...
+  display: flex; // le tout en flex
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%; // je décolle du bord de la page.
+}
+/* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
+header section {
+  position: relative;
+  top: 0.5rem;
+  left: 0.5rem;
+}*/
+
 #nav-menu {
   // ceci est le composant qui contient le nav
   position: fixed;
@@ -80,32 +97,7 @@ header nav ul li img {
   width: auto;
 }
 
-.fa-duotone.fa-ferris-wheel {
-  --fa-primary-color: #ac73b1; /* Cone color */
-  --fa-secondary-color: #a99167; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-
-.fa-duotone.fa-lighthouse {
-  --fa-primary-color: white; /* Cone color */
-  --fa-secondary-color: #d9595d; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-.fa-duotone.fa-calendar-days {
-  --fa-primary-color: #239d99; /* Cone color */
-  --fa-secondary-color: #a5452f; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-.fa-duotone.fa-sailboat {
-  --fa-primary-color: #821817; /* Cone color */
-
-  --fa-secondary-color: #cc3428; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-
-.fa-duotone.fa-campfire {
-  --fa-primary-color: #8c441f; /* Cone color */
-
-  --fa-secondary-color: #ff9d00; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
+.fa-duotone.fa-ice-cream {
+  --fa-primary-color: #ffd18f; /* Cone color */
+  --fa-secondary-color: #ffd2e1; /* Ice cream (pink) */
 }

@@ -1,0 +1,88 @@
+#ctnAnim {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOut 5s 5s forwards;
+}
+#ctnTitre {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.titreH1 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(50px, 10vw, 300px);
+}
+.titreH2 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(80px, 12vw, 400px);
+}
+.titreH3 {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: whitesmoke;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: clamp(50px, 15vw, 150px);
+}
+.anim1 {
+  animation: fadeIn 2s forwards;
+}
+.anim2 {
+  animation: fadeIn 2s 0.2s forwards;
+}
+.anim3 {
+  animation: fadeIn 2s 0.4s forwards;
+}
+.anim4 {
+  animation: fadeIn 2s 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  20% {
+    opacity: 0;
+  }
+  to {
+    opacity: 85%;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1000px);
+  }
+}

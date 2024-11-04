@@ -65,39 +65,39 @@
 // // });
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Sélectionner tous les cours dans le carrousel
-    const coursItems = document.querySelectorAll(".banniere");
-    const infoSection = document.getElementById("info");
-    const coursName = document.getElementById("cours-name");
-    const coursText = document.querySelector(".text");
-    const closeBtn = document.getElementById("close-info");
+  // Sélectionner tous les cours dans le carrousel
+  const coursItems = document.querySelectorAll(".banniere");
+  const infoSection = document.getElementById("info");
+  const coursName = document.getElementById("cours-name");
+  const coursText = document.querySelector(".text");
+  const closeBtn = document.getElementById("close-info");
 
-    // Fonction pour afficher un cours dans la section info
-    function afficherCours(postId) {
-        const postContent = document.getElementById(`post-content-${postId}`);
-        if (postContent) {
-            coursName.innerHTML = postContent.querySelector("h1").innerText;
-            coursText.innerHTML = postContent.querySelector("div").innerHTML;
-            infoSection.style.display = "block";
-        }
+  // Fonction pour afficher un cours dans la section info
+  function afficherCours(postId) {
+    const postContent = document.getElementById(`post-content-${postId}`);
+    if (postContent) {
+      coursName.innerHTML = postContent.querySelector("h1").innerText;
+      coursText.innerHTML = postContent.querySelector("div").innerHTML;
+      infoSection.style.display = "block";
     }
+  }
 
-    // Afficher par défaut le premier cours
-    if (coursItems.length > 0) {
-        const premierPostId = coursItems[0].getAttribute("data-id");
-        afficherCours(premierPostId);
-    }
+  // Afficher par défaut le premier cours
+  if (coursItems.length > 0) {
+    const premierPostId = coursItems[0].getAttribute("data-id");
+    afficherCours(premierPostId);
+  }
 
-    // Ajouter un événement pour chaque élément pour afficher le cours correspondant
-    coursItems.forEach(item => {
-        item.addEventListener("click", () => {
-            const postId = item.getAttribute("data-id");
-            afficherCours(postId);
-        });
+  // Ajouter un événement pour chaque élément pour afficher le cours correspondant
+  coursItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const postId = item.getAttribute("data-id");
+      afficherCours(postId);
     });
+  });
 
-    // Bouton pour fermer la section d'information
-    closeBtn.addEventListener("click", () => {
-        infoSection.style.display = "none";
-    });
+  // Bouton pour fermer la section d'information
+  closeBtn.addEventListener("click", () => {
+    infoSection.style.display = "none";
+  });
 });
