@@ -27,10 +27,12 @@
       <nav>
         <ul>
           <li>
-            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Projets <i class="fa-duotone fa-ice-cream"></i></a>
+            <!-- Peut changer get_category_by_slug -->
+            <a href="<?php echo get_category_link(get_category_by_slug('projets')->term_id); ?>">Projets <i class="fa-duotone fa-ice-cream"></i></a>
             <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Cours.png" /> -->
           </li>
           <li>
+            <!-- Peut changer get_category_by_slug -->
             <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Cours
               <i
                 class="fa-duotone fa-solid fa-ferris-wheel"
@@ -41,7 +43,8 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Profs
+            <!-- Peut changer get_category_by_slug -->
+            <a href="<?php echo get_category_link(get_category_by_slug('profs')->term_id); ?>">Profs
               <i
                 class="fa-duotone fa-solid fa-lighthouse"
                 style="
@@ -51,7 +54,10 @@
             </a>
             <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Profs.png" /> -->
           </li>
-          <li><a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Évènements
+          
+          <li>
+            <!-- Peut changer get_category_by_slug -->
+            <a href="<?php echo get_category_link(get_category_by_slug('evenements')->term_id); ?>">Évènements
               <i
                 class="fa-duotone fa-calendar-days"
                 style="
@@ -61,7 +67,8 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Futur
+            <!-- Peut changer get_category_by_slug -->
+            <a href="<?php echo get_category_link(get_category_by_slug('emplois')->term_id); ?>">Futur
               <i
                 class="fa-duotone fa-solid fa-briefcase-arrow-right"
                 style="
@@ -72,7 +79,8 @@
             <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Emplois.png" /> -->
           </li>
           <li>
-            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Vie Étudiante
+            <!-- Peut changer get_category_by_slug -->
+            <a href="<?php echo get_category_link(get_category_by_slug('vie-etudiante')->term_id); ?>">Vie Étudiante
               <i
                 class="fa-duotone fa-solid fa-campfire"
                 style="

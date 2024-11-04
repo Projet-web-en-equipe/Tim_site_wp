@@ -126,12 +126,12 @@ header ul li a:hover {
   }
 }
 body {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/pexels-felixmittermeier-956999-scaled.jpg");
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
   background-size: cover;
   background-repeat: repeat;
 }
 
-/*Composants page*/
+/*Composants secondaires*/
 div#burger {
   width: 6%;
   height: 30%;
@@ -233,21 +233,6 @@ div#logo a {
     width: 8rem;
   }
 }
-header {
-  height: 10%;
-  width: 98%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1%;
-}
-
-/* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
-header section {
-  position: relative;
-  top: 0.5rem;
-  left: 0.5rem;
-}*/
 #nav-menu {
   position: fixed;
   top: 0;
@@ -505,242 +490,6 @@ main div section#info p {
     display: none;
   }
 }
-/*Composants principaux*/
-footer {
-  position: absolute;
-  background-color: #003d5b;
-  width: 100%;
-  height: 30%;
-  bottom: -27%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  transition: bottom 0.7s ease-out;
-  color: white;
-  padding-bottom: 3%;
-  padding-top: 3%;
-}
-footer .conteneurSousTitre,
-footer .liens,
-footer .sociaux,
-footer .equipe,
-footer .contact {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3%;
-}
-footer .conteneurSousTitre .material-symbols-rounded,
-footer .liens .material-symbols-rounded,
-footer .sociaux .material-symbols-rounded,
-footer .equipe .material-symbols-rounded,
-footer .contact .material-symbols-rounded {
-  font-size: 3rem;
-  position: absolute;
-  top: 1%;
-  left: 1%;
-  width: 5%;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  cursor: pointer;
-}
-footer .conteneurSousTitre h3,
-footer .liens h3,
-footer .sociaux h3,
-footer .equipe h3,
-footer .contact h3 {
-  margin: 0;
-  width: 25%;
-  height: 25%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-.material-symbols-outlined {
-  font-size: 2rem;
-  cursor: pointer;
-  color: white;
-}
-
-/*******************************************************************************************/
-/************************ ici je vais travailler sur le checkbox ***************************/
-/*******************************************************************************************/
-#checkFoot {
-  display: none;
-}
-
-/* ça me montre le footer quand qu'y est checked*/
-#checkFoot:checked + label footer {
-  bottom: 0;
-}
-
-/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
-#checkFoot:checked + label footer h3 {
-  opacity: 0;
-  visibility: hidden;
-  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
-  cursor: default;
-}
-
-/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
-#checkFoot:checked + label footer .material-symbols-rounded {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
-}
-
-/* quand le le footer n'est pas checked */
-#checkFoot:not(:checked) + label footer h3 {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s; /* pas de delai*/
-}
-
-.liens p a,
-footer p {
-  font-family: "breakers-slab", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
-}
-
-footer .equipe p {
-  font-size: clamp(0.625rem, 1.2vw + 0.4rem, 0.875rem);
-  font-style: italic;
-}
-
-.sociaux .fa-brands {
-  font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
-  cursor: pointer;
-}
-
-.sociaux .fa-brands:hover {
-  scale: 110%;
-}
-
-/*******************************************************************************************/
-/******* ici je vais travailler sur la partie du footer qui contient tout sauf le titre ****/
-/*******************************************************************************************/
-.contenuFooter {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-}
-
-/* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
-#checkFoot:not(:checked) + label footer .contenuFooter {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0s 0.5s;
-}
-
-/* seulement quand je click sur le footer, je vais afficher le contenu et je veux que ça réagise avec la transition de l'opacité que le h3 possède*/
-#checkFoot:checked + label footer .contenuFooter {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  height: 100vh;
-}
-main::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: rgba(151, 151, 151, 0.2470588235);
-}
-main::-webkit-scrollbar {
-  width: 12px;
-  background-color: rgba(151, 151, 151, 0.2470588235);
-}
-main::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #202020;
-}
-main #titre {
-  z-index: 2;
-  top: 1rem;
-  position: sticky;
-  background: rgba(58, 58, 58, 0.479);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 0 0.5rem;
-}
-
-@media only screen and (min-width: 1025px) {
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin-right: 2rem;
-  }
-  main #titre {
-    position: static;
-    margin-bottom: 1rem;
-  }
-  main .content-wrapper {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-}
-html,
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  background-color: rgb(0, 0, 74);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  z-index: -1000;
-  border: 1px solid white;
-}
-
-html {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-canvas {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgb(0, 134, 217);
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-}
-
 #ctnAnim {
   position: absolute;
   width: 100vw;
@@ -836,6 +585,278 @@ canvas {
     transform: translateY(-1000px);
   }
 }
+/*Composants principaux*/
+footer {
+  position: absolute;
+  background-color: #003d5b;
+  width: 100%;
+  height: 30%;
+  bottom: -29%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: bottom 0.7s ease-out;
+  color: white;
+  padding-bottom: 3%;
+  padding-top: 3%;
+}
+footer .conteneurSousTitre {
+  position: absolute;
+  top: 2%;
+  left: 0;
+}
+footer .conteneurSousTitre,
+footer .liens,
+footer .sociaux,
+footer .equipe,
+footer .contact {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+}
+footer .conteneurSousTitre .material-symbols-rounded,
+footer .liens .material-symbols-rounded,
+footer .sociaux .material-symbols-rounded,
+footer .equipe .material-symbols-rounded,
+footer .contact .material-symbols-rounded {
+  font-size: 3rem;
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: 5%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  cursor: pointer;
+}
+footer .conteneurSousTitre h3,
+footer .liens h3,
+footer .sociaux h3,
+footer .equipe h3,
+footer .contact h3 {
+  margin: 0;
+  width: 25%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/*******************************************************************************************/
+/************************ ici je vais travailler sur le checkbox ***************************/
+/*******************************************************************************************/
+#checkFoot {
+  display: none;
+}
+
+/* ça me montre le footer quand qu'y est checked*/
+#checkFoot:checked + label footer {
+  bottom: 0;
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer h3 {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+  cursor: default;
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer .material-symbols-rounded {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+}
+
+/* quand le le footer n'est pas checked */
+#checkFoot:not(:checked) + label footer h3 {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s; /* pas de delai*/
+}
+
+footer p {
+  font-family: "breakers-slab", sans-serif;
+  font-style: normal;
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+}
+
+footer a {
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+  cursor: pointer;
+  font-family: "breakers-slab", sans-serif;
+}
+
+.sociaux .fa-brands {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
+  cursor: pointer;
+}
+
+.sociaux .fa-brands:hover {
+  scale: 110%;
+}
+
+/*******************************************************************************************/
+/******* ici je vais travailler sur la partie du footer qui contient tout sauf le titre ****/
+/*******************************************************************************************/
+.contenuFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+/* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
+#checkFoot:not(:checked) + label footer .contenuFooter {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s 0.5s;
+}
+
+/* seulement quand je click sur le footer, je vais afficher le contenu et je veux que ça réagise avec la transition de l'opacité que le h3 possède*/
+#checkFoot:checked + label footer .contenuFooter {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
+}
+
+/**********************************************************************/
+/************************** Ajustement des resolutions *****************/
+/**********************************************************************/
+/************************** Pour les tablettes *****************/
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  footer {
+    bottom: -32%;
+  }
+}
+/************************** Pour les bureaux *****************/
+@media only screen and (min-width: 1025px) {
+  footer {
+    bottom: -34%;
+  }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  height: 100vh;
+}
+main::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #202020;
+}
+main #titre {
+  z-index: 2;
+  top: 1rem;
+  position: sticky;
+  background: rgba(58, 58, 58, 0.479);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0 0.5rem;
+}
+
+@media only screen and (min-width: 1025px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 2rem;
+  }
+  main #titre {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  main .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+header {
+  height: 10%;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  position: absolute;
+}
+
+/* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
+  header section {
+    position: relative;
+    top: 0.5rem;
+    left: 0.5rem;
+  }*/
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: rgb(0, 0, 74);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: -1000;
+  border: 1px solid white;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/ileSansFond.png);
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  border: 3px solid red;
+}
+
 /*couleurs*/
 :root {
   --primaire: #00798C;
