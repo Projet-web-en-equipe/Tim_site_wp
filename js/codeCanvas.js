@@ -354,8 +354,9 @@ function changerPage(url) {
 
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
+  //console.log(cercle.x *leCanvas.zoom, cercle.y * leCanvas.zoom);
   return (
-    Math.sqrt((click.x - cercle.x) ** 2 + (click.y - cercle.y) ** 2) <
+    Math.sqrt((click.x - cercle.x * leCanvas.zoom) ** 2 + (click.y - cercle.y * leCanvas.zoom) ** 2) <
     cercle.rayon
   );
 }

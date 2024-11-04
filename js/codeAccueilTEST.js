@@ -39,15 +39,17 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   mobile = false;
 }
 
+function resetPos(){
+  leCanvas.x = window.innerWidth / 2 - leCanvas.width / leCanvas.zoom / 2;
+  leCanvas.y = window.innerHeight / 2 - leCanvas.height / leCanvas.zoom / 2;
+  leCanvas.html.style.left = leCanvas.x + "px";
+  leCanvas.html.style.top = leCanvas.y + "px";
+}
+
 ///////////////////ADDEVENTLISTENER TOWN/////////////////////////////
 
 //addeventlistener pour replacer le canvas quand la taille de la page change
-window.addEventListener("resize", () => {
-  leCanvas.x = window.innerWidth / 2 - leCanvas.width / 2;
-  leCanvas.y = window.innerHeight / 2 - leCanvas.height / 2;
-  leCanvas.html.style.left = leCanvas.x + "px";
-  leCanvas.html.style.top = leCanvas.y + "px";
-});
+window.addEventListener("resize", resetPos);
 //addeventlistener qui detect quand l'utilisateur scroll sur la carte
 window.addEventListener('wheel', function (event) {
   //ajouter la valeur du deltaY au zoom
@@ -56,6 +58,8 @@ window.addEventListener('wheel', function (event) {
   leCanvas.html.style.transform = "scale(" + leCanvas.zoom * 100 + "%)";
   leCanvas.width = 900 * leCanvas.zoom;
   leCanvas.height = 900 * leCanvas.zoom;
+  ////////////////
+  resetPos();
 });
 //addeventlistener qui detecte le maintient d'un clic et unlock le canvas
 leCanvas.html.addEventListener("mousedown", () => {
@@ -79,18 +83,18 @@ window.addEventListener("touchend", () => {
 if (!mobile) {
   //addeventlistener pour desktop
   window.addEventListener("mousemove", (e) => {
-    console.log(leCanvas.width, leCanvas.x);
+    console.log(leCanvas.x)
     if (!leCanvas.lock) {
       //si les limites du x du canvas sont a l'exterieurs de la page
       if (leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth) {
         //deplace le x du canvas selon la pos de la souris - son ancienne pos
         leCanvas.x += (e.clientX - exPosX) / 2;
         //limite le deplacement du canvas aux limites + un petit margin
-        if (leCanvas.x >= 0 + posExtreme + (leCanvas.width - 900)) {
+        if (leCanvas.x >= 0 + posExtreme + (leCanvas.width - 900) && leCanvas.x + leCanvas.width + posExtreme > window.innerWidth) {
           leCanvas.x = 0 + posExtreme + (leCanvas.width - 900);
         }
-        if (leCanvas.x + leCanvas.width + posExtreme + (leCanvas.width - 900) <= window.innerWidth) {
-          leCanvas.x = window.innerWidth - leCanvas.width - posExtreme + (leCanvas.width - 900);
+        if (leCanvas.x + leCanvas.width + posExtreme <= window.innerWidth) {
+          leCanvas.x = window.innerWidth - leCanvas.width - posExtreme;
         }
       }
       //si les limites du y du canvas sont a l'exterieurs de la page
@@ -101,8 +105,8 @@ if (!mobile) {
         if (leCanvas.y >= 0 + posExtreme + (leCanvas.height - 900)) {
           leCanvas.y = 0 + posExtreme + (leCanvas.height - 900);
         }
-        if (leCanvas.y + leCanvas.height + posExtreme + (leCanvas.height - 900) <= window.innerHeight) {
-          leCanvas.y = window.innerHeight - leCanvas.height - posExtreme + (leCanvas.height - 900);
+        if (leCanvas.y + leCanvas.height + posExtreme <= window.innerHeight) {
+          leCanvas.y = window.innerHeight - leCanvas.height - posExtreme;
         }
       }
       //applique les changement de positions du canvas avec le style
