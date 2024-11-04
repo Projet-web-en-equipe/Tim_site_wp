@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 <div id="erreur_404" class="global">
     <section>
-        <h2>Erreur 404</h2>
+        <h2 id="titre404">Erreur 404</h2>
         <span></span>
-        <h4>Vous essayez d'accéder à une page qui n'existe pas...ÉRIC S'EST NOYÉ MAN!</h4>
+        <p>Vous essayez d'accéder à une page qui n'existe pas...ÉRIC S'EST NOYÉ MAN!</p >
         <span></span>
         <h4>Pour revenir à la page d'accueil, cliquez sur le lien suivant :</h4>
         <span></span>

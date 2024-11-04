@@ -1,11 +1,17 @@
 // Feuille de styles pour la page d'erreur 404// Feuille de styles pour la page d'erreur 404
 
 /* Styles pour la div contenant le message d'erreur */
+#titre404{
+    color: red;
+}
+
 #erreur_404{
     display: flex;    
     align-items: center;
     background-color: hsl(203, 100%, 70%);
-    box-shadow: 0px 20px 0px -10px #FFFFFF, 0px -20px 0px -10px #FFFFFF, 20px 0px 0px -10px #FFFFFF, -20px 0px 0px -10px #FFFFFF, 0px 0px 0px 10px #0084ff, 5px 5px 15px 5px rgba(51,158,255,0);
+    color: pink;
+    border: 6px solid #FFFFFF;
+    // box-shadow: 0px 20px 0px -10px #FFFFFF, 0px -20px 0px -10px #FFFFFF, 20px 0px 0px -10px #FFFFFF, -20px 0px 0px -10px #FFFFFF, 0px 0px 0px 10px #0084ff, 5px 5px 15px 5px rgba(51,158,255,0);
     text-align: center;
 }
 
