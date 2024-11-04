@@ -1,0 +1,36 @@
+// Feuille de styles pour la page d'erreur 404// Feuille de styles pour la page d'erreur 404
+
+/* Styles pour la div contenant le message d'erreur */
+#erreur_404{
+    display: flex;    
+    align-items: center;
+    background-color: hsl(203, 100%, 70%);
+    box-shadow: 0px 20px 0px -10px #FFFFFF, 0px -20px 0px -10px #FFFFFF, 20px 0px 0px -10px #FFFFFF, -20px 0px 0px -10px #FFFFFF, 0px 0px 0px 10px #0084ff, 5px 5px 15px 5px rgba(51,158,255,0);
+    text-align: center;
+}
+
+#erreur_404 #retourAccueil{
+    margin-bottom: 0vh;
+}
+
+/*Media query pour la version mobile responsive*/
+@media screen and (max-width:1000px) {
+    #erreur_404 img{
+        display: none;
+    }
+
+    #erreur_404 section{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #menu-piedpage{
+        display: none;
+    }
+
+    #retourAccueil{
+        margin: auto;
+    }
+}
