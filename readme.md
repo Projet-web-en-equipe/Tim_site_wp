@@ -20,6 +20,6 @@ Dans le sprint 3 nous désirons finaliser le scss du site. Nous voulons égaleme
 
 - https://gftnth00.mywhc.ca/tim14/
 
-## lien Google Shits
+## lien Google Sheets
 
 https://docs.google.com/spreadsheets/d/1x_0K6ti-6dcoBnL0YfyUQKwuBEWMxvTXaEzu0RWHaZw/edit?gid=0#gid=0

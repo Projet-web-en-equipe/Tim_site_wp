@@ -126,7 +126,9 @@ header ul li a:hover {
   }
 }
 body {
-  background-color: black;
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
+  background-size: cover;
+  background-repeat: repeat;
 }
 
 /*Composants secondaires*/
@@ -304,7 +306,8 @@ header nav ul li img {
 
 .fa-duotone.fa-ice-cream {
   --fa-primary-color: #ffd18f; /* Cone color */
-  --fa-secondary-color: #ffd2e1; /* Ice cream (pink) */
+  --fa-secondary-color: #ff92b1; /* Ice cream (pink) */
+  --fa-secondary-opacity: 1;
 }
 
 main section#carrousel {
@@ -497,6 +500,7 @@ main div section#info p {
   align-items: center;
   justify-content: center;
   animation: fadeOut 5s 5s forwards;
+  z-index: 10000;
 }
 
 #ctnTitre {
@@ -848,7 +852,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgb(0, 134, 217);
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/ileSansFond.png);
   margin: 0;
   padding: 0;
   z-index: -1;
