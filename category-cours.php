@@ -2,7 +2,14 @@
 
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
-    
+    <!-- <div class="filtre">
+        <button onclick="gestionFiltre()" class="filtre-btn">Toutes les sessions</button>
+        <div id="dropdown-filtre" class="liens-filtre">
+            <a href="">Session 1</a>
+            <a href="">Session 2</a>
+            <a href="">Session 3</a>
+        </div>
+    </div> -->
     <div class="content-wrapper">
         <section id="carrousel">
 
