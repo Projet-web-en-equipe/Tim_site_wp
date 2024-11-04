@@ -2,16 +2,21 @@
 
 /* Styles pour la div contenant le message d'erreur */
 #titre404{
-    color: red;
+    color: var(--couleur-rouge-clair); ;
 }
 
 #erreur_404{
     display: flex;    
     align-items: center;
-    background-color: hsl(203, 100%, 70%);
-    color: pink;
+    justify-content: center;
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 10%;
+    background-color: var(--couleur-bleu-fonce); 
+    color: var(--couleur-or-clair);
     border: 6px solid #FFFFFF;
-    // box-shadow: 0px 20px 0px -10px #FFFFFF, 0px -20px 0px -10px #FFFFFF, 20px 0px 0px -10px #FFFFFF, -20px 0px 0px -10px #FFFFFF, 0px 0px 0px 10px #0084ff, 5px 5px 15px 5px rgba(51,158,255,0);
     text-align: center;
 }
 

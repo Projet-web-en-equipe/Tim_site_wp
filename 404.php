@@ -3,14 +3,14 @@
     <section>
         <h2 id="titre404">Erreur 404</h2>
         <span></span>
-        <p>Vous essayez d'accéder à une page qui n'existe pas...ÉRIC S'EST NOYÉ MAN!</p >
+        <p>Vous essayez d'accéder à une page qui n'existe pas et par conséquent...ÉRIC S'EST NOYÉ !!!</p >
         <span></span>
-        <h4>Pour revenir à la page d'accueil, cliquez sur le lien suivant :</h4>
+        <p>Revenez à la page d'accueil à l'aide de l'icône du TIM</p>
         <span></span>
 
         <!-- Bouton pour retourner à la page d'accueil -->
         <span></span>
-        <a href="#entete"><button id="retourAccueil"> <a href="<?php //echo get_bloginfo('url'); ?>"> <?php //echo get_bloginfo('name'); ?></a> </button></a>
+        <a href="#entete"> <a href="<?php //echo get_bloginfo('url'); ?>"> <?php //echo get_bloginfo('name'); ?></a> </a>
 
         <!-- Récupérer le formulaire de recherche -->
         <span></span>

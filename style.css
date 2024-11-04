@@ -884,14 +884,20 @@ canvas {
 /*Divers*/
 /* Styles pour la div contenant le message d'erreur */
 #titre404 {
-  color: red;
+  color: var(--couleur-rouge-clair);
 }
 
 #erreur_404 {
   display: flex;
   align-items: center;
-  background-color: hsl(203, 100%, 70%);
-  color: pink;
+  justify-content: center;
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-top: 10%;
+  background-color: var(--couleur-bleu-fonce);
+  color: var(--couleur-or-clair);
   border: 6px solid #FFFFFF;
   text-align: center;
 }
