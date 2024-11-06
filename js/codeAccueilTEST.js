@@ -84,47 +84,62 @@ window.addEventListener("touchend", () => {
 });
 //addeventlistener pour detecter comment le canvas bouge selon la souris
 window.addEventListener("mousemove", (e) => {
+  //si le canvas est maintenu par la souris
   if(!leCanvas.lock){
+    //si les extremites x du canvas sortent de la page + un margin posExtreme
     if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
+      //modifier la position du x selon la position de la souris - l'ancienne position de la souris
       leCanvas.x += (e.clientX - exPosX) / 2
+      //limiter le deplacement x du canvas s'il va trop loin vers les extremites
       if(leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme){
         leCanvas.x = (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme
       } else if(leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme){
         leCanvas.x = window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme;
       }
     }
+    //si les extremites y du canvas sortent de la page + un margin posExtreme
     if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
+      //modifier la position du y selon la position de la souris - l'ancienne position de la souris
       leCanvas.y += (e.clientY - exPosY) / 2
+      //limiter le deplacement y du canvas s'il va trop loin vers les extremites
       if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
         leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
       } else if(leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme){
         leCanvas.y = window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme;
       }
     }
+    //appliquer le deplacement avec css
     leCanvas.html.style.left = leCanvas.x + "px"
     leCanvas.html.style.top = leCanvas.y + "px"
   }
+  //sauvegarder l'ancienne pos de la souris
   exPosX = e.clientX;
   exPosY = e.clientY;
 });
 //addeventlistener pour detecter comment le canvas bouge selon la pso du doigt
 window.addEventListener("touchmove", (e) => {
+  //si le canvas est maintenu par un ou plusieurs doigts
   if (!leCanvas.lock) {
     //detecte et garde le premier doigt qui a toucher l'ecran
     var touch = e.touches[0] || e.changedTouches[0];
     posX = touch.clientX;
     posY = touch.clientY;
-    
+    //si les extremites x du canvas sortent de la page + un margin posExtreme
     if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
+      //modifier la position du x selon la position du doigt - l'ancienne position du doigt
       leCanvas.x += (posX - exPosX) / 2
+      //limiter le deplacement x du canvas s'il va trop loin vers les extremites
       if(leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme){
         leCanvas.x = (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme
       } else if(leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme){
         leCanvas.x = window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme;
       }
     }
+    //si les extremites y du canvas sortent de la page + un margin posExtreme
     if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
+      //modifier la position du y selon la position du doigt - l'ancienne position du doigt
       leCanvas.y += (posY - exPosY) / 2
+      //limiter le deplacement y du canvas s'il va trop loin vers les extremites
       if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
         leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
       } else if(leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme){
@@ -140,84 +155,3 @@ window.addEventListener("touchmove", (e) => {
   exPosX = posX;
   exPosY = posY;
 });
-
-
-// if (!mobile) {
-//   //addeventlistener pour desktop
-//   window.addEventListener("mousemove", (e) => {
-//     if (!leCanvas.lock) {
-//       //si les limites du x du canvas sont a l'exterieurs de la page
-//       if (leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth) {
-//         console.log(leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth)
-//         //deplace le x du canvas selon la pos de la souris - son ancienne pos
-//         leCanvas.x += (e.clientX - exPosX) / 2;
-//         //limite le deplacement du canvas aux limites + un petit margin
-//         if (leCanvas.x >= posExtreme + (leCanvas.width - 900)) {
-//           leCanvas.x = posExtreme + (leCanvas.width - 900);
-//         }
-//         if (leCanvas.x + leCanvas.width + posExtreme <= window.innerWidth) {
-
-//           leCanvas.x = window.innerWidth - leCanvas.width - posExtreme;
-//         }
-//       }
-//       //si les limites du y du canvas sont a l'exterieurs de la page
-//       if (leCanvas.y < 0 || leCanvas.y + leCanvas.height > window.innerHeight) {
-//         //deplace le y du canvas selon la pos de la souris - son ancienne pos
-//         leCanvas.y += (e.clientY - exPosY) / 2;
-//         //limite le deplacement du canvas aux limites + un petit margin
-//         if (leCanvas.y >= posExtreme + (leCanvas.height - 900)) {
-//           leCanvas.y = posExtreme + (leCanvas.height - 900);
-//         }
-//         if (leCanvas.y + leCanvas.height + posExtreme <= window.innerHeight) {
-//           leCanvas.y = window.innerHeight - leCanvas.height - posExtreme;
-//         }
-//       }
-//       //applique les changement de positions du canvas avec le style
-//       leCanvas.html.style.left = leCanvas.x + "px";
-//       leCanvas.html.style.top = leCanvas.y + "px";
-//     }
-//     //sauvegarde les anciennes pos de la souris
-//     exPosX = e.clientX;
-//     exPosY = e.clientY;
-//   });
-// } else {
-//   //addeventlistener pour mobile
-//   window.addEventListener("touchmove", (e) => {
-//     if (!leCanvas.lock) {
-//       //detecte et garde le premier doigt qui a toucher l'ecran
-//       var touch = e.touches[0] || e.changedTouches[0];
-//       posX = touch.clientX;
-//       posY = touch.clientY;
-//       //si les limites du x du canvas sont a l'exterieurs de la page
-//       if (leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth) {
-//         //deplace le x du canvas selon la pos du doigt - son ancienne pos
-//         leCanvas.x += (posX - exPosX) / 2;
-//         //limite le deplacement du canvas aux limites + un petit margin
-//         if (leCanvas.x >= 0 + posExtreme) {
-//           leCanvas.x = 0 + posExtreme;
-//         }
-//         if (leCanvas.x + leCanvas.width + posExtreme <= window.innerWidth) {
-//           leCanvas.x = window.innerWidth - leCanvas.width - posExtreme;
-//         }
-//       }
-//       //si les limites du y du canvas sont a l'exterieurs de la page
-//       if (leCanvas.y < 0 || leCanvas.y + leCanvas.height > window.innerHeight) {
-//         //deplace le y du canvas selon la pos du doigt - son ancienne pos
-//         leCanvas.y += (posY - exPosY) / 2;
-//         //limite le deplacement du canvas aux limites + un petit margin
-//         if (leCanvas.y >= 0 + posExtreme) {
-//           leCanvas.y = 0 + posExtreme;
-//         }
-//         if (leCanvas.y + leCanvas.height + posExtreme <= window.innerHeight) {
-//           leCanvas.y = window.innerHeight - leCanvas.height - posExtreme;
-//         }
-//       }
-//       //applique les changement de positions du canvas avec le style
-//       leCanvas.html.style.left = leCanvas.x + "px";
-//       leCanvas.html.style.top = leCanvas.y + "px";
-//     }
-//     //sauvegarde les anciennes pos du doigt
-//     exPosX = posX;
-//     exPosY = posY;
-//   });
-// }

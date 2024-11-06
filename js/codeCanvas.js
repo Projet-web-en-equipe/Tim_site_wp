@@ -154,8 +154,8 @@ function renderer() {
 //detecter les clicks
 canvas.addEventListener("click", (event) => {
   const pos = {
-    x: event.clientX - canvas.offsetLeft,
-    y: event.clientY - canvas.offsetTop,
+    x: event.clientX - canvas.offsetLeft + (leCanvas.html.getBoundingClientRect().width - 900) / 2,
+    y: event.clientY - canvas.offsetTop + (leCanvas.html.getBoundingClientRect().height - 900) / 2,
   };
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
   if(perso.surIle && !enMouvement){
@@ -355,7 +355,7 @@ function changerPage(url) {
 function intersecte(click, cercle) {
   return (
     Math.sqrt((click.x - cercle.x * leCanvas.zoom) ** 2 + (click.y - cercle.y * leCanvas.zoom) ** 2) <
-    cercle.rayon
+    cercle.rayon * 10
   );
 }
 
