@@ -85,11 +85,11 @@ window.addEventListener("touchend", () => {
 //addeventlistener pour detecter comment le canvas bouge selon la souris/doigt
 window.addEventListener("mousemove", (e) => {
   if(!leCanvas.lock){
-    console.log(leCanvas.html.getBoundingClientRect().x);
+    console.log(leCanvas.zoom);
     if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
       leCanvas.x += (e.clientX - exPosX) / 2
-      if(leCanvas.html.getBoundingClientRect().x >= posExtreme){
-        leCanvas.x = posExtreme - 1;
+      if(leCanvas.html.getBoundingClientRect().x > posExtreme){
+        leCanvas.x = posExtreme - (900 / leCanvas.zoom / 2);
       }
     }
     leCanvas.html.style.left = leCanvas.x + "px"
