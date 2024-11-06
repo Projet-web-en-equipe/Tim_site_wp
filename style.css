@@ -50,6 +50,7 @@ h1 {
 h1#cours-name {
   padding-top: 15%;
   text-align: center;
+  padding-bottom: 5%;
 }
 
 h2,
@@ -106,7 +107,7 @@ header ul li a:hover {
     font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
   }
   h1#cours-name {
-    padding-top: 5%;
+    padding-top: 15%;
     text-align: center;
     width: 70%; /* Pour donner un bon espace au titre centré */
   }
@@ -126,6 +127,11 @@ header ul li a:hover {
   }
   h1 {
     font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  }
+  h1#cours-name {
+    padding-top: 5%;
+    text-align: center;
+    width: 70%; /* Pour donner un bon espace au titre centré */
   }
   h2,
   a {
@@ -410,6 +416,8 @@ main section h2 {
 }
 main div {
   width: 100%;
+  /* Bouton temporaire pour fermer la zone de description */
+  /* Symbole pour fermer le bouton */
 }
 main div section#info {
   display: none;
@@ -459,13 +467,22 @@ main div #close-info {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background-color: rgba(192, 192, 192, 0.521);
+  background-color: var(--accent);
   border: none;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  border-radius: 25%;
+  width: 3rem;
+  height: 3rem;
   cursor: pointer;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main div #close-info::before {
+  content: "v";
+  font-size: 2rem;
+  color: white;
+  font-weight: bolder;
 }
 main div #close-info:hover {
   background-color: rgba(255, 194, 194, 0.521);
@@ -485,6 +502,7 @@ main div section#info p {
     position: relative;
     width: 75vw;
     border-radius: 10px;
+    margin-top: 2%;
   }
   main div h1 {
     margin: 0 auto;
@@ -499,7 +517,6 @@ main div section#info p {
   }
   main div #close-info {
     display: none;
-    border: 5px solid red;
   }
 }
 #ctnAnim {

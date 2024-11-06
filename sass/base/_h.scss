@@ -32,6 +32,7 @@ h1 {
 h1#cours-name{
   padding-top: 15%;
   text-align: center;
+  padding-bottom: 5%;
 }
 
 h2,
@@ -94,7 +95,7 @@ header ul li a {
   }
 
   h1#cours-name{
-    padding-top: 5%;
+    padding-top: 15%;
     text-align: center;
     width: 70%; /* Pour donner un bon espace au titre centré */
   }
@@ -118,6 +119,12 @@ header ul li a {
 
   h1 {
     font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  }
+  
+  h1#cours-name{
+    padding-top: 5%;
+    text-align: center;
+    width: 70%; /* Pour donner un bon espace au titre centré */
   }
 
   h2,
