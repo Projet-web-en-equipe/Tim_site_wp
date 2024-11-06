@@ -2,45 +2,41 @@
 
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
-    <!-- <div class="filtre">
-        <button onclick="gestionFiltre()" class="filtre-btn">Toutes les sessions</button>
-        <div id="dropdown-filtre" class="liens-filtre">
-            <a href="">Session 1</a>
-            <a href="">Session 2</a>
-            <a href="">Session 3</a>
-        </div>
-    </div> -->
     <div class="content-wrapper">
         <section id="carrousel">
 
             <?php
-            // Récupérer l'objet de la catégorie en cours
-            $category = get_queried_object();
-            $args = array(
-                'category_name' => $category->slug, // Utilisez le slug de la catégorie actuelle
-                'posts_per_page' => -1
-            );
-            $query = new WP_Query($args);
+            // Récupérer l'objet de la catégorie "Session 1"
+            $session_1_category = get_category_by_slug('session-2');
+            if ($session_1_category) {
+                $args = array(
+                    'category_name' => $session_1_category->slug, // Utilisez le slug de la catégorie "Session 1"
+                    'posts_per_page' => -1
+                );
+                $query = new WP_Query($args);
 
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
             ?>
-                    <div class="banniere" data-id="<?php the_ID(); ?>">
-                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
-                        <h2><?php echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
-                    </div>
+                        <div class="banniere" data-id="<?php the_ID(); ?>">
+                            <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
+                            <h2><?php echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
+                        </div>
 
-                    <div id="post-content-<?php the_ID(); ?>" style="display: none;">
-                        <h1><?php the_title(); ?></h1>
-                        <div><?php the_content(); ?></div>
-                    </div>
+                        <div id="post-content-<?php the_ID(); ?>" style="display: none;">
+                            <h1><?php the_title(); ?></h1>
+                            <div><?php the_content(); ?></div>
+                        </div>
             <?php
-                endwhile;
-            else :
-                echo '<p>Aucun cours disponible pour le moment.</p>';
-            endif;
+                    endwhile;
+                else :
+                    echo '<p>Aucun cours disponible pour le moment.</p>';
+                endif;
 
-            wp_reset_postdata();
+                wp_reset_postdata();
+            } else {
+                echo '<p>Aucun cours de session 1 disponible.</p>';
+            }
             ?>
 
         </section>
