@@ -82,7 +82,7 @@ leCanvas.html.addEventListener("touchstart", (e) => {
 window.addEventListener("touchend", () => {
   leCanvas.lock = true;
 });
-//addeventlistener pour detecter comment le canvas bouge selon la souris/doigt
+//addeventlistener pour detecter comment le canvas bouge selon la souris
 window.addEventListener("mousemove", (e) => {
   if(!leCanvas.lock){
     if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
@@ -94,7 +94,6 @@ window.addEventListener("mousemove", (e) => {
       }
     }
     if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
-      console.log(leCanvas.y);
       leCanvas.y += (e.clientY - exPosY) / 2
       if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
         leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
@@ -107,6 +106,39 @@ window.addEventListener("mousemove", (e) => {
   }
   exPosX = e.clientX;
   exPosY = e.clientY;
+});
+//addeventlistener pour detecter comment le canvas bouge selon la pso du doigt
+window.addEventListener("touchmove", (e) => {
+  if (!leCanvas.lock) {
+    //detecte et garde le premier doigt qui a toucher l'ecran
+    var touch = e.touches[0] || e.changedTouches[0];
+    posX = touch.clientX;
+    posY = touch.clientY;
+    
+    if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
+      leCanvas.x += (posX - exPosX) / 2
+      if(leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme){
+        leCanvas.x = (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme
+      } else if(leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme){
+        leCanvas.x = window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme;
+      }
+    }
+    if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
+      leCanvas.y += (posY - exPosY) / 2
+      if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
+        leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
+      } else if(leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme){
+        leCanvas.y = window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme;
+      }
+    }
+
+    //applique les changement de positions du canvas avec le style
+    leCanvas.html.style.left = leCanvas.x + "px";
+    leCanvas.html.style.top = leCanvas.y + "px";
+  }
+  //sauvegarde les anciennes pos du doigt
+  exPosX = posX;
+  exPosY = posY;
 });
 
 
