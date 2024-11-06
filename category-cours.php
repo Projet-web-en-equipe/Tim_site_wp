@@ -3,27 +3,38 @@
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
     <section id="categories-enfant">
-            <h2>Catégories</h2>
-            <?php
-            $child_categories = get_categories(array(
-                'child_of' => $category->term_id,
+        <h2>Catégories</h2>
+        <?php
+        // Récupérer l'objet de la catégorie parente "Cours"
+        $parent_category = get_category_by_slug('cours');
+        if ($parent_category) {
+            $child_categories_args = array(
+                'child_of' => $parent_category->term_id,
                 'hide_empty' => false
-            ));
+            );
+            $child_categories = get_categories($child_categories_args);
 
+            // Debug: Print the fetched child categories
+            echo '<pre>';
+            print_r($child_categories);
+            echo '</pre>';
+            
             if (!empty($child_categories)) :
                 foreach ($child_categories as $child_category) :
-            ?>
+        ?>
                     <div class="child-category">
                         <h3><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $child_category->name; ?></a></h3>
-                        <p><?php echo $child_category->description; ?></p>
                     </div>
-            <?php
+        <?php
                 endforeach;
             else :
-                echo '<p>Aucune catégorie disponible</p>';
+                echo '<p>Aucune catégorie</p>';
             endif;
-            ?>
-        </section>
+        } else {
+            echo '<p>Catégorie parente "Cours" non trouvée.</p>';
+        }
+        ?>
+    </section>
 
     <div class="content-wrapper">
         <section id="carrousel">
@@ -72,7 +83,7 @@
 
         </section>
 
-        
+
 
         <section id="info">
             <button id="close-info" class="close-btn"></button>
@@ -80,6 +91,7 @@
             <div class="text"></div>
         </section>
     </div>
+
 </main>
 
 <?php get_footer(); ?>
