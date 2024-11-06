@@ -18,7 +18,7 @@
     </div>
     <div id="logo">
       <a href="<?php echo home_url(); ?>">
-        <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/timMobile.png" alt="TIM Logo" />
+        <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/TIMLogo.png" alt="TIM Logo" />
       </a>
     </div>
 
