@@ -14,16 +14,12 @@
             );
             $child_categories = get_categories($child_categories_args);
 
-            // Debug: Print the fetched child categories
-            echo '<pre>';
-            print_r($child_categories);
-            echo '</pre>';
-            
             if (!empty($child_categories)) :
                 foreach ($child_categories as $child_category) :
+                    $shortened_name = substr($child_category->name, 8);
         ?>
                     <div class="child-category">
-                        <h3><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $child_category->name; ?></a></h3>
+                        <h3><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></h3>
                     </div>
         <?php
                 endforeach;
