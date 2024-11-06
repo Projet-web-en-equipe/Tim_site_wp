@@ -94,9 +94,16 @@ window.addEventListener("mousemove", (e) => {
       }
     }
     if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
-      console.log("ALAISDE A LAIDE")
+      console.log(leCanvas.y);
+      leCanvas.y += (e.clientY - exPosY) / 2
+      if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
+        leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
+      } else if(leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme){
+        leCanvas.y = window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme;
+      }
     }
     leCanvas.html.style.left = leCanvas.x + "px"
+    leCanvas.html.style.top = leCanvas.y + "px"
   }
   exPosX = e.clientX;
   exPosY = e.clientY;
