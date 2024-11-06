@@ -3,9 +3,10 @@
     color: var(--couleur-rouge-clair);
 }
 
+/* Conteneur pour le message d'erreur avec l'image correspondante affichée en dessous */
 #erreur_404 {
     display: flex;
-    flex-direction: column; /* Change here to stack items vertically */
+    flex-direction: column; /* Aligner les items verticalement */
     align-items: center;
     justify-content: center;
     width: 40%;
@@ -21,13 +22,14 @@
 
 /*Image temporaire*/
 #erreur_404 img {
-    margin-top: 1em; /* Add some spacing between text and image */
+    margin-top: 1em; 
+    transform: scaleY(-1);
 }
 
 /*Media query pour la version mobile responsive*/
 @media screen and (max-width:1000px) {
     #erreur_404 img {
-        display: block; /* Ensure image is displayed on mobile */
+        display: block; 
     }
 
     #erreur_404 section {

@@ -47,6 +47,11 @@ h1 {
   font-size: clamp(1.5rem, 6vw + 0.5rem, 2.5rem);
 }
 
+h1#cours-name {
+  padding-top: 15%;
+  text-align: center;
+}
+
 h2,
 a {
   font-size: clamp(1.25rem, 5vw + 0.5rem, 2rem);
@@ -65,6 +70,7 @@ p {
   font-family: "breakers-slab", sans-serif;
   font-weight: 400;
   font-style: normal;
+  line-height: 1.8; /* Espace entre les lignes pour laisser le texte respirer */
 }
 
 header ul {
@@ -98,6 +104,11 @@ header ul li a:hover {
   }
   h1 {
     font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
+  }
+  h1#cours-name {
+    padding-top: 5%;
+    text-align: center;
+    width: 70%; /* Pour donner un bon espace au titre centré */
   }
   h2,
   a {
@@ -488,6 +499,7 @@ main div section#info p {
   }
   main div #close-info {
     display: none;
+    border: 5px solid red;
   }
 }
 #ctnAnim {
@@ -887,9 +899,10 @@ canvas {
   color: var(--couleur-rouge-clair);
 }
 
+/* Conteneur pour le message d'erreur avec l'image correspondante affichée en dessous */
 #erreur_404 {
   display: flex;
-  flex-direction: column; /* Change here to stack items vertically */
+  flex-direction: column; /* Aligner les items verticalement */
   align-items: center;
   justify-content: center;
   width: 40%;
@@ -905,13 +918,14 @@ canvas {
 
 /*Image temporaire*/
 #erreur_404 img {
-  margin-top: 1em; /* Add some spacing between text and image */
+  margin-top: 1em;
+  transform: scaleY(-1);
 }
 
 /*Media query pour la version mobile responsive*/
 @media screen and (max-width: 1000px) {
   #erreur_404 img {
-    display: block; /* Ensure image is displayed on mobile */
+    display: block;
   }
   #erreur_404 section {
     text-align: center;
