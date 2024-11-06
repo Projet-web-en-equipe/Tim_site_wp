@@ -157,7 +157,6 @@ canvas.addEventListener("click", (event) => {
     x: event.clientX - canvas.offsetLeft,
     y: event.clientY - canvas.offsetTop,
   };
-  console.log(pos.x, pos.y);
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
   if(perso.surIle && !enMouvement){
     listePoints.forEach((point) => {
@@ -354,7 +353,6 @@ function changerPage(url) {
 
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
-  //console.log(cercle.x *leCanvas.zoom, cercle.y * leCanvas.zoom);
   return (
     Math.sqrt((click.x - cercle.x * leCanvas.zoom) ** 2 + (click.y - cercle.y * leCanvas.zoom) ** 2) <
     cercle.rayon
