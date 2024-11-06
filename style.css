@@ -133,8 +133,8 @@ body {
 
 /*Composants secondaires*/
 div#burger {
-  width: 6%;
-  height: 30%;
+  width: 6%; /* relative to header */
+  height: 30%; /* relative to header */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -145,9 +145,23 @@ div#burger {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 25%; /* starting border-radius */
   padding: 0.5rem;
+  transition: all 0.5s ease-in-out; /* smooth scaling transition */
+}
+
+div#burger.active {
+  background-color: #d1495d;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Apply the animation only on hover */
+div#burger:hover {
+  transform: scale(1.3);
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out; /* smooth scaling transition */
+  padding: 1.5% 1%;
+  transform: rotate(90deg);
 }
 
 div.barre {
@@ -325,36 +339,6 @@ header nav ul li a {
 header nav ul li img {
   height: 35px; /* Set a consistent height for all images */
   width: auto;
-}
-
-.fa-duotone.fa-ferris-wheel {
-  --fa-primary-color: #ac73b1; /* Cone color */
-  --fa-secondary-color: #a99167; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-
-.fa-duotone.fa-lighthouse {
-  --fa-primary-color: white; /* Cone color */
-  --fa-secondary-color: #d9595d; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-
-.fa-duotone.fa-calendar-days {
-  --fa-primary-color: #239d99; /* Cone color */
-  --fa-secondary-color: #a5452f; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-
-.fa-duotone.fa-sailboat {
-  --fa-primary-color: #821817; /* Cone color */
-  --fa-secondary-color: #cc3428; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
-}
-
-.fa-duotone.fa-campfire {
-  --fa-primary-color: #8c441f; /* Cone color */
-  --fa-secondary-color: #ff9d00; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
 }
 
 main section#carrousel {
@@ -637,7 +621,7 @@ main div section#info p {
 /*Composants principaux*/
 footer {
   position: absolute;
-  background-color: #003d5b;
+  background-color: none;
   width: 100%;
   height: 30%;
   bottom: -29%;
@@ -645,7 +629,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: bottom 0.7s ease-out;
+  transition: all 0.7s ease-out;
   color: white;
   padding-bottom: 3%;
   padding-top: 3%;
@@ -695,8 +679,15 @@ footer .contact h3 {
   gap: 5%;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.5s ease-in-out;
   cursor: pointer;
+}
+footer .conteneurSousTitre h3:hover,
+footer .liens h3:hover,
+footer .sociaux h3:hover,
+footer .equipe h3:hover,
+footer .contact h3:hover {
+  transform: scale(1.2);
 }
 
 .material-symbols-outlined {
@@ -715,6 +706,8 @@ footer .contact h3 {
 /* ça me montre le footer quand qu'y est checked*/
 #checkFoot:checked + label footer {
   bottom: 0;
+  box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 0.5);
+  background-color: #003d5b;
 }
 
 /* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/

@@ -1,6 +1,6 @@
 footer {
   position: absolute;
-  background-color: #003d5b;
+  background-color: none;
   width: 100%;
   height: 30%;
   bottom: -29%;
@@ -8,7 +8,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: bottom 0.7s ease-out;
+  transition: all 0.7s ease-out;
   color: white;
   //padding: 3%;
   padding-bottom: 3%;
@@ -56,6 +56,7 @@ footer {
     h3 {
       // padding-left: -10%;
       margin: 0;
+
       width: 25%;
       height: 25%;
       //border: 1px solid red;
@@ -67,8 +68,12 @@ footer {
       // gap: 2%;
       opacity: 1;
       visibility: visible;
-      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out,
+        transform 0.5s ease-in-out;
       cursor: pointer;
+    }
+    h3:hover {
+      transform: scale(1.2);
     }
   }
 }
@@ -90,6 +95,8 @@ footer {
 /* ça me montre le footer quand qu'y est checked*/
 #checkFoot:checked + label footer {
   bottom: 0;
+  box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 0.5);
+  background-color: #003d5b;
 }
 
 /* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
