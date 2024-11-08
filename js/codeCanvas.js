@@ -104,7 +104,7 @@ function renderer() {
   //dessiner les cercles
   listePoints.forEach((circle) => {
     ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.rayon, 0, 2 * Math.PI);
+    ctx.arc(circle.x, circle.y, circle.rayon / leCanvas.zoom, 0, 2 * Math.PI);
     ctx.fillStyle = circle.couleur;
     ctx.fill();
   });
@@ -353,9 +353,10 @@ function changerPage(url) {
 
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
+  //console.log(leCanvas.zoom);
   return (
     Math.sqrt((click.x - cercle.x * leCanvas.zoom) ** 2 + (click.y - cercle.y * leCanvas.zoom) ** 2) <
-    cercle.rayon * 10
+    cercle.rayon / leCanvas.zoom
   );
 }
 
