@@ -29,6 +29,15 @@ leCanvas.html.style.top = leCanvas.y + "px";
 //aller chercher la bonne taille du canvas
 leCanvas.width = leCanvas.html.getBoundingClientRect().width;
 leCanvas.height = leCanvas.html.getBoundingClientRect().height;
+//bien placer le canvas dependament de la taille de l'ecran
+if(window.innerWidth < leCanvas.width + posExtreme / 2){
+  var taille = window.innerWidth - posExtreme / 2;
+  leCanvas.zoom = taille / leCanvas.width;
+  leCanvas.html.style.transform = "scale(" + leCanvas.zoom * 100 + "%)";
+  leCanvas.width = leCanvas.html.getBoundingClientRect().width;
+  leCanvas.height = leCanvas.html.getBoundingClientRect().height;
+
+}
 //si le canvas est plus haut que la taille de l'ecran: 
 //faire en sorte qu'on voit juste le top du canvas
 if (leCanvas.height > window.innerHeight) {
