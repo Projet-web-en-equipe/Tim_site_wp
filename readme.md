@@ -12,6 +12,10 @@
 
 Dans le sprint 3 nous désirons finaliser le scss du site. Nous voulons également afficher toutes les pages sur le site wordpress et ce avec nos bandes de données. Nous voulons Afficher la page 404, les filtres et tester la mape dans le wordpress.
 
+## tâches non-complétées: à updater
+
+# issues:
+
 ## lien github page
 
 - https://projet-web-en-equipe.github.io/Tim_prototype/
