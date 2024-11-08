@@ -8,38 +8,32 @@
             <label for="touch"><span>Toutes les sessions</span></label>
             <input type="checkbox" id="touch">
             <ul class="slide">
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
+                <?php
+                // Récupérer l'objet de la catégorie parente "Cours"
+                $parent_category = get_category_by_slug('cours');
+                if ($parent_category) {
+                    $child_categories_args = array(
+                        'child_of' => $parent_category->term_id,
+                        'hide_empty' => false
+                    );
+                    $child_categories = get_categories($child_categories_args);
+
+                    if (!empty($child_categories)) :
+                        foreach ($child_categories as $child_category) :
+                            $shortened_name = substr($child_category->name, 8);
+                ?>
+                            <li><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></li>
+                <?php
+                        endforeach;
+                    else :
+                        echo '<li>Aucune catégorie</li>';
+                    endif;
+                } else {
+                    echo '<li>Catégorie parente "Cours" non trouvée.</li>';
+                }
+                ?>
             </ul>
         </nav>
-        <?php
-        // Récupérer l'objet de la catégorie parente "Cours"
-        $parent_category = get_category_by_slug('cours');
-        if ($parent_category) {
-            $child_categories_args = array(
-                'child_of' => $parent_category->term_id,
-                'hide_empty' => false
-            );
-            $child_categories = get_categories($child_categories_args);
-
-            if (!empty($child_categories)) :
-                foreach ($child_categories as $child_category) :
-                    $shortened_name = substr($child_category->name, 8);
-        ?>
-                    <div class="child-category">
-                        <h3><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></h3>
-                    </div>
-        <?php
-                endforeach;
-            else :
-                echo '<p>Aucune catégorie</p>';
-            endif;
-        } else {
-            echo '<p>Catégorie parente "Cours" non trouvée.</p>';
-        }
-        ?>
     </section>
 
     <div class="content-wrapper">
