@@ -1,7 +1,7 @@
-nav.filtre {
-    width: 300px;
-    background: #d9d9d9;
-    margin: 40px auto;
+nav.nav-filtre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 nav.nav-filtre label span {
@@ -11,13 +11,10 @@ nav.nav-filtre label span {
     font-size: 1.2em;
     font-variant: small-caps;
     cursor: pointer;
-    display: block;
 }
 
 nav.nav-filtre label span::after {
     float: right;
-    right: 10%;
-    content: "+";
 }
 
 ul.slide {
@@ -27,6 +24,8 @@ ul.slide {
     overflow: hidden;
     text-align: center;
     transition: height .4s ease;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 ul.slide li {
