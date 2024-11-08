@@ -1,0 +1,44 @@
+nav.filtre {
+    width: 300px;
+    background: #d9d9d9;
+    margin: 40px auto;
+}
+
+nav.nav-filtre label span {
+    padding: 30px;
+    background: #2d2f31;
+    color: white;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    cursor: pointer;
+    display: block;
+}
+
+nav.nav-filtre label span::after {
+    float: right;
+    right: 10%;
+    content: "+";
+}
+
+ul.slide {
+    clear: both;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+}
+
+ul.slide li {
+    padding: 2rem;
+}
+
+nav.nav-filtre input {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+}
+
+nav.nav-filtre input:checked + ul.slide {
+    height: 32rem;
+}

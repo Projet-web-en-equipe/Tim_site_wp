@@ -4,6 +4,16 @@
     <h1 id="titre"><?php single_cat_title() ?></h1>
     <section id="categories-enfant">
         <h2>Catégories</h2>
+        <nav class="nav-filtre">
+            <label for="touch"><span>Toutes les sessions</span></label>
+            <input type="checkbox" id="touch">
+            <ul class="slide">
+                <li><a href="#">Lorem Ipsum</a></li>
+                <li><a href="#">Lorem Ipsum</a></li>
+                <li><a href="#">Lorem Ipsum</a></li>
+                <li><a href="#">Lorem Ipsum</a></li>
+            </ul>
+        </nav>
         <?php
         // Récupérer l'objet de la catégorie parente "Cours"
         $parent_category = get_category_by_slug('cours');
