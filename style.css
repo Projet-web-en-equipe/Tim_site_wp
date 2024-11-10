@@ -284,9 +284,8 @@ div#logo a:hover {
   background: #003d5b;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 0 10px 10px 0;
   box-shadow: 1px 1px 40px 10px rgb(0, 0, 0);
-  border-right: 5px dashed white;
+  overflow: hidden;
 }
 
 #nav-menu.active {
@@ -294,7 +293,28 @@ div#logo a:hover {
   opacity: 1;
 }
 
-/* Pour les ordinateurs de bureau */
+/* Pseudo-element for the animated dashed border */
+#nav-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 12px; /* Increase width to make the line thicker */
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px); /* White and pink colors for the dashed effect */
+  animation: dashMove 2s linear infinite;
+}
+
+/* Animation to move the dashes */
+@keyframes dashMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px; /* Adjust for the length of the dash pattern */
+  }
+}
+/* Desktop view adjustment */
 @media only screen and (min-width: 1025px) {
   #nav-menu {
     width: 40%;
@@ -777,10 +797,10 @@ main div section#info p {
 /*Composants principaux*/
 footer {
   position: absolute;
-  background-color: none;
+  background-color: #003d5b;
   width: 100%;
   height: 30%;
-  bottom: -29%;
+  bottom: -36%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -789,11 +809,13 @@ footer {
   color: white;
   padding-bottom: 3%;
   padding-top: 3%;
-}
-footer .conteneurSousTitre {
-  position: absolute;
-  top: 2%;
-  left: 0;
+  /*
+    .conteneurSousTitre {
+      position: absolute;
+      top: 2%;
+      left: 0;
+    }
+  */
 }
 footer .conteneurSousTitre,
 footer .liens,
@@ -846,6 +868,39 @@ footer .contact h3:hover {
   transform: scale(1.2);
 }
 
+footer::after {
+  content: "À PROPOS";
+  position: absolute;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -19%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #003d5b;
+  padding: 1rem 2rem 3rem 3.5rem;
+  border-radius: 8px 8px 0 0; /* pour donner effet ongle */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+footer::before {
+  content: "\f06e"; /* icon uni chose */
+  font-family: "Font Awesome 6 Free"; /* je transforme le icone en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  color: white;
+  position: absolute;
+  z-index: 3;
+  top: -14%;
+  left: calc(50% - 70px); /* je triche pour que le before soit a coter du after */
+}
+
 .material-symbols-outlined {
   font-size: 2rem;
   cursor: pointer;
@@ -862,14 +917,17 @@ footer .contact h3:hover {
 /* ça me montre le footer quand qu'y est checked*/
 #checkFoot:checked + label footer {
   bottom: 0;
-  box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 20px 10px rgb(0, 0, 0);
   background-color: #003d5b;
+  transition: all 0.7s ease-out;
+}
+
+#checkFoot:not(:checked) + label footer:hover {
+  transform: translateY(-2%);
 }
 
 /* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
 #checkFoot:checked + label footer h3 {
-  opacity: 0;
-  visibility: hidden;
   transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
   cursor: default;
 }
@@ -877,15 +935,11 @@ footer .contact h3:hover {
 /* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
 #checkFoot:checked + label footer .material-symbols-rounded {
   opacity: 1;
-  visibility: visible;
-  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
 }
 
 /* quand le le footer n'est pas checked */
 #checkFoot:not(:checked) + label footer h3 {
   opacity: 1;
-  visibility: visible;
-  transition-delay: 0s; /* pas de delai*/
 }
 
 footer p {
@@ -925,15 +979,11 @@ footer a {
 /* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
 #checkFoot:not(:checked) + label footer .contenuFooter {
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0s 0.5s;
 }
 
 /* seulement quand je click sur le footer, je vais afficher le contenu et je veux que ça réagise avec la transition de l'opacité que le h3 possède*/
 #checkFoot:checked + label footer .contenuFooter {
   opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
 }
 
 /**********************************************************************/
@@ -942,13 +992,31 @@ footer a {
 /************************** Pour les tablettes *****************/
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   footer {
-    bottom: -32%;
+    bottom: -37%;
+  }
+  footer::after {
+    top: -20%;
+  }
+  footer::before {
+    top: -15%;
   }
 }
 /************************** Pour les bureaux *****************/
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1025px) and (max-width: 1350px) {
   footer {
-    bottom: -34%;
+    bottom: -40%;
+  }
+  footer::after {
+    top: -21%;
+  }
+  footer::before {
+    top: -16%;
+  }
+}
+/************************** Pour les plus grands *****************/
+@media only screen and (min-width: 1350px) {
+  footer {
+    bottom: -43%;
   }
 }
 main {

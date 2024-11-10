@@ -1,21 +1,18 @@
 #nav-menu {
-  // ceci est le composant qui contient le nav
   position: fixed;
   top: 0;
   left: -100%;
-  width: 90%; // de son parent body
-  height: 100%; // de son parent body
+  width: 90%;
+  height: 100%;
   background-color: #333;
   opacity: 0;
   z-index: 3;
   transition: left 0.5s ease, opacity 0.5s ease;
   background: #003d5b;
-  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 0 10px 10px 0;
   box-shadow: 1px 1px 40px 10px rgba(0, 0, 0, 1);
-  border-right: 5px dashed white;
+  overflow: hidden;
 }
 
 #nav-menu.active {
@@ -23,7 +20,35 @@
   opacity: 1;
 }
 
-/* Pour les ordinateurs de bureau */
+/* Pseudo-element for the animated dashed border */
+#nav-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 12px; /* Increase width to make the line thicker */
+  background: repeating-linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffffff 10px,
+    #d1495d 10px,
+    #d1495d 20px
+  ); /* White and pink colors for the dashed effect */
+  animation: dashMove 2s linear infinite;
+}
+
+/* Animation to move the dashes */
+@keyframes dashMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px; /* Adjust for the length of the dash pattern */
+  }
+}
+
+/* Desktop view adjustment */
 @media only screen and (min-width: 1025px) {
   #nav-menu {
     width: 40%;
