@@ -585,10 +585,16 @@ main div section#info p {
     transform: translateY(-1000px);
   }
 }
+section#categories-enfant {
+  width: 100%;
+}
+
 nav.nav-filtre {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  position: relative; /* Add this line */
 }
 
 nav.nav-filtre label {
@@ -598,7 +604,7 @@ nav.nav-filtre label {
 }
 
 nav.nav-filtre label span {
-  padding: 30px;
+  padding: 1.25rem 5rem 1.25rem 1.25rem;
   background: #2d2f31;
   color: white;
   font-size: 1.2em;
@@ -622,6 +628,11 @@ ul.slide {
   transition: height 0.4s ease;
   list-style-type: none;
   padding-left: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: black;
+  z-index: 1;
 }
 
 ul.slide li {
