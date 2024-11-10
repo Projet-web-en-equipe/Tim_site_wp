@@ -28,7 +28,7 @@
         <ul>
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('projets')->term_id); ?>" class="wave-effect">
+            <a href="<?php echo get_category_link(get_category_by_slug('projets')->term_id); ?>" class="effetVague effetCouleurProjets">
               <span>P</span>
               <span>r</span>
               <span>o</span>
@@ -43,7 +43,7 @@
           </li>
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>" class="wave-effect">
+            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>" class="effetVague effetCouleurCours">
               <span>C</span>
               <span>o</span>
               <span>u</span>
@@ -54,7 +54,7 @@
           </li>
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('profs')->term_id); ?>" class="wave-effect">
+            <a href="<?php echo get_category_link(get_category_by_slug('profs')->term_id); ?>" class="effetVague effetCouleurCours">
               <span>P</span>
               <span>r</span>
               <span>o</span>
@@ -69,7 +69,7 @@
 
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('evenements')->term_id); ?>" class="wave-effect">
+            <a href="<?php echo get_category_link(get_category_by_slug('evenements')->term_id); ?>" class="effetVague effetCouleurEvenements">
               <span>É</span>
               <span>v</span>
               <span>è</span>
@@ -87,7 +87,7 @@
           </li>
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('emplois')->term_id); ?>" class="wave-effect">
+            <a href="<?php echo get_category_link(get_category_by_slug('emplois')->term_id); ?>" class="effetVague effetCouleurFutur">
               <span>F</span>
               <span>u</span>
               <span>t</span>
@@ -101,7 +101,7 @@
           </li>
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('vie-etudiante')->term_id); ?>" class="wave-effect">
+            <a href="<?php echo get_category_link(get_category_by_slug('vie-etudiante')->term_id); ?>" class="effetVague effetCouleurEtudiants">
               <span>V</span>
               <span>i</span>
               <span>e </span>

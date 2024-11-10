@@ -1,21 +1,20 @@
-.wave-effect {
+.effetVague {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
 
   gap: 0.6%;
   color: white;
   text-shadow: none; /* les spans ont un certain shadow, faeque */
 }
-
-.wave-effect span {
-  //isplay: inline-block;
-  transition: transform 0.3s ease;
+.effetVague span,
+.effetVague i {
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.wave-effect:hover span {
+/* Wave animation */
+.effetVague:hover span {
   animation: wave 0.5s ease;
 }
 
@@ -29,53 +28,81 @@
   }
 }
 
-.wave-effect:hover span:nth-child(1) {
+/* Animation delays */
+.effetVague:hover span:nth-child(1) {
   animation-delay: 0s;
 }
-.wave-effect:hover span:nth-child(2) {
+.effetVague:hover span:nth-child(2) {
   animation-delay: 0.05s;
 }
-.wave-effect:hover span:nth-child(3) {
+.effetVague:hover span:nth-child(3) {
   animation-delay: 0.1s;
 }
-.wave-effect:hover span:nth-child(4) {
+.effetVague:hover span:nth-child(4) {
   animation-delay: 0.15s;
-} /* This is the empty space */
-.wave-effect:hover span:nth-child(5) {
+}
+.effetVague:hover span:nth-child(5) {
   animation-delay: 0.2s;
 }
-.wave-effect:hover span:nth-child(6) {
+.effetVague:hover span:nth-child(6) {
   animation-delay: 0.25s;
 }
-.wave-effect:hover span:nth-child(7) {
+.effetVague:hover span:nth-child(7) {
   animation-delay: 0.3s;
 }
-.wave-effect:hover span:nth-child(8) {
+.effetVague:hover span:nth-child(8) {
   animation-delay: 0.35s;
 }
-.wave-effect:hover span:nth-child(9) {
+.effetVague:hover span:nth-child(9) {
   animation-delay: 0.4s;
 }
-.wave-effect:hover span:nth-child(10) {
+.effetVague:hover span:nth-child(10) {
   animation-delay: 0.45s;
 }
-.wave-effect:hover span:nth-child(11) {
+.effetVague:hover span:nth-child(11) {
   animation-delay: 0.5s;
 }
-.wave-effect:hover span:nth-child(12) {
+.effetVague:hover span:nth-child(12) {
   animation-delay: 0.55s;
 }
-.wave-effect:hover span:nth-child(13) {
+.effetVague:hover span:nth-child(13) {
   animation-delay: 0.6s;
 }
-.wave-effect:hover span:nth-child(14) {
+.effetVague:hover span:nth-child(14) {
   animation-delay: 0.65s;
-} /* Icon */
+}
+
+/* Pink color change for .effetCouleurProjets on hover */
+.effetCouleurProjets:hover,
+.effetCouleurProjets:hover {
+  color: pink;
+}
+
+.effetCouleurCours:hover,
+.effetCouleurCours:hover {
+  color: #a273ae;
+}
+
+.effetCouleurProfs:hover,
+.effetCouleurProfs:hover {
+  color: #bd555a;
+}
+
+.effetCouleurEvenements:hover,
+.effetCouleurEvenements:hover {
+  color: #4e9b98;
+}
+
+.effetCouleurFutur:hover,
+.effetCouleurFutur:hover {
+  color: #bc3e1d;
+}
+
+.effetCouleurEtudiants:hover,
+.effetCouleurEtudiants:hover {
+  color: #f99f00;
+}
 
 .espace {
   padding: 0 1%;
-}
-
-.dernierSpan {
-  padding-left: 3%;
 }

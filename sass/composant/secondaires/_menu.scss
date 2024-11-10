@@ -67,12 +67,15 @@ header nav ul li {
   flex-direction: row; // pour mettre la typo et icones en row
   justify-content: flex-end; // jenvoie le tout complètement à droite
   gap: 3%;
+  //border: 1px solid white;
 }
 
 header nav ul li a {
   text-decoration: none;
   text-shadow: 0px 0px 20px #000000;
-  // border: 1px solid salmon;
+  display: flex;
+  width: auto;
+  //border: 3px solid salmon;
 }
 
 header nav ul li img {
