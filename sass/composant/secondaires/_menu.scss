@@ -10,12 +10,12 @@
   z-index: 3;
   transition: left 0.5s ease, opacity 0.5s ease;
   background: #003d5b;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 0 10px 10px 0;
-  box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.5);
-  // border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 1px 1px 40px 10px rgba(0, 0, 0, 1);
+  border-right: 5px dashed white;
 }
 
 #nav-menu.active {
@@ -82,4 +82,38 @@ header nav ul li img {
   // border: 1px solid white;
   height: 35px; /* Set a consistent height for all images */
   width: auto;
+}
+
+/************************Alignement des icones et des mots ***************************/
+/* Puis que le code est quand même un peux complexe, pour aligner les derniers mots avec la dernière lettre, 
+j'ai joué avec les margins des icones... en utilisant rem, l'espace s'adaptera (j'ai pas utilisé
+pourcentage pour cette fois, car encore une fois le code est un peu plus complexe que l'hbituel
+et cela ferait en sorte que je doive changer plein de trucs pour arriver au même résultat,
+alors je triche avec les margin... */
+
+.fa-ice-cream {
+  margin-left: 1rem;
+}
+
+.fa-ferris-wheel {
+  margin-left: 0.7rem;
+}
+
+.fa-lighthouse {
+  margin-right: -0.4rem;
+  margin-left: 0.5rem;
+}
+
+.fa-calendar-days {
+  margin-left: 1rem;
+  margin-right: 0.2rem;
+}
+
+.fa-sailboat {
+  margin-left: 0.7rem;
+  margin-right: -0.2rem;
+}
+
+.fa-campfire {
+  margin-left: 1rem;
 }

@@ -25,6 +25,7 @@
   }
   50% {
     transform: translateY(-10px);
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
   }
 }
 
@@ -73,9 +74,8 @@
 }
 
 /* Pink color change for .effetCouleurProjets on hover */
-.effetCouleurProjets:hover,
 .effetCouleurProjets:hover {
-  color: pink;
+  color: #fb7bff;
 }
 
 .effetCouleurCours:hover,

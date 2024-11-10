@@ -29,6 +29,7 @@
           <li>
             <!-- Peut changer get_category_by_slug -->
             <a href="<?php echo get_category_link(get_category_by_slug('projets')->term_id); ?>" class="effetVague effetCouleurProjets">
+
               <span>P</span>
               <span>r</span>
               <span>o</span>
@@ -54,7 +55,7 @@
           </li>
           <li>
             <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('profs')->term_id); ?>" class="effetVague effetCouleurCours">
+            <a href="<?php echo get_category_link(get_category_by_slug('profs')->term_id); ?>" class="effetVague effetCouleurProfs">
               <span>P</span>
               <span>r</span>
               <span>o</span>
