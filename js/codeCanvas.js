@@ -353,7 +353,6 @@ function changerPage(url) {
 
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
-  console.log(canvas.getBoundingClientRect().width / 900);
   return (
     Math.sqrt((click.x - cercle.x * (canvas.getBoundingClientRect().width / 900)) ** 2 + (click.y - cercle.y * (canvas.getBoundingClientRect().width / 900)) ** 2) <
     cercle.rayon * leCanvas.zoom

@@ -64,9 +64,9 @@ function resetPos() {
 window.addEventListener("resize", resetPos);
 //addeventlistener qui detect quand l'utilisateur scroll sur la carte
 window.addEventListener('wheel', function (event) {
-  if (perso.surIle) {//ajouter la valeur du deltaY au zoom
+  if (perso.surIle) {
+    //ajouter la valeur du deltaY au zoom
     //deltaY est positif quand le scroll est vers le haut et negatif vers le bas
-    console.log(leCanvas.zoom);
     if(leCanvas.zoom >= 0.5 && leCanvas.zoom <= 1.5){
       leCanvas.zoom -= event.deltaY / 10000;
     }
