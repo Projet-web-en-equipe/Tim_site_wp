@@ -5,30 +5,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const coursText = document.querySelector(".text");
     const closeBtn = document.getElementById("close-info");
 
-    // Fonction pour afficher un cours dans la section info
+    // Variables pour garder la largeur et hauteur précédentes de la fenêtre
+    let previousWidth = window.innerWidth;
+    let previousHeight = window.innerHeight;
+
+    // Fonction pour vérifier si l'appareil est en mode mobile/tablette portrait
+    function isMobileOrTabletPortrait() {
+        return window.innerWidth <= 1024 && window.innerHeight > window.innerWidth;
+    }
+
+    // Affiche les informations du cours en fonction de l'ID du post
     function afficherCours(postId) {
         const postContent = document.getElementById(`post-content-${postId}`);
         if (postContent) {
             coursName.innerHTML = postContent.querySelector("h1").innerText;
             coursText.innerHTML = postContent.querySelector("div").innerHTML;
             infoSection.style.display = "block";
+            infoSection.style.transform = "translateY(0)"; // Réinitialise la position
         }
     }
 
-    // Fonction pour détecter si on est en mode mobile
-    function isMobile() {
-        return window.innerWidth <= 768; // Ajustez la largeur selon le besoin
-    }
-
-    // Afficher par défaut le premier cours si ce n'est pas en mode mobile
-    if (coursItems.length > 0 && !isMobile()) {
+    // Affiche automatiquement le premier cours si l'appareil n'est pas en mode mobile/tablette portrait
+    if (coursItems.length > 0 && !isMobileOrTabletPortrait()) {
         const premierPostId = coursItems[0].getAttribute("data-id");
         afficherCours(premierPostId);
     } else {
-        infoSection.style.display = "none"; // Cacher la section info par défaut en mode mobile
+        infoSection.style.display = "none";
     }
 
-    // Ajouter un événement pour chaque élément pour afficher le cours correspondant
+    // Ajoute un événement au clic pour chaque élément de cours
     coursItems.forEach(item => {
         item.addEventListener("click", () => {
             const postId = item.getAttribute("data-id");
@@ -36,18 +41,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Bouton pour fermer la section d'information
+    // Ferme la section d'information quand on clique sur le bouton de fermeture
     closeBtn.addEventListener("click", () => {
         infoSection.style.display = "none";
     });
 
-    // Réajuster l'affichage lors du redimensionnement de la fenêtre
-    window.addEventListener("resize", () => {
-        if (isMobile()) {
-            infoSection.style.display = "none";
-        } else if (coursItems.length > 0) {
-            const premierPostId = coursItems[0].getAttribute("data-id");
-            afficherCours(premierPostId);
+    // Vérifie les changements de taille d'écran à intervalles réguliers
+    setInterval(() => {
+        const currentWidth = window.innerWidth;
+        const currentHeight = window.innerHeight;
+
+        // Si la taille a changé, met à jour et adapte l'affichage
+        if (currentWidth !== previousWidth || currentHeight !== previousHeight) {
+            previousWidth = currentWidth;
+            previousHeight = currentHeight;
+
+            if (currentWidth <= 1024) {
+                console.log("Mode mobile ou tablette activé :", currentWidth, "x", currentHeight);
+            } else {
+                console.log("Mode bureau activé :", currentWidth, "x", currentHeight);
+            }
+
+            // Masque la section d'info en mode portrait mobile/tablette
+            if (isMobileOrTabletPortrait()) {
+                infoSection.style.display = "none";
+            } else if (coursItems.length > 0) {
+                const premierPostId = coursItems[0].getAttribute("data-id");
+                afficherCours(premierPostId);
+            }
+
+            // Active ou désactive les événements de swipe en fonction de la taille
+            SwipeManager.handleSwipeEvents(infoSection);
         }
-    });
+    }, 500);
+
+    // Initialise les événements de swipe au chargement de la page
+    SwipeManager.handleSwipeEvents(infoSection);
 });

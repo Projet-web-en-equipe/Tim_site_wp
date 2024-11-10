@@ -11,6 +11,7 @@ function enqueue_script_style()
     } else {
     // Charge le script d'animation uniquement sur le autres pages
         wp_enqueue_script('animation', get_theme_file_uri('/js/animation.js'), array(), NULL, true);
+        wp_enqueue_script('fermetureInfo', get_theme_file_uri('/js/fermetureInfo.js'), array(), NULL, true);
     }
 
     // Charge les scripts dans tout les pages
