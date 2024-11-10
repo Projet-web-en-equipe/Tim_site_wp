@@ -7,7 +7,7 @@ var listePoints = [
   {
     x: 300,
     y: 325,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Evenement",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Projets
@@ -15,7 +15,7 @@ var listePoints = [
   {
     x: 650,
     y: 300,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Cours
@@ -23,7 +23,7 @@ var listePoints = [
   {
     x: 725,
     y: 525,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Profs
@@ -31,7 +31,7 @@ var listePoints = [
   {
     x: 550,
     y: 650,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Emplois
@@ -39,7 +39,7 @@ var listePoints = [
   {
     x: 275,
     y: 650,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie etudiante",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Évènements
@@ -47,7 +47,7 @@ var listePoints = [
   {
     x: 175,
     y: 550,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
     lien: "/category/cours"  // remplace par l'URL de la catégorie Vie étudiante
@@ -104,7 +104,7 @@ function renderer() {
   //dessiner les cercles
   listePoints.forEach((circle) => {
     ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.rayon / leCanvas.zoom, 0, 2 * Math.PI);
+    ctx.arc(circle.x, circle.y, circle.rayon, 0, 2 * Math.PI);
     ctx.fillStyle = circle.couleur;
     ctx.fill();
   });
@@ -353,10 +353,10 @@ function changerPage(url) {
 
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
-  //console.log(leCanvas.zoom);
+  console.log(canvas.getBoundingClientRect().width / 900);
   return (
-    Math.sqrt((click.x - cercle.x * leCanvas.zoom) ** 2 + (click.y - cercle.y * leCanvas.zoom) ** 2) <
-    cercle.rayon / leCanvas.zoom
+    Math.sqrt((click.x - cercle.x * (canvas.getBoundingClientRect().width / 900)) ** 2 + (click.y - cercle.y * (canvas.getBoundingClientRect().width / 900)) ** 2) <
+    cercle.rayon * leCanvas.zoom
   );
 }
 

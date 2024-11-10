@@ -30,7 +30,7 @@ leCanvas.html.style.top = leCanvas.y + "px";
 leCanvas.width = leCanvas.html.getBoundingClientRect().width;
 leCanvas.height = leCanvas.html.getBoundingClientRect().height;
 //bien placer le canvas dependament de la taille de l'ecran
-if(window.innerWidth < leCanvas.width + posExtreme / 2){
+if (window.innerWidth < leCanvas.width + posExtreme / 2) {
   var taille = window.innerWidth - posExtreme / 2;
   leCanvas.zoom = taille / leCanvas.width;
   leCanvas.html.style.transform = "scale(" + leCanvas.zoom * 100 + "%)";
@@ -51,7 +51,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   mobile = false;
 }
 
-function resetPos(){
+function resetPos() {
   leCanvas.x = window.innerWidth / 2 - leCanvas.width / leCanvas.zoom / 2;
   leCanvas.y = window.innerHeight / 2 - leCanvas.height / leCanvas.zoom / 2;
   leCanvas.html.style.left = leCanvas.x + "px";
@@ -64,14 +64,23 @@ function resetPos(){
 window.addEventListener("resize", resetPos);
 //addeventlistener qui detect quand l'utilisateur scroll sur la carte
 window.addEventListener('wheel', function (event) {
-  //ajouter la valeur du deltaY au zoom
-  //deltaY est positif quand le scroll est vers le haut et negatif vers le bas
-  leCanvas.zoom -= event.deltaY / 10000;
-  leCanvas.html.style.transform = "scale(" + leCanvas.zoom * 100 + "%)";
-  leCanvas.width = leCanvas.html.getBoundingClientRect().width;
-  leCanvas.height = leCanvas.html.getBoundingClientRect().height;
-  ////////////////
-  resetPos();
+  if (perso.surIle) {//ajouter la valeur du deltaY au zoom
+    //deltaY est positif quand le scroll est vers le haut et negatif vers le bas
+    console.log(leCanvas.zoom);
+    if(leCanvas.zoom >= 0.5 && leCanvas.zoom <= 1.5){
+      leCanvas.zoom -= event.deltaY / 10000;
+    }
+    if(leCanvas.zoom > 1.5){
+      leCanvas.zoom = 1.5;
+    } else if(leCanvas.zoom < 0.5){
+      leCanvas.zoom = 0.5;
+    } 
+    leCanvas.html.style.transform = "scale(" + leCanvas.zoom * 100 + "%)";
+    leCanvas.width = leCanvas.html.getBoundingClientRect().width;
+    leCanvas.height = leCanvas.html.getBoundingClientRect().height;
+    ////////////////
+    resetPos();
+  }
 });
 //addeventlistener qui detecte le maintient d'un clic et unlock le canvas
 leCanvas.html.addEventListener("mousedown", () => {
@@ -94,26 +103,26 @@ window.addEventListener("touchend", () => {
 //addeventlistener pour detecter comment le canvas bouge selon la souris
 window.addEventListener("mousemove", (e) => {
   //si le canvas est maintenu par la souris
-  if(!leCanvas.lock){
+  if (!leCanvas.lock) {
     //si les extremites x du canvas sortent de la page + un margin posExtreme
-    if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
+    if (leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme) {
       //modifier la position du x selon la position de la souris - l'ancienne position de la souris
       leCanvas.x += (e.clientX - exPosX) / 2
       //limiter le deplacement x du canvas s'il va trop loin vers les extremites
-      if(leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme){
+      if (leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme) {
         leCanvas.x = (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme
-      } else if(leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme){
+      } else if (leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme) {
         leCanvas.x = window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme;
       }
     }
     //si les extremites y du canvas sortent de la page + un margin posExtreme
-    if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
+    if (leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme) {
       //modifier la position du y selon la position de la souris - l'ancienne position de la souris
       leCanvas.y += (e.clientY - exPosY) / 2
       //limiter le deplacement y du canvas s'il va trop loin vers les extremites
-      if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
+      if (leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme) {
         leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
-      } else if(leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme){
+      } else if (leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme) {
         leCanvas.y = window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme;
       }
     }
@@ -134,24 +143,24 @@ window.addEventListener("touchmove", (e) => {
     posX = touch.clientX;
     posY = touch.clientY;
     //si les extremites x du canvas sortent de la page + un margin posExtreme
-    if(leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme){
+    if (leCanvas.html.getBoundingClientRect().x <= posExtreme || leCanvas.html.getBoundingClientRect().x + leCanvas.html.getBoundingClientRect().width >= window.innerWidth - posExtreme) {
       //modifier la position du x selon la position du doigt - l'ancienne position du doigt
       leCanvas.x += (posX - exPosX) / 2
       //limiter le deplacement x du canvas s'il va trop loin vers les extremites
-      if(leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme){
+      if (leCanvas.x >= (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme) {
         leCanvas.x = (leCanvas.html.getBoundingClientRect().width - 900) / 2 + posExtreme
-      } else if(leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme){
+      } else if (leCanvas.x <= window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme) {
         leCanvas.x = window.innerWidth - 900 - (((leCanvas.html.getBoundingClientRect().width - 900)) / 2) - posExtreme;
       }
     }
     //si les extremites y du canvas sortent de la page + un margin posExtreme
-    if(leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme){
+    if (leCanvas.html.getBoundingClientRect().y <= posExtreme || leCanvas.html.getBoundingClientRect().y + leCanvas.html.getBoundingClientRect().height >= window.innerHeight - posExtreme) {
       //modifier la position du y selon la position du doigt - l'ancienne position du doigt
       leCanvas.y += (posY - exPosY) / 2
       //limiter le deplacement y du canvas s'il va trop loin vers les extremites
-      if(leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme){
+      if (leCanvas.y >= (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme) {
         leCanvas.y = (leCanvas.html.getBoundingClientRect().height - 900) / 2 + posExtreme
-      } else if(leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme){
+      } else if (leCanvas.y <= window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme) {
         leCanvas.y = window.innerHeight - 900 - (((leCanvas.html.getBoundingClientRect().height - 900)) / 2) - posExtreme;
       }
     }
