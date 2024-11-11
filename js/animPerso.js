@@ -25,7 +25,6 @@ function checkXPerso(){
 }
 
 function checkYPerso(){
-    console.log(pseudoPerso.height);
     var bhay2 = (pseudoCanvas.getBoundingClientRect().y + listePoints[0].y * (pseudoCanvas.getBoundingClientRect().height / 900) - pseudoPerso.height);
     return bhay2;
 }

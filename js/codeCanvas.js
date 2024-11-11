@@ -5,25 +5,31 @@ var ctx = canvas.getContext("2d");
 //variable des coorconnees
 var listePoints = [
   {
-    x: 300,
-    y: 325,
-    rayon: 25,
+    x: 375,
+    y: 375,
+    xPoint: 300,
+    yPoint: 280,
+    rayon: 110,
     couleur: "rgb(255, 0, 0)",
     tag: "Evenement",
     lien: "/category/cours", // remplace par l'URL de la catégorie Projets
   },
   {
-    x: 650,
-    y: 300,
-    rayon: 25,
+    x: 610,
+    y: 350,
+    xPoint: 680,
+    yPoint: 200,
+    rayon: 160,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
     lien: "/category/cours", // remplace par l'URL de la catégorie Cours
   },
   {
-    x: 725,
-    y: 525,
-    rayon: 25,
+    x: 675,
+    y: 550,
+    xPoint: 740,
+    yPoint: 485,
+    rayon: 90,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
     lien: "/category/cours", // remplace par l'URL de la catégorie Profs
@@ -31,23 +37,29 @@ var listePoints = [
   {
     x: 550,
     y: 650,
-    rayon: 25,
+    xPoint: 555,
+    yPoint: 760,
+    rayon: 135,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
     lien: "/category/cours", // remplace par l'URL de la catégorie Emplois
   },
   {
     x: 275,
-    y: 650,
-    rayon: 25,
+    y: 675,
+    xPoint: 300,
+    yPoint: 610,
+    rayon: 105,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie etudiante",
     lien: "/category/cours", // remplace par l'URL de la catégorie Évènements
   },
   {
-    x: 175,
+    x: 210,
     y: 550,
-    rayon: 25,
+    xPoint: 110,
+    yPoint: 500,
+    rayon: 100,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
     lien: "/category/cours", // remplace par l'URL de la catégorie Vie étudiante
@@ -87,7 +99,7 @@ guide.img.src = guide.urlImage;
 //le renderer du canvas
 var render = setInterval(renderer, 1000 / 60);
 //bool qui detecte si le canvas doit etre afficher
-var isGuide = false;
+var isGuide = true;
 //bool qui detecte si le personnage bouge
 var enMouvement = false;
 //depart de la liste des points a lequelles le perso devra aller
@@ -106,21 +118,14 @@ function renderer() {
   //dessiner les cercles
   listePoints.forEach((circle) => {
     ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.rayon, 0, 2 * Math.PI);
+    ctx.globalAlpha = 0.5;
+    ctx.arc(circle.xPoint, circle.yPoint, circle.rayon, 0, 2 * Math.PI);
     ctx.fillStyle = circle.couleur;
     ctx.fill();
   });
-  //dessiner tous les tags des points
-  listePoints.forEach((circle) => {
-    ctx.font = "30px sans-serif";
-    ctx.fillText(
-      circle.tag,
-      circle.x - circle.tag.replace(" ", "").length * 7.5,
-      circle.y - 30
-    );
-  });
   //dessiner perso
   if (perso.surIle) {
+    ctx.globalAlpha = 1;
     ctx.drawImage(
       perso.img,
       perso.sourceX,
@@ -360,7 +365,7 @@ function changerPage(url) {
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
   return (
-    Math.sqrt((click.x - cercle.x * (canvas.getBoundingClientRect().width / 900)) ** 2 + (click.y - cercle.y * (canvas.getBoundingClientRect().width / 900)) ** 2) <
+    Math.sqrt((click.x - cercle.xPoint * (canvas.getBoundingClientRect().width / 900)) ** 2 + (click.y - cercle.yPoint * (canvas.getBoundingClientRect().width / 900)) ** 2) <
     cercle.rayon * leCanvas.zoom
   );
 }
