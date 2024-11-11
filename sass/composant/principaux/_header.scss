@@ -15,3 +15,31 @@ header {
     top: 0.5rem;
     left: 0.5rem;
   }*/
+
+
+  /* Styles pour le menu de navigation */
+.custom-nav .menu-item {
+  list-style: none;
+  margin: 0 15px;
+}
+
+// .custom-nav .menu-item a {
+//   text-decoration: none;
+//   color: #3333ff;
+//   font-weight: bold;
+// }
+
+.custom-nav .menu-item a i {
+  margin-left: 5px;
+}
+
+/* Couleurs personnalisées pour les icônes */
+.fa-ice-cream, 
+.fa-ferris-wheel, 
+.fa-lighthouse, 
+.fa-calendar-days, 
+.fa-briefcase-arrow-right, 
+.fa-campfire {
+  --fa-primary-color: #ff5733;
+  --fa-secondary-color: #3333ff;
+}

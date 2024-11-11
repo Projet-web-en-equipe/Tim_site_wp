@@ -1,94 +1,39 @@
-// // const burger = document.getElementById('burger');
-// // const barres = document.querySelectorAll('#burger .barre');
-// // const navSection = document.getElementById('nav-menu');
-// // const infoSection = document.querySelector('section#info');
-// // const closeBtn = document.getElementById('close-info');
-// const profName = document.getElementById('prof-name');
-// const profImage = document.getElementById('prof-image');
-// const profCours = document.getElementById('prof-cours');
-// const profFait = document.getElementById('prof-fait');
-
-// // Fonction pour afficher les informations d'un professeur
-// function showProfInfo(banner) {
-//     const cours = banner.getAttribute('data-cours');
-//     const fait = banner.getAttribute('data-fait');
-//     const name = banner.querySelector('h2').textContent;
-//     const imageSrc = banner.querySelector('img').getAttribute('src');
-
-//     // Injecter les données dans la section info
-//     profName.textContent = name;
-//     profImage.setAttribute('src', imageSrc);
-//     profCours.textContent = `Cours : ${cours}`;
-//     profFait.textContent = `Faits : ${fait}`;
-
-//     // Afficher la section info
-//     infoSection.classList.remove('hide');
-//     infoSection.classList.add('show');
-//     infoSection.style.display = 'block';
-//     document.body.style.overflow = 'hidden';
-// }
-
-// if (window.innerWidth <= 1025) {
-//     function hideInfo() {
-//         infoSection.classList.remove('show');
-//         infoSection.classList.add('hide');
-//         setTimeout(() => {
-//             infoSection.style.display = 'none';
-//             document.body.style.overflow = 'auto';
-//         }, 500);
-//     }
-// }
-
-// // burger.addEventListener('click', () => {
-// //     barres.forEach(barre => {
-// //         barre.classList.toggle('active');
-// //     });
-// //     navSection.classList.toggle('active');
-// // });
-
-// // document.addEventListener('DOMContentLoaded', function () {
-// //     const banners = document.querySelectorAll('main section .banniere');
-
-// //     // Afficher les informations du premier professeur par défaut
-// //     if (banners.length > 0) {
-// //         showProfInfo(banners[0]);
-// //     }
-
-// //     // Gestion du clic sur les bannières
-// //     banners.forEach(banner => {
-// //         banner.addEventListener('click', function () {
-// //             showProfInfo(banner);
-// //         });
-// //     });
-
-// //     closeBtn.addEventListener('click', hideInfo);
-// // });
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Sélectionner tous les cours dans le carrousel
     const coursItems = document.querySelectorAll(".banniere");
     const infoSection = document.getElementById("info");
     const coursName = document.getElementById("cours-name");
     const coursText = document.querySelector(".text");
     const closeBtn = document.getElementById("close-info");
 
-    // Fonction pour afficher un cours dans la section info
+    // Variables pour garder la largeur et hauteur précédentes de la fenêtre
+    let previousWidth = window.innerWidth;
+    let previousHeight = window.innerHeight;
+
+    // Fonction pour vérifier si l'appareil est en mode mobile/tablette portrait
+    function isMobileOrTabletPortrait() {
+        return window.innerWidth <= 1024 && window.innerHeight > window.innerWidth;
+    }
+
+    // Affiche les informations du cours en fonction de l'ID du post
     function afficherCours(postId) {
         const postContent = document.getElementById(`post-content-${postId}`);
         if (postContent) {
             coursName.innerHTML = postContent.querySelector("h1").innerText;
             coursText.innerHTML = postContent.querySelector("div").innerHTML;
             infoSection.style.display = "block";
+            infoSection.style.transform = "translateY(0)"; // Réinitialise la position
         }
     }
 
-    // Afficher par défaut le premier cours
-    if (coursItems.length > 0) {
+    // Affiche automatiquement le premier cours si l'appareil n'est pas en mode mobile/tablette portrait
+    if (coursItems.length > 0 && !isMobileOrTabletPortrait()) {
         const premierPostId = coursItems[0].getAttribute("data-id");
         afficherCours(premierPostId);
+    } else {
+        infoSection.style.display = "none";
     }
 
-    // Ajouter un événement pour chaque élément pour afficher le cours correspondant
+    // Ajoute un événement au clic pour chaque élément de cours
     coursItems.forEach(item => {
         item.addEventListener("click", () => {
             const postId = item.getAttribute("data-id");
@@ -96,8 +41,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Bouton pour fermer la section d'information
+    // Ferme la section d'information quand on clique sur le bouton de fermeture
     closeBtn.addEventListener("click", () => {
         infoSection.style.display = "none";
     });
+
+    // Vérifie les changements de taille d'écran à intervalles réguliers
+    setInterval(() => {
+        const currentWidth = window.innerWidth;
+        const currentHeight = window.innerHeight;
+
+        // Si la taille a changé, met à jour et adapte l'affichage
+        if (currentWidth !== previousWidth || currentHeight !== previousHeight) {
+            previousWidth = currentWidth;
+            previousHeight = currentHeight;
+
+            if (currentWidth <= 1024) {
+                console.log("Mode mobile ou tablette activé :", currentWidth, "x", currentHeight);
+            } else {
+                console.log("Mode bureau activé :", currentWidth, "x", currentHeight);
+            }
+
+            // Masque la section d'info en mode portrait mobile/tablette
+            if (isMobileOrTabletPortrait()) {
+                infoSection.style.display = "none";
+            } else if (coursItems.length > 0) {
+                const premierPostId = coursItems[0].getAttribute("data-id");
+                afficherCours(premierPostId);
+            }
+
+            // Active ou désactive les événements de swipe en fonction de la taille
+            SwipeManager.handleSwipeEvents(infoSection);
+        }
+    }, 500);
+
+    // Initialise les événements de swipe au chargement de la page
+    SwipeManager.handleSwipeEvents(infoSection);
 });

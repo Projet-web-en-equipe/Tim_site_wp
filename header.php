@@ -24,16 +24,13 @@
 
 
     <section id="nav-menu">
-      <nav>
+      <!-- <nav>
         <ul>
           <li>
-            <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('projets')->term_id); ?>">Projets <i class="fa-duotone fa-ice-cream"></i></a>
-            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Cours.png" /> -->
+            <a href="<?php //echo get_category_link(get_category_by_slug('projets')->term_id); ?>">Projets <i class="fa-duotone fa-ice-cream"></i></a>
           </li>
           <li>
-            <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Cours
+            <a href="<?php //echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Cours
               <i
                 class="fa-duotone fa-solid fa-ferris-wheel"
                 style="
@@ -43,8 +40,7 @@
             </a>
           </li>
           <li>
-            <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('profs')->term_id); ?>">Profs
+            <a href="<?php //echo get_category_link(get_category_by_slug('profs')->term_id); ?>">Profs
               <i
                 class="fa-duotone fa-solid fa-lighthouse"
                 style="
@@ -52,12 +48,10 @@
                     --fa-secondary-color: #3333ff;
                   "></i>
             </a>
-            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Profs.png" /> -->
           </li>
           
           <li>
-            <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('evenements')->term_id); ?>">Évènements
+            <a href="<?php //echo get_category_link(get_category_by_slug('evenements')->term_id); ?>">Évènements
               <i
                 class="fa-duotone fa-calendar-days"
                 style="
@@ -67,8 +61,7 @@
             </a>
           </li>
           <li>
-            <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('emplois')->term_id); ?>">Futur
+            <a href="<?php //echo get_category_link(get_category_by_slug('emplois')->term_id); ?>">Futur
               <i
                 class="fa-duotone fa-solid fa-briefcase-arrow-right"
                 style="
@@ -76,11 +69,9 @@
                     --fa-secondary-color: #3333ff;
                   "></i>
             </a>
-            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Emplois.png" /> -->
           </li>
           <li>
-            <!-- Peut changer get_category_by_slug -->
-            <a href="<?php echo get_category_link(get_category_by_slug('vie-etudiante')->term_id); ?>">Vie Étudiante
+            <a href="<?php //echo get_category_link(get_category_by_slug('vie-etudiante')->term_id); ?>">Vie Étudiante
               <i
                 class="fa-duotone fa-solid fa-campfire"
                 style="
@@ -88,10 +79,13 @@
                     --fa-secondary-color: #3333ff;
                   "></i>
             </a>
-            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/vieEtudiante.png" /> -->
           </li>
         </ul>
+      </nav> -->
+      <nav>
+        <?php echo do_shortcode('[category_menu]'); ?>
       </nav>
+      
     </section>
 
 
