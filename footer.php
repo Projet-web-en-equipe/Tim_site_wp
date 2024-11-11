@@ -1,14 +1,16 @@
 <input type="checkbox" name="checkboxFooter" id="checkFoot" />
 <label for="checkFoot">
   <footer>
-    <div class="conteneurSousTitre">
+    <!--  <div class="conteneurSousTitre">
       <span class="material-symbols-rounded"> close </span>
       <h3>
         <span class="material-symbols-outlined"> visibility </span> À PROPOS
       </h3>
     </div>
-
+-->
     <div class="contenuFooter">
+
+
       <div class="contact">
         <p>3800 rue Sherbrooke Est</p>
         <p>
@@ -16,22 +18,80 @@
         </p>
       </div>
       <div class="sociaux">
-        <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-behance"></i><i class="fa-brands fa-linkedin"></i>
+
+        <ul>
+          <!-- Instagram -->
+          <li class="normal">
+            <a href="https://www.instagram.com" target="_blank">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="fa fa-instagram"></span>
+            </a>
+          </li>
+          <!-- Behance -->
+          <li class="normal">
+            <a href="https://www.behance.net" target="_blank">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="fa fa-behance"></span>
+            </a>
+          </li>
+          <!-- LinkedIn  -->
+          <li class="normal">
+            <a href="https://www.linkedin.com" target="_blank">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="fa fa-linkedin"></span>
+            </a>
+          </li>
+          <!-- maisonneuve -->
+          <li>
+            <!-- <a href="#" class="container"> -->
+            <svg class="logo" viewBox="0 0 100 100">
+              <!-- Top triangle -->
+              <!-- <polygon points="50,0 100,50 0,50" fill="#a8dadc" /> -->
+              <polygon points="50,50 10,10 90,10" fill="#a8dadc" />
+
+              <!-- Left triangle -->
+              <!-- <polygon points="0,50 50,100 0,100" fill="#1d3557" /> -->
+              <polygon points="50,50 90,10 90,90 50,90" fill="#1d3557" />
+
+
+              <!-- Right triangle -->
+              <!-- <polygon points="100,50 50,100 100,100" fill="#457b9d" /> -->
+              <polygon points="50,50 50,90 10,90 10,10" fill="#457b9d" />
+
+
+            </svg>
+            <!-- </a> -->
+          </li>
+        </ul>
+
+
       </div>
+
 
       <div class="equipe">
         <p>Site web réalisé Par
-          <a href="">Camilia El moustarih, </a>
-          <a href="">Tony Ton,</a>
-          <a href="">Lohan
+          <a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia El moustarih, </a>
+          <a href="https://www.behance.net/tonyton3">Tony Ton,</a>
+          <a href="https://www.behance.net/lohanmoutquin">Lohan
             Moutquin, </a>
-          <a href="">Lenny Tran, </a>
-          <a href="">Alejandro yanez Del rio</a>
+          <a href="https://e2269994.myportfolio.com/">Lenny Tran, </a>
+          <a href="https://www.behance.net/alex_ydr3dc3">Alejandro yanez Del rio</a>
 
 
         </p>
       </div>
     </div>
+
+
   </footer>
 
   <?php wp_footer(); ?>

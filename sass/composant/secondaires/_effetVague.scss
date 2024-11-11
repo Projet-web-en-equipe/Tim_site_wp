@@ -1,0 +1,108 @@
+.effetVague {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 0.6%;
+  color: white;
+  text-shadow: none; /* les spans ont un certain shadow, faeque */
+}
+.effetVague span,
+.effetVague i {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Wave animation */
+.effetVague:hover span {
+  animation: wave 0.5s ease;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+  }
+}
+
+/* Animation delays */
+.effetVague:hover span:nth-child(1) {
+  animation-delay: 0s;
+}
+.effetVague:hover span:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.effetVague:hover span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.effetVague:hover span:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.effetVague:hover span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.effetVague:hover span:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.effetVague:hover span:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.effetVague:hover span:nth-child(8) {
+  animation-delay: 0.35s;
+}
+.effetVague:hover span:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.effetVague:hover span:nth-child(10) {
+  animation-delay: 0.45s;
+}
+.effetVague:hover span:nth-child(11) {
+  animation-delay: 0.5s;
+}
+.effetVague:hover span:nth-child(12) {
+  animation-delay: 0.55s;
+}
+.effetVague:hover span:nth-child(13) {
+  animation-delay: 0.6s;
+}
+.effetVague:hover span:nth-child(14) {
+  animation-delay: 0.65s;
+}
+
+/* Pink color change for .effetCouleurProjets on hover */
+.effetCouleurProjets:hover {
+  color: #fb7bff;
+}
+
+.effetCouleurCours:hover,
+.effetCouleurCours:hover {
+  color: #a273ae;
+}
+
+.effetCouleurProfs:hover,
+.effetCouleurProfs:hover {
+  color: #bd555a;
+}
+
+.effetCouleurEvenements:hover,
+.effetCouleurEvenements:hover {
+  color: #4e9b98;
+}
+
+.effetCouleurFutur:hover,
+.effetCouleurFutur:hover {
+  color: #bc3e1d;
+}
+
+.effetCouleurEtudiants:hover,
+.effetCouleurEtudiants:hover {
+  color: #f99f00;
+}
+
+.espace {
+  padding: 0 1%;
+}

@@ -1,20 +1,18 @@
 #nav-menu {
-  // ceci est le composant qui contient le nav
   position: fixed;
   top: 0;
   left: -100%;
-  width: 90%; // de son parent body
-  height: 100%; // de son parent body
+  width: 90%;
+  height: 100%;
   background-color: #333;
   opacity: 0;
   z-index: 3;
   transition: left 0.5s ease, opacity 0.5s ease;
   background: #003d5b;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 0 10px 10px 0;
-  // border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 1px 1px 40px 10px rgba(0, 0, 0, 1);
+  overflow: hidden;
 }
 
 #nav-menu.active {
@@ -22,7 +20,36 @@
   opacity: 1;
 }
 
-/* Pour les ordinateurs de bureau */
+/* animation de la barre */
+#nav-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  //pour bien centrer
+  width: 12px; /* grosse */
+  background: repeating-linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffffff 10px,
+    #d1495d 10px,
+    #d1495d 20px
+  ); /* changement de couleurs */
+  animation: mouvementLigne 2s linear infinite;
+}
+
+/* animation du mouvement de l'asti de dash */
+@keyframes mouvementLigne {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px; /* Adjust for the length of the dash pattern */
+  }
+}
+
+/* Desktop  */
 @media only screen and (min-width: 1025px) {
   #nav-menu {
     width: 40%;
@@ -66,12 +93,15 @@ header nav ul li {
   flex-direction: row; // pour mettre la typo et icones en row
   justify-content: flex-end; // jenvoie le tout complètement à droite
   gap: 3%;
+  //border: 1px solid white;
 }
 
 header nav ul li a {
   text-decoration: none;
   text-shadow: 0px 0px 20px #000000;
-  // border: 1px solid salmon;
+  display: flex;
+  width: auto;
+  //border: 3px solid salmon;
 }
 
 header nav ul li img {
@@ -80,9 +110,36 @@ header nav ul li img {
   width: auto;
 }
 
-.fa-duotone.fa-ice-cream {
-  --fa-primary-color: #ffd18f; /* Cone color */
-  --fa-secondary-color: #ff92b1; /* Ice cream (pink) */
+/************************Alignement des icones et des mots ***************************/
+/* Puis que le code est quand même un peux complexe, pour aligner les derniers mots avec la dernière lettre, 
+j'ai joué avec les margins des icones... en utilisant rem, l'espace s'adaptera (j'ai pas utilisé
+pourcentage pour cette fois, car encore une fois le code est un peu plus complexe que l'hbituel
+et cela ferait en sorte que je doive changer plein de trucs pour arriver au même résultat,
+alors je triche avec les margin... */
 
-  --fa-secondary-opacity: 1;
+.fa-ice-cream {
+  margin-left: 1rem;
+}
+
+.fa-ferris-wheel {
+  margin-left: 0.7rem;
+}
+
+.fa-lighthouse {
+  margin-right: -0.4rem;
+  margin-left: 0.5rem;
+}
+
+.fa-calendar-days {
+  margin-left: 1rem;
+  margin-right: 0.2rem;
+}
+
+.fa-sailboat {
+  margin-left: 0.7rem;
+  margin-right: -0.2rem;
+}
+
+.fa-campfire {
+  margin-left: 1rem;
 }

@@ -13,12 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // fonction pour toggle la classe active (ouvrir le menu)
   function basculerMenu() {
     navMenu.classList.toggle("active"); // je rajoute la classe active
+    burger.classList.toggle("active");
     barres.forEach((barre) => barre.classList.toggle("active")); // on toggle active aux barres aussi
   }
 
   // fonction pour enlever la classe active (fermer le menu)
   function fermerMenu() {
     navMenu.classList.remove("active"); // j'enlève la classe active de navMenu
+    burger.classList.remove("active");
     barres.forEach((barre) => barre.classList.remove("active")); // j'enlève la classe active des barres aussi
   }
 

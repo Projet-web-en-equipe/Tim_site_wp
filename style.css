@@ -150,8 +150,8 @@ body {
 
 /*Composants secondaires*/
 div#burger {
-  width: 6%;
-  height: 30%;
+  width: 6%; /* relative to header */
+  height: 30%; /* relative to header */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -162,9 +162,23 @@ div#burger {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 25%; /* starting border-radius */
   padding: 0.5rem;
+  transition: all 0.5s ease-in-out; /* smooth scaling transition */
+}
+
+div#burger.active {
+  background-color: #d1495d;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Apply the animation only on hover */
+div#burger:hover {
+  transform: scale(1.3);
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out; /* smooth scaling transition */
+  padding: 1.5% 1%;
+  transform: rotate(90deg);
 }
 
 div.barre {
@@ -221,9 +235,27 @@ div#burger div.barre.active:nth-child(3) {
     transform: rotate(-45deg) translate(0.3rem, -0.4rem);
   }
 }
+@keyframes float {
+  0% {
+    transform: translatex(0px);
+  }
+  50% {
+    transform: translatex(-20px);
+  }
+  100% {
+    transform: translatex(0px);
+  }
+}
 #logo {
   margin-right: 1%;
-  width: 4rem;
+  width: 8rem;
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: running;
+  transition: transform 0.5s ease;
+}
+
+#logo:hover {
+  animation-play-state: paused;
 }
 
 div#logo a {
@@ -232,22 +264,27 @@ div#logo a {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
+div#logo a:hover {
+  transform: scale(1.1);
+}
+
 /* Pour les tablettes */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   #logo {
-    width: 6rem;
+    width: 9rem;
   }
 }
 /* Pour les ordinateurs de bureau */
 @media only screen and (min-width: 1025px) {
   #logo {
-    width: 8rem;
+    width: 10rem;
   }
 }
 #nav-menu {
@@ -261,10 +298,10 @@ div#logo a {
   z-index: 3;
   transition: left 0.5s ease, opacity 0.5s ease;
   background: #003d5b;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 0 10px 10px 0;
+  box-shadow: 1px 1px 40px 10px rgb(0, 0, 0);
+  overflow: hidden;
 }
 
 #nav-menu.active {
@@ -272,7 +309,28 @@ div#logo a {
   opacity: 1;
 }
 
-/* Pour les ordinateurs de bureau */
+/* animation de la barre */
+#nav-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 12px; /* grosse */
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px); /* changement de couleurs */
+  animation: mouvementLigne 2s linear infinite;
+}
+
+/* animation du mouvement de l'asti de dash */
+@keyframes mouvementLigne {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px; /* Adjust for the length of the dash pattern */
+  }
+}
+/* Desktop  */
 @media only screen and (min-width: 1025px) {
   #nav-menu {
     width: 40%;
@@ -313,6 +371,8 @@ header nav ul li {
 header nav ul li a {
   text-decoration: none;
   text-shadow: 0px 0px 20px #000000;
+  display: flex;
+  width: auto;
 }
 
 header nav ul li img {
@@ -320,10 +380,37 @@ header nav ul li img {
   width: auto;
 }
 
-.fa-duotone.fa-ice-cream {
-  --fa-primary-color: #ffd18f; /* Cone color */
-  --fa-secondary-color: #ff92b1; /* Ice cream (pink) */
-  --fa-secondary-opacity: 1;
+/************************Alignement des icones et des mots ***************************/
+/* Puis que le code est quand même un peux complexe, pour aligner les derniers mots avec la dernière lettre, 
+j'ai joué avec les margins des icones... en utilisant rem, l'espace s'adaptera (j'ai pas utilisé
+pourcentage pour cette fois, car encore une fois le code est un peu plus complexe que l'hbituel
+et cela ferait en sorte que je doive changer plein de trucs pour arriver au même résultat,
+alors je triche avec les margin... */
+.fa-ice-cream {
+  margin-left: 1rem;
+}
+
+.fa-ferris-wheel {
+  margin-left: 0.7rem;
+}
+
+.fa-lighthouse {
+  margin-right: -0.4rem;
+  margin-left: 0.5rem;
+}
+
+.fa-calendar-days {
+  margin-left: 1rem;
+  margin-right: 0.2rem;
+}
+
+.fa-sailboat {
+  margin-left: 0.7rem;
+  margin-right: -0.2rem;
+}
+
+.fa-campfire {
+  margin-left: 1rem;
 }
 
 main section#carrousel {
@@ -620,6 +707,126 @@ main div section#info p {
     transform: translateY(-1000px);
   }
 }
+.effetVague {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.6%;
+  color: white;
+  text-shadow: none; /* les spans ont un certain shadow, faeque */
+}
+
+.effetVague span,
+.effetVague i {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Wave animation */
+.effetVague:hover span {
+  animation: wave 0.5s ease;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+    text-shadow: 0px 4px 8px rgb(0, 0, 0);
+  }
+}
+/* Animation delays */
+.effetVague:hover span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.effetVague:hover span:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.effetVague:hover span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.effetVague:hover span:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.effetVague:hover span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.effetVague:hover span:nth-child(6) {
+  animation-delay: 0.25s;
+}
+
+.effetVague:hover span:nth-child(7) {
+  animation-delay: 0.3s;
+}
+
+.effetVague:hover span:nth-child(8) {
+  animation-delay: 0.35s;
+}
+
+.effetVague:hover span:nth-child(9) {
+  animation-delay: 0.4s;
+}
+
+.effetVague:hover span:nth-child(10) {
+  animation-delay: 0.45s;
+}
+
+.effetVague:hover span:nth-child(11) {
+  animation-delay: 0.5s;
+}
+
+.effetVague:hover span:nth-child(12) {
+  animation-delay: 0.55s;
+}
+
+.effetVague:hover span:nth-child(13) {
+  animation-delay: 0.6s;
+}
+
+.effetVague:hover span:nth-child(14) {
+  animation-delay: 0.65s;
+}
+
+/* Pink color change for .effetCouleurProjets on hover */
+.effetCouleurProjets:hover {
+  color: #fb7bff;
+}
+
+.effetCouleurCours:hover,
+.effetCouleurCours:hover {
+  color: #a273ae;
+}
+
+.effetCouleurProfs:hover,
+.effetCouleurProfs:hover {
+  color: #bd555a;
+}
+
+.effetCouleurEvenements:hover,
+.effetCouleurEvenements:hover {
+  color: #4e9b98;
+}
+
+.effetCouleurFutur:hover,
+.effetCouleurFutur:hover {
+  color: #bc3e1d;
+}
+
+.effetCouleurEtudiants:hover,
+.effetCouleurEtudiants:hover {
+  color: #f99f00;
+}
+
+.espace {
+  padding: 0 1%;
+}
+
 nav.nav-filtre {
   display: flex;
   flex-direction: column;
@@ -695,69 +902,61 @@ footer {
   background-color: #003d5b;
   width: 100%;
   height: 30%;
-  bottom: -29%;
+  bottom: -36%; /* Original positioning of the main footer */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: bottom 0.7s ease-out;
+  transition: all 0.7s ease-out;
   color: white;
   padding-bottom: 3%;
   padding-top: 3%;
 }
-footer .conteneurSousTitre {
-  position: absolute;
-  top: 2%;
-  left: 0;
-}
 footer .conteneurSousTitre,
 footer .liens,
-footer .sociaux,
 footer .equipe,
 footer .contact {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 3%;
 }
-footer .conteneurSousTitre .material-symbols-rounded,
-footer .liens .material-symbols-rounded,
-footer .sociaux .material-symbols-rounded,
-footer .equipe .material-symbols-rounded,
-footer .contact .material-symbols-rounded {
-  font-size: 3rem;
+
+/* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
+a propos* lorsque le footer est fermé*/
+footer::after {
+  content: "À PROPOS";
   position: absolute;
-  top: 1%;
-  left: 1%;
-  width: 5%;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -19%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #003d5b;
+  padding: 1rem 2rem 3rem 3.5rem;
+  border-radius: 8px 8px 0 0; /* For tab effect */
   cursor: pointer;
-}
-footer .conteneurSousTitre h3,
-footer .liens h3,
-footer .sociaux h3,
-footer .equipe h3,
-footer .contact h3 {
-  margin: 0;
-  width: 25%;
-  height: 25%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5%;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  cursor: pointer;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
 }
 
-.material-symbols-outlined {
-  font-size: 2rem;
-  cursor: pointer;
+footer::before {
+  content: "\f06e"; /* icone oeil unichose */
+  font-family: "Font Awesome 6 Free"; /* je transforme en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   color: white;
+  position: absolute;
+  z-index: 3;
+  top: -14%;
+  left: calc(50% - 70px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
 }
 
 /*******************************************************************************************/
@@ -768,30 +967,34 @@ footer .contact h3 {
 }
 
 /* ça me montre le footer quand qu'y est checked*/
-#checkFoot:checked + label footer {
+#checkFoot:checked + label footer,
+#checkFoot:checked + label .footer2 {
   bottom: 0;
+  box-shadow: 1px 1px 20px 10px rgb(0, 0, 0);
+  transition: all 0.7s ease-out;
 }
 
-/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
-#checkFoot:checked + label footer h3 {
-  opacity: 0;
-  visibility: hidden;
-  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
-  cursor: default;
+#checkFoot:not(:checked) + label footer:hover {
+  transform: translateY(-2%);
 }
 
-/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
-#checkFoot:checked + label footer .material-symbols-rounded {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+/* quand le footer est ouvert */
+#checkFoot:checked + label footer::before {
+  content: "\f070"; /* je ferme loeil */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  position: absolute;
+  z-index: 3;
+  top: -14%;
+  left: calc(50% - 70px);
+  transition: opacity 0.3s ease, content 0.3s ease;
+  top: -15%;
+  color: #d1495d;
 }
 
-/* quand le le footer n'est pas checked */
-#checkFoot:not(:checked) + label footer h3 {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s; /* pas de delai*/
+/* pour garder la forme de longlet */
+#checkFoot:checked + label footer::after {
+  padding: 1rem 2rem 3rem 3.5rem;
 }
 
 footer p {
@@ -806,13 +1009,89 @@ footer a {
   font-family: "breakers-slab", sans-serif;
 }
 
-.sociaux .fa-brands {
-  font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
-  cursor: pointer;
+/*******************************************************************************************/
+/************************************** les sociaux  ***************************************/
+/*******************************************************************************************/
+.sociaux ul {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  transform-style: preserve-3d;
 }
 
-.sociaux .fa-brands:hover {
-  scale: 110%;
+.sociaux ul li {
+  position: relative;
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  margin: 0px 20px;
+  border: 1px solid white;
+}
+
+/***********************************************************************
+**************************** effet sociaux *****************************
+***********************************************************************/
+.sociaux ul li span {
+  /*le social media insta linkedin behance*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #2a2a2a;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  transition: 1.5s ease-out;
+}
+
+.sociaux ul li:hover span {
+  transition: 0.3s;
+  color: #fff;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.sociaux ul li:hover span:nth-child(5) {
+  transform: translate(40px, -40px);
+  opacity: 1;
+}
+
+.sociaux ul li:hover span:nth-child(4) {
+  transform: translate(30px, -30px);
+  opacity: 0.8;
+}
+
+.sociaux ul li:hover span:nth-child(3) {
+  transform: translate(20px, -20px);
+  opacity: 0.6;
+}
+
+.sociaux ul li:hover span:nth-child(2) {
+  transform: translate(10px, -10px);
+  opacity: 0.4;
+}
+
+.sociaux ul li:hover span:nth-child(1) {
+  transform: translate(0px, 0px);
+  opacity: 0.2;
+}
+
+/* Customize colors for each icon */
+.sociaux ul li:nth-child(1):hover span {
+  /* Instagram */
+  background: #ea6e96;
+}
+
+.sociaux ul li:nth-child(2):hover span {
+  /* Behance */
+  background: #0056ff;
+}
+
+.sociaux ul li:nth-child(3):hover span {
+  /* LinkedIn */
+  background: #0a66c2;
 }
 
 /*******************************************************************************************/
@@ -831,15 +1110,11 @@ footer a {
 /* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
 #checkFoot:not(:checked) + label footer .contenuFooter {
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0s 0.5s;
 }
 
 /* seulement quand je click sur le footer, je vais afficher le contenu et je veux que ça réagise avec la transition de l'opacité que le h3 possède*/
 #checkFoot:checked + label footer .contenuFooter {
   opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
 }
 
 /**********************************************************************/
@@ -848,13 +1123,31 @@ footer a {
 /************************** Pour les tablettes *****************/
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   footer {
-    bottom: -32%;
+    bottom: -37%;
+  }
+  footer::after {
+    top: -20%;
+  }
+  footer::before {
+    top: -15%;
   }
 }
 /************************** Pour les bureaux *****************/
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1025px) and (max-width: 1350px) {
   footer {
-    bottom: -34%;
+    bottom: -40%;
+  }
+  footer::after {
+    top: -21%;
+  }
+  footer::before {
+    top: -16%;
+  }
+}
+/************************** Pour les plus grands *****************/
+@media only screen and (min-width: 1350px) {
+  footer {
+    bottom: -43%;
   }
 }
 main {
