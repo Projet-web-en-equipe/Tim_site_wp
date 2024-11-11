@@ -9,62 +9,96 @@ var listePoints = [
     y: 375,
     xPoint: 300,
     yPoint: 280,
+    xImage: 240,
+    yImage: 217,
     rayon: 110,
     couleur: "rgb(255, 0, 0)",
     tag: "Evenement",
     lien: "/category/cours", // remplace par l'URL de la catégorie Projets
+    img: new Image(),
+    urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/imgProjet.png",
+    hover: false,
   },
   {
     x: 610,
     y: 350,
     xPoint: 680,
     yPoint: 200,
+    xImage: 300,
+    yImage: 280,
     rayon: 160,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
     lien: "/category/cours", // remplace par l'URL de la catégorie Cours
+    img: new Image(),
+    urlImage: null,
+    hover: false,
   },
   {
     x: 675,
     y: 550,
     xPoint: 740,
     yPoint: 485,
+    xImage: 300,
+    yImage: 280,
     rayon: 90,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
     lien: "/category/cours", // remplace par l'URL de la catégorie Profs
+    img: new Image(),
+    urlImage: null,
+    hover: false,
   },
   {
     x: 550,
     y: 650,
     xPoint: 555,
     yPoint: 760,
+    xImage: 300,
+    yImage: 280,
     rayon: 135,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
     lien: "/category/cours", // remplace par l'URL de la catégorie Emplois
+    img: new Image(),
+    urlImage: null,
+    hover: false,
   },
   {
     x: 275,
     y: 675,
     xPoint: 300,
     yPoint: 610,
+    xImage: 300,
+    yImage: 280,
     rayon: 105,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie etudiante",
     lien: "/category/cours", // remplace par l'URL de la catégorie Évènements
+    img: new Image(),
+    urlImage: null,
+    hover: false,
   },
   {
     x: 210,
     y: 550,
     xPoint: 110,
     yPoint: 500,
+    xImage: 300,
+    yImage: 280,
     rayon: 100,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
     lien: "/category/cours", // remplace par l'URL de la catégorie Vie étudiante
+    img: new Image(),
+    urlImage: null,
+    hover: false,
   },
 ];
+//mettre les images des batiments
+listePoints.forEach((point) => {
+  point.img.src = point.urlImage;
+});
 //variable du personnage
 var perso = {
   img: new Image(),
@@ -99,7 +133,7 @@ guide.img.src = guide.urlImage;
 //le renderer du canvas
 var render = setInterval(renderer, 1000 / 60);
 //bool qui detecte si le canvas doit etre afficher
-var isGuide = true;
+var isGuide = false;
 //bool qui detecte si le personnage bouge
 var enMouvement = false;
 //depart de la liste des points a lequelles le perso devra aller
@@ -113,15 +147,22 @@ var destination = 0;
 
 //fonction qui render l'ile
 function renderer() {
+  console.log(listePoints[0].hover)
   // tout effacer
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //dessiner les cercles
-  listePoints.forEach((circle) => {
-    ctx.beginPath();
-    ctx.globalAlpha = 0.5;
-    ctx.arc(circle.xPoint, circle.yPoint, circle.rayon, 0, 2 * Math.PI);
-    ctx.fillStyle = circle.couleur;
-    ctx.fill();
+  // listePoints.forEach((circle) => {
+  //   ctx.beginPath();
+  //   ctx.globalAlpha = 0.5;
+  //   ctx.arc(circle.xPoint, circle.yPoint, circle.rayon, 0, 2 * Math.PI);
+  //   ctx.fillStyle = circle.couleur;
+  //   ctx.fill();
+  // });
+  //dessiner les batiments
+  listePoints.forEach((point) => {
+    if(point.urlImage != null){
+      ctx.drawImage(point.img, point.xImage, point.yImage);
+    }
   });
   //dessiner perso
   if (perso.surIle) {
@@ -174,6 +215,23 @@ canvas.addEventListener("click", (event) => {
           cheminPerso = trouverChemin(listePoints.indexOf(point));
           enMouvement = true;
         }
+      }
+    });
+  }
+});
+
+//detecter les hovers sur les zones des batiments
+canvas.addEventListener("mousemove", (event) => {
+  const pos = {
+    x: event.clientX - canvas.offsetLeft + (leCanvas.html.getBoundingClientRect().width - 900) / 2,
+    y: event.clientY - canvas.offsetTop + (leCanvas.html.getBoundingClientRect().height - 900) / 2,
+  };
+  if(perso.surIle){
+    listePoints.forEach((point) => {
+      if (intersecte(pos, point)) {
+        point.hover = true
+      } else {
+        point.hover = false;
       }
     });
   }
