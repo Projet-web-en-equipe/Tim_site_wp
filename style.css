@@ -293,20 +293,20 @@ div#logo a:hover {
   opacity: 1;
 }
 
-/* Pseudo-element for the animated dashed border */
+/* animation de la barre */
 #nav-menu::before {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 12px; /* Increase width to make the line thicker */
-  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px); /* White and pink colors for the dashed effect */
-  animation: dashMove 2s linear infinite;
+  width: 12px; /* grosse */
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px); /* changement de couleurs */
+  animation: mouvementLigne 2s linear infinite;
 }
 
-/* Animation to move the dashes */
-@keyframes dashMove {
+/* animation du mouvement de l'asti de dash */
+@keyframes mouvementLigne {
   0% {
     background-position: 0 0;
   }
@@ -314,7 +314,7 @@ div#logo a:hover {
     background-position: 0 40px; /* Adjust for the length of the dash pattern */
   }
 }
-/* Desktop view adjustment */
+/* Desktop  */
 @media only screen and (min-width: 1025px) {
   #nav-menu {
     width: 40%;
@@ -689,12 +689,12 @@ main div section#info p {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Wave animation */
+/* vague animation */
 .effetVague:hover span {
-  animation: wave 0.5s ease;
+  animation: vague 0.5s ease;
 }
 
-@keyframes wave {
+@keyframes vague {
   0%, 100% {
     transform: translateY(0);
   }
@@ -800,7 +800,7 @@ footer {
   background-color: #003d5b;
   width: 100%;
   height: 30%;
-  bottom: -36%;
+  bottom: -36%; /* Original positioning of the main footer */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -809,65 +809,20 @@ footer {
   color: white;
   padding-bottom: 3%;
   padding-top: 3%;
-  /*
-    .conteneurSousTitre {
-      position: absolute;
-      top: 2%;
-      left: 0;
-    }
-  */
 }
 footer .conteneurSousTitre,
 footer .liens,
-footer .sociaux,
 footer .equipe,
 footer .contact {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 3%;
 }
-footer .conteneurSousTitre .material-symbols-rounded,
-footer .liens .material-symbols-rounded,
-footer .sociaux .material-symbols-rounded,
-footer .equipe .material-symbols-rounded,
-footer .contact .material-symbols-rounded {
-  font-size: 3rem;
-  position: absolute;
-  top: 1%;
-  left: 1%;
-  width: 5%;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-  cursor: pointer;
-}
-footer .conteneurSousTitre h3,
-footer .liens h3,
-footer .sociaux h3,
-footer .equipe h3,
-footer .contact h3 {
-  margin: 0;
-  width: 25%;
-  height: 25%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.5s ease-in-out;
-  cursor: pointer;
-}
-footer .conteneurSousTitre h3:hover,
-footer .liens h3:hover,
-footer .sociaux h3:hover,
-footer .equipe h3:hover,
-footer .contact h3:hover {
-  transform: scale(1.2);
-}
 
+/* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
+a propos* lorsque le footer est fermé*/
 footer::after {
   content: "À PROPOS";
   position: absolute;
@@ -881,7 +836,7 @@ footer::after {
   transform: translateX(-50%);
   background-color: #003d5b;
   padding: 1rem 2rem 3rem 3.5rem;
-  border-radius: 8px 8px 0 0; /* pour donner effet ongle */
+  border-radius: 8px 8px 0 0; /* For tab effect */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -890,21 +845,16 @@ footer::after {
 }
 
 footer::before {
-  content: "\f06e"; /* icon uni chose */
-  font-family: "Font Awesome 6 Free"; /* je transforme le icone en font awesome */
+  content: "\f06e"; /* icone oeil unichose */
+  font-family: "Font Awesome 6 Free"; /* je transforme en font awesome */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   color: white;
   position: absolute;
   z-index: 3;
   top: -14%;
-  left: calc(50% - 70px); /* je triche pour que le before soit a coter du after */
-}
-
-.material-symbols-outlined {
-  font-size: 2rem;
-  cursor: pointer;
-  color: white;
+  left: calc(50% - 70px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
 }
 
 /*******************************************************************************************/
@@ -915,10 +865,10 @@ footer::before {
 }
 
 /* ça me montre le footer quand qu'y est checked*/
-#checkFoot:checked + label footer {
+#checkFoot:checked + label footer,
+#checkFoot:checked + label .footer2 {
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgb(0, 0, 0);
-  background-color: #003d5b;
   transition: all 0.7s ease-out;
 }
 
@@ -926,20 +876,23 @@ footer::before {
   transform: translateY(-2%);
 }
 
-/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
-#checkFoot:checked + label footer h3 {
-  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
-  cursor: default;
+/* quand le footer est ouvert */
+#checkFoot:checked + label footer::before {
+  content: "\f070"; /* je ferme loeil */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  position: absolute;
+  z-index: 3;
+  top: -14%;
+  left: calc(50% - 70px);
+  transition: opacity 0.3s ease, content 0.3s ease;
+  top: -15%;
+  color: #d1495d;
 }
 
-/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
-#checkFoot:checked + label footer .material-symbols-rounded {
-  opacity: 1;
-}
-
-/* quand le le footer n'est pas checked */
-#checkFoot:not(:checked) + label footer h3 {
-  opacity: 1;
+/* pour garder la forme de longlet */
+#checkFoot:checked + label footer::after {
+  padding: 1rem 2rem 3rem 3.5rem;
 }
 
 footer p {
@@ -954,13 +907,89 @@ footer a {
   font-family: "breakers-slab", sans-serif;
 }
 
-.sociaux .fa-brands {
-  font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
-  cursor: pointer;
+/*******************************************************************************************/
+/************************************** les sociaux  ***************************************/
+/*******************************************************************************************/
+.sociaux ul {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  transform-style: preserve-3d;
 }
 
-.sociaux .fa-brands:hover {
-  scale: 110%;
+.sociaux ul li {
+  position: relative;
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  margin: 0px 20px;
+  border: 1px solid white;
+}
+
+/***********************************************************************
+**************************** effet sociaux *****************************
+***********************************************************************/
+.sociaux ul li span {
+  /*le social media insta linkedin behance*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #2a2a2a;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  transition: 1.5s ease-out;
+}
+
+.sociaux ul li:hover span {
+  transition: 0.3s;
+  color: #fff;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.sociaux ul li:hover span:nth-child(5) {
+  transform: translate(40px, -40px);
+  opacity: 1;
+}
+
+.sociaux ul li:hover span:nth-child(4) {
+  transform: translate(30px, -30px);
+  opacity: 0.8;
+}
+
+.sociaux ul li:hover span:nth-child(3) {
+  transform: translate(20px, -20px);
+  opacity: 0.6;
+}
+
+.sociaux ul li:hover span:nth-child(2) {
+  transform: translate(10px, -10px);
+  opacity: 0.4;
+}
+
+.sociaux ul li:hover span:nth-child(1) {
+  transform: translate(0px, 0px);
+  opacity: 0.2;
+}
+
+/* Customize colors for each icon */
+.sociaux ul li:nth-child(1):hover span {
+  /* Instagram */
+  background: #ea6e96;
+}
+
+.sociaux ul li:nth-child(2):hover span {
+  /* Behance */
+  background: #0056ff;
+}
+
+.sociaux ul li:nth-child(3):hover span {
+  /* LinkedIn */
+  background: #0a66c2;
 }
 
 /*******************************************************************************************/
