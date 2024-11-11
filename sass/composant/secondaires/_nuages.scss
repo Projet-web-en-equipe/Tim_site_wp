@@ -1,11 +1,11 @@
-:root {
+/*:root {
   --couleur-nuage: #fff;
   --ombre-nuage: #ccc;
 }
 
 .nuage {
   position: relative;
-  top: 50%; /* Position it on the page */
+  top: 50%; /* Position it on the page 
   left: 50%;
   width: 350px;
   height: 150px;
@@ -15,7 +15,7 @@
   border-radius: 100px;
   box-shadow: 0 0 10px var(--couleur-nuage);
   box-shadow: inset -10px -10px 30px var(--ombre-nuage);
-}
+}*/
 
 .nuage::before {
   position: absolute;

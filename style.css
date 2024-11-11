@@ -830,14 +830,14 @@ main div section#info p {
   transform: rotate(-45deg); /* Initial angle */
 }
 
-:root {
+/*:root {
   --couleur-nuage: #fff;
   --ombre-nuage: #ccc;
 }
 
 .nuage {
   position: relative;
-  top: 50%; /* Position it on the page */
+  top: 50%; /* Position it on the page 
   left: 50%;
   width: 350px;
   height: 150px;
@@ -847,8 +847,7 @@ main div section#info p {
   border-radius: 100px;
   box-shadow: 0 0 10px var(--couleur-nuage);
   box-shadow: inset -10px -10px 30px var(--ombre-nuage);
-}
-
+}*/
 .nuage::before {
   position: absolute;
   content: "";
@@ -926,7 +925,7 @@ footer::after {
 
 footer::before {
   content: "\f06e"; /* icone oeil unichose */
-  font-family: "Font Awesome 6 Free"; /* je transforme en font awesome */
+  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   color: white;
