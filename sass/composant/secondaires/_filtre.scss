@@ -5,21 +5,25 @@ nav.nav-filtre {
     align-items: flex-start;
     position: relative;
     width: 100%;
+    margin: 2rem 0rem 2rem 2rem;
 }
 
 nav.nav-filtre label {
     display: flex;
     align-items: center;
     cursor: pointer;
-    width: 100%;
+    width: 25%;
+    padding-left: 1rem;
+    background: var(--tertiaire);
+    box-sizing: border-box;
 }
 
 nav.nav-filtre label span {
-    padding: 1.25rem 5rem 1.25rem 1.25rem;
-    background: #2d2f31;
     color: white;
-    font-size: 1.2em;
     font-variant: small-caps;
+    font-family: "breakers-slab", sans-serif;
+    font-style: normal;
+    font-size: 2rem;
 }
 
 nav.nav-filtre input[type="checkbox"] {
@@ -27,33 +31,32 @@ nav.nav-filtre input[type="checkbox"] {
 }
 
 nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
-    height: 24rem;
+    max-height: 32rem;
 }
 
 ul.slide {
     clear: both;
-    width: auto;
-    height: 0;
+    width: 25%;
+    max-height: 0;
     overflow: hidden;
     text-align: left;
-    transition: height .4s ease;
+    transition: max-height 1s;
     list-style-type: none;
-    padding-left: 1.25rem;
+    padding-left: 1rem;
     position: absolute;
     top: 100%;
-    left: 0;
-    background: black;
+    background: var(--tertiaire);
     z-index: 1;
-    margin: 0;
+    margin-top: 0;
+    box-sizing: border-box;
 }
-ul.slide li {
-   
+
+ul.slide li:hover {
+    background: var(--secondaire);
 }
 
 ul.slide li a{
-    //padding: 1rem;
     font-family: "breakers-slab", sans-serif;
-    // font-weight: 400;
     font-style: normal;
     font-size: 2rem;
 }

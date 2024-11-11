@@ -2,36 +2,39 @@
 
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
-        <nav class="nav-filtre">
-            <label for="touch"><span>Toutes les sessions</span></label>
-            <input type="checkbox" id="touch">
-            <ul class="slide">
+    <nav class="nav-filtre">
+        <?php
+        // Récupérer l'objet de la catégorie parente "Cours"
+        $parent_category = get_category_by_slug('cours');
+        ?>
+        <label for="touch"><span>Les sessions</span></label>
+        <input type="checkbox" id="touch">
+        <ul class="slide">
+            <?php if ($parent_category): ?>
+                <li><a href="<?php echo get_category_link($parent_category->term_id); ?>">Toutes les sessions</a></li>
                 <?php
-                // Récupérer l'objet de la catégorie parente "Cours"
-                $parent_category = get_category_by_slug('cours');
-                if ($parent_category) {
-                    $child_categories_args = array(
-                        'child_of' => $parent_category->term_id,
-                        'hide_empty' => false
-                    );
-                    $child_categories = get_categories($child_categories_args);
+                $child_categories_args = array(
+                    'child_of' => $parent_category->term_id,
+                    'hide_empty' => false
+                );
+                $child_categories = get_categories($child_categories_args);
 
-                    if (!empty($child_categories)) :
-                        foreach ($child_categories as $child_category) :
-                            $shortened_name = substr($child_category->name, 8);
+                if (!empty($child_categories)) :
+                    foreach ($child_categories as $child_category) :
+                        $shortened_name = substr($child_category->name, 8);
                 ?>
-                            <li><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></li>
+                        <li><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></li>
                 <?php
-                        endforeach;
-                    else :
-                        echo '<li>Aucune catégorie</li>';
-                    endif;
-                } else {
-                    echo '<li>Catégorie parente "Cours" non trouvée.</li>';
-                }
-                ?>
-            </ul>
-        </nav>
+                    endforeach;
+                else :
+                    echo '<li>Aucune catégorie</li>';
+                endif;
+            else:
+                echo '<li>Catégorie parente "Cours" non trouvée.</li>';
+            endif;
+            ?>
+        </ul>
+    </nav>
 
     <div class="content-wrapper">
         <section id="carrousel">
