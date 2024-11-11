@@ -1,49 +1,49 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title() ?></h1>
+    <h1 id="titre"><?php single_cat_title(); ?></h1>
     <div class="content-wrapper">
-        <section id="carrousel">
+        <?php
+        // Récupérer l'objet de la catégorie en cours
+        $category = get_queried_object();
+        $args = array(
+            'category_name' => $category->slug, // Utilisez le slug de la catégorie actuelle
+            'posts_per_page' => -1
+        );
+        $query = new WP_Query($args);
 
-            <?php
-            // Récupérer l'objet de la catégorie en cours
-            $category = get_queried_object();
-            $args = array(
-                'category_name' => $category->slug, // Utilisez le slug de la catégorie actuelle
-                'posts_per_page' => -1
-            );
-            $query = new WP_Query($args);
-
-            if ($query->have_posts()) :
+        if ($query->have_posts()) :
+        ?>
+            <section id="carrousel">
+                <?php
                 while ($query->have_posts()) : $query->the_post();
-            ?>
+                ?>
                     <div class="banniere" data-id="<?php the_ID(); ?>">
-                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
-                        <h2><?php
-                        the_title() 
-                        //echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
+                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
+                        <h2><?php the_title(); ?></h2>
                     </div>
 
                     <div id="post-content-<?php the_ID(); ?>" style="display: none;">
                         <h1><?php the_title(); ?></h1>
                         <div><?php the_content(); ?></div>
                     </div>
-            <?php
+                <?php
                 endwhile;
-            else :
-                echo '<p>Aucun cours disponible pour le moment.</p>';
-            endif;
+                ?>
+            </section>
 
-            wp_reset_postdata();
-            ?>
+            <section id="info">
+                <button id="close-info" class="close-btn"></button>
+                <h1 id="cours-name"></h1>
+                <div class="text"></div>
+            </section>
+        <?php
+        else :
+            echo '<h1>Information à venir.</h1>';
+        endif;
 
-        </section>
-
-        <section id="info">
-            <button id="close-info" class="close-btn"></button>
-            <h1 id="cours-name"></h1>
-            <div class="text"></div>
-        </section>
+        wp_reset_postdata();
+        ?>
     </div>
 </main>
 
