@@ -9,12 +9,11 @@ body {
   position: relative; // j'ai laissé cette position (la seule) pour le canvas.
   //display: flex;
   //justify-content: center;
-  background-color: rgb(0, 0, 74);
+  //background-color: rgb(0, 0, 74);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   z-index: -1000;
-  border: 1px solid white;
 }
 html {
   padding: 0;
@@ -31,6 +30,6 @@ canvas {
   margin: 0;
   padding: 0;
   z-index: -1;
-  border: 3px solid red;
+  //border: 3px solid red;
   //transform: scale(135%);
 }
