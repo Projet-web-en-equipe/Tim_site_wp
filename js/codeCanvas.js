@@ -9,8 +9,8 @@ var listePoints = [
     y: 325,
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
-    tag: "Evenement",
-    lien: "/category/cours", // remplace par l'URL de la catégorie Projets
+    tag: "Evenements",
+    lien: "category/evenements", // remplace par l'URL de la catégorie Projets
   },
   {
     x: 650,
@@ -18,7 +18,7 @@ var listePoints = [
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
-    lien: "/category/cours", // remplace par l'URL de la catégorie Cours
+    lien: "category/cours", // remplace par l'URL de la catégorie Cours
   },
   {
     x: 725,
@@ -26,7 +26,7 @@ var listePoints = [
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
-    lien: "/category/cours", // remplace par l'URL de la catégorie Profs
+    lien: "category/projets", // remplace par l'URL de la catégorie Profs
   },
   {
     x: 550,
@@ -34,7 +34,7 @@ var listePoints = [
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
-    lien: "/category/cours", // remplace par l'URL de la catégorie Emplois
+    lien: "category/emplois", // remplace par l'URL de la catégorie Emplois
   },
   {
     x: 275,
@@ -42,7 +42,7 @@ var listePoints = [
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie etudiante",
-    lien: "/category/cours", // remplace par l'URL de la catégorie Évènements
+    lien: "category/vie-etudiante", // remplace par l'URL de la catégorie Évènements
   },
   {
     x: 175,
@@ -50,7 +50,7 @@ var listePoints = [
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
-    lien: "/category/cours", // remplace par l'URL de la catégorie Vie étudiante
+    lien: "category/profs", // remplace par l'URL de la catégorie Vie étudiante
   },
 ];
 //variable du personnage
