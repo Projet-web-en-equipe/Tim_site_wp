@@ -2,16 +2,62 @@
 
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
+    <nav class="nav-filtre">
+        <?php
+        // Récupérer l'objet de la catégorie parente "Cours"
+        $parent_category = get_category_by_slug('cours');
+        ?>
+        <label for="touch"><span>Les sessions</span></label>
+        <input type="checkbox" id="touch">
+        <ul class="slide">
+            <?php if ($parent_category): ?>
+                <li><a href="<?php echo get_category_link($parent_category->term_id); ?>">Toutes les sessions</a></li>
+                <?php
+                $child_categories_args = array(
+                    'child_of' => $parent_category->term_id,
+                    'hide_empty' => false
+                );
+                $child_categories = get_categories($child_categories_args);
+
+                if (!empty($child_categories)) :
+                    foreach ($child_categories as $child_category) :
+                        $shortened_name = substr($child_category->name, 8);
+                ?>
+                        <li><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></li>
+                <?php
+                    endforeach;
+                else :
+                    echo '<li>Aucune catégorie</li>';
+                endif;
+            else:
+                echo '<li>Catégorie parente "Cours" non trouvée.</li>';
+            endif;
+            ?>
+        </ul>
+    </nav>
+
     <div class="content-wrapper">
         <section id="carrousel">
 
             <?php
             // Récupérer l'objet de la catégorie en cours
             $category = get_queried_object();
-            $args = array(
-                'category_name' => $category->slug, // Utilisez le slug de la catégorie actuelle
-                'posts_per_page' => -1
-            );
+            $child_category_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
+
+            if ($child_category_slug) {
+                // Si un slug de sous-catégorie est fourni, afficher les posts de cette sous-catégorie
+                $args = array(
+                    'category_name' => $child_category_slug,
+                    'posts_per_page' => -1
+                );
+            } else {
+                // Sinon, afficher les posts de la catégorie parente
+                $args = array(
+                    'category_name' => $category->slug,
+                    'posts_per_page' => -1
+                );
+            }
+
             $query = new WP_Query($args);
 
             if ($query->have_posts()) :
@@ -37,12 +83,15 @@
 
         </section>
 
+
+
         <section id="info">
             <button id="close-info" class="close-btn"></button>
             <h1 id="cours-name"></h1>
             <div class="text"></div>
         </section>
     </div>
+
 </main>
 
 <?php get_footer(); ?>
