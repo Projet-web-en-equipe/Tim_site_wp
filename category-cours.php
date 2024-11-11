@@ -2,8 +2,6 @@
 
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
-    <section id="categories-enfant">
-        <h2>Catégories</h2>
         <nav class="nav-filtre">
             <label for="touch"><span>Toutes les sessions</span></label>
             <input type="checkbox" id="touch">
@@ -34,7 +32,6 @@
                 ?>
             </ul>
         </nav>
-    </section>
 
     <div class="content-wrapper">
         <section id="carrousel">

@@ -585,22 +585,20 @@ main div section#info p {
     transform: translateY(-1000px);
   }
 }
-section#categories-enfant {
-  width: 100%;
-}
-
 nav.nav-filtre {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  position: relative; /* Add this line */
+  position: relative;
+  width: 100%;
 }
 
 nav.nav-filtre label {
   display: flex;
   align-items: center;
   cursor: pointer;
+  width: 100%;
 }
 
 nav.nav-filtre label span {
@@ -616,37 +614,36 @@ nav.nav-filtre input[type=checkbox] {
 }
 
 nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
-  max-height: 48rem;
+  height: 24rem;
 }
 
 ul.slide {
   clear: both;
-  width: 100%;
+  width: auto;
   height: 0;
   overflow: hidden;
-  text-align: center;
+  text-align: left;
   transition: height 0.4s ease;
   list-style-type: none;
-  padding-left: 0;
+  padding-left: 1.25rem;
   position: absolute;
   top: 100%;
   left: 0;
   background: black;
   z-index: 1;
+  margin: 0;
 }
 
-ul.slide li {
-  padding: 1rem;
+ul.slide li a {
+  font-family: "breakers-slab", sans-serif;
+  font-style: normal;
+  font-size: 2rem;
 }
 
 nav.nav-filtre input {
   position: absolute;
   opacity: 0;
   height: 0px;
-}
-
-nav.nav-filtre input:checked + ul.slide {
-  height: 32rem;
 }
 
 /*Composants principaux*/
