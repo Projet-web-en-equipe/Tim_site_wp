@@ -82,18 +82,31 @@ main div {
         padding: 1rem;
     }
 
+    /* Bouton temporaire pour fermer la zone de description */
     #close-info {
         position: absolute;
         top: 0.5rem;
         right: 0.5rem;
-        background-color: rgba(192, 192, 192, 0.521);
+        background-color: var(--accent);
         border: none;
-        border-radius: 50%;
-        width: 2rem;
-        height: 2rem;
+        border-radius: 25%;
+        width: 3rem;
+        height: 3rem;
         cursor: pointer;
         z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+    
+    /* Symbole pour fermer le bouton */
+    #close-info::before {
+        content: "v"; 
+        font-size: 2rem;
+        color: white;
+        font-weight: bolder;
+        // transform: rotate(-90deg);
+    }    
 
     #close-info:hover {
         background-color: rgba(255, 194, 194, 0.521);
@@ -118,6 +131,7 @@ main div {
             position: relative;
             width: 75vw;
             border-radius: 10px;
+            margin-top: 2%;
         }
         h1{
             margin: 0 auto;

@@ -30,6 +30,7 @@ Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w
 @import "composant/secondaires/info";
 @import "composant/secondaires/animIntro";
 @import "composant/secondaires/effetVague";
+@import "composant/secondaires/filtre";
 @import "composant/secondaires/oiseaux";
 @import "composant/secondaires/nuages";
 
@@ -43,3 +44,6 @@ Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w
 /*couleurs*/
 @import "variables/paletteCouleurs";
 @import "variables/polices";
+
+/*Divers*/
+@import "404";

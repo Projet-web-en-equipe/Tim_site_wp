@@ -1,0 +1,62 @@
+/* Enlever l'image de fond d'océan */
+// body{
+//     background-image: none;
+//     background-color: var(--couleur-bleu-fonce);
+// }
+
+/* Styles pour la div contenant le message d'erreur */
+#titre404 {
+    color: var(--couleur-rouge-clair);
+}
+
+#texteErreur {
+    text-align: center;
+    color: var(--couleur-or-clair);
+    position: absolute; /* Pour positionner le texte à l'intérieur de la bordure inférieure */
+    padding: 10px 20px; /* Espace autour du texte */
+}
+
+#texteErreur h2, #texteErreur p {
+    margin: 0; /* Éliminer les marges par défaut */
+}
+
+/* Conteneur pour le message d'erreur avec l'image correspondante affichée en dessous */
+#erreur_404 {
+    display: flex;
+    flex-direction: column; /* Aligner les items verticalement */
+    align-items: center;
+    justify-content: flex-end;
+    width: 40%;
+    height: 40%; /* Hauteur modifiable pour ajuster la taille de l'élément */
+    margin: 0 auto;
+    padding-top: 2%;
+    margin-top: 5%;
+    background-color: var(--couleur-bleu-fonce);
+    background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg'); /* Image de fond */
+    background-size: cover; /* Couvre toute la section */
+    background-position: center center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Ne pas répéter l'image */
+    transform: rotate(-5deg);
+    border: 6px solid #FFFFFF;
+    border-bottom: 150px solid #FFFFFF; /* Bordure inférieure blanche */
+    text-align: center;
+    position: relative; /* Nécessaire pour que le texte soit bien positionné à l'intérieur */
+}
+
+/*Media query pour la version mobile responsive*/
+@media screen and (max-width: 1000px) {
+    #erreur_404 section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #menu-piedpage {
+        display: none;
+    }
+
+    #retourAccueil {
+        margin: auto;
+    }
+}
