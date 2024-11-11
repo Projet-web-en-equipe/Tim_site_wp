@@ -18,7 +18,8 @@
                 while ($query->have_posts()) : $query->the_post();
             ?>
                     <div class="banniere" data-id="<?php the_ID(); ?>">
-                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
+                    <!-- Image temporaire de Martin -->
+                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/low_martin.jpg" ?>" alt="lowpoly_martin">
                         <h2><?php
                         the_title() 
                         //echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>

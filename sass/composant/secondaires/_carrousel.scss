@@ -34,6 +34,11 @@ main section img {
     max-height: 80vh;
 }
 
+// Image change en hover et revient à la photo originale
+main section img:hover {
+    background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/DSC_9990-scaled.jpg');
+}
+
 main section h2 {
     background-color: rgba(65, 65, 65, 0.521);
     position: absolute;
