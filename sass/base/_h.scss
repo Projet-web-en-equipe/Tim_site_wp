@@ -61,6 +61,11 @@ header ul {
   color: orange;
 }
 
+/* Style de la liste dans les articles */
+.wp-block-list li{
+  color: pink;
+}
+
 header ul li a {
   transition: color 0.3s ease;
 
