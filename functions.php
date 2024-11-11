@@ -6,7 +6,7 @@ function enqueue_script_style()
     // Charge le script d'animation uniquement sur la page d'accueil
     if (is_front_page()) {
         wp_enqueue_script('animPerso', get_theme_file_uri('/js/animPerso.js'), array(), NULL, true);
-        wp_enqueue_script('codeAccueil', get_theme_file_uri('/js/codeAccueil.js'), array(), NULL, true);
+        wp_enqueue_script('codeAccueil', get_theme_file_uri('/js/codeAccueilTEST.js'), array(), NULL, true);
         wp_enqueue_script('codeCanvas', get_theme_file_uri('/js/codeCanvas.js'), array(), NULL, true);
     } else {
     // Charge le script d'animation uniquement sur le autres pages

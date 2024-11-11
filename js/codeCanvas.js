@@ -7,7 +7,7 @@ var listePoints = [
   {
     x: 300,
     y: 325,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Evenement",
     lien: "/category/cours", // remplace par l'URL de la catégorie Projets
@@ -15,7 +15,7 @@ var listePoints = [
   {
     x: 650,
     y: 300,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
     lien: "/category/cours", // remplace par l'URL de la catégorie Cours
@@ -23,7 +23,7 @@ var listePoints = [
   {
     x: 725,
     y: 525,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
     lien: "/category/cours", // remplace par l'URL de la catégorie Profs
@@ -31,7 +31,7 @@ var listePoints = [
   {
     x: 550,
     y: 650,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
     lien: "/category/cours", // remplace par l'URL de la catégorie Emplois
@@ -39,7 +39,7 @@ var listePoints = [
   {
     x: 275,
     y: 650,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie etudiante",
     lien: "/category/cours", // remplace par l'URL de la catégorie Évènements
@@ -47,7 +47,7 @@ var listePoints = [
   {
     x: 175,
     y: 550,
-    rayon: 13,
+    rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
     lien: "/category/cours", // remplace par l'URL de la catégorie Vie étudiante
@@ -156,10 +156,9 @@ function renderer() {
 //detecter les clicks
 canvas.addEventListener("click", (event) => {
   const pos = {
-    x: event.clientX - canvas.offsetLeft,
-    y: event.clientY - canvas.offsetTop,
+    x: event.clientX - canvas.offsetLeft + (leCanvas.html.getBoundingClientRect().width - 900) / 2,
+    y: event.clientY - canvas.offsetTop + (leCanvas.html.getBoundingClientRect().height - 900) / 2,
   };
-  console.log(event.clientY);
   //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
   if (perso.surIle && !enMouvement) {
     listePoints.forEach((point) => {
@@ -361,8 +360,8 @@ function changerPage(url) {
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle) {
   return (
-    Math.sqrt((click.x - cercle.x) ** 2 + (click.y - cercle.y) ** 2) <
-    cercle.rayon
+    Math.sqrt((click.x - cercle.x * (canvas.getBoundingClientRect().width / 900)) ** 2 + (click.y - cercle.y * (canvas.getBoundingClientRect().width / 900)) ** 2) <
+    cercle.rayon * leCanvas.zoom
   );
 }
 
