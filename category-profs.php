@@ -18,7 +18,7 @@
         ?>
                 <div class="banniere" data-id="<?php the_ID(); ?>">
                     <!-- Image temporaire de Martin -->
-                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/low_martin.jpg"; ?>" alt="lowpoly_martin">
+                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/low_martin-1.jpg"; ?>" alt="lowpoly_martin">
                     <h2><?php the_title(); ?></h2>
                 </div>
 

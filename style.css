@@ -704,7 +704,7 @@ main div section#info p {
   }
   to {
     opacity: 0;
-    transform: translateY(-1000px);
+    transform: translateY(-150vh);
   }
 }
 .effetVague {
