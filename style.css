@@ -267,7 +267,8 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -551,8 +552,7 @@ main div section#info img {
   width: auto;
   height: 50%;
   max-width: 80vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   padding: 1rem;
 }
 main div #close-info {
@@ -845,6 +845,8 @@ nav.nav-filtre label {
   padding-left: 1rem;
   background: var(--tertiaire);
   box-sizing: border-box;
+  border-radius: 0rem;
+  transition: border-radius 1s;
 }
 
 nav.nav-filtre label span {
@@ -859,6 +861,10 @@ nav.nav-filtre input[type=checkbox] {
   display: none;
 }
 
+nav.nav-filtre input[type=checkbox]:checked + nav.nav-filtre label {
+  border-radius: 0.5rem;
+}
+
 nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
   max-height: 32rem;
 }
@@ -871,13 +877,18 @@ ul.slide {
   text-align: left;
   transition: max-height 1s;
   list-style-type: none;
-  padding-left: 1rem;
+  padding-left: 0rem;
   position: absolute;
   top: 100%;
   background: var(--tertiaire);
   z-index: 1;
   margin-top: 0;
   box-sizing: border-box;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+}
+
+ul.slide li {
+  padding-left: 1rem;
 }
 
 ul.slide li:hover {
