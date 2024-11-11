@@ -47,6 +47,12 @@ h1 {
   font-size: clamp(1.5rem, 6vw + 0.5rem, 2.5rem);
 }
 
+h1#cours-name {
+  padding-top: 15%;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
 h2,
 a {
   font-size: clamp(1.25rem, 5vw + 0.5rem, 2rem);
@@ -65,6 +71,7 @@ p {
   font-family: "breakers-slab", sans-serif;
   font-weight: 400;
   font-style: normal;
+  line-height: 1.8; /* Espace entre les lignes pour laisser le texte respirer */
 }
 
 header ul {
@@ -99,6 +106,11 @@ header ul li a:hover {
   h1 {
     font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
   }
+  h1#cours-name {
+    padding-top: 15%;
+    text-align: center;
+    width: 70%; /* Pour donner un bon espace au titre centré */
+  }
   h2,
   a {
     font-size: clamp(1.5rem, 2.5vw + 0.75rem, 3rem);
@@ -115,6 +127,11 @@ header ul li a:hover {
   }
   h1 {
     font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  }
+  h1#cours-name {
+    padding-top: 5%;
+    text-align: center;
+    width: 70%; /* Pour donner un bon espace au titre centré */
   }
   h2,
   a {
@@ -342,6 +359,10 @@ main section img {
   max-height: 80vh;
 }
 
+main section img:hover {
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/DSC_9990-scaled.jpg");
+}
+
 main section h2 {
   background-color: rgba(65, 65, 65, 0.521);
   position: absolute;
@@ -399,6 +420,8 @@ main section h2 {
 }
 main div {
   width: 100%;
+  /* Bouton temporaire pour fermer la zone de description */
+  /* Symbole pour fermer le bouton */
 }
 main div section#info {
   display: none;
@@ -449,13 +472,22 @@ main div #close-info {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background-color: rgba(192, 192, 192, 0.521);
+  background-color: var(--accent);
   border: none;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  border-radius: 25%;
+  width: 3rem;
+  height: 3rem;
   cursor: pointer;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main div #close-info::before {
+  content: "v";
+  font-size: 2rem;
+  color: white;
+  font-weight: bolder;
 }
 main div #close-info:hover {
   background-color: rgba(255, 194, 194, 0.521);
@@ -475,6 +507,7 @@ main div section#info p {
     position: relative;
     width: 75vw;
     border-radius: 10px;
+    margin-top: 2%;
   }
   main div h1 {
     margin: 0 auto;
@@ -881,4 +914,61 @@ canvas {
   --couleur-rouge-clair: #B63D4A;
   --couleur-rouge-moyen: #A03240;
   --couleur-rouge-fonce: #8C2A36;
+}
+
+/*Divers*/
+/* Enlever l'image de fond d'océan */
+/* Styles pour la div contenant le message d'erreur */
+#titre404 {
+  color: var(--couleur-rouge-clair);
+}
+
+#texteErreur {
+  text-align: center;
+  color: var(--couleur-or-clair);
+  position: absolute; /* Pour positionner le texte à l'intérieur de la bordure inférieure */
+  padding: 10px 20px; /* Espace autour du texte */
+}
+
+#texteErreur h2, #texteErreur p {
+  margin: 0; /* Éliminer les marges par défaut */
+}
+
+/* Conteneur pour le message d'erreur avec l'image correspondante affichée en dessous */
+#erreur_404 {
+  display: flex;
+  flex-direction: column; /* Aligner les items verticalement */
+  align-items: center;
+  justify-content: flex-end;
+  width: 40%;
+  height: 40%; /* Hauteur modifiable pour ajuster la taille de l'élément */
+  margin: 0 auto;
+  padding-top: 2%;
+  margin-top: 5%;
+  background-color: var(--couleur-bleu-fonce);
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond */
+  background-size: cover; /* Couvre toute la section */
+  background-position: center center; /* Centrer l'image */
+  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  transform: rotate(-5deg);
+  border: 6px solid #FFFFFF;
+  border-bottom: 150px solid #FFFFFF; /* Bordure inférieure blanche */
+  text-align: center;
+  position: relative; /* Nécessaire pour que le texte soit bien positionné à l'intérieur */
+}
+
+/*Media query pour la version mobile responsive*/
+@media screen and (max-width: 1000px) {
+  #erreur_404 section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #menu-piedpage {
+    display: none;
+  }
+  #retourAccueil {
+    margin: auto;
+  }
 }/*# sourceMappingURL=style.css.map */

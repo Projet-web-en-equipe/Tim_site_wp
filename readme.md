@@ -23,3 +23,4 @@ Dans le sprint 3 nous désirons finaliser le scss du site. Nous voulons égaleme
 ## lien Google Sheets
 
 https://docs.google.com/spreadsheets/d/1x_0K6ti-6dcoBnL0YfyUQKwuBEWMxvTXaEzu0RWHaZw/edit?gid=0#gid=0
+
