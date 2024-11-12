@@ -73,3 +73,24 @@ nav.nav-filtre input {
     opacity: 0;
     height: 0px;
 }
+
+@media only screen and (max-width: 1025px) {
+    nav.nav-filtre {
+        display: flex;
+        align-items: center;
+        margin: 2rem 0rem 2rem 0rem;
+    }
+    nav.nav-filtre label {
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+    }
+    ul.slide {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    ul.slide li {
+        padding-left: 0rem;
+    }
+}
