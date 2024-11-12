@@ -5,7 +5,7 @@ nav.nav-filtre {
     align-items: flex-start;
     position: relative;
     width: 100%;
-    margin: 2rem 0rem 2rem 2rem;
+    margin: 2rem 0rem 2rem 4rem;
 }
 
 nav.nav-filtre label {
@@ -16,8 +16,6 @@ nav.nav-filtre label {
     padding-left: 1rem;
     background: var(--tertiaire);
     box-sizing: border-box;
-    border-radius: 0rem;
-    transition: border-radius 1s;
 }
 
 nav.nav-filtre label span {
@@ -33,7 +31,6 @@ nav.nav-filtre input[type="checkbox"] {
 }
 
 nav.nav-filtre input[type="checkbox"]:checked + nav.nav-filtre label {
-    border-radius: 0.5rem;
 }
 
 nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
@@ -55,7 +52,6 @@ ul.slide {
     z-index: 1;
     margin-top: 0;
     box-sizing: border-box;
-    border-radius: 0rem 0rem 0.5rem 0.5rem;
 }
 
 ul.slide li {
