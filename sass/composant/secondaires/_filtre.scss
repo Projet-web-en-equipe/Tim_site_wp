@@ -82,15 +82,21 @@ nav.nav-filtre input {
     }
     nav.nav-filtre label {
         display: flex;
-        justify-content: center;
-        padding-left: 0;
+        justify-content: flex-start;
+        //padding-left: 0;
+        width: 50%;
     }
     ul.slide {
         display: flex;
         align-items: center;
         flex-direction: column;
+        justify-content: center;
+        width: 50%;
     }
     ul.slide li {
-        padding-left: 0rem;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding-left: 2rem;
     }
 }
