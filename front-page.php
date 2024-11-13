@@ -9,9 +9,11 @@ get_header();
         <h3 class="titreH3 anim4">Maisonneuve</h3>
     </div> 
 </div> -->
-<img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png" alt="inshallah" id="perso" />
-<canvas width="900" height="900"></canvas>
-
+<!-- <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png" alt="inshallah" id="perso" /> -->
+<!-- <canvas width="900" height="900"></canvas> -->
+ <?php
+echo do_shortcode('[le_canvas]');
+?>
 
 <?php
 get_footer();
