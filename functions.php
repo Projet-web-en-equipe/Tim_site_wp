@@ -37,7 +37,6 @@ function register_category_menu() {
 add_action('init', 'register_category_menu');
 
 function display_category_menu() {
-    // Récupère uniquement les catégories parent (parent = 0 signifie pas de parent)
     $args = array(
         'parent' => 0,
         'exclude' => 1 // Exclut la catégorie avec l'ID 1 (généralement "Uncategorized")
@@ -68,17 +67,29 @@ function display_category_menu() {
                 $icon_class = 'fa-campfire';
                 break;
             default:
-                $icon_class = 'fa-star';  // Icône par défaut si aucune correspondance
+                $icon_class = 'fa-star';
         }
 
-        // Affiche chaque lien de catégorie avec son icône spécifique
+        // Affiche chaque lien de catégorie avec chaque lettre dans un span et l'icône dans un span spécial
         echo '<li class="menu-item">';
-        echo '<a href="' . get_category_link($category->term_id) . '">' . $category->name;
-        echo ' <i class="fa-duotone ' . $icon_class . '"></i></a>';  // Ajout de l'icône
+        echo '<a href="' . get_category_link($category->term_id) . '" class="effetVague effetCouleur' . ucfirst($category->slug) . '">';
+        
+        // Ajoute chaque lettre de la catégorie dans un <span>
+        $letters = mb_str_split($category->name); // Utilisez mb_str_split pour bien gérer les accents
+        foreach ($letters as $letter) {
+            echo '<span>' . htmlentities($letter, ENT_QUOTES, 'UTF-8') . '</span>';
+        }
+        
+
+        // Ajoute l'icône dans un span avec la classe dernierSpan
+        echo '<span class="dernierSpan"><i class="fa-solid ' . $icon_class . '"></i></span>';
+        
+        echo '</a>';
         echo '</li>';
     }
     echo '</ul>';
 }
+
 
 
 
