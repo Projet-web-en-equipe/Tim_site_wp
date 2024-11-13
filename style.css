@@ -81,7 +81,7 @@ header ul {
 
 /* Style de la liste dans les articles */
 .wp-block-list li {
-  color: pink;
+  font-family: "breakers-slab", sans-serif;
 }
 
 header ul li a {
@@ -483,7 +483,7 @@ main section h2 {
     margin: 2rem;
     max-height: 80vh;
     overflow-y: scroll;
-    scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-bleu-clair); /* Style du scrollbar */
+    scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
     width: 25%;
   }
   main section .banniere {
