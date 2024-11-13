@@ -17,10 +17,16 @@
             while ($query->have_posts()) : $query->the_post();
         ?>
                 <div class="banniere" data-id="<?php the_ID(); ?>">
-                    <!-- Image temporaire de Martin -->
-                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/low_martin-1.jpg"; ?>" alt="lowpoly_martin">
+                    <!-- Conteneur d'images -->
+                    <div class="image-container">
+                        <!-- Image low poly -->
+                        <img class="image-original" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/low_martin.jpg" alt="lowpoly_martin">
+                        <!-- Photo originale en dessous pour le hover -->
+                        <img class="image-hover" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/og_martin.jpg" alt="hover_image">
+                    </div>
                     <h2><?php the_title(); ?></h2>
                 </div>
+
 
                 <div id="post-content-<?php the_ID(); ?>" style="display: none;">
                     <h1><?php the_title(); ?></h1>
