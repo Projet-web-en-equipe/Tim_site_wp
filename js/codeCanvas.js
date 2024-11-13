@@ -123,6 +123,17 @@ perso.img.src = perso.urlImage;
 //position init perso
 perso.x = listePoints[perso.pos].x;
 perso.y = listePoints[perso.pos].y;
+//image bulle info
+var bulle = {
+  img: new Image(),
+  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/pseudoBulle.png",
+  active: true,
+  posX: 450,
+  posY: 450,
+  width: 100,
+  height: 50,
+}
+bulle.img.src = bulle.urlImage;
 //le guide
 var guide = {
   img: new Image(),
@@ -140,6 +151,8 @@ var enMouvement = false;
 var cheminPerso = [];
 //la position ou le perso doit aller
 var destination = 0;
+//trouver la position de la bulle au debut
+trouverPosBulle();
 //TEST
 // var vPoint = 2;
 
@@ -147,26 +160,25 @@ var destination = 0;
 
 //fonction qui render l'ile
 function renderer() {
-  console.log(listePoints[0].hover)
   // tout effacer
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //dessiner les cercles
-  // listePoints.forEach((circle) => {
-  //   ctx.beginPath();
-  //   ctx.globalAlpha = 0.5;
-  //   ctx.arc(circle.xPoint, circle.yPoint, circle.rayon, 0, 2 * Math.PI);
-  //   ctx.fillStyle = circle.couleur;
-  //   ctx.fill();
-  // });
+  listePoints.forEach((circle) => {
+    ctx.beginPath();
+    ctx.globalAlpha = 0.5;
+    ctx.arc(circle.xPoint, circle.yPoint, circle.rayon, 0, 2 * Math.PI);
+    ctx.fillStyle = circle.couleur;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  });
   //dessiner les batiments
   listePoints.forEach((point) => {
-    if(point.urlImage != null){
+    if (point.urlImage != null) {
       ctx.drawImage(point.img, point.xImage, point.yImage);
     }
   });
   //dessiner perso
   if (perso.surIle) {
-    ctx.globalAlpha = 1;
     ctx.drawImage(
       perso.img,
       perso.sourceX,
@@ -179,6 +191,13 @@ function renderer() {
       perso.hauteur
     );
   }
+  //dessiner bulle si elle est active
+  if(!enMouvement && perso.surIle){
+    ctx.drawImage(bulle.img, bulle.posX, bulle.posY);
+    ctx.font = "20px hwt-artz";
+    ctx.fillText(listePoints[perso.pos].tag, bulle.posX + 8, bulle.posY + 10 + bulle.height / 2);
+  }
+  console.log(enMouvement);
   //dessiner guide
   if (isGuide) {
     ctx.drawImage(guide.img, 0, 0);
@@ -226,7 +245,7 @@ canvas.addEventListener("mousemove", (event) => {
     x: event.clientX - canvas.offsetLeft + (leCanvas.html.getBoundingClientRect().width - 900) / 2,
     y: event.clientY - canvas.offsetTop + (leCanvas.html.getBoundingClientRect().height - 900) / 2,
   };
-  if(perso.surIle){
+  if (perso.surIle) {
     listePoints.forEach((point) => {
       if (intersecte(pos, point)) {
         point.hover = true
@@ -315,7 +334,7 @@ function bougerPerso() {
       listePoints[cheminPerso[destination]].x,
       listePoints[cheminPerso[destination]].y
     ) *
-      perso.x +
+    perso.x +
     trouverFonctionB(
       listePoints[perso.pos].x,
       listePoints[perso.pos].y,
@@ -342,6 +361,8 @@ function bougerPerso() {
           "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricD.png";
       }
       perso.img.src = perso.urlImage;
+      //set la position de la bulle
+      trouverPosBulle();
     } else {
       //sinon il se deplace a un point supplementaire
       destination += 1;
@@ -413,6 +434,18 @@ function animerPerso() {
   if (perso.indexVignette >= perso.nbVignettes) {
     perso.indexVignette = 0;
   }
+}
+
+//fonstion qui permet de trouver la position de la bulle
+function trouverPosBulle(){
+  bulle.posY = perso.y - perso.hauteur - 25;
+  if(perso.x > leCanvas.width / 2){
+    bulle.posX = perso.x - bulle.width - 25;
+  }
+  else{
+    bulle.posX = perso.x + 25;
+  }
+  console.log(perso.x + ", " + perso.y + "\n" + bulle.posX + ", " + bulle.posY);
 }
 
 //fonction pour changer de page
