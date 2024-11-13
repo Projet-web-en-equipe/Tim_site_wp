@@ -1,0 +1,158 @@
+#hot-toast {
+  position: fixed; //je veux que ça reste fixed à une position de 15% du VH pour ne pas cacher le header
+  display: flex; //le contenu en flex bien évidemment
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 62%; // je donne un width bien évidemment, mais je donne pas de hauteur, car je veux que ça prenne la hauteur dont il a besoin
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
+  background: #003d5b;
+  color: #fff;
+  padding: 2.5rem; // car jai pas donné de hateur, je ne peux pas mettrre du pourcentage, mais le rem est adaptatif
+  border-radius: 8px;
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 1);
+  opacity: 0; //au départ invisible
+  visibility: hidden; //au départ invisible
+  overflow: hidden;
+  z-index: 1000; //par dessus tout.
+}
+
+#hot-toast.montrerToast {
+  //j'applique l'animation. le tout géré avec JS, voir gestionHotToasts
+  animation: mouvementToast 5s ease forwards; /* 9s to cover the full effect duration */
+}
+
+#hot-toast p {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
+  line-height: 1.2;
+  padding: 2rem;
+}
+
+#hot-toast p:first-of-type {
+  color: #d1495d;
+}
+
+/* animation du mouvement */
+@keyframes mouvementToast {
+  0% {
+    transform: translateX(-50%) translateX(-100%); /* arrive de la gauche et devient visible en même temps */
+    opacity: 0;
+    visibility: visible;
+  }
+  10% {
+    transform: translateX(-50%) translateX(0); /* ensuite reste au centre pendant quelque temps */
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    transform: translateX(-50%) translateX(10px); /*pis ça dégage vers la droite */
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: translateX(-50%) translateX(100%); /* adios */
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ANIMATION DES BORDURES. QUAND MÊME ASSEZ COMPLEXE AYOYE */
+
+#hot-toast::before,
+#hot-toast::after,
+#hot-toast .border-left,
+#hot-toast .border-right {
+  content: "";
+  position: absolute;
+  background: repeating-linear-gradient(
+    to right,
+    #ffffff,
+    #ffffff 10px,
+    #d1495d 10px,
+    #d1495d 20px
+  );
+  animation: mouvementLigne 2s linear infinite; // l'animation existe ailleurs, voir le cess du menu.
+}
+
+//je dois créer les bordures du top et du bottom en premier avec des before et after.
+
+#hot-toast::before {
+  top: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#hot-toast::after {
+  bottom: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+// ensuite voici la triche: je peux juste avoir 1 before et un after par div
+//j'en ai crée 2 vides, pour donner un border gauche et droit respectivement,
+// et faire semblant que c'est le même qui a toutes les bordures
+
+#hot-toast .borderGauche {
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffffff 10px,
+    #d1495d 10px,
+    #d1495d 20px
+  );
+  animation: mouvementLigneVertical 2s linear infinite;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#hot-toast .borderDroit {
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffffff 10px,
+    #d1495d 10px,
+    #d1495d 20px
+  );
+  animation: mouvementLigneVertical 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Puis ensuite les animations */
+@keyframes mouvementLigne {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+
+@keyframes mouvementLigneVertical {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}

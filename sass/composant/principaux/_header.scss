@@ -1,4 +1,4 @@
-header {
+header.accueil {
   //j'ai enlevé toutes les positions absolutes et tout rendu en flex pour que ça soit fluide.
   //border: 1px solid red;
   height: 10%; //en pourcentage et adaptatif
@@ -7,7 +7,21 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 1%; // je décolle du bord de la page.
-  position: absolute;
+  position: absolute; // en positionnement absolute, sinon ça fuck le canvas.
+  border: 1px solid red;
+}
+
+header.category {
+  // en anglais, pour que sa marche avec le class WP.
+  //j'ai enlevé toutes les positions absolutes et tout rendu en flex pour que ça soit fluide.
+  //border: 1px solid red;
+  height: 10%; //en pourcentage et adaptatif
+  width: 98%; //en pourcentage et adaptatif.. si je donne 100, le logo part vers la droite cher pas pk...
+  display: flex; // le tout en flex
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%; // je décolle du bord de la page.
+  //position: absolute; // en positionnement absolute, sinon ça fuck le canvas.
 }
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
   header section {
@@ -16,8 +30,7 @@ header {
     left: 0.5rem;
   }*/
 
-
-  /* Styles pour le menu de navigation */
+/* Styles pour le menu de navigation */
 .custom-nav .menu-item {
   list-style: none;
   margin: 0 15px;
@@ -34,11 +47,11 @@ header {
 }
 
 /* Couleurs personnalisées pour les icônes */
-.fa-ice-cream, 
-.fa-ferris-wheel, 
-.fa-lighthouse, 
-.fa-calendar-days, 
-.fa-briefcase-arrow-right, 
+.fa-ice-cream,
+.fa-ferris-wheel,
+.fa-lighthouse,
+.fa-calendar-days,
+.fa-briefcase-arrow-right,
 .fa-campfire {
   --fa-primary-color: #ff5733;
   --fa-secondary-color: #3333ff;

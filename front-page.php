@@ -12,9 +12,13 @@ get_header();
 
 <body>
 
-
+    <div id="hot-toast">
+        <p>Vous pouvez intéragir avec la mape. </p>
+        <p> Faites un click pour découvrir le point d'intérêt, un 2ème click pour y rentrer!</p>
+        <div class="borderGauche"></div>
+        <div class="borderDroitt"></div>
+    </div>
     <div class="nuage">
-
     </div>
     <div class="unOiseaux">
         <div class="bird"></div>
