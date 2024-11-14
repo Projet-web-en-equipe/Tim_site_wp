@@ -8,6 +8,7 @@ function enqueue_script_style()
         wp_enqueue_script('animPerso', get_theme_file_uri('/js/animPerso.js'), array(), NULL, true);
         wp_enqueue_script('codeAccueil', get_theme_file_uri('/js/codeAccueilTEST.js'), array(), NULL, true);
         wp_enqueue_script('codeCanvas', get_theme_file_uri('/js/codeCanvas.js'), array(), NULL, true);
+        wp_enqueue_script('animationFooter', get_theme_file_uri('/js/animationFooter.js'), array(), NULL, true);
     } else {
         // Charge le script d'animation uniquement sur le autres pages
         wp_enqueue_script('animation', get_theme_file_uri('/js/animation.js'), array(), NULL, true);
@@ -60,7 +61,7 @@ function display_category_menu() {
             case 'evenements':
                 $icon_class = 'fa-calendar-days';
                 break;
-            case 'emplois':
+            case 'futur':
                 $icon_class = 'fa-briefcase-arrow-right';
                 break;
             case 'vie-etudiante':

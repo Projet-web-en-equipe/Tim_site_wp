@@ -9,7 +9,7 @@ var listePoints = [
     y: 325,
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
-    tag: "Evenements",
+    tag: "Évènements",
     lien: "category/evenements", // remplace par l'URL de la catégorie Projets
   },
   {
@@ -34,14 +34,14 @@ var listePoints = [
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
     tag: "Futur",
-    lien: "category/emplois", // remplace par l'URL de la catégorie Emplois
+    lien: "category/futur", // remplace par l'URL de la catégorie Emplois
   },
   {
     x: 275,
     y: 650,
     rayon: 25,
     couleur: "rgb(255, 0, 0)",
-    tag: "Vie etudiante",
+    tag: "Vie Étudiante",
     lien: "category/vie-etudiante", // remplace par l'URL de la catégorie Évènements
   },
   {
