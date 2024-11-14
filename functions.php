@@ -9,6 +9,7 @@ function enqueue_script_style()
         wp_enqueue_script('codeAccueil', get_theme_file_uri('/js/codeAccueilTEST.js'), array(), NULL, true);
         wp_enqueue_script('codeCanvas', get_theme_file_uri('/js/codeCanvas.js'), array(), NULL, true);
         wp_enqueue_script('gestionHotToasts', get_theme_file_uri('/js/gestionHotToasts.js'), array(), NULL, true);
+        wp_enqueue_script('gestionnaireBlur', get_theme_file_uri('/js/gestionnaireBlur.js'), array(), NULL, true);
     } else {
         // Charge le script d'animation uniquement sur le autres pages
         wp_enqueue_script('animation', get_theme_file_uri('/js/animation.js'), array(), NULL, true);

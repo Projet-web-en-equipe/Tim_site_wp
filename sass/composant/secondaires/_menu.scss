@@ -36,11 +36,11 @@
     #d1495d 10px,
     #d1495d 20px
   ); /* changement de couleurs */
-  animation: mouvementLigne 2s linear infinite;
+  animation: mouvementDeLigne 2s linear infinite;
 }
 
 /* animation du mouvement de l'asti de dash */
-@keyframes mouvementLigne {
+@keyframes mouvementDeLigne {
   0% {
     background-position: 0 0;
   }

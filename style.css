@@ -316,11 +316,11 @@ div#logo a:hover {
   bottom: 0;
   width: 12px; /* grosse */
   background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px); /* changement de couleurs */
-  animation: mouvementLigne 2s linear infinite;
+  animation: mouvementDeLigne 2s linear infinite;
 }
 
 /* animation du mouvement de l'asti de dash */
-@keyframes mouvementLigne {
+@keyframes mouvementDeLigne {
   0% {
     background-position: 0 0;
   }
@@ -608,6 +608,10 @@ main div section#info p {
     display: none;
   }
 }
+.conteneurBlur {
+  transition: filter 0.5s ease;
+}
+
 #ctnAnim {
   position: absolute;
   width: 100vw;
@@ -620,39 +624,8 @@ main div section#info p {
   z-index: 10000;
 }
 
-#ctnTitre {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.titreH1 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(50px, 10vw, 300px);
-}
-
-.titreH2 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(80px, 12vw, 400px);
-}
-
+.titreH1,
+.titreH2,
 .titreH3 {
   font-family: "hwt-artz", sans-serif;
   font-weight: 700;
@@ -662,6 +635,18 @@ main div section#info p {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.titreH1 {
+  font-size: clamp(50px, 10vw, 300px);
+}
+
+.titreH2 {
+  font-size: clamp(80px, 12vw, 400px);
+}
+
+.titreH3 {
   font-size: clamp(50px, 15vw, 150px);
 }
 
@@ -1415,7 +1400,6 @@ header.accueil {
   justify-content: space-between;
   margin: 1%;
   position: absolute;
-  border: 1px solid red;
 }
 
 header.category {
@@ -1460,7 +1444,8 @@ body {
   overflow-y: hidden;
 }
 
-body {
+body,
+.conteneurBlur {
   width: 100vw;
   height: 100vh;
   position: relative;
