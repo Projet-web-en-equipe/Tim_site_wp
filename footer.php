@@ -1,15 +1,15 @@
 <input type="checkbox" name="checkboxFooter" id="checkFoot" />
 <label for="checkFoot">
-  <footer>
-    <!--  <div class="conteneurSousTitre">
-      <span class="material-symbols-rounded"> close </span>
-      <h3>
-        <span class="material-symbols-outlined"> visibility </span> À PROPOS
-      </h3>
-    </div>
--->
-    <div class="contenuFooter">
 
+  <footer>
+    <div class="contenuFooter">
+      
+      <!-- <div class="contact">
+        <p>3800 rue Sherbrooke Est</p>
+        <p>
+          <a href="https://www.cmaisonneuve.qc.ca/">Site web du Collège</a>
+        </p>
+      </div> -->
 
 
       <div class="sociaux">

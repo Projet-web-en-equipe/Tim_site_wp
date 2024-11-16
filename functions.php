@@ -8,9 +8,9 @@ function enqueue_script_style()
         wp_enqueue_script('animPerso', get_theme_file_uri('/js/animPerso.js'), array(), NULL, true);
         wp_enqueue_script('codeAccueil', get_theme_file_uri('/js/codeAccueilTEST.js'), array(), NULL, true);
         wp_enqueue_script('codeCanvas', get_theme_file_uri('/js/codeCanvas.js'), array(), NULL, true);
+        // wp_enqueue_script('animationFooter', get_theme_file_uri('/js/animationFooter.js'), array(), NULL, true);
         wp_enqueue_script('gestionHotToasts', get_theme_file_uri('/js/gestionHotToasts.js'), array(), NULL, true);
-        wp_enqueue_script('gestionnaireBlur', get_theme_file_uri('/js/gestionnaireBlur.js'), array(), NULL, true);
-    } else {
+        wp_enqueue_script('gestionnaireBlur', get_theme_file_uri('/js/gestionnaireBlur.js'), array(), NULL, true);    } else {
         // Charge le script d'animation uniquement sur le autres pages
         wp_enqueue_script('animation', get_theme_file_uri('/js/animation.js'), array(), NULL, true);
         wp_enqueue_script('fermetureInfo', get_theme_file_uri('/js/fermetureInfo.js'), array(), NULL, true);
@@ -39,9 +39,7 @@ function register_category_menu()
 }
 add_action('init', 'register_category_menu');
 
-function display_category_menu()
-{
-    // Récupère uniquement les catégories parent (parent = 0 signifie pas de parent)
+function display_category_menu() {
     $args = array(
         'parent' => 0,
         'exclude' => 1 // Exclut la catégorie avec l'ID 1 (généralement "Uncategorized")
@@ -65,20 +63,31 @@ function display_category_menu()
             case 'evenements':
                 $icon_class = 'fa-calendar-days';
                 break;
-            case 'emplois':
+            case 'futur':
                 $icon_class = 'fa-briefcase-arrow-right';
                 break;
             case 'vie-etudiante':
                 $icon_class = 'fa-campfire';
                 break;
             default:
-                $icon_class = 'fa-star';  // Icône par défaut si aucune correspondance
+                $icon_class = 'fa-star';
         }
 
-        // Affiche chaque lien de catégorie avec son icône spécifique
+        // Affiche chaque lien de catégorie avec chaque lettre dans un span et l'icône dans un span spécial
         echo '<li class="menu-item">';
-        echo '<a href="' . get_category_link($category->term_id) . '">' . $category->name;
-        echo ' <i class="fa-duotone ' . $icon_class . '"></i></a>';  // Ajout de l'icône
+        echo '<a href="' . get_category_link($category->term_id) . '" class="effetVague effetCouleur' . ucfirst($category->slug) . '">';
+        
+        // Ajoute chaque lettre de la catégorie dans un <span>
+        $letters = mb_str_split($category->name); // Utilisez mb_str_split pour bien gérer les accents
+        foreach ($letters as $letter) {
+            echo '<span>' . htmlentities($letter, ENT_QUOTES, 'UTF-8') . '</span>';
+        }
+        
+
+        // Ajoute l'icône dans un span avec la classe dernierSpan
+        echo '<span class="dernierSpan"><i class="fa-solid ' . $icon_class . '"></i></span>';
+        
+        echo '</a>';
         echo '</li>';
     }
     echo '</ul>';
@@ -86,8 +95,8 @@ function display_category_menu()
 
 
 
-function category_menu_shortcode()
-{
+
+function category_menu_shortcode() {
     ob_start();
     display_category_menu();
     return ob_get_clean();
