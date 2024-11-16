@@ -16,6 +16,8 @@ nav.nav-filtre label {
     padding-left: 1rem;
     background: var(--tertiaire);
     box-sizing: border-box;
+    // border-radius: 0rem;
+    // transition: border-radius 0.5s;
 }
 
 nav.nav-filtre label span {
@@ -30,7 +32,8 @@ nav.nav-filtre input[type="checkbox"] {
     display: none;
 }
 
-nav.nav-filtre input[type="checkbox"]:checked + nav.nav-filtre label {
+nav.nav-filtre input[type="checkbox"]:checked ~ nav.nav-filtre label {
+    border-radius: 1rem;
 }
 
 nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {

@@ -859,6 +859,10 @@ nav.nav-filtre input[type=checkbox] {
   display: none;
 }
 
+nav.nav-filtre input[type=checkbox]:checked ~ nav.nav-filtre label {
+  border-radius: 1rem;
+}
+
 nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
   max-height: 32rem;
 }
