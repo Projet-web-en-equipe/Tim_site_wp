@@ -525,7 +525,7 @@ main section h2 {
     margin: 2rem;
     max-height: 80vh;
     overflow-y: scroll;
-    scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
+    scrollbar-color: var(--couleur-bleu-fonce) rgba(255, 255, 255, 0.6235294118);
     width: 25%;
   }
   main section .banniere {
@@ -578,7 +578,6 @@ main div section#info {
 main div section#info div.text {
   margin: 1rem auto;
   width: 90%;
-  background-color: rgba(255, 255, 255, 0.274);
   padding: 2%;
 }
 main div section#info::-webkit-scrollbar-track {
@@ -636,7 +635,7 @@ main div #close-info:hover {
 }
 main div section#info p {
   margin: 0 auto;
-  width: 90vw;
+  width: 85vw;
 }
 
 @media only screen and (min-width: 1025px) {
@@ -658,8 +657,8 @@ main div section#info p {
   main div div.text {
     margin: 1rem auto;
     width: 90%;
-    background-color: rgba(255, 255, 255, 0.685);
     padding: 2%;
+    background-color: rgba(255, 255, 255, 0.274);
   }
   main div section#info p {
     margin: 0 auto;

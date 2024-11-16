@@ -45,7 +45,6 @@ main div {
         div.text{
             margin: 1rem auto;
             width: 90%;
-            background-color: rgba(255, 255, 255, 0.274);
             padding: 2%;
         }
 
@@ -122,7 +121,7 @@ main div {
 
     section#info p {
         margin: 0 auto;
-        width: 90vw;
+        width: 85vw;
     }
 }
 
@@ -149,10 +148,9 @@ main div {
         div.text {
             margin: 1rem auto;
             width: 90%;
-            background-color: rgba(255, 255, 255, 0.685); 
             padding: 2%;
-          }
-          
+            background-color: rgba(255, 255, 255, 0.274);
+          }       
           
         section#info p {
             margin: 0 auto;
