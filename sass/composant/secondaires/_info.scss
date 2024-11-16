@@ -33,13 +33,21 @@ main div {
         height: 90vh;
         width: 98vw;
         // padding: 0.5rem;
-        background: rgba(255, 255, 255, 0.479);
+        background: rgba(255, 255, 255, 0.774);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         border-radius: 10px 10px 0 0;
         border: 1px solid rgba(255, 255, 255, 0.18);
+        background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg');
         transition: height 0.5s ease;
+
+        div.text{
+            margin: 1rem auto;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.274);
+            padding: 2%;
+        }
 
         &::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -132,14 +140,20 @@ main div {
             width: 70vw;
             border-radius: 10px;
             margin-top: 2%;
+            background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg');
         }
         h1{
             margin: 0 auto;
         }
-        div.text{
+
+        div.text {
             margin: 1rem auto;
             width: 90%;
-        }
+            background-color: rgba(255, 255, 255, 0.685); 
+            padding: 2%;
+          }
+          
+          
         section#info p {
             margin: 0 auto;
             width: 100%;
