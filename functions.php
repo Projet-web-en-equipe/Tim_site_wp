@@ -8,6 +8,8 @@ function enqueue_script_style()
         wp_enqueue_script('animPerso', get_theme_file_uri('/js/animPerso.js'), array(), NULL, true);
         wp_enqueue_script('codeAccueil', get_theme_file_uri('/js/codeAccueilTEST.js'), array(), NULL, true);
         wp_enqueue_script('codeCanvas', get_theme_file_uri('/js/codeCanvas.js'), array(), NULL, true);
+        wp_enqueue_script('gestionHotToasts', get_theme_file_uri('/js/gestionHotToasts.js'), array(), NULL, true);
+        wp_enqueue_script('gestionnaireBlur', get_theme_file_uri('/js/gestionnaireBlur.js'), array(), NULL, true);
     } else {
         // Charge le script d'animation uniquement sur le autres pages
         wp_enqueue_script('animation', get_theme_file_uri('/js/animation.js'), array(), NULL, true);
@@ -31,12 +33,14 @@ add_action('wp_enqueue_scripts', 'enqueue_script_style');
 // add_action('after_setup_theme', 'ajout_au_theme');
 
 
-function register_category_menu() {
+function register_category_menu()
+{
     register_nav_menu('category-menu', __('Menu Catégories'));
 }
 add_action('init', 'register_category_menu');
 
-function display_category_menu() {
+function display_category_menu()
+{
     // Récupère uniquement les catégories parent (parent = 0 signifie pas de parent)
     $args = array(
         'parent' => 0,
@@ -82,7 +86,8 @@ function display_category_menu() {
 
 
 
-function category_menu_shortcode() {
+function category_menu_shortcode()
+{
     ob_start();
     display_category_menu();
     return ob_get_clean();

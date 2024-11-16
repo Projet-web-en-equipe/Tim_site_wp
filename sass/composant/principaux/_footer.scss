@@ -1,22 +1,20 @@
 footer {
-  position: absolute;
+  position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #003d5b;
   width: 100%;
-  height: 30%;
-  bottom: -36%; /* Original positioning of the main footer */
+  height: 30vh;
+  bottom: calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 3%;
-  padding-top: 3%;
+  padding-bottom: 5%;
+  padding-top: 5%;
 
-  .conteneurSousTitre,
-  .liens,
-  .equipe,
-  .contact {
+  .sociaux,
+  .equipe {
     //  padding: 1%; le footer fait déjà la job.
     width: 90%;
     display: flex;
@@ -38,11 +36,11 @@ footer::after {
   font-style: normal;
   color: white;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-  top: -19%;
+  top: -50px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #003d5b;
-  padding: 1rem 2rem 3rem 3.5rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   border-radius: 8px 8px 0 0; /* For tab effect */
   cursor: pointer;
   display: flex;
@@ -59,8 +57,8 @@ footer::before {
   color: white;
   position: absolute;
   z-index: 3;
-  top: -14%;
-  left: calc(50% - 70px); /* pour tricher */
+  top: -35px;
+  left: calc(50% - 63px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
@@ -73,8 +71,7 @@ footer::before {
 }
 
 /* ça me montre le footer quand qu'y est checked*/
-#checkFoot:checked + label footer,
-#checkFoot:checked + label .footer2 {
+#checkFoot:checked + label footer {
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 1);
 
@@ -82,7 +79,7 @@ footer::before {
 }
 
 #checkFoot:not(:checked) + label footer:hover {
-  transform: translateY(-2%);
+  transform: translateY(-5px);
 }
 
 /* quand le footer est ouvert */
@@ -90,20 +87,19 @@ footer::before {
   content: "\f070"; /* je ferme loeil */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-
   position: absolute;
   z-index: 3; //sinon sa sort apres lautre
-  top: -14%;
-  left: calc(50% - 70px);
+  //top: -14%;
+  left: calc(50% - 63px);
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -15%;
+  top: -35px;
   color: #d1495d;
 }
 
-/* pour garder la forme de longlet */
+/* pour garder la forme de longlet 
 #checkFoot:checked + label footer::after {
   padding: 1rem 2rem 3rem 3.5rem;
-}
+}*/
 
 footer p {
   font-family: "breakers-slab", sans-serif;
@@ -126,7 +122,10 @@ footer a {
 .sociaux ul {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2%;
+  width: 100%;
+  //border: 1px solid red;
   //transform: rotate(-25deg) skew(25deg);
   transform-style: preserve-3d; // pour donner effet 3d genr
 }
@@ -134,12 +133,12 @@ footer a {
 .sociaux ul li {
   position: relative;
   list-style: none;
-  width: 60px;
-  height: 60px;
-  margin: 0px 20px;
+  width: 40px;
+  height: 40px;
+  margin: 20px 20px;
   //border: 1px solid red;
   // border: 1px solid red;
-  border: 1px solid white;
+  // border: 1px solid white;
 }
 
 /***********************************************************************
@@ -243,38 +242,39 @@ footer a {
 /**********************************************************************/
 
 /************************** Pour les tablettes *****************/
-@media only screen and (min-width: 768px) and (max-width: 1025px) {
+@media only screen and (min-width: 768px) {
   footer {
-    bottom: -37%;
+    bottom: -41vh; /* Adjust for tablets */
   }
 
-  footer::after {
-    top: -20%;
-  }
-
-  footer::before {
-    top: -15%;
+  .sociaux ul li {
+    width: 60px;
+    height: 60px;
   }
 }
 
 /************************** Pour les bureaux *****************/
-@media only screen and (min-width: 1025px) and (max-width: 1350px) {
+@media only screen and (min-width: 1025px) {
   footer {
-    bottom: -40%;
+    bottom: -44vh; /* Adjust for tablets */
   }
 
-  footer::after {
-    top: -21%;
-  }
-
-  footer::before {
-    top: -16%;
+  .sociaux ul li {
+    width: 80px;
+    height: 80px;
   }
 }
 
 /************************** Pour les plus grands *****************/
 @media only screen and (min-width: 1350px) {
   footer {
-    bottom: -43%;
+    bottom: -47vh; /* Adjust for tablets */
+  }
+}
+
+/************************** Pour les plus grands *****************/
+@media only screen and (min-width: 1750px) {
+  footer {
+    bottom: -50vh; /* Adjust for tablets */
   }
 }

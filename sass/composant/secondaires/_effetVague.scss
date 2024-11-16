@@ -13,12 +13,12 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Wave animation */
+/* vague animation */
 .effetVague:hover span {
-  animation: wave 0.5s ease;
+  animation: vague 0.5s ease;
 }
 
-@keyframes wave {
+@keyframes vague {
   0%,
   100% {
     transform: translateY(0);

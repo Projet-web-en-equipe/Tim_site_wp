@@ -1,0 +1,46 @@
+/*:root {
+  --couleur-nuage: #fff;
+  --ombre-nuage: #ccc;
+}
+
+.nuage {
+  position: relative;
+  top: 50%; /* Position it on the page 
+  left: 50%;
+  width: 350px;
+  height: 150px;
+  background-color: var(--couleur-nuage);
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  border-radius: 100px;
+  box-shadow: 0 0 10px var(--couleur-nuage);
+  box-shadow: inset -10px -10px 30px var(--ombre-nuage);
+}*/
+
+.nuage::before {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--couleur-nuage);
+  top: -50px;
+  left: 50px;
+  box-shadow: 0 0 10px var(--couleur-nuage);
+  box-shadow: inset -5px -5px 15px var(--ombre-nuage);
+  //z-index: 2;
+}
+
+.nuage::after {
+  position: absolute;
+  content: "";
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: var(--couleur-nuage);
+  top: -70px;
+  left: 120px;
+  // z-index: 2;
+  box-shadow: 0 0 10px var(--couleur-nuage);
+  // box-shadow: inset -10px -10px 30px var(--ombre-nuage);
+}
