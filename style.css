@@ -608,11 +608,9 @@ main div section#info p {
     display: none;
   }
 }
-.conteneurBlur {
-  transition: filter 0.5s ease;
-}
-
-#ctnAnim {
+.ctnAnim {
+  /*avant c'était #ctnAnim.... mais pour le javascript
+  j'ai dû changer ça par une class*/
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -620,8 +618,19 @@ main div section#info p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadeOut 5s 5s forwards;
+  animation: fadeOut 4s 4s forwards;
   z-index: 10000;
+}
+
+/*pour faire l'effet background, jai crée un autre div, qui prend toute la place
+vh et vw, derrière l'animation ctnAnim, pour aisni l'animer séparemment*/
+.montrerArrierePlan {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9000;
+  animation: FadeOutArrierePlan 2s 4s forwards;
 }
 
 .titreH1,
@@ -687,6 +696,19 @@ main div section#info p {
   to {
     opacity: 0;
     transform: translateY(-1000px);
+  }
+}
+/* Animation for faster background fade-out */
+@keyframes FadeOutArrierePlan {
+  from {
+    background: #003d5b;
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 .effetVague {
@@ -914,49 +936,6 @@ nav.nav-filtre input {
   transform: rotate(-45deg); /* Initial angle */
 }
 
-/*:root {
-  --couleur-nuage: #fff;
-  --ombre-nuage: #ccc;
-}
-
-.nuage {
-  position: relative;
-  top: 50%; /* Position it on the page 
-  left: 50%;
-  width: 350px;
-  height: 150px;
-  background-color: var(--couleur-nuage);
-  z-index: 5;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-  box-shadow: inset -10px -10px 30px var(--ombre-nuage);
-}*/
-.nuage::before {
-  position: absolute;
-  content: "";
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--couleur-nuage);
-  top: -50px;
-  left: 50px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-  box-shadow: inset -5px -5px 15px var(--ombre-nuage);
-}
-
-.nuage::after {
-  position: absolute;
-  content: "";
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: var(--couleur-nuage);
-  top: -70px;
-  left: 120px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-}
-
 #hot-toast {
   position: fixed;
   display: flex;
@@ -966,6 +945,7 @@ nav.nav-filtre input {
   width: 62%;
   top: 15%;
   left: 50%;
+  height: 15%;
   transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
   background: #003d5b;
   color: #fff;
@@ -1049,6 +1029,7 @@ nav.nav-filtre input {
 }
 
 #hot-toast .borderGauche {
+  position: absolute;
   top: 0;
   left: 0;
   width: 12px;
@@ -1060,6 +1041,7 @@ nav.nav-filtre input {
 }
 
 #hot-toast .borderDroit {
+  position: absolute;
   top: 0;
   right: 0;
   width: 12px;
@@ -1070,7 +1052,7 @@ nav.nav-filtre input {
   border-bottom-right-radius: 8px;
 }
 
-/* Puis ensuite les animations */
+/* Puis ensuite les */
 @keyframes mouvementLigne {
   0% {
     background-position: 0 0;
@@ -1444,8 +1426,7 @@ body {
   overflow-y: hidden;
 }
 
-body,
-.conteneurBlur {
+body {
   width: 100vw;
   height: 100vh;
   position: relative;

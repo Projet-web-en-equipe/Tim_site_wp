@@ -3,8 +3,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-body,
-.conteneurBlur {
+body {
   width: 100vw; // en donnant le width en vw au body, le reste des composants doivent être en pourcentage pour mieux s'adapter
   height: 100vh; // voir le comment en hau
   position: relative; // j'ai laissé cette position (la seule) pour le canvas.
