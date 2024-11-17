@@ -79,6 +79,11 @@ header ul {
   color: orange;
 }
 
+/* Style de la liste dans les articles */
+.wp-block-list li {
+  font-family: "breakers-slab", sans-serif;
+}
+
 header ul li a {
   transition: color 0.3s ease;
 }
@@ -264,8 +269,7 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -438,14 +442,33 @@ main section .banniere {
   width: 50vw;
 }
 
-main section img {
+main section .image-container {
+  position: relative;
   width: 100%;
   height: auto;
-  max-height: 80vh;
 }
 
-main section img:hover {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/DSC_9990-scaled.jpg");
+main section .image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease; /* Transition pour l'effet de fondu */
+}
+
+main section .image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Cache l'image au début */
+  z-index: 1; /* Place cette image au-dessus de l'image d'origine */
+}
+
+main section .image-container:hover .image-hover {
+  opacity: 1; /* Affiche l'image au survol */
+}
+
+main section .image-container:hover .image-original {
+  opacity: 0; /* Cache l'image originale au survol */
 }
 
 main section h2 {
@@ -475,6 +498,30 @@ main section h2 {
     margin: 2rem;
     max-height: 80vh;
     overflow-y: scroll;
+    scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
+    width: 25%;
+  }
+  main section .banniere {
+    position: relative;
+    width: 15vw;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  main section h2 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  main section h2 {
+    font-size: 2rem;
+  }
+  main section#carrousel {
+    padding: 0;
+    margin: 2rem;
+    max-height: 80vh;
+    overflow-y: scroll;
+    scrollbar-color: var(--couleur-bleu-fonce) rgba(255, 255, 255, 0.6235294118);
     width: 25%;
   }
   main section .banniere {
@@ -512,16 +559,23 @@ main div section#info {
   display: none;
   position: absolute;
   bottom: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90vh;
   width: 98vw;
-  background: rgba(255, 255, 255, 0.479);
+  background: rgba(255, 255, 255, 0.774);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px 10px 0 0;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   transition: height 0.5s ease;
+  z-index: 2;
+}
+main div section#info div.text {
+  margin: 1rem auto;
+  width: 90%;
+  padding: 2%;
 }
 main div section#info::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -549,7 +603,8 @@ main div section#info img {
   width: auto;
   height: 50%;
   max-width: 80vw;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   padding: 1rem;
 }
 main div #close-info {
@@ -578,7 +633,7 @@ main div #close-info:hover {
 }
 main div section#info p {
   margin: 0 auto;
-  width: 90vw;
+  width: 85vw;
 }
 
 @media only screen and (min-width: 1025px) {
@@ -589,9 +644,10 @@ main div section#info p {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 75vw;
+    width: 70vw;
     border-radius: 10px;
     margin-top: 2%;
+    background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   }
   main div h1 {
     margin: 0 auto;
@@ -599,6 +655,8 @@ main div section#info p {
   main div div.text {
     margin: 1rem auto;
     width: 90%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.274);
   }
   main div section#info p {
     margin: 0 auto;
@@ -917,6 +975,215 @@ nav.nav-filtre input {
     padding-left: 2rem;
   }
 }
+/* Centered bird */
+.bird {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px; /* Adjusted size for better visibility */
+  height: 50px; /* Adjusted size for better visibility */
+  z-index: 500;
+}
+
+/* Wing styling */
+.bird::before,
+.bird::after {
+  content: "";
+  position: absolute;
+  width: 20px; /* Wing width */
+  height: 10px; /* Wing height */
+  border-radius: 50%;
+  transform-origin: center center;
+}
+
+/* Left wing */
+.bird::before {
+  left: -15px; /* Positioned left of center */
+  top: 0; /* Aligned vertically */
+  transform: rotate(45deg); /* Initial angle */
+}
+
+/* Right wing */
+.bird::after {
+  left: 15px; /* Positioned right of center */
+  top: 0; /* Aligned vertically */
+  transform: rotate(-45deg); /* Initial angle */
+}
+
+/*:root {
+  --couleur-nuage: #fff;
+  --ombre-nuage: #ccc;
+}
+
+.nuage {
+  position: relative;
+  top: 50%; /* Position it on the page 
+  left: 50%;
+  width: 350px;
+  height: 150px;
+  background-color: var(--couleur-nuage);
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  border-radius: 100px;
+  box-shadow: 0 0 10px var(--couleur-nuage);
+  box-shadow: inset -10px -10px 30px var(--ombre-nuage);
+}*/
+.nuage::before {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--couleur-nuage);
+  top: -50px;
+  left: 50px;
+  box-shadow: 0 0 10px var(--couleur-nuage);
+  box-shadow: inset -5px -5px 15px var(--ombre-nuage);
+}
+
+.nuage::after {
+  position: absolute;
+  content: "";
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: var(--couleur-nuage);
+  top: -70px;
+  left: 120px;
+  box-shadow: 0 0 10px var(--couleur-nuage);
+}
+
+#hot-toast {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 62%;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
+  background: #003d5b;
+  color: #fff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 12px 16px rgb(0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+#hot-toast.montrerToast {
+  animation: mouvementToast 5s ease forwards; /* 9s to cover the full effect duration */
+}
+
+#hot-toast p {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
+  line-height: 1.2;
+  padding: 2rem;
+}
+
+#hot-toast p:first-of-type {
+  color: #d1495d;
+}
+
+/* animation du mouvement */
+@keyframes mouvementToast {
+  0% {
+    transform: translateX(-50%) translateX(-100%); /* arrive de la gauche et devient visible en même temps */
+    opacity: 0;
+    visibility: visible;
+  }
+  10% {
+    transform: translateX(-50%) translateX(0); /* ensuite reste au centre pendant quelque temps */
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    transform: translateX(-50%) translateX(10px); /*pis ça dégage vers la droite */
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: translateX(-50%) translateX(100%); /* adios */
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* ANIMATION DES BORDURES. QUAND MÊME ASSEZ COMPLEXE AYOYE */
+#hot-toast::before,
+#hot-toast::after,
+#hot-toast .border-left,
+#hot-toast .border-right {
+  content: "";
+  position: absolute;
+  background: repeating-linear-gradient(to right, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
+  animation: mouvementLigne 2s linear infinite;
+}
+
+#hot-toast::before {
+  top: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#hot-toast::after {
+  bottom: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#hot-toast .borderGauche {
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
+  animation: mouvementLigneVertical 2s linear infinite;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#hot-toast .borderDroit {
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
+  animation: mouvementLigneVertical 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Puis ensuite les animations */
+@keyframes mouvementLigne {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+@keyframes mouvementLigneVertical {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
 /*Composants principaux*/
 footer {
   position: absolute;
@@ -932,6 +1199,7 @@ footer {
   color: white;
   padding-bottom: 5%;
   padding-top: 5%;
+  z-index: 5;
 }
 footer .sociaux,
 footer .equipe {
@@ -1173,7 +1441,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
   width: 100vw;
   height: 100vh;
 }
@@ -1215,6 +1482,7 @@ main #titre {
   main #titre {
     position: static;
     margin-bottom: 1rem;
+    margin-top: 5rem;
   }
   main .content-wrapper {
     display: flex;
@@ -1239,6 +1507,7 @@ header.category {
   align-items: center;
   justify-content: space-between;
   margin: 1%;
+  position: absolute;
 }
 
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
@@ -1330,17 +1599,17 @@ canvas {
 }
 
 /*Divers*/
-/* Enlever l'image de fond d'océan */
 /* Styles pour la div contenant le message d'erreur */
 #titre404 {
   color: var(--couleur-rouge-clair);
 }
 
 #texteErreur {
-  text-align: center;
   color: var(--couleur-or-clair);
-  position: absolute; /* Pour positionner le texte à l'intérieur de la bordure inférieure */
-  padding: 10px 20px; /* Espace autour du texte */
+  left: 0;
+  right: 0;
+  margin-bottom: -190px; /* Déplacer le texte vers la bordure inférieure */
+  z-index: 1; /* S'assurer que le texte est au-dessus de la bordure */
 }
 
 #texteErreur h2, #texteErreur p {
@@ -1354,29 +1623,38 @@ canvas {
   align-items: center;
   justify-content: flex-end;
   width: 40%;
-  height: 40%; /* Hauteur modifiable pour ajuster la taille de l'élément */
+  height: 40%;
   margin: 0 auto;
   padding-top: 2%;
   margin-top: 5%;
   background-color: var(--couleur-bleu-fonce);
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond */
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond de Eric noyé */
   background-size: cover; /* Couvre toute la section */
-  background-position: center center; /* Centrer l'image */
-  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  background-position: center center;
+  background-repeat: no-repeat;
   transform: rotate(-5deg);
   border: 6px solid #FFFFFF;
-  border-bottom: 150px solid #FFFFFF; /* Bordure inférieure blanche */
+  border-bottom: 190px solid #FFFFFF; /* Bordure inférieure blanche style polaroid*/
   text-align: center;
-  position: relative; /* Nécessaire pour que le texte soit bien positionné à l'intérieur */
+  position: relative; /* Pour que le texte soit bien positionné à l'intérieur */
+  overflow: visible; /* S'assurer que le texte peut dépasser la bordure */
 }
 
 /*Media query pour la version mobile responsive*/
 @media screen and (max-width: 1000px) {
+  #erreur_404 {
+    margin-top: 45%;
+    width: 80%;
+  }
   #erreur_404 section {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  #texteErreur {
+    position: absolute;
+    bottom: 0;
   }
   #menu-piedpage {
     display: none;

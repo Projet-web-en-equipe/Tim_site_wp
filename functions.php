@@ -80,10 +80,15 @@ function display_category_menu()
         echo '<a href="' . get_category_link($category->term_id) . '" class="effetVague effetCouleur' . ucfirst($category->slug) . '">';
         
         // Ajoute chaque lettre de la catégorie dans un <span>
-        $letters = mb_str_split($category->name); // Utilisez mb_str_split pour bien gérer les accents
+        $letters = preg_split('//u', $category->name, -1, PREG_SPLIT_NO_EMPTY); // Découpe chaque caractère, y compris les espaces
         foreach ($letters as $letter) {
-            echo '<span>' . htmlentities($letter, ENT_QUOTES, 'UTF-8') . '</span>';
+            if ($letter === ' ') {
+                echo '<span class="space">&nbsp;</span>'; // Traite les espaces avec une classe spéciale
+            } else {
+                echo '<span>' . htmlentities($letter, ENT_QUOTES, 'UTF-8') . '</span>';
+            }
         }
+        
         
 
         // Ajoute l'icône dans un span avec la classe dernierSpan

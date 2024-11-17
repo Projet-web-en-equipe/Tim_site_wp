@@ -1,7 +1,7 @@
 <?php
 get_header();
 ?>
-<div id="ctnAnim">
+ <div id="ctnAnim">
     <div id="ctnTitre">
         <h1 class="titreH2 anim1">Bienvenue</h1>
         <h1 class="titreH2 anim2">au</h1>
