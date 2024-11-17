@@ -5,7 +5,8 @@ nav.nav-filtre {
     align-items: flex-start;
     position: relative;
     width: 100%;
-    margin: 2rem 0rem 2rem 2rem;
+    margin: 2rem 0rem 2rem 4rem;
+    height: 5%;
 }
 
 nav.nav-filtre label {
@@ -16,6 +17,8 @@ nav.nav-filtre label {
     padding-left: 1rem;
     background: var(--tertiaire);
     box-sizing: border-box;
+    // border-radius: 0rem;
+    // transition: border-radius 0.5s;
 }
 
 nav.nav-filtre label span {
@@ -30,6 +33,10 @@ nav.nav-filtre input[type="checkbox"] {
     display: none;
 }
 
+nav.nav-filtre input[type="checkbox"]:checked ~ nav.nav-filtre label {
+    border-radius: 1rem;
+}
+
 nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
     max-height: 32rem;
 }
@@ -42,7 +49,7 @@ ul.slide {
     text-align: left;
     transition: max-height 1s;
     list-style-type: none;
-    padding-left: 1rem;
+    padding-left: 0rem;
     position: absolute;
     top: 100%;
     background: var(--tertiaire);
@@ -51,11 +58,20 @@ ul.slide {
     box-sizing: border-box;
 }
 
+ul.slide li {
+    padding-left: 1rem;
+}
+
 ul.slide li:hover {
     background: var(--secondaire);
 }
 
 ul.slide li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
     font-family: "breakers-slab", sans-serif;
     font-style: normal;
     font-size: 2rem;
@@ -64,5 +80,32 @@ ul.slide li a{
 nav.nav-filtre input {
     position: absolute;
     opacity: 0;
-    height: 0px;
+    height: 0;
+}
+
+@media only screen and (max-width: 1025px) {
+    nav.nav-filtre {
+        display: flex;
+        align-items: center;
+        margin: 2rem 0rem 2rem 0rem;
+    }
+    nav.nav-filtre label {
+        display: flex;
+        justify-content: flex-start;
+        //padding-left: 0;
+        width: 50%;
+    }
+    ul.slide {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+    }
+    ul.slide li {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding-left: 2rem;
+    }
 }

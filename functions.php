@@ -39,7 +39,9 @@ function register_category_menu()
 }
 add_action('init', 'register_category_menu');
 
-function display_category_menu() {
+function display_category_menu()
+{
+    // Récupère uniquement les catégories parent (parent = 0 signifie pas de parent)
     $args = array(
         'parent' => 0,
         'exclude' => 1 // Exclut la catégorie avec l'ID 1 (généralement "Uncategorized")
@@ -95,10 +97,60 @@ function display_category_menu() {
 
 
 
-
-function category_menu_shortcode() {
+function category_menu_shortcode()
+{
     ob_start();
     display_category_menu();
     return ob_get_clean();
 }
 add_shortcode('category_menu', 'category_menu_shortcode');
+
+function filter_category()
+{
+    // Check if category_id is set and is a valid integer
+    if (isset($_GET['category_id']) && intval($_GET['category_id']) > 0) {
+        $category_id = intval($_GET['category_id']);
+        $args = array(
+            'cat' => $category_id,
+            'posts_per_page' => -1
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $category_cours = get_category_by_slug("cours");
+?>
+                <div class="banniere" data-id="<?php the_ID(); ?>">
+                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
+                    <h2>
+                        <?php
+                        if (has_category($category_cours->term_id)) {
+                            echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7));
+                        } else {
+                            the_title();
+                        }
+                        ?>
+                    </h2>
+                </div>
+                <div id="post-content-<?php the_ID(); ?>" style="display: none;">
+                    <h1><?php the_title(); ?></h1>
+                    <div><?php the_content(); ?></div>
+                </div>
+<?php
+            endwhile;
+        else :
+            echo '<p>Aucun article disponible pour le moment.</p>';
+        endif;
+
+        wp_reset_postdata();
+    } else {
+        echo '<p>Catégorie non valide.</p>';
+    }
+
+    die();
+}
+
+// Hook the function to handle AJAX requests
+add_action('wp_ajax_filter_category', 'filter_category');
+add_action('wp_ajax_nopriv_filter_category', 'filter_category');

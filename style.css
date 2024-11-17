@@ -264,7 +264,8 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -548,8 +549,7 @@ main div section#info img {
   width: auto;
   height: 50%;
   max-width: 80vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   padding: 1rem;
 }
 main div #close-info {
@@ -816,7 +816,8 @@ nav.nav-filtre {
   align-items: flex-start;
   position: relative;
   width: 100%;
-  margin: 2rem 0rem 2rem 2rem;
+  margin: 2rem 0rem 2rem 4rem;
+  height: 5%;
 }
 
 nav.nav-filtre label {
@@ -841,6 +842,10 @@ nav.nav-filtre input[type=checkbox] {
   display: none;
 }
 
+nav.nav-filtre input[type=checkbox]:checked ~ nav.nav-filtre label {
+  border-radius: 1rem;
+}
+
 nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
   max-height: 32rem;
 }
@@ -853,7 +858,7 @@ ul.slide {
   text-align: left;
   transition: max-height 1s;
   list-style-type: none;
-  padding-left: 1rem;
+  padding-left: 0rem;
   position: absolute;
   top: 100%;
   background: var(--tertiaire);
@@ -862,11 +867,20 @@ ul.slide {
   box-sizing: border-box;
 }
 
+ul.slide li {
+  padding-left: 1rem;
+}
+
 ul.slide li:hover {
   background: var(--secondaire);
 }
 
 ul.slide li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
   font-family: "breakers-slab", sans-serif;
   font-style: normal;
   font-size: 2rem;
@@ -875,216 +889,32 @@ ul.slide li a {
 nav.nav-filtre input {
   position: absolute;
   opacity: 0;
-  height: 0px;
+  height: 0;
 }
 
-/* Centered bird */
-.bird {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px; /* Adjusted size for better visibility */
-  height: 50px; /* Adjusted size for better visibility */
-  z-index: 500;
-}
-
-/* Wing styling */
-.bird::before,
-.bird::after {
-  content: "";
-  position: absolute;
-  width: 20px; /* Wing width */
-  height: 10px; /* Wing height */
-  border-radius: 50%;
-  transform-origin: center center;
-}
-
-/* Left wing */
-.bird::before {
-  left: -15px; /* Positioned left of center */
-  top: 0; /* Aligned vertically */
-  transform: rotate(45deg); /* Initial angle */
-}
-
-/* Right wing */
-.bird::after {
-  left: 15px; /* Positioned right of center */
-  top: 0; /* Aligned vertically */
-  transform: rotate(-45deg); /* Initial angle */
-}
-
-/*:root {
-  --couleur-nuage: #fff;
-  --ombre-nuage: #ccc;
-}
-
-.nuage {
-  position: relative;
-  top: 50%; /* Position it on the page 
-  left: 50%;
-  width: 350px;
-  height: 150px;
-  background-color: var(--couleur-nuage);
-  z-index: 5;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-  box-shadow: inset -10px -10px 30px var(--ombre-nuage);
-}*/
-.nuage::before {
-  position: absolute;
-  content: "";
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--couleur-nuage);
-  top: -50px;
-  left: 50px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-  box-shadow: inset -5px -5px 15px var(--ombre-nuage);
-}
-
-.nuage::after {
-  position: absolute;
-  content: "";
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: var(--couleur-nuage);
-  top: -70px;
-  left: 120px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-}
-
-#hot-toast {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 62%;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
-  background: #003d5b;
-  color: #fff;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 12px 16px rgb(0, 0, 0);
-  opacity: 0;
-  visibility: hidden;
-  overflow: hidden;
-  z-index: 1000;
-}
-
-#hot-toast.montrerToast {
-  animation: mouvementToast 5s ease forwards; /* 9s to cover the full effect duration */
-}
-
-#hot-toast p {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
-  line-height: 1.2;
-  padding: 2rem;
-}
-
-#hot-toast p:first-of-type {
-  color: #d1495d;
-}
-
-/* animation du mouvement */
-@keyframes mouvementToast {
-  0% {
-    transform: translateX(-50%) translateX(-100%); /* arrive de la gauche et devient visible en même temps */
-    opacity: 0;
-    visibility: visible;
+@media only screen and (max-width: 1025px) {
+  nav.nav-filtre {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0rem 2rem 0rem;
   }
-  10% {
-    transform: translateX(-50%) translateX(0); /* ensuite reste au centre pendant quelque temps */
-    opacity: 1;
-    visibility: visible;
+  nav.nav-filtre label {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
   }
-  90% {
-    transform: translateX(-50%) translateX(10px); /*pis ça dégage vers la droite */
-    opacity: 1;
-    visibility: visible;
+  ul.slide {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
   }
-  100% {
-    transform: translateX(-50%) translateX(100%); /* adios */
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-/* ANIMATION DES BORDURES. QUAND MÊME ASSEZ COMPLEXE AYOYE */
-#hot-toast::before,
-#hot-toast::after,
-#hot-toast .border-left,
-#hot-toast .border-right {
-  content: "";
-  position: absolute;
-  background: repeating-linear-gradient(to right, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
-  animation: mouvementLigne 2s linear infinite;
-}
-
-#hot-toast::before {
-  top: 0;
-  left: 0;
-  height: 12px;
-  width: 100%;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-#hot-toast::after {
-  bottom: 0;
-  left: 0;
-  height: 12px;
-  width: 100%;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-#hot-toast .borderGauche {
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 100%;
-  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
-  animation: mouvementLigneVertical 2s linear infinite;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-#hot-toast .borderDroit {
-  top: 0;
-  right: 0;
-  width: 12px;
-  height: 100%;
-  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
-  animation: mouvementLigneVertical 2s linear infinite;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-/* Puis ensuite les animations */
-@keyframes mouvementLigne {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 40px 0;
-  }
-}
-@keyframes mouvementLigneVertical {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 40px;
+  ul.slide li {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 2rem;
   }
 }
 /*Composants principaux*/
