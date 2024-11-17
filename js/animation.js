@@ -43,8 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Ferme la section d'information quand on clique sur le bouton de fermeture
     closeBtn.addEventListener("click", () => {
-        infoSection.style.display = "none";
+        const infoHeight = infoSection.offsetHeight;
+
+        // Ajoute une transition pour l'animation
+        infoSection.style.transition = "transform 0.3s ease";
+        infoSection.style.transform = `translateY(${infoHeight}px)`; // Fait descendre l'élément hors de l'écran
+
+        // Après l'animation, masque la section
+        setTimeout(() => {
+            infoSection.style.display = "none";
+            infoSection.style.transform = "translateY(0)"; // Réinitialise la position pour un affichage futur
+            infoSection.style.transition = "none"; // Réinitialise la transition
+        }, 300); // Correspond à la durée de la transition (0.3s)
     });
+
 
     // Vérifie les changements de taille d'écran à intervalles réguliers
     setInterval(() => {
