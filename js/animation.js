@@ -14,21 +14,30 @@ document.addEventListener("DOMContentLoaded", () => {
         return window.innerWidth <= 1024 && window.innerHeight > window.innerWidth;
     }
 
-    // Affiche les informations du cours en fonction de l'ID du post
-    function afficherCours(postId) {
-        const postContent = document.getElementById(`post-content-${postId}`);
-        if (postContent) {
-            coursName.innerHTML = postContent.querySelector("h1").innerText;
-            coursText.innerHTML = postContent.querySelector("div").innerHTML;
-            infoSection.style.display = "block";
+// Affiche les informations du cours en fonction de l'ID du post
+function afficherCours(postId) {
+    const postContent = document.getElementById(`post-content-${postId}`);
+    if (postContent) {
+        coursName.innerHTML = postContent.querySelector("h1").innerText;
+        coursText.innerHTML = postContent.querySelector("div").innerHTML;
+
+        infoSection.style.display = "block";
+
+        // Applique l'animation uniquement si l'appareil est en mode mobile/tablette portrait
+        if (isMobileOrTabletPortrait()) {
             infoSection.style.transform = "translateY(100%)"; // Commence en bas
             setTimeout(() => {
                 infoSection.style.transition = "transform 0.3s ease";
                 infoSection.style.transform = "translateY(0)"; // Anime vers le haut
                 infoSection.classList.add("info-visible"); // Ajoute la classe
             }, 10); // Petit délai pour permettre le rendu initial
+        } else {
+            // Réinitialise les styles pour un affichage instantané sur bureau
+            infoSection.style.transition = "none";
+            infoSection.style.transform = "none";
         }
     }
+}
 
     // Affiche automatiquement le premier cours si l'appareil n'est pas en mode mobile/tablette portrait
     if (coursItems.length > 0 && !isMobileOrTabletPortrait()) {
