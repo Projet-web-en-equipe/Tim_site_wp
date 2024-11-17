@@ -79,6 +79,11 @@ header ul {
   color: orange;
 }
 
+/* Style de la liste dans les articles */
+.wp-block-list li {
+  font-family: "breakers-slab", sans-serif;
+}
+
 header ul li a {
   transition: color 0.3s ease;
 }
@@ -437,14 +442,33 @@ main section .banniere {
   width: 50vw;
 }
 
-main section img {
+main section .image-container {
+  position: relative;
   width: 100%;
   height: auto;
-  max-height: 80vh;
 }
 
-main section img:hover {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/DSC_9990-scaled.jpg");
+main section .image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease; /* Transition pour l'effet de fondu */
+}
+
+main section .image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Cache l'image au début */
+  z-index: 1; /* Place cette image au-dessus de l'image d'origine */
+}
+
+main section .image-container:hover .image-hover {
+  opacity: 1; /* Affiche l'image au survol */
+}
+
+main section .image-container:hover .image-original {
+  opacity: 0; /* Cache l'image originale au survol */
 }
 
 main section h2 {
@@ -474,6 +498,30 @@ main section h2 {
     margin: 2rem;
     max-height: 80vh;
     overflow-y: scroll;
+    scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
+    width: 25%;
+  }
+  main section .banniere {
+    position: relative;
+    width: 15vw;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  main section h2 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  main section h2 {
+    font-size: 2rem;
+  }
+  main section#carrousel {
+    padding: 0;
+    margin: 2rem;
+    max-height: 80vh;
+    overflow-y: scroll;
+    scrollbar-color: var(--couleur-bleu-fonce) rgba(255, 255, 255, 0.6235294118);
     width: 25%;
   }
   main section .banniere {
@@ -514,13 +562,19 @@ main div section#info {
   overflow-y: scroll;
   height: 90vh;
   width: 98vw;
-  background: rgba(255, 255, 255, 0.479);
+  background: rgba(255, 255, 255, 0.774);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px 10px 0 0;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   transition: height 0.5s ease;
+}
+main div section#info div.text {
+  margin: 1rem auto;
+  width: 90%;
+  padding: 2%;
 }
 main div section#info::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -578,7 +632,7 @@ main div #close-info:hover {
 }
 main div section#info p {
   margin: 0 auto;
-  width: 90vw;
+  width: 85vw;
 }
 
 @media only screen and (min-width: 1025px) {
@@ -589,9 +643,10 @@ main div section#info p {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 75vw;
+    width: 70vw;
     border-radius: 10px;
     margin-top: 2%;
+    background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   }
   main div h1 {
     margin: 0 auto;
@@ -599,6 +654,8 @@ main div section#info p {
   main div div.text {
     margin: 1rem auto;
     width: 90%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.274);
   }
   main div section#info p {
     margin: 0 auto;
@@ -1343,7 +1400,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
   width: 100vw;
   height: 100vh;
 }
@@ -1385,6 +1441,7 @@ main #titre {
   main #titre {
     position: static;
     margin-bottom: 1rem;
+    margin-top: 5rem;
   }
   main .content-wrapper {
     display: flex;
@@ -1409,6 +1466,7 @@ header.category {
   align-items: center;
   justify-content: space-between;
   margin: 1%;
+  position: absolute;
 }
 
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
@@ -1500,17 +1558,17 @@ canvas {
 }
 
 /*Divers*/
-/* Enlever l'image de fond d'océan */
 /* Styles pour la div contenant le message d'erreur */
 #titre404 {
   color: var(--couleur-rouge-clair);
 }
 
 #texteErreur {
-  text-align: center;
   color: var(--couleur-or-clair);
-  position: absolute; /* Pour positionner le texte à l'intérieur de la bordure inférieure */
-  padding: 10px 20px; /* Espace autour du texte */
+  left: 0;
+  right: 0;
+  margin-bottom: -190px; /* Déplacer le texte vers la bordure inférieure */
+  z-index: 1; /* S'assurer que le texte est au-dessus de la bordure */
 }
 
 #texteErreur h2, #texteErreur p {
@@ -1524,29 +1582,38 @@ canvas {
   align-items: center;
   justify-content: flex-end;
   width: 40%;
-  height: 40%; /* Hauteur modifiable pour ajuster la taille de l'élément */
+  height: 40%;
   margin: 0 auto;
   padding-top: 2%;
   margin-top: 5%;
   background-color: var(--couleur-bleu-fonce);
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond */
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond de Eric noyé */
   background-size: cover; /* Couvre toute la section */
-  background-position: center center; /* Centrer l'image */
-  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  background-position: center center;
+  background-repeat: no-repeat;
   transform: rotate(-5deg);
   border: 6px solid #FFFFFF;
-  border-bottom: 150px solid #FFFFFF; /* Bordure inférieure blanche */
+  border-bottom: 190px solid #FFFFFF; /* Bordure inférieure blanche style polaroid*/
   text-align: center;
-  position: relative; /* Nécessaire pour que le texte soit bien positionné à l'intérieur */
+  position: relative; /* Pour que le texte soit bien positionné à l'intérieur */
+  overflow: visible; /* S'assurer que le texte peut dépasser la bordure */
 }
 
 /*Media query pour la version mobile responsive*/
 @media screen and (max-width: 1000px) {
+  #erreur_404 {
+    margin-top: 45%;
+    width: 80%;
+  }
   #erreur_404 section {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  #texteErreur {
+    position: absolute;
+    bottom: 0;
   }
   #menu-piedpage {
     display: none;
