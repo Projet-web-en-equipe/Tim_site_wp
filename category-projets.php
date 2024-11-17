@@ -12,7 +12,7 @@
         <input type="checkbox" id="touch">
         <ul class="slide">
             <?php if ($parent_category): ?>
-                <li><a href="#" data-category-id="<?php echo $parent_category->term_id; ?>">Toutes les sessions</a></li>
+                <li><a href="#" data-category-id="<?php echo $parent_category->term_id; ?>">Tous les types</a></li>
                 <?php
                 $child_categories_args = array(
                     'child_of' => $parent_category->term_id,

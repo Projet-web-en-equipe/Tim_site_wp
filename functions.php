@@ -31,12 +31,14 @@ add_action('wp_enqueue_scripts', 'enqueue_script_style');
 // add_action('after_setup_theme', 'ajout_au_theme');
 
 
-function register_category_menu() {
+function register_category_menu()
+{
     register_nav_menu('category-menu', __('Menu Catégories'));
 }
 add_action('init', 'register_category_menu');
 
-function display_category_menu() {
+function display_category_menu()
+{
     // Récupère uniquement les catégories parent (parent = 0 signifie pas de parent)
     $args = array(
         'parent' => 0,
@@ -82,14 +84,16 @@ function display_category_menu() {
 
 
 
-function category_menu_shortcode() {
+function category_menu_shortcode()
+{
     ob_start();
     display_category_menu();
     return ob_get_clean();
 }
 add_shortcode('category_menu', 'category_menu_shortcode');
 
-function filter_category() {
+function filter_category()
+{
     // Check if category_id is set and is a valid integer
     if (isset($_GET['category_id']) && intval($_GET['category_id']) > 0) {
         $category_id = intval($_GET['category_id']);
@@ -102,16 +106,26 @@ function filter_category() {
 
         if ($query->have_posts()) :
             while ($query->have_posts()) : $query->the_post();
-                ?>
+                $category = get_the_category();
+                $category_name = $category[0]->cat_name;
+?>
                 <div class="banniere" data-id="<?php the_ID(); ?>">
                     <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
-                    <h2><?php echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
+                    <h2>
+                        <?php
+                        if ($category_name == 'cours') {
+                            echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7));
+                        } else {
+                            the_title();
+                        }
+                        ?>
+                    </h2>
                 </div>
                 <div id="post-content-<?php the_ID(); ?>" style="display: none;">
                     <h1><?php the_title(); ?></h1>
                     <div><?php the_content(); ?></div>
                 </div>
-                <?php
+<?php
             endwhile;
         else :
             echo '<p>Aucun article disponible pour le moment.</p>';
