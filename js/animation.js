@@ -21,7 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
             coursName.innerHTML = postContent.querySelector("h1").innerText;
             coursText.innerHTML = postContent.querySelector("div").innerHTML;
             infoSection.style.display = "block";
-            infoSection.style.transform = "translateY(0)"; // Réinitialise la position
+            infoSection.style.transform = "translateY(100%)"; // Commence en bas
+            setTimeout(() => {
+                infoSection.style.transition = "transform 0.3s ease";
+                infoSection.style.transform = "translateY(0)"; // Anime vers le haut
+                infoSection.classList.add("info-visible"); // Ajoute la classe
+            }, 10); // Petit délai pour permettre le rendu initial
         }
     }
 
@@ -29,8 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (coursItems.length > 0 && !isMobileOrTabletPortrait()) {
         const premierPostId = coursItems[0].getAttribute("data-id");
         afficherCours(premierPostId);
-    } else {
-        infoSection.style.display = "none";
     }
 
     // Ajoute un événement au clic pour chaque élément de cours
@@ -54,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
             infoSection.style.display = "none";
             infoSection.style.transform = "translateY(0)"; // Réinitialise la position pour un affichage futur
             infoSection.style.transition = "none"; // Réinitialise la transition
+            infoSection.classList.remove("info-visible"); // Retire la classe
         }, 300); // Correspond à la durée de la transition (0.3s)
     });
-
 
     // Vérifie les changements de taille d'écran à intervalles réguliers
     setInterval(() => {

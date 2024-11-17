@@ -570,6 +570,7 @@ main div section#info {
   border: 1px solid rgba(255, 255, 255, 0.18);
   background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   transition: height 0.5s ease;
+  z-index: 2;
 }
 main div section#info div.text {
   margin: 1rem auto;
@@ -1159,6 +1160,7 @@ footer {
   color: white;
   padding-bottom: 5%;
   padding-top: 5%;
+  z-index: 5;
 }
 footer .sociaux,
 footer .equipe {
