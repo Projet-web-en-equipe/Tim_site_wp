@@ -108,11 +108,14 @@
             fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=filter_category&category_id=${categoryId}`)
                 .then(response => response.text())
                 .then(data => {
-                    document.querySelector('#carrousel').innerHTML = data;
+                    const carrousel = document.querySelector('#carrousel');
+                    carrousel.innerHTML = data;
+                    carrousel.classList.add('custom-carrousel-class'); // Réappliquez une classe spécifique si nécessaire.
                     initializePostClickEvents();
                 })
                 .catch(error => console.error('Error:', error));
         }
+
 
         function initializePostClickEvents() {
             const posts = document.querySelectorAll('.banniere');

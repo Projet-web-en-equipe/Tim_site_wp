@@ -153,6 +153,31 @@ function filter_category()
     die();
 }
 
-// Hook the function to handle AJAX requests
-add_action('wp_ajax_filter_category', 'filter_category');
-add_action('wp_ajax_nopriv_filter_category', 'filter_category');
+add_action('wp_ajax_filter_category', 'filter_category_callback');
+add_action('wp_ajax_nopriv_filter_category', 'filter_category_callback');
+
+function filter_category_callback() {
+    $category_id = intval($_GET['category_id']);
+    
+    $args = array(
+        'cat' => $category_id,
+        'posts_per_page' => -1,
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) : $query->the_post(); ?>
+            <div class="banniere" data-id="<?php the_ID(); ?>">
+                <div class="image-container">
+                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
+                    <h2><?php the_title(); ?></h2>
+                </div>
+            </div>
+        <?php
+        endwhile;
+    } else {
+        echo '<h1>Aucun cours disponible pour le moment.</h1>';
+    }
+    wp_reset_postdata();
+    wp_die(); // Terminate the function properly.
+}
