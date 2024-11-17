@@ -835,6 +835,7 @@ nav.nav-filtre {
   position: relative;
   width: 100%;
   margin: 2rem 0rem 2rem 4rem;
+  height: 5%;
 }
 
 nav.nav-filtre label {
@@ -906,7 +907,7 @@ ul.slide li a {
 nav.nav-filtre input {
   position: absolute;
   opacity: 0;
-  height: 0px;
+  height: 0;
 }
 
 @media only screen and (max-width: 1025px) {

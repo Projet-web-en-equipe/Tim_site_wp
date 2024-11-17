@@ -106,14 +106,13 @@ function filter_category()
 
         if ($query->have_posts()) :
             while ($query->have_posts()) : $query->the_post();
-                $category = get_the_category();
-                $category_name = $category[0]->cat_name;
+                $category_cours = get_category_by_slug("cours");
 ?>
                 <div class="banniere" data-id="<?php the_ID(); ?>">
                     <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
                     <h2>
                         <?php
-                        if ($category_name == 'cours') {
+                        if (has_category($category_cours->term_id)) {
                             echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7));
                         } else {
                             the_title();

@@ -111,9 +111,24 @@
                 .then(response => response.text())
                 .then(data => {
                     document.querySelector('#carrousel').innerHTML = data;
+                    initializePostClickEvents();
                 })
                 .catch(error => console.error('Error:', error));
         }
+
+        function initializePostClickEvents() {
+            const posts = document.querySelectorAll('.banniere');
+            posts.forEach(post => {
+                post.addEventListener('click', function() {
+                    const postId = this.getAttribute('data-id');
+                    const postContent = document.getElementById(`post-content-${postId}`);
+                    document.getElementById('cours-name').textContent = postContent.querySelector('h1').textContent;
+                    document.querySelector('#info .text').innerHTML = postContent.querySelector('div').innerHTML;
+                });
+            });
+        }
+
+        initializePostClickEvents();
     });
 </script>
 
