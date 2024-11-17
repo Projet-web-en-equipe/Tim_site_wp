@@ -114,7 +114,7 @@ function filter_category() {
                 <?php
             endwhile;
         else :
-            echo '<p>Aucun cours disponible pour le moment.</p>';
+            echo '<p>Aucun article disponible pour le moment.</p>';
         endif;
 
         wp_reset_postdata();
@@ -122,7 +122,6 @@ function filter_category() {
         echo '<p>Catégorie non valide.</p>';
     }
 
-    // Always die in functions echoing AJAX content
     die();
 }
 
