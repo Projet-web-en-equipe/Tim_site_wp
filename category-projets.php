@@ -6,10 +6,11 @@
         <?php
         $parent_category = get_category_by_slug('projets');
         ?>
-        <label for="touch">
-            <span id="selected-category">Toutes les sessions</span>
-        </label>
         <input type="checkbox" id="touch">
+        <label for="touch">
+            <span id="selected-category">Tous les types</span>
+            <div class="fleche"></div>
+        </label>
         <ul class="slide">
             <?php if ($parent_category): ?>
                 <li><a href="#" data-category-id="<?php echo $parent_category->term_id; ?>">Toutes les sessions</a></li>
