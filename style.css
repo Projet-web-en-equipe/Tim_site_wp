@@ -835,12 +835,12 @@ nav.nav-filtre {
   position: relative;
   width: 100%;
   margin: 2rem 0rem 2rem 4rem;
-  height: 5%;
 }
 
 nav.nav-filtre label {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   width: 25%;
   padding-left: 1rem;
@@ -856,12 +856,22 @@ nav.nav-filtre label span {
   font-size: 2rem;
 }
 
-nav.nav-filtre input[type=checkbox] {
-  display: none;
+nav.nav-filtre div {
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid white;
+  margin-right: 1rem;
 }
 
-nav.nav-filtre input[type=checkbox]:checked ~ nav.nav-filtre label {
-  border-radius: 1rem;
+nav.nav-filtre input[type=checkbox]:checked ~ label .fleche {
+  border-top: 0rem solid white;
+  border-bottom: 1rem solid white;
+}
+
+nav.nav-filtre input[type=checkbox] {
+  display: none;
 }
 
 nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
@@ -918,7 +928,6 @@ nav.nav-filtre input {
   }
   nav.nav-filtre label {
     display: flex;
-    justify-content: flex-start;
     width: 50%;
   }
   ul.slide {
