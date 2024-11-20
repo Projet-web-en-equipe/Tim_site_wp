@@ -24,20 +24,25 @@
                             <h2><?php the_title(); ?></h2>
                         </div>
                     </div>
-
-                    <div id="post-content-<?php the_ID(); ?>" style="display: none;">
-                        <h1><?php the_title(); ?></h1>
-                        <div><?php the_content(); ?></div>
-                    </div>
                 <?php
                 endwhile;
                 ?>
             </section>
 
-            <section id="info">
+            <section id="info" data-active-id="">
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
+                <?php
+                while ($query->have_posts()) : $query->the_post();
+                ?>
+                    <template id="post-content-<?php the_ID(); ?>">
+                        <h1><?php the_title(); ?></h1>
+                        <div><?php the_content(); ?></div>
+                    </template>
+                <?php
+                endwhile;
+                ?>
             </section>
         <?php
         else :

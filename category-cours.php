@@ -2,13 +2,14 @@
 
 <main>
     <h1 id="titre"><?php single_cat_title() ?></h1>
-    <nav class="nav-filtre">
-        <?php
-        $parent_category = get_category_by_slug('cours');
+    
+ <nav class="nav-filtre">
+ <?php
+        $parent_category = get_category_by_slug('projets');
         ?>
         <input type="checkbox" id="touch">
         <label for="touch">
-            <span id="selected-category">Toutes les sessions</span>
+            <span id="selected-category">Tous les types</span>
             <div class="fleche"></div>
         </label>
         <ul class="slide">
@@ -36,62 +37,79 @@
     </nav>
 <?php endif; ?>
 
-<div class="content-wrapper">
-    <section id="carrousel">
-        <?php
-        $category = get_queried_object();
-        $child_category_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
 
-        if ($child_category_slug) {
-            $args = array(
-                'category_name' => $child_category_slug,
-                'posts_per_page' => -1
-            );
-        } else {
-            $args = array(
-                'category_name' => $category->slug,
-                'posts_per_page' => -1
-            );
-        }
+    <div class="content-wrapper">
+        <section id="carrousel">
+            <?php
+            $child_category_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
 
-        $query = new WP_Query($args);
-        ?>
-        <?php
-        if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-        ?>
-                <div class="banniere" data-id="<?php the_ID(); ?>">
-                    <div class="image-container">
-                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
-                        <h2><?php the_title(); ?></h2>
+            if ($child_category_slug) {
+                $args = array(
+                    'category_name' => $child_category_slug,
+                    'posts_per_page' => -1
+                );
+            } else {
+                $args = array(
+                    'category_name' => $current_category->slug,
+                    'posts_per_page' => -1
+                );
+            }
+
+            $query = new WP_Query($args);
+            ?>
+            <?php
+            if ($query->have_posts()) :
+                while ($query->have_posts()) : $query->the_post();
+            ?>
+                    <div class="banniere" data-id="<?php the_ID(); ?>">
+                        <div class="image-container">
+                            <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
+                            <h2><?php the_title(); ?></h2>
+                        </div>
                     </div>
-                </div>
 
-                <div id="post-content-<?php the_ID(); ?>" style="display: none;">
-                    <h1><?php the_title(); ?></h1>
-                    <div><?php the_content(); ?></div>
-                </div>
-        <?php
-            endwhile;
-            echo '</section>';
+                    <div id="post-content-<?php the_ID(); ?>" style="display: none;">
+                        <h1><?php the_title(); ?></h1>
+                        <div><?php the_content(); ?></div>
+                    </div>
+            <?php
+                endwhile;
+                echo '</section>';
 
             echo '<section id="info>" >
                     <button id="close-info" class="close-btn"></button>
                     <h1 id="cours-name"></h1>
                     <div class="text"></div>
                   </section>';
-        else :
-            echo '<h1>Aucun cours disponible pour le moment.</h1>';
-        endif;
+            else :
+                echo '<h1>Aucun cours disponible pour le moment.</h1>';
+            endif;
 
-        wp_reset_postdata();
-        ?>
-    </section>
-</div>
+            wp_reset_postdata();
+            ?>
+        </section>
+    </div>
 </main>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Gestion du changement dans le <select>
+        const select = document.getElementById('child-category-select');
+        select.addEventListener('change', function() {
+            const selectedCategory = this.value; // Récupère la valeur sélectionnée
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (selectedCategory) {
+                urlParams.set('child_category', selectedCategory);
+            } else {
+                urlParams.delete('child_category');
+            }
+
+            // Recharge la page avec le nouveau paramètre dans l'URL
+            window.location.search = urlParams.toString();
+        });
+
+        // Reste du script pour le carrousel et la navigation
         const links = document.querySelectorAll('.nav-filtre a');
         const selectedCategoryLabel = document.getElementById('selected-category');
 
@@ -109,14 +127,11 @@
             fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=filter_category&category_id=${categoryId}`)
                 .then(response => response.text())
                 .then(data => {
-                    const carrousel = document.querySelector('#carrousel');
-                    carrousel.innerHTML = data;
-                    carrousel.classList.add('custom-carrousel-class'); // Réappliquez une classe spécifique si nécessaire.
+                    document.querySelector('#carrousel').innerHTML = data;
                     initializePostClickEvents();
                 })
                 .catch(error => console.error('Error:', error));
         }
-
 
         function initializePostClickEvents() {
             const posts = document.querySelectorAll('.banniere');
