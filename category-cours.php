@@ -75,7 +75,7 @@
             endwhile;
             echo '</section>';
 
-            echo '<section id="info">
+            echo '<section id="info>" >
                     <button id="close-info" class="close-btn"></button>
                     <h1 id="cours-name"></h1>
                     <div class="text"></div>

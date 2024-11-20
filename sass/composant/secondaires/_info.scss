@@ -40,9 +40,9 @@ main div {
         border-radius: 10px 10px 0 0;
         border: 1px solid rgba(255, 255, 255, 0.18);
         background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg');
+        background-repeat: round;
         transition: height 0.5s ease;
         z-index: 2;
-        
 
         div.text{
             margin: 1rem auto;
