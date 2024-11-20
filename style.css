@@ -559,7 +559,7 @@ main div section#info {
   display: none;
   position: absolute;
   bottom: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90vh;
   width: 98vw;
   background: rgba(255, 255, 255, 0.774);
@@ -666,11 +666,9 @@ main div section#info p {
     display: none;
   }
 }
-.conteneurBlur {
-  transition: filter 0.5s ease;
-}
-
-#ctnAnim {
+.ctnAnim {
+  /*avant c'était #ctnAnim.... mais pour le javascript
+  j'ai dû changer ça par une class*/
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -678,8 +676,19 @@ main div section#info p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadeOut 5s 5s forwards;
+  animation: fadeOut 4s 4s forwards;
   z-index: 10000;
+}
+
+/*pour faire l'effet background, jai crée un autre div, qui prend toute la place
+vh et vw, derrière l'animation ctnAnim, pour aisni l'animer séparemment*/
+.montrerArrierePlan {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9000;
+  animation: FadeOutArrierePlan 2s 4s forwards;
 }
 
 .titreH1,
@@ -745,6 +754,19 @@ main div section#info p {
   to {
     opacity: 0;
     transform: translateY(-150vh);
+  }
+}
+/* Animation for faster background fade-out */
+@keyframes FadeOutArrierePlan {
+  from {
+    background: #003d5b;
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 .effetVague {
@@ -874,12 +896,13 @@ nav.nav-filtre {
   align-items: flex-start;
   position: relative;
   width: 100%;
-  margin: 2rem 0rem 2rem 2rem;
+  margin: 2rem 0rem 2rem 4rem;
 }
 
 nav.nav-filtre label {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   width: 25%;
   padding-left: 1rem;
@@ -893,6 +916,20 @@ nav.nav-filtre label span {
   font-family: "breakers-slab", sans-serif;
   font-style: normal;
   font-size: 2rem;
+}
+
+nav.nav-filtre div {
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid white;
+  margin-right: 1rem;
+}
+
+nav.nav-filtre input[type=checkbox]:checked ~ label .fleche {
+  border-top: 0rem solid white;
+  border-bottom: 1rem solid white;
 }
 
 nav.nav-filtre input[type=checkbox] {
@@ -911,7 +948,7 @@ ul.slide {
   text-align: left;
   transition: max-height 1s;
   list-style-type: none;
-  padding-left: 1rem;
+  padding-left: 0rem;
   position: absolute;
   top: 100%;
   background: var(--tertiaire);
@@ -920,11 +957,20 @@ ul.slide {
   box-sizing: border-box;
 }
 
+ul.slide li {
+  padding-left: 1rem;
+}
+
 ul.slide li:hover {
   background: var(--secondaire);
 }
 
 ul.slide li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
   font-family: "breakers-slab", sans-serif;
   font-style: normal;
   font-size: 2rem;
@@ -933,9 +979,33 @@ ul.slide li a {
 nav.nav-filtre input {
   position: absolute;
   opacity: 0;
-  height: 0px;
+  height: 0;
 }
 
+@media only screen and (max-width: 1025px) {
+  nav.nav-filtre {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0rem 2rem 0rem;
+  }
+  nav.nav-filtre label {
+    display: flex;
+    width: 50%;
+  }
+  ul.slide {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+  }
+  ul.slide li {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 2rem;
+  }
+}
 /* Centered bird */
 .bird {
   position: absolute;
@@ -972,49 +1042,6 @@ nav.nav-filtre input {
   transform: rotate(-45deg); /* Initial angle */
 }
 
-/*:root {
-  --couleur-nuage: #fff;
-  --ombre-nuage: #ccc;
-}
-
-.nuage {
-  position: relative;
-  top: 50%; /* Position it on the page 
-  left: 50%;
-  width: 350px;
-  height: 150px;
-  background-color: var(--couleur-nuage);
-  z-index: 5;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-  box-shadow: inset -10px -10px 30px var(--ombre-nuage);
-}*/
-.nuage::before {
-  position: absolute;
-  content: "";
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--couleur-nuage);
-  top: -50px;
-  left: 50px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-  box-shadow: inset -5px -5px 15px var(--ombre-nuage);
-}
-
-.nuage::after {
-  position: absolute;
-  content: "";
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: var(--couleur-nuage);
-  top: -70px;
-  left: 120px;
-  box-shadow: 0 0 10px var(--couleur-nuage);
-}
-
 #hot-toast {
   position: fixed;
   display: flex;
@@ -1024,6 +1051,7 @@ nav.nav-filtre input {
   width: 62%;
   top: 15%;
   left: 50%;
+  height: 15%;
   transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
   background: #003d5b;
   color: #fff;
@@ -1107,6 +1135,7 @@ nav.nav-filtre input {
 }
 
 #hot-toast .borderGauche {
+  position: absolute;
   top: 0;
   left: 0;
   width: 12px;
@@ -1118,6 +1147,7 @@ nav.nav-filtre input {
 }
 
 #hot-toast .borderDroit {
+  position: absolute;
   top: 0;
   right: 0;
   width: 12px;
@@ -1128,7 +1158,7 @@ nav.nav-filtre input {
   border-bottom-right-radius: 8px;
 }
 
-/* Puis ensuite les animations */
+/* Puis ensuite les */
 @keyframes mouvementLigne {
   0% {
     background-position: 0 0;
@@ -1402,6 +1432,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
   width: 100vw;
   height: 100vh;
 }
@@ -1504,8 +1535,7 @@ body {
   overflow-y: hidden;
 }
 
-body,
-.conteneurBlur {
+body {
   width: 100vw;
   height: 100vh;
   position: relative;
