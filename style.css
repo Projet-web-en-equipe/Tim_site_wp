@@ -416,6 +416,7 @@ alors je triche avec les margin... */
 }
 
 main section#carrousel {
+  position: relative;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -1653,4 +1654,4 @@ canvas {
   #retourAccueil {
     margin: auto;
   }
-}/*# sourceMappingURL=style.css.map */
+}
