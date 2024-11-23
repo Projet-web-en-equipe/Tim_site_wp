@@ -13,7 +13,7 @@
         </label>
         <ul class="slide">
             <?php if ($parent_category): ?>
-                <li><a href="#" data-category-id="<?php echo $parent_category->term_id; ?>">Toutes les sessions</a></li>
+                <li><a href="#" data-category-id="<?php echo $parent_category->term_id; ?>" data-category-slug="">Toutes les sessions</a></li>
                 <?php
                 $child_categories_args = array(
                     'child_of' => $parent_category->term_id,
@@ -25,7 +25,7 @@
                     foreach ($child_categories as $child_category) :
                         $shortened_name = substr($child_category->name, 8);
                 ?>
-                        <li><a href="#" data-category-id="<?php echo $child_category->term_id; ?>"><?php echo $shortened_name; ?></a></li>
+                        <li><a href="#" data-category-id="<?php echo $child_category->term_id; ?>" data-category-slug="<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></li>
                 <?php
                     endforeach;
                 else :
@@ -91,46 +91,14 @@
 </main>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const links = document.querySelectorAll('.nav-filtre a');
-        const selectedCategoryLabel = document.getElementById('selected-category');
-
-        links.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const categoryId = this.getAttribute('data-category-id');
-                const categoryName = this.textContent;
-                fetchContent(categoryId);
-                selectedCategoryLabel.textContent = categoryName;
-            });
+    document.querySelectorAll('.nav-filtre ul.slide li a').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var categorySlug = this.getAttribute('data-category-slug');
+            var url = new URL(window.location.href);
+            url.searchParams.set('child_category', categorySlug);
+            window.location.href = url.toString();
         });
-
-        function fetchContent(categoryId) {
-            fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=filter_category&category_id=${categoryId}`)
-                .then(response => response.text())
-                .then(data => {
-                    const carrousel = document.querySelector('#carrousel');
-                    carrousel.innerHTML = data;
-                    carrousel.classList.add('custom-carrousel-class'); // Réappliquez une classe spécifique si nécessaire.
-                    initializePostClickEvents();
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-
-        function initializePostClickEvents() {
-            const posts = document.querySelectorAll('.banniere');
-            posts.forEach(post => {
-                post.addEventListener('click', function() {
-                    const postId = this.getAttribute('data-id');
-                    const postContent = document.getElementById(`post-content-${postId}`);
-                    document.getElementById('cours-name').textContent = postContent.querySelector('h1').textContent;
-                    document.querySelector('#info .text').innerHTML = postContent.querySelector('div').innerHTML;
-                });
-            });
-        }
-
-        initializePostClickEvents();
     });
 </script>
 
