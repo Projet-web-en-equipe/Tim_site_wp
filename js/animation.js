@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
             const postId = item.getAttribute("data-id");
             afficherCours(postId);
+            appliquerImg();
         });
     });
 
