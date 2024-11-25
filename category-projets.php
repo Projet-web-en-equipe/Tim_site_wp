@@ -73,7 +73,9 @@
                 ?>
             </section>
 
-            <section id="info" data-active-id="" style="background-image: url('<?php echo esc_url($bg_img_url ?: 'https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg'); ?>');">
+            <!-- Condition ternaire pour chercher le nom de l'image avec les variables déclarées dans le header -->
+            <section id="info" data-active-id="" style="background-image: url('<?php echo esc_url($bg_img_url ? 'https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_' . $bg_img_url . '.jpg' : 'https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg'); ?>');">
+
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
