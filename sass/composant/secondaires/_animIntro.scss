@@ -1,4 +1,6 @@
-#ctnAnim {
+.ctnAnim {
+  /*avant c'était #ctnAnim.... mais pour le javascript
+  j'ai dû changer ça par une class*/
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -6,39 +8,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadeOut 5s 5s forwards;
+  animation: fadeOut 4s 4s forwards;
   z-index: 10000;
 }
-#ctnTitre {
+
+/*pour faire l'effet background, jai crée un autre div, qui prend toute la place
+vh et vw, derrière l'animation ctnAnim, pour aisni l'animer séparemment*/
+.montrerArrierePlan {
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  background-color: black;
+  z-index: 9000;
+  animation: FadeOutArrierePlan 2s 4s forwards;
 }
-.titreH1 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(50px, 10vw, 300px);
-}
-.titreH2 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(80px, 12vw, 400px);
-}
+
+.titreH1,
+.titreH2,
 .titreH3 {
   font-family: "hwt-artz", sans-serif;
   font-weight: 700;
@@ -48,8 +34,19 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.titreH1 {
+  font-size: clamp(50px, 10vw, 300px);
+}
+.titreH2 {
+  font-size: clamp(80px, 12vw, 400px);
+}
+.titreH3 {
   font-size: clamp(50px, 15vw, 150px);
 }
+
 .anim1 {
   animation: fadeIn 2s forwards;
 }
@@ -84,6 +81,20 @@
   }
   to {
     opacity: 0;
-    transform: translateY(-1000px);
+    transform: translateY(-150vh);
+  }
+}
+
+/* Animation for faster background fade-out */
+@keyframes FadeOutArrierePlan {
+  from {
+    background: #003d5b;
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
   }
 }

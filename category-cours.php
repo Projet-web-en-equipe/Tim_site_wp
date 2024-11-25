@@ -1,97 +1,139 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title() ?></h1>
+    <h1 id="titre"><?php single_cat_title(); ?></h1>
+
+    <!-- Navigation pour les filtres -->
     <nav class="nav-filtre">
         <?php
-        // Récupérer l'objet de la catégorie parente "Cours"
-        $parent_category = get_category_by_slug('cours');
+        // Récupérer la catégorie principale courante
+        $current_category = get_queried_object();
         ?>
-        <label for="touch"><span>Les sessions</span></label>
         <input type="checkbox" id="touch">
+        <label for="touch">
+            <span id="selected-category">Toutes les sous-catégories</span>
+            <div class="fleche"></div>
+        </label>
         <ul class="slide">
-            <?php if ($parent_category): ?>
-                <li><a href="<?php echo get_category_link($parent_category->term_id); ?>">Toutes les sessions</a></li>
+            <?php if ($current_category): ?>
+                <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Toutes les sous-catégories</a></li>
                 <?php
+                // Récupérer les sous-catégories
                 $child_categories_args = array(
-                    'child_of' => $parent_category->term_id,
+                    'child_of' => $current_category->term_id,
                     'hide_empty' => false
                 );
                 $child_categories = get_categories($child_categories_args);
 
                 if (!empty($child_categories)) :
                     foreach ($child_categories as $child_category) :
-                        $shortened_name = substr($child_category->name, 8);
                 ?>
-                        <li><a href="?child_category=<?php echo $child_category->slug; ?>"><?php echo $shortened_name; ?></a></li>
+                        <li>
+                            <a href="#" data-category-id="<?php echo $child_category->term_id; ?>" data-category-slug="<?php echo $child_category->slug; ?>">
+                                <?php echo esc_html($child_category->name); ?>
+                            </a>
+                        </li>
                 <?php
                     endforeach;
                 else :
-                    echo '<li>Aucune catégorie</li>';
+                    echo '<li>Aucune sous-catégorie disponible</li>';
                 endif;
-            else:
-                echo '<li>Catégorie parente "Cours" non trouvée.</li>';
-            endif;
-            ?>
+                ?>
+            <?php endif; ?>
         </ul>
     </nav>
 
+    <!-- Wrapper pour les contenus -->
     <div class="content-wrapper">
-        <section id="carrousel">
+        <?php
+        // Récupérer la catégorie actuelle et le filtre
+        $child_category_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
 
-            <?php
-            // Récupérer l'objet de la catégorie en cours
-            $category = get_queried_object();
-            $child_category_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
+        $args = array(
+            'category_name' => $child_category_slug ? $child_category_slug : $current_category->slug,
+            'posts_per_page' => -1
+        );
 
-            if ($child_category_slug) {
-                // Si un slug de sous-catégorie est fourni, afficher les posts de cette sous-catégorie
-                $args = array(
-                    'category_name' => $child_category_slug,
-                    'posts_per_page' => -1
-                );
-            } else {
-                // Sinon, afficher les posts de la catégorie parente
-                $args = array(
-                    'category_name' => $category->slug,
-                    'posts_per_page' => -1
-                );
-            }
+        $query = new WP_Query($args);
 
-            $query = new WP_Query($args);
-
-            if ($query->have_posts()) :
+        if ($query->have_posts()) :
+        ?>
+            <section id="carrousel">
+                <?php
                 while ($query->have_posts()) : $query->the_post();
-            ?>
+                ?>
                     <div class="banniere" data-id="<?php the_ID(); ?>">
-                        <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
-                        <h2><?php echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7)); ?></h2>
+                        <div class="image-container">
+                            <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
+                            <h2><?php the_title(); ?></h2>
+                        </div>
                     </div>
+                <?php
+                endwhile;
+                ?>
+            </section>
 
-                    <div id="post-content-<?php the_ID(); ?>" style="display: none;">
+            <section id="info" data-active-id="">
+                <button id="close-info" class="close-btn"></button>
+                <h1 id="cours-name"></h1>
+                <div class="text"></div>
+                <?php
+                // Réinitialiser la boucle pour le contenu dans les templates
+                while ($query->have_posts()) : $query->the_post();
+                ?>
+                    <template id="post-content-<?php the_ID(); ?>">
                         <h1><?php the_title(); ?></h1>
                         <div><?php the_content(); ?></div>
-                    </div>
-            <?php
+                    </template>
+                <?php
                 endwhile;
-            else :
-                echo '<p>Aucun cours disponible pour le moment.</p>';
-            endif;
+                ?>
+            </section>
+        <?php
+        else :
+            echo '<h1>Aucun contenu disponible pour cette catégorie.</h1>';
+        endif;
 
-            wp_reset_postdata();
-            ?>
-
-        </section>
-
-
-
-        <section id="info">
-            <button id="close-info" class="close-btn"></button>
-            <h1 id="cours-name"></h1>
-            <div class="text"></div>
-        </section>
+        wp_reset_postdata();
+        ?>
     </div>
-
 </main>
+
+<script>
+    // Gestion des filtres dynamiques
+    document.querySelectorAll('.nav-filtre ul.slide li a').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var categorySlug = this.getAttribute('data-category-slug');
+            var url = new URL(window.location.href);
+            url.searchParams.set('child_category', categorySlug);
+            window.location.href = url.toString();
+        });
+    });
+
+    // Gestion de l'affichage des informations dans la section #info
+    const banniereElements = document.querySelectorAll('.banniere');
+    const infoSection = document.getElementById('info');
+    const closeInfoBtn = document.getElementById('close-info');
+
+    banniereElements.forEach(banniere => {
+        banniere.addEventListener('click', function() {
+            const postId = this.getAttribute('data-id');
+            const postContent = document.getElementById(`post-content-${postId}`);
+
+            if (postContent) {
+                infoSection.querySelector('#cours-name').textContent = postContent.querySelector('h1').textContent;
+                infoSection.querySelector('.text').innerHTML = postContent.querySelector('div').innerHTML;
+                infoSection.dataset.activeId = postId;
+                infoSection.style.display = 'block';
+            }
+        });
+    });
+
+    closeInfoBtn.addEventListener('click', function() {
+        infoSection.style.display = 'none';
+        infoSection.dataset.activeId = '';
+    });
+</script>
 
 <?php get_footer(); ?>

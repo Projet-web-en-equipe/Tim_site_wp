@@ -5,7 +5,7 @@ Theme URI: https://referenced.ca
 Authors: Tony, Lenny, Lohan, Camilia, Alejandro
 Author URI: https://wordpress.org/
 Description: Thème de base développé dans le cours 5w5
-Version: 1.0
+Version: 3.0
 
 Requires PHP: 7.0
 License: GNU General Public License v2 or later
@@ -77,6 +77,11 @@ p {
 header ul {
   font-size: 1.5rem;
   color: orange;
+}
+
+/* Style de la liste dans les articles */
+.wp-block-list li {
+  font-family: "breakers-slab", sans-serif;
 }
 
 header ul li a {
@@ -157,12 +162,11 @@ div#burger {
   justify-content: space-between;
   cursor: pointer;
   margin-left: 1%;
-  z-index: 4;
+  z-index: 5;
   background: #003d5b;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 25%; /* starting border-radius */
   padding: 0.5rem;
   transition: all 0.5s ease-in-out; /* smooth scaling transition */
 }
@@ -172,13 +176,11 @@ div#burger.active {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* Apply the animation only on hover */
 div#burger:hover {
   transform: scale(1.3);
-  border-radius: 3px;
   transition: all 0.5s ease-in-out; /* smooth scaling transition */
   padding: 1.5% 1%;
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.1);
 }
 
 div.barre {
@@ -295,7 +297,7 @@ div#logo a:hover {
   height: 100%;
   background-color: #333;
   opacity: 0;
-  z-index: 3;
+  z-index: 4;
   transition: left 0.5s ease, opacity 0.5s ease;
   background: #003d5b;
   backdrop-filter: blur(4px);
@@ -318,11 +320,11 @@ div#logo a:hover {
   bottom: 0;
   width: 12px; /* grosse */
   background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px); /* changement de couleurs */
-  animation: mouvementLigne 2s linear infinite;
+  animation: mouvementDeLigne 2s linear infinite;
 }
 
 /* animation du mouvement de l'asti de dash */
-@keyframes mouvementLigne {
+@keyframes mouvementDeLigne {
   0% {
     background-position: 0 0;
   }
@@ -414,6 +416,7 @@ alors je triche avec les margin... */
 }
 
 main section#carrousel {
+  position: relative;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -440,14 +443,33 @@ main section .banniere {
   width: 50vw;
 }
 
-main section img {
+main section .image-container {
+  position: relative;
   width: 100%;
   height: auto;
-  max-height: 80vh;
 }
 
-main section img:hover {
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/DSC_9990-scaled.jpg");
+main section .image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease; /* Transition pour l'effet de fondu */
+}
+
+main section .image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Cache l'image au début */
+  z-index: 1; /* Place cette image au-dessus de l'image d'origine */
+}
+
+main section .image-container:hover .image-hover {
+  opacity: 1; /* Affiche l'image au survol */
+}
+
+main section .image-container:hover .image-original {
+  opacity: 0; /* Cache l'image originale au survol */
 }
 
 main section h2 {
@@ -477,6 +499,30 @@ main section h2 {
     margin: 2rem;
     max-height: 80vh;
     overflow-y: scroll;
+    scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
+    width: 25%;
+  }
+  main section .banniere {
+    position: relative;
+    width: 15vw;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  main section h2 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  main section h2 {
+    font-size: 2rem;
+  }
+  main section#carrousel {
+    padding: 0;
+    margin: 2rem;
+    max-height: 80vh;
+    overflow-y: scroll;
+    scrollbar-color: var(--couleur-bleu-fonce) rgba(255, 255, 255, 0.6235294118);
     width: 25%;
   }
   main section .banniere {
@@ -514,16 +560,23 @@ main div section#info {
   display: none;
   position: absolute;
   bottom: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90vh;
   width: 98vw;
-  background: rgba(255, 255, 255, 0.479);
+  background: rgba(255, 255, 255, 0.774);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px 10px 0 0;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   transition: height 0.5s ease;
+  z-index: 2;
+}
+main div section#info div.text {
+  margin: 1rem auto;
+  width: 90%;
+  padding: 2%;
 }
 main div section#info::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -581,7 +634,7 @@ main div #close-info:hover {
 }
 main div section#info p {
   margin: 0 auto;
-  width: 90vw;
+  width: 85vw;
 }
 
 @media only screen and (min-width: 1025px) {
@@ -592,9 +645,10 @@ main div section#info p {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 75vw;
+    width: 70vw;
     border-radius: 10px;
     margin-top: 2%;
+    background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
   }
   main div h1 {
     margin: 0 auto;
@@ -602,6 +656,8 @@ main div section#info p {
   main div div.text {
     margin: 1rem auto;
     width: 90%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.274);
   }
   main div section#info p {
     margin: 0 auto;
@@ -611,7 +667,9 @@ main div section#info p {
     display: none;
   }
 }
-#ctnAnim {
+.ctnAnim {
+  /*avant c'était #ctnAnim.... mais pour le javascript
+  j'ai dû changer ça par une class*/
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -619,43 +677,23 @@ main div section#info p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadeOut 5s 5s forwards;
+  animation: fadeOut 4s 4s forwards;
   z-index: 10000;
 }
 
-#ctnTitre {
+/*pour faire l'effet background, jai crée un autre div, qui prend toute la place
+vh et vw, derrière l'animation ctnAnim, pour aisni l'animer séparemment*/
+.montrerArrierePlan {
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  background-color: black;
+  z-index: 9000;
+  animation: FadeOutArrierePlan 2s 4s forwards;
 }
 
-.titreH1 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(50px, 10vw, 300px);
-}
-
-.titreH2 {
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: whitesmoke;
-  opacity: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: clamp(80px, 12vw, 400px);
-}
-
+.titreH1,
+.titreH2,
 .titreH3 {
   font-family: "hwt-artz", sans-serif;
   font-weight: 700;
@@ -665,6 +703,18 @@ main div section#info p {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.titreH1 {
+  font-size: clamp(50px, 10vw, 300px);
+}
+
+.titreH2 {
+  font-size: clamp(80px, 12vw, 400px);
+}
+
+.titreH3 {
   font-size: clamp(50px, 15vw, 150px);
 }
 
@@ -704,7 +754,20 @@ main div section#info p {
   }
   to {
     opacity: 0;
-    transform: translateY(-1000px);
+    transform: translateY(-150vh);
+  }
+}
+/* Animation for faster background fade-out */
+@keyframes FadeOutArrierePlan {
+  from {
+    background: #003d5b;
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 .effetVague {
@@ -722,12 +785,12 @@ main div section#info p {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Wave animation */
+/* vague animation */
 .effetVague:hover span {
-  animation: wave 0.5s ease;
+  animation: vague 0.5s ease;
 }
 
-@keyframes wave {
+@keyframes vague {
   0%, 100% {
     transform: translateY(0);
   }
@@ -834,12 +897,13 @@ nav.nav-filtre {
   align-items: flex-start;
   position: relative;
   width: 100%;
-  margin: 2rem 0rem 2rem 2rem;
+  margin: 2rem 0rem 2rem 4rem;
 }
 
 nav.nav-filtre label {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   width: 25%;
   padding-left: 1rem;
@@ -853,6 +917,20 @@ nav.nav-filtre label span {
   font-family: "breakers-slab", sans-serif;
   font-style: normal;
   font-size: 2rem;
+}
+
+nav.nav-filtre div {
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid white;
+  margin-right: 1rem;
+}
+
+nav.nav-filtre input[type=checkbox]:checked ~ label .fleche {
+  border-top: 0rem solid white;
+  border-bottom: 1rem solid white;
 }
 
 nav.nav-filtre input[type=checkbox] {
@@ -871,7 +949,7 @@ ul.slide {
   text-align: left;
   transition: max-height 1s;
   list-style-type: none;
-  padding-left: 1rem;
+  padding-left: 0rem;
   position: absolute;
   top: 100%;
   background: var(--tertiaire);
@@ -880,11 +958,20 @@ ul.slide {
   box-sizing: border-box;
 }
 
+ul.slide li {
+  padding-left: 1rem;
+}
+
 ul.slide li:hover {
   background: var(--secondaire);
 }
 
 ul.slide li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
   font-family: "breakers-slab", sans-serif;
   font-style: normal;
   font-size: 2rem;
@@ -893,29 +980,221 @@ ul.slide li a {
 nav.nav-filtre input {
   position: absolute;
   opacity: 0;
-  height: 0px;
+  height: 0;
 }
 
+@media only screen and (max-width: 1025px) {
+  nav.nav-filtre {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0rem 2rem 0rem;
+  }
+  nav.nav-filtre label {
+    display: flex;
+    width: 50%;
+  }
+  ul.slide {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+  }
+  ul.slide li {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 2rem;
+  }
+}
+/* Centered bird */
+.bird {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px; /* Adjusted size for better visibility */
+  height: 50px; /* Adjusted size for better visibility */
+  z-index: 500;
+}
+
+/* Wing styling */
+.bird::before,
+.bird::after {
+  content: "";
+  position: absolute;
+  width: 20px; /* Wing width */
+  height: 10px; /* Wing height */
+  border-radius: 50%;
+  transform-origin: center center;
+}
+
+/* Left wing */
+.bird::before {
+  left: -15px; /* Positioned left of center */
+  top: 0; /* Aligned vertically */
+  transform: rotate(45deg); /* Initial angle */
+}
+
+/* Right wing */
+.bird::after {
+  left: 15px; /* Positioned right of center */
+  top: 0; /* Aligned vertically */
+  transform: rotate(-45deg); /* Initial angle */
+}
+
+#hot-toast {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 62%;
+  top: 15%;
+  left: 50%;
+  height: 15%;
+  transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
+  background: #003d5b;
+  color: #fff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 12px 16px rgb(0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+#hot-toast.montrerToast {
+  animation: mouvementToast 5s ease forwards; /* 9s to cover the full effect duration */
+}
+
+#hot-toast p {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
+  line-height: 1.2;
+  padding: 2rem;
+}
+
+#hot-toast p:first-of-type {
+  color: #d1495d;
+}
+
+/* animation du mouvement */
+@keyframes mouvementToast {
+  0% {
+    transform: translateX(-50%) translateX(-100%); /* arrive de la gauche et devient visible en même temps */
+    opacity: 0;
+    visibility: visible;
+  }
+  10% {
+    transform: translateX(-50%) translateX(0); /* ensuite reste au centre pendant quelque temps */
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    transform: translateX(-50%) translateX(10px); /*pis ça dégage vers la droite */
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: translateX(-50%) translateX(100%); /* adios */
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* ANIMATION DES BORDURES. QUAND MÊME ASSEZ COMPLEXE AYOYE */
+#hot-toast::before,
+#hot-toast::after,
+#hot-toast .border-left,
+#hot-toast .border-right {
+  content: "";
+  position: absolute;
+  background: repeating-linear-gradient(to right, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
+  animation: mouvementLigne 2s linear infinite;
+}
+
+#hot-toast::before {
+  top: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#hot-toast::after {
+  bottom: 0;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#hot-toast .borderGauche {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
+  animation: mouvementLigneVertical 2s linear infinite;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#hot-toast .borderDroit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 10px, #d1495d 10px, #d1495d 20px);
+  animation: mouvementLigneVertical 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Puis ensuite les */
+@keyframes mouvementLigne {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+@keyframes mouvementLigneVertical {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
 /*Composants principaux*/
 footer {
   position: absolute;
   background-color: #003d5b;
   width: 100%;
-  height: 30%;
-  bottom: -36%; /* Original positioning of the main footer */
+  height: 30vh;
+  bottom: calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 3%;
-  padding-top: 3%;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  z-index: 5;
 }
-footer .conteneurSousTitre,
-footer .liens,
-footer .equipe,
-footer .contact {
+footer .sociaux,
+footer .equipe {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -933,11 +1212,11 @@ footer::after {
   font-style: normal;
   color: white;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-  top: -19%;
+  top: -50px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #003d5b;
-  padding: 1rem 2rem 3rem 3.5rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   border-radius: 8px 8px 0 0; /* For tab effect */
   cursor: pointer;
   display: flex;
@@ -954,8 +1233,8 @@ footer::before {
   color: white;
   position: absolute;
   z-index: 3;
-  top: -14%;
-  left: calc(50% - 70px); /* pour tricher */
+  top: -35px;
+  left: calc(50% - 63px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
@@ -967,15 +1246,14 @@ footer::before {
 }
 
 /* ça me montre le footer quand qu'y est checked*/
-#checkFoot:checked + label footer,
-#checkFoot:checked + label .footer2 {
+#checkFoot:checked + label footer {
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgb(0, 0, 0);
   transition: all 0.7s ease-out;
 }
 
 #checkFoot:not(:checked) + label footer:hover {
-  transform: translateY(-2%);
+  transform: translateY(-5px);
 }
 
 /* quand le footer est ouvert */
@@ -985,18 +1263,16 @@ footer::before {
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   position: absolute;
   z-index: 3;
-  top: -14%;
-  left: calc(50% - 70px);
+  left: calc(50% - 63px);
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -15%;
+  top: -35px;
   color: #d1495d;
 }
 
-/* pour garder la forme de longlet */
+/* pour garder la forme de longlet 
 #checkFoot:checked + label footer::after {
   padding: 1rem 2rem 3rem 3.5rem;
-}
-
+}*/
 footer p {
   font-family: "breakers-slab", sans-serif;
   font-style: normal;
@@ -1015,17 +1291,18 @@ footer a {
 .sociaux ul {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2%;
+  width: 100%;
   transform-style: preserve-3d;
 }
 
 .sociaux ul li {
   position: relative;
   list-style: none;
-  width: 60px;
-  height: 60px;
-  margin: 0px 20px;
-  border: 1px solid white;
+  width: 40px;
+  height: 40px;
+  margin: 20px 20px;
 }
 
 /***********************************************************************
@@ -1121,40 +1398,42 @@ footer a {
 /************************** Ajustement des resolutions *****************/
 /**********************************************************************/
 /************************** Pour les tablettes *****************/
-@media only screen and (min-width: 768px) and (max-width: 1025px) {
+@media only screen and (min-width: 768px) {
   footer {
-    bottom: -37%;
+    bottom: -41vh; /* Adjust for tablets */
   }
-  footer::after {
-    top: -20%;
-  }
-  footer::before {
-    top: -15%;
+  .sociaux ul li {
+    width: 60px;
+    height: 60px;
   }
 }
 /************************** Pour les bureaux *****************/
-@media only screen and (min-width: 1025px) and (max-width: 1350px) {
+@media only screen and (min-width: 1025px) {
   footer {
-    bottom: -40%;
+    bottom: -44vh; /* Adjust for tablets */
   }
-  footer::after {
-    top: -21%;
-  }
-  footer::before {
-    top: -16%;
+  .sociaux ul li {
+    width: 80px;
+    height: 80px;
   }
 }
 /************************** Pour les plus grands *****************/
 @media only screen and (min-width: 1350px) {
   footer {
-    bottom: -43%;
+    bottom: -47vh; /* Adjust for tablets */
+  }
+}
+/************************** Pour les plus grands *****************/
+@media only screen and (min-width: 1750px) {
+  footer {
+    bottom: -50vh; /* Adjust for tablets */
   }
 }
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: hidden;
   width: 100vw;
   height: 100vh;
 }
@@ -1196,6 +1475,7 @@ main #titre {
   main #titre {
     position: static;
     margin-bottom: 1rem;
+    margin-top: 5rem;
   }
   main .content-wrapper {
     display: flex;
@@ -1203,7 +1483,17 @@ main #titre {
     width: 100%;
   }
 }
-header {
+header.accueil {
+  height: 10%;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  position: absolute;
+}
+
+header.category {
   height: 10%;
   width: 98%;
   display: flex;
@@ -1265,17 +1555,17 @@ header {
 }
 
 /*Divers*/
-/* Enlever l'image de fond d'océan */
 /* Styles pour la div contenant le message d'erreur */
 #titre404 {
   color: var(--couleur-rouge-clair);
 }
 
 #texteErreur {
-  text-align: center;
   color: var(--couleur-or-clair);
-  position: absolute; /* Pour positionner le texte à l'intérieur de la bordure inférieure */
-  padding: 10px 20px; /* Espace autour du texte */
+  left: 0;
+  right: 0;
+  margin-bottom: -190px; /* Déplacer le texte vers la bordure inférieure */
+  z-index: 1; /* S'assurer que le texte est au-dessus de la bordure */
 }
 
 #texteErreur h2, #texteErreur p {
@@ -1289,29 +1579,38 @@ header {
   align-items: center;
   justify-content: flex-end;
   width: 40%;
-  height: 40%; /* Hauteur modifiable pour ajuster la taille de l'élément */
+  height: 40%;
   margin: 0 auto;
   padding-top: 2%;
   margin-top: 5%;
   background-color: var(--couleur-bleu-fonce);
-  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond */
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg"); /* Image de fond de Eric noyé */
   background-size: cover; /* Couvre toute la section */
-  background-position: center center; /* Centrer l'image */
-  background-repeat: no-repeat; /* Ne pas répéter l'image */
+  background-position: center center;
+  background-repeat: no-repeat;
   transform: rotate(-5deg);
   border: 6px solid #FFFFFF;
-  border-bottom: 150px solid #FFFFFF; /* Bordure inférieure blanche */
+  border-bottom: 190px solid #FFFFFF; /* Bordure inférieure blanche style polaroid*/
   text-align: center;
-  position: relative; /* Nécessaire pour que le texte soit bien positionné à l'intérieur */
+  position: relative; /* Pour que le texte soit bien positionné à l'intérieur */
+  overflow: visible; /* S'assurer que le texte peut dépasser la bordure */
 }
 
 /*Media query pour la version mobile responsive*/
 @media screen and (max-width: 1000px) {
+  #erreur_404 {
+    margin-top: 45%;
+    width: 80%;
+  }
   #erreur_404 section {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  #texteErreur {
+    position: absolute;
+    bottom: 0;
   }
   #menu-piedpage {
     display: none;
@@ -1319,4 +1618,4 @@ header {
   #retourAccueil {
     margin: auto;
   }
-}/*# sourceMappingURL=style.css.map */
+}

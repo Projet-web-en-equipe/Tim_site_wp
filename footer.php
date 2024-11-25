@@ -1,28 +1,23 @@
 <input type="checkbox" name="checkboxFooter" id="checkFoot" />
 <label for="checkFoot">
+
   <footer>
-    <!--  <div class="conteneurSousTitre">
-      <span class="material-symbols-rounded"> close </span>
-      <h3>
-        <span class="material-symbols-outlined"> visibility </span> À PROPOS
-      </h3>
-    </div>
--->
     <div class="contenuFooter">
-
-
-      <div class="contact">
+      
+      <!-- <div class="contact">
         <p>3800 rue Sherbrooke Est</p>
         <p>
           <a href="https://www.cmaisonneuve.qc.ca/">Site web du Collège</a>
         </p>
-      </div>
+      </div> -->
+
+
       <div class="sociaux">
 
         <ul>
           <!-- Instagram -->
           <li class="normal">
-            <a href="https://www.instagram.com" target="_blank">
+            <a href="https://www.instagram.com/maisonneuvetim/" target="_blank">
               <span></span>
               <span></span>
               <span></span>
@@ -32,7 +27,7 @@
           </li>
           <!-- Behance -->
           <li class="normal">
-            <a href="https://www.behance.net" target="_blank">
+            <a href="https://www.behance.net/departement_tim" target="_blank">
               <span></span>
               <span></span>
               <span></span>
@@ -42,7 +37,7 @@
           </li>
           <!-- LinkedIn  -->
           <li class="normal">
-            <a href="https://www.linkedin.com" target="_blank">
+            <a href="https://ca.linkedin.com/school/collegedemaisonneuve/" target="_blank">
               <span></span>
               <span></span>
               <span></span>
@@ -52,25 +47,33 @@
           </li>
           <!-- maisonneuve -->
           <li>
-            <!-- <a href="#" class="container"> -->
-            <svg class="logo" viewBox="0 0 100 100">
-              <!-- Top triangle -->
-              <!-- <polygon points="50,0 100,50 0,50" fill="#a8dadc" /> -->
-              <polygon points="50,50 10,10 90,10" fill="#a8dadc" />
+            <a href="https://www.cmaisonneuve.qc.ca/" class="maisonneuve">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span>
+                <svg class="logo" viewBox="0 0 100 100">
+                  <!-- Top triangle -->
+                  <!-- <polygon points="50,0 100,50 0,50" fill="#a8dadc" /> -->
+                  <polygon points="50,50 10,10 90,10" fill="#a8dadc" />
 
-              <!-- Left triangle -->
-              <!-- <polygon points="0,50 50,100 0,100" fill="#1d3557" /> -->
-              <polygon points="50,50 90,10 90,90 50,90" fill="#1d3557" />
+                  <!-- Left triangle -->
+                  <!-- <polygon points="0,50 50,100 0,100" fill="#1d3557" /> -->
+                  <polygon points="50,50 90,10 90,90 50,90" fill="#1d3557" />
 
 
-              <!-- Right triangle -->
-              <!-- <polygon points="100,50 50,100 100,100" fill="#457b9d" /> -->
-              <polygon points="50,50 50,90 10,90 10,10" fill="#457b9d" />
+                  <!-- Right triangle -->
+                  <!-- <polygon points="100,50 50,100 100,100" fill="#457b9d" /> -->
+                  <polygon points="50,50 50,90 10,90 10,10" fill="#457b9d" />
 
 
-            </svg>
-            <!-- </a> -->
+                </svg>
+              </span>
+
+              <!-- </a> -->
           </li>
+
         </ul>
 
 
