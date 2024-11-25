@@ -673,16 +673,13 @@ div#wp-responsive-toggle a:before {
 .wp-core-ui.wp-customizer .theme-overlay .theme-header .close:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .close:hover, .wp-core-ui.wp-customizer .theme-overlay .theme-header .right:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .right:hover, .wp-core-ui.wp-customizer .theme-overlay .theme-header .left:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .left:hover {
   border-bottom-color: #9ebaa0;
   color: #0073aa;
-}/*# sourceMappingURL=colors.css.map */ay .collapse-sidebar:focus .collapse-sidebar-arrow {
-  box-shadow: 0 0 0 1px #09cafa, 0 0 2px 1px #04a4cc;
+}/*# sourceMappingURL=colors.css.map */-sidebar:hover .collapse-sidebar-arrow,
+.wp-core-ui .wp-full-overlay .collapse-sidebar:focus .collapse-sidebar-arrow {
+  box-shadow: 0 0 0 1px #b6c669, 0 0 2px 1px #a3b745;
 }
 .wp-core-ui.wp-customizer .theme-overlay .theme-header .close:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .close:hover, .wp-core-ui.wp-customizer .theme-overlay .theme-header .right:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .right:hover, .wp-core-ui.wp-customizer .theme-overlay .theme-header .left:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .left:hover {
-  border-bottom-color: #04a4cc;
+  border-bottom-color: #a3b745;
   color: #0073aa;
-}
-
-/* Override the theme filter highlight color for this scheme */
-.theme-section.current,
-.theme-filter.current {
+}/*# sourceMappingURL=colors.css.map */current {
   border-bottom-color: #04a4cc;
 }/*# sourceMappingURL=colors.css.map */
