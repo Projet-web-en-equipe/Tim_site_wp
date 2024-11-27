@@ -570,6 +570,7 @@ main div section#info {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px 10px 0 0;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  background-repeat: no-repeat;
   transition: height 0.5s ease;
   z-index: 2;
 }
@@ -648,7 +649,7 @@ main div section#info p {
     border-radius: 10px;
     margin-top: 2%;
     background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
-    background-repeat: round;
+    background-repeat: no-repeat;
     object-fit: cover;
   }
   main div h1 {
