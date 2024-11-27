@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title(); ?></h1>
+    <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-briefcase-arrow-right"></i></h1>
     <div class="content-wrapper">
         <?php
         // Récupérer l'objet de la catégorie en cours

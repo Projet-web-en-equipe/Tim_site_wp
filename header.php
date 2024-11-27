@@ -23,7 +23,6 @@
         <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/TIMLogo.png" alt="TIM Logo" />
       </a>
     </div>
-
     <section id="nav-menu">
       <nav>
         <?php echo do_shortcode('[category_menu]'); ?>
