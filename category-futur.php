@@ -29,7 +29,9 @@
                 ?>
             </section>
 
-            <section id="info" data-active-id="">
+            <!-- Changer la couleur du fond selon la page -->
+            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_futur.jpg');">
+
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
