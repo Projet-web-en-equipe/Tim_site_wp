@@ -909,6 +909,11 @@ nav.nav-filtre label {
   padding-left: 1rem;
   background: var(--tertiaire);
   box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 5px 15px;
+}
+
+nav.nav-filtre label:hover {
+  background: var(--secondaire);
 }
 
 nav.nav-filtre label span {
@@ -956,6 +961,7 @@ ul.slide {
   z-index: 1;
   margin-top: 0;
   box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 15px 15px;
 }
 
 ul.slide li {
