@@ -110,30 +110,6 @@
             window.location.href = url.toString();
         });
     });
-
-    // Gestion de l'affichage des informations dans la section #info
-    const banniereElements = document.querySelectorAll('.banniere');
-    const infoSection = document.getElementById('info');
-    const closeInfoBtn = document.getElementById('close-info');
-
-    banniereElements.forEach(banniere => {
-        banniere.addEventListener('click', function() {
-            const postId = this.getAttribute('data-id');
-            const postContent = document.getElementById(`post-content-${postId}`);
-
-            if (postContent) {
-                infoSection.querySelector('#cours-name').textContent = postContent.querySelector('h1').textContent;
-                infoSection.querySelector('.text').innerHTML = postContent.querySelector('div').innerHTML;
-                infoSection.dataset.activeId = postId;
-                infoSection.style.display = 'block';
-            }
-        });
-    });
-
-    closeInfoBtn.addEventListener('click', function() {
-        infoSection.style.display = 'none';
-        infoSection.dataset.activeId = '';
-    });
 </script>
 
 <?php get_footer(); ?>

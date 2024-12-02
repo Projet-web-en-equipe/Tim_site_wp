@@ -55,7 +55,7 @@ nav.nav-filtre input[type="checkbox"] {
 }
 
 nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
-    max-height: 32rem;
+    max-height: 132rem;
 }
 
 ul.slide {
@@ -96,6 +96,7 @@ ul.slide li a {
     font-family: "breakers-slab", sans-serif;
     font-style: normal;
     font-size: 2rem;
+    z-index: 100;
 }
 
 nav.nav-filtre input {
