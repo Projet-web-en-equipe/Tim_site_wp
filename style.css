@@ -958,7 +958,7 @@ ul.slide {
   position: absolute;
   top: 100%;
   background: var(--tertiaire);
-  z-index: 1;
+  z-index: 3;
   margin-top: 0;
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.9) 0px 15px 15px;
