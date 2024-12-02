@@ -61,17 +61,57 @@
             <section id="carrousel">
                 <?php
                 while ($query->have_posts()) : $query->the_post();
+                    $post_slug = get_post_field('post_name', get_the_ID());
+
+                    // URL du placeholder
+                    $placeholder_url = 'https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png';
+
+                    // Recherche de l'image "og-{slug}" dans la médiathèque
+                    $og_image_args = array(
+                        'post_type' => 'attachment',
+                        'post_status' => 'inherit',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => '_wp_attached_file',
+                                'value' => "og-{$post_slug}",
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    );
+                    $og_image_query = new WP_Query($og_image_args);
+                    $og_image_url = $og_image_query->have_posts() ? wp_get_attachment_url($og_image_query->posts[0]->ID) : $placeholder_url;
+
+                    // Recherche de l'image "low-{slug}" dans la médiathèque
+                    $low_image_args = array(
+                        'post_type' => 'attachment',
+                        'post_status' => 'inherit',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => '_wp_attached_file',
+                                'value' => "low-{$post_slug}",
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    );
+                    $low_image_query = new WP_Query($low_image_args);
+                    $low_image_url = $low_image_query->have_posts() ? wp_get_attachment_url($low_image_query->posts[0]->ID) : $placeholder_url;
                 ?>
                     <div class="banniere" data-id="<?php the_ID(); ?>">
                         <div class="image-container">
-                            <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
+                            <img class="image-hover" src="<?php echo esc_url($og_image_url); ?>" alt="Image survolée de <?php echo esc_attr(get_the_title()); ?>">
+                            <img class="image-low" src="<?php echo esc_url($low_image_url); ?>" alt="Image originale de <?php echo esc_attr(get_the_title()); ?>">
                             <h2><?php the_title(); ?></h2>
                         </div>
                     </div>
                 <?php
                 endwhile;
                 ?>
+
+
             </section>
+
 
             <section id="info" data-active-id="">
                 <button id="close-info" class="close-btn"></button>
