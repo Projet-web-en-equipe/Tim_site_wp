@@ -4,7 +4,7 @@
     <div class="contenuFooter"-->
 <input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
 <label for="checkAPropos">
-  <footer class="footer footer-apropos">
+  <footer id="footProp" class="footer footer-apropos">
 
     <!-- <div class="contact">
         <p>3800 rue Sherbrooke Est</p>
@@ -32,7 +32,7 @@
 </label>
 <input type="checkbox" class="unDesCheckbox" name="checkboxSocials" id="checkSocials" />
 <label for="checkSocials">
-  <footer class="footer footer-socials">
+  <footer id="footSoc" class="footer footer-socials">
     <div class="contenuFooter">
 
       <div class="sociaux">

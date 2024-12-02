@@ -8,15 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const labelForSocials = document.querySelector('label[for="checkSocials"]'); // son label aussi
   const footerSocials = labelForSocials.querySelector(".footer-socials"); // ensuite le footer également
 
+  const checkAPropos = document.getElementById("checkAPropos");
+  const checkSocials = document.getElementById("checkSocials");
+
   //stock pour le nav
   const navMenu = document.getElementById("nav-menu"); // on va get l'air du navMenu
   const burger = document.getElementById("burger"); // pareil pour le menu burger
   const barres = document.querySelectorAll("#burger .barre"); // et les barres
 
-  //bool pour savoir si ce qui a ete clicker est le footer
-  var isFoot = false;
   //bool qui detecte quand un checkbox est checked
-  var footChecked = false;
+  var footProposChecked = false;
+  var footSuisChecked = false;
 
   // fonction pour toggle la classe active (ouvrir le menu)
   function basculerMenu() {
@@ -45,10 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     basculerMenu(); // j'ouvre le menu
   });
 
-  labelForAPropos.addEventListener("click", testFooter);
-  footerAPropos.addEventListener("click", testFooter);
-  labelForSocials.addEventListener("click", testFooter);
-  footerSocials.addEventListener("click", testFooter);
+  //checkSocials.addEventListener("click", clickFooter);
+  //checkAPropos.addEventListener("click", clickFooter);
 
   // function pour fermer le footer en clickant en dehors de son aire.
   // autre gestion car checkbox
@@ -104,30 +104,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function testFooter(e) {
-    var elClick = false;
-    // if (e.target.classList.length > 0) {
-    //   e.target.classList.forEach((element) => {
-    //     if (element == "unDesCheckbox") {
-    //       isFoot = true;
-    //       console.log("foot");
-    //       if(document.getElementById("checkAPropos").checked == true || document.getElementById("checkSocials").checked == true){
-    //         console.log("pas chcekcekde")
-    //       }
-    //     }
-    //   });
-    // }
-
-    // if (!isFoot) {
-    //   document.getElementById("checkAPropos").checked = false;
-    //   document.getElementById("checkSocials").checked = false;
-    // }
-    // isFoot = false;
-    if(!elClick){
-      console.log(e.target);
+  function fermerFooter(e) {
+    console.log(e.target);
+    if (e.target == checkAPropos || e.target == checkSocials) {
+      return;
+    } else if (e.target.id == "footProp") {
+      if (!footProposChecked) {
+        checkAPropos.checked = false;
+        checkSocials.checked = false;
+        footProposChecked = false;
+        footSuisChecked = false;
+      }
+      footProposChecked = !footProposChecked;
+    } else if (e.target.id == "footSoc" && !footSuisChecked) {
+      if (!footSuisChecked) {
+        checkAPropos.checked = false;
+        checkSocials.checked = false;
+        footSuisChecked = false;
+        footProposChecked = false;
+      }
+      footSuisChecked = !footSuisChecked;
+    } else {
+      checkAPropos.checked = false;
+      checkSocials.checked = false;
+      footSuisChecked = false;
+      footProposChecked = false;
     }
   }
 
   //rajout du event listener dans le document pour fermer les menus et
-  document.addEventListener("click", testFooter);
+  document.addEventListener("click", fermerFooter);
 });
