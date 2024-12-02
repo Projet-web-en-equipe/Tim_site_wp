@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //bool pour savoir si ce qui a ete clicker est le footer
   var isFoot = false;
+  //bool qui detecte quand un checkbox est checked
+  var footChecked = false;
 
   // fonction pour toggle la classe active (ouvrir le menu)
   function basculerMenu() {
@@ -42,6 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     event.stopPropagation(); // Prevent the click from propagating to the document listener
     basculerMenu(); // j'ouvre le menu
   });
+
+  labelForAPropos.addEventListener("click", testFooter);
+  footerAPropos.addEventListener("click", testFooter);
+  labelForSocials.addEventListener("click", testFooter);
+  footerSocials.addEventListener("click", testFooter);
 
   // function pour fermer le footer en clickant en dehors de son aire.
   // autre gestion car checkbox
@@ -98,21 +105,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function testFooter(e) {
-    if (e.target.classList.length > 0) {
-      e.target.classList.forEach((element) => {
-        //console.log(element);
-        if (element == "unDesCheckbox") {
-          isFoot = true;
-          console.log("foot");
-        }
-      });
-    }
+    var elClick = false;
+    // if (e.target.classList.length > 0) {
+    //   e.target.classList.forEach((element) => {
+    //     if (element == "unDesCheckbox") {
+    //       isFoot = true;
+    //       console.log("foot");
+    //       if(document.getElementById("checkAPropos").checked == true || document.getElementById("checkSocials").checked == true){
+    //         console.log("pas chcekcekde")
+    //       }
+    //     }
+    //   });
+    // }
 
-    if (!isFoot) {
-      document.getElementById("checkAPropos").checked = false;
-      document.getElementById("checkSocials").checked = false;
+    // if (!isFoot) {
+    //   document.getElementById("checkAPropos").checked = false;
+    //   document.getElementById("checkSocials").checked = false;
+    // }
+    // isFoot = false;
+    if(!elClick){
+      console.log(e.target);
     }
-    isFoot = false;
   }
 
   //rajout du event listener dans le document pour fermer les menus et
