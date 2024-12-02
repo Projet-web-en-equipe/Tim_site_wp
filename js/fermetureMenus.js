@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   //stock pour le footer. à noter: la gestion de l'ouverture et la fermeture du footer
   // est fait avec un checkbox html et scss
-  const checkFoot = document.getElementById("checkFoot"); // on va get le checker du footer
-  const labelForFooter = document.querySelector('label[for="checkFoot"]'); // son label aussi
-  const footer = labelForFooter.querySelector("footer"); // ensuite le footer également
+  // const checkAPropos = document.getElementById("checkAPropos"); // on va get le checker du footer
+  const labelForAPropos = document.querySelector('label[for="checkAPropos"]'); // son label aussi
+  const footerAPropos = labelForAPropos.querySelector(".footer-apropos"); // ensuite le footer également
+
+  const labelForSocials = document.querySelector('label[for="checkSocials"]'); // son label aussi
+  const footerSocials = labelForSocials.querySelector(".footer-socials"); // ensuite le footer également
 
   //stock pour le nav
   const navMenu = document.getElementById("nav-menu"); // on va get l'air du navMenu
   const burger = document.getElementById("burger"); // pareil pour le menu burger
   const barres = document.querySelectorAll("#burger .barre"); // et les barres
+
+  //bool pour savoir si ce qui a ete clicker est le footer
+  var isFoot = false;
 
   // fonction pour toggle la classe active (ouvrir le menu)
   function basculerMenu() {
@@ -40,16 +46,46 @@ document.addEventListener("DOMContentLoaded", () => {
   // function pour fermer le footer en clickant en dehors de son aire.
   // autre gestion car checkbox
 
-  function fermerMenus(event) {
-    // Si on click sur le checkbox ou le label, fais rien
-    if (event.target === checkFoot || event.target === labelForFooter) {
+  function fermerFooters(event) {
+    // Check for "À propos" footer
+    if (event.target === footerAPropos || event.target === labelForAPropos) {
+      return;
+    } else if (
+      /* if (
+      !footerAPropos.contains(event.target) &&
+      document.getElementById("checkAPropos").checked
+    ) {
+      document.getElementById("checkAPropos").checked = false;
+    }*/
+
+      // Check for "Socials" footer
+      event.target === footerSocials ||
+      event.target === labelForSocials
+    ) {
       return;
     }
 
-    // si on click ailleurs et le checkbox est checked
-    if (!footer.contains(event.target) && checkFoot.checked) {
-      checkFoot.checked = false; // on met sa à false ce qui fermera le menu
+    if (
+      !footerAPropos.contains(event.target) &&
+      document.getElementById("checkAPropos").checked
+    ) {
+      document.getElementById("checkAPropos").checked = false;
     }
+
+    if (
+      document.getElementById("checkAPropos").checked &&
+      !footerSocials.contains(event.target)
+    ) {
+      console.log("checker false");
+      document.getElementById("checkSocials").checked = false;
+    }
+
+    /*if (
+      !footerSocials.contains(event.target) &&
+      document.getElementById("checkSocials").checked
+    ) {
+      document.getElementById("checkSocials").checked = false;
+    }*/
 
     //fermeture du nav si le menu est ouvert et si le click est dehors de son aire et du burger
     if (
@@ -61,6 +97,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function testFooter(e) {
+    if (e.target.classList.length > 0) {
+      e.target.classList.forEach((element) => {
+        //console.log(element);
+        if (element == "unDesCheckbox") {
+          isFoot = true;
+          console.log("foot");
+        }
+      });
+    }
+
+    if (!isFoot) {
+      document.getElementById("checkAPropos").checked = false;
+      document.getElementById("checkSocials").checked = false;
+    }
+    isFoot = false;
+  }
+
   //rajout du event listener dans le document pour fermer les menus et
-  document.addEventListener("click", fermerMenus);
+  document.addEventListener("click", testFooter);
 });

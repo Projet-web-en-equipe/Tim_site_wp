@@ -1,6 +1,23 @@
-footer {
+.footer-apropos {
   position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #003d5b;
+  width: 100%;
+  height: 30vh;
+  bottom: calc(-265px - 5vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.7s ease-out;
+  color: white;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  z-index: 5;
+}
+
+.footer-socials {
+  position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
+  background-color: #d1495d;
   width: 100%;
   height: 30vh;
   bottom: calc(-265px - 5vw);
@@ -28,7 +45,7 @@ footer {
 /* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
 a propos* lorsque le footer est fermé*/
 
-footer::after {
+.footer-apropos::after {
   content: "À PROPOS";
   position: absolute;
   font-family: "hwt-artz", sans-serif;
@@ -49,7 +66,7 @@ footer::after {
   transition: background-color 0.3s ease;
 }
 
-footer::before {
+.footer-apropos::before {
   content: "\f06e"; /* icone oeil unichose */
   font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
   font-weight: 900;
@@ -62,28 +79,65 @@ footer::before {
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
+.footer-socials::after {
+  content: "Suis-nous!";
+  position: absolute;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -50px;
+  left: 20%;
+  transform: translateX(-50%);
+  background-color: #d1495d;
+  padding: 1rem 1rem 1rem 3.5rem;
+  border-radius: 8px 8px 0 0; /* For tab effect */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-socials::before {
+  content: "\f06e"; /* icone oeil unichose */
+  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  color: white;
+  position: absolute;
+  z-index: 3;
+  top: -35px;
+  left: calc(20% - 63px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+}
+
 /*******************************************************************************************/
 /************************ ici je vais travailler sur le checkbox ***************************/
 /*******************************************************************************************/
 
-#checkFoot {
+#checkAPropos,
+#checkSocials {
   display: none;
 }
 
 /* ça me montre le footer quand qu'y est checked*/
-#checkFoot:checked + label footer {
+#checkAPropos:checked + label footer.footer-apropos,
+#checkSocials:checked + label footer.footer-socials {
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 1);
 
   transition: all 0.7s ease-out;
 }
 
-#checkFoot:not(:checked) + label footer:hover {
+#checkAPropos:not(:checked) + label footer.footer-apropos:hover,
+#checkSocials:not(:checked) + label footer.footer-socials:hover {
   transform: translateY(-5px);
 }
 
 /* quand le footer est ouvert */
-#checkFoot:checked + label footer::before {
+#checkAPropos:checked + label.footer-apropos::before {
   content: "\f070"; /* je ferme loeil */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
@@ -94,6 +148,19 @@ footer::before {
   transition: opacity 0.3s ease, content 0.3s ease;
   top: -35px;
   color: #d1495d;
+}
+
+#checkSocials:checked + label.footer-socials::before {
+  content: "\f070"; /* je ferme loeil */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  position: absolute;
+  z-index: 3; //sinon sa sort apres lautre
+  //top: -14%;
+  left: calc(20% - 63px);
+  transition: opacity 0.3s ease, content 0.3s ease;
+  top: -35px;
+  //color: #d1495d;
 }
 
 /* pour garder la forme de longlet 
@@ -224,14 +291,16 @@ footer a {
 }
 
 /* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
-#checkFoot:not(:checked) + label footer .contenuFooter {
+#checkAPropos:not(:checked) + label footer .contenuFooter,
+#checkSocials:not(:checked) + label footer .contenuFooter {
   opacity: 0;
   //visibility: hidden;
   //  transition: opacity 0.5s ease, visibility 0s 0.5s;
 }
 
 /* seulement quand je click sur le footer, je vais afficher le contenu et je veux que ça réagise avec la transition de l'opacité que le h3 possède*/
-#checkFoot:checked + label footer .contenuFooter {
+#checkAPropos:checked + label footer .contenuFooter,
+#checkSocials:checked + label footer .contenuFooter {
   opacity: 1;
   // visibility: visible;
   // transition: opacity 0.5s ease 0.75s, visibility 0s 0.5s;
