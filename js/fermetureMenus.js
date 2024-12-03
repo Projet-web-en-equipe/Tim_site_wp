@@ -53,62 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // function pour fermer le footer en clickant en dehors de son aire.
   // autre gestion car checkbox
 
-  function fermerFooters(event) {
-    // Check for "À propos" footer
-    if (event.target === footerAPropos || event.target === labelForAPropos) {
-      return;
-    } else if (
-      /* if (
-      !footerAPropos.contains(event.target) &&
-      document.getElementById("checkAPropos").checked
-    ) {
-      document.getElementById("checkAPropos").checked = false;
-    }*/
-
-      // Check for "Socials" footer
-      event.target === footerSocials ||
-      event.target === labelForSocials
-    ) {
-      return;
-    }
-
-    if (
-      !footerAPropos.contains(event.target) &&
-      document.getElementById("checkAPropos").checked
-    ) {
-      document.getElementById("checkAPropos").checked = false;
-    }
-
-    if (
-      document.getElementById("checkAPropos").checked &&
-      !footerSocials.contains(event.target)
-    ) {
-      console.log("checker false");
-      document.getElementById("checkSocials").checked = false;
-    }
-
-    /*if (
-      !footerSocials.contains(event.target) &&
-      document.getElementById("checkSocials").checked
-    ) {
-      document.getElementById("checkSocials").checked = false;
-    }*/
-
-    //fermeture du nav si le menu est ouvert et si le click est dehors de son aire et du burger
-    if (
-      navMenu.classList.contains("active") &&
-      !navMenu.contains(event.target) &&
-      !burger.contains(event.target)
-    ) {
-      fermerMenu();
-    }
-  }
-
   function fermerFooter(e) {
-    console.log(e.target);
     if (e.target == checkAPropos || e.target == checkSocials) {
       return;
-    } else if (e.target.id == "footProp") {
+    } else if (e.target.id == "footProp" || trouverParents(e.target)) {
       if (!footProposChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
@@ -116,20 +64,35 @@ document.addEventListener("DOMContentLoaded", () => {
         footSuisChecked = false;
       }
       footProposChecked = !footProposChecked;
-    } else if (e.target.id == "footSoc" && !footSuisChecked) {
+    } else if (e.target.id == "footSoc" || trouverParents(e.target)) {
       if (!footSuisChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
-        footSuisChecked = false;
         footProposChecked = false;
+        footSuisChecked = false;
       }
       footSuisChecked = !footSuisChecked;
     } else {
+
       checkAPropos.checked = false;
       checkSocials.checked = false;
-      footSuisChecked = false;
       footProposChecked = false;
+      footSuisChecked = false;
     }
+  }
+
+  function trouverParents(element) {
+    var parents = [];
+    var bool = false;
+    for (; element && element !== document; element = element.parentNode) {
+      parents.push(element);
+    }
+    parents.forEach(parent => {
+      if(parent.id == "footProp" || parent.id == "footSoc"){
+        bool = true;
+      }
+    });
+    return bool;
   }
 
   //rajout du event listener dans le document pour fermer les menus et
