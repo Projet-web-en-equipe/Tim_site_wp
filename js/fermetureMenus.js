@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // autre gestion car checkbox
 
   function fermerFooter(e) {
+    fermerMenu();
     if (e.target == checkAPropos || e.target == checkSocials) {
       return;
     } else if (e.target.id == "footProp" || trouverParents(e.target)) {
@@ -73,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       footSuisChecked = !footSuisChecked;
     } else {
-
       checkAPropos.checked = false;
       checkSocials.checked = false;
       footProposChecked = false;
@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //fonction qui permet de trouver tout les parents d'un element et verifier si le id footProp ou footSoc est dans ses parents
+  //https://gomakethings.com/how-to-get-all-parent-elements-with-vanilla-javascript/#:~:text=Get%20all%20parents%20%23&text=var%20getParents%20%3D%20function%20(elem),parent%20array%20return%20parents%3B%20%7D%3B
   function trouverParents(element) {
     var parents = [];
     var bool = false;
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parents.push(element);
     }
     parents.forEach(parent => {
-      if(parent.id == "footProp" || parent.id == "footSoc"){
+      if (parent.id == "footProp" || parent.id == "footSoc") {
         bool = true;
       }
     });
