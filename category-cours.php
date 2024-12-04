@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title(); ?></h1>
+    <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-ferris-wheel"></i></h1>
 
     <!-- Navigation pour les filtres -->
     <nav class="nav-filtre">
@@ -15,7 +15,7 @@
             <div class="fleche"></div>
         </label>
         <ul class="slide">
-            <?php if ($current_category): ?>
+            <?php if ($current_category) : ?>
                 <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Toutes les sous-catégories</a></li>
                 <?php
                 // Récupérer les sous-catégories
@@ -73,8 +73,9 @@
                 ?>
             </section>
 
-            <section id="info" data-active-id="">
-                <button id="close-info" class="close-btn"></button>
+            <!-- Changer la couleur du fond selon la page -->
+            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_cours.jpg');">
+            
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
                 <?php
