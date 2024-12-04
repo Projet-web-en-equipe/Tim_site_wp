@@ -25,7 +25,7 @@
                 }
                 ?>
             </span>
-            <div class="fleche"></div>
+            <div class="fleche-filtre"></div>
         </label>
 
         <ul class="slide">
