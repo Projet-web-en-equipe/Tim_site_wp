@@ -11,9 +11,23 @@
         ?>
         <input type="checkbox" id="touch">
         <label for="touch">
-            <span id="selected-category">Toutes les profs</span>
+            <span id="selected-category">
+                <?php
+                // Récupérer la catégorie enfant sélectionnée dans l'URL
+                $selected_child_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
+
+                // Si une sous-catégorie est sélectionnée, afficher son nom
+                if ($selected_child_slug) {
+                    $selected_category = get_category_by_slug($selected_child_slug);
+                    echo esc_html($selected_category ? $selected_category->name : 'Toutes les profs');
+                } else {
+                    echo 'Toutes les profs'; // Valeur par défaut
+                }
+                ?>
+            </span>
             <div class="fleche"></div>
         </label>
+
         <ul class="slide">
             <?php if ($current_category): ?>
                 <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Toutes les profs</a></li>
