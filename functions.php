@@ -7,7 +7,8 @@ function enqueue_script_style()
     if (is_front_page()) {
         // wp_enqueue_script('animationFooter', get_theme_file_uri('/js/animationFooter.js'), array(), NULL, true);
         wp_enqueue_script('gestionHotToasts', get_theme_file_uri('/js/gestionHotToasts.js'), array(), NULL, true);
-        wp_enqueue_script('gestionnaireBlur', get_theme_file_uri('/js/gestionnaireBlur.js'), array(), NULL, true);    } else {
+        wp_enqueue_script('gestionnaireBlur', get_theme_file_uri('/js/gestionnaireBlur.js'), array(), NULL, true);
+    } else {
         // Charge le script d'animation uniquement sur le autres pages
         wp_enqueue_script('animation', get_theme_file_uri('/js/animation.js'), array(), NULL, true);
         wp_enqueue_script('fermetureInfo', get_theme_file_uri('/js/fermetureInfo.js'), array(), NULL, true);
@@ -75,7 +76,7 @@ function display_category_menu()
         // Affiche chaque lien de catégorie avec chaque lettre dans un span et l'icône dans un span spécial
         echo '<li class="menu-item">';
         echo '<a href="' . get_category_link($category->term_id) . '" class="effetVague effetCouleur' . ucfirst($category->slug) . '">';
-        
+
         // Ajoute chaque lettre de la catégorie dans un <span>
         $letters = preg_split('//u', $category->name, -1, PREG_SPLIT_NO_EMPTY); // Découpe chaque caractère, y compris les espaces
         foreach ($letters as $letter) {
@@ -85,12 +86,12 @@ function display_category_menu()
                 echo '<span>' . htmlentities($letter, ENT_QUOTES, 'UTF-8') . '</span>';
             }
         }
-        
-        
+
+
 
         // Ajoute l'icône dans un span avec la classe dernierSpan
         echo '<span class="dernierSpan"><i class="fa-solid ' . $icon_class . '"></i></span>';
-        
+
         echo '</a>';
         echo '</li>';
     }
@@ -106,4 +107,3 @@ function category_menu_shortcode()
     return ob_get_clean();
 }
 add_shortcode('category_menu', 'category_menu_shortcode');
-

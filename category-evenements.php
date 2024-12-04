@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title(); ?></h1>
+    <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-calendar-days"></i></h1>
     <div class="content-wrapper">
         <?php
         // Récupérer l'objet de la catégorie en cours
@@ -24,20 +24,27 @@
                             <h2><?php the_title(); ?></h2>
                         </div>
                     </div>
-
-                    <div id="post-content-<?php the_ID(); ?>" style="display: none;">
-                        <h1><?php the_title(); ?></h1>
-                        <div><?php the_content(); ?></div>
-                    </div>
                 <?php
                 endwhile;
                 ?>
             </section>
 
-            <section id="info">
+            <!-- Changer la couleur du fond selon la page -->
+            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_evenements.jpg');">
+
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
+                <?php
+                while ($query->have_posts()) : $query->the_post();
+                ?>
+                    <template id="post-content-<?php the_ID(); ?>">
+                        <h1><?php the_title(); ?></h1>
+                        <div><?php the_content(); ?></div>
+                    </template>
+                <?php
+                endwhile;
+                ?>
             </section>
         <?php
         else :
