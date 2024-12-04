@@ -1,18 +1,6 @@
-<!-- input type="checkbox" name="checkboxFooter" id="checkFoot" />
-<label for="checkFoot">
-  <footer> --
-    <div class="contenuFooter"-->
-    <input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
+<input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
 <label for="checkAPropos">
   <footer id="footProp" class="footer footer-apropos">
-
-    <!-- <div class="contact">
-        <p>3800 rue Sherbrooke Est</p>
-        <p>
-          <a href="https://www.cmaisonneuve.qc.ca/">Site web du Collège</a>
-        </p>
-      </div> -->
-
 
 
     <div class="equipe">

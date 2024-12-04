@@ -6,22 +6,19 @@
     <!-- Navigation pour les filtres -->
     <nav class="nav-filtre">
         <?php
-        // Récupérer la catégorie principale courante
         $current_category = get_queried_object();
         ?>
         <input type="checkbox" id="touch">
         <label for="touch">
             <span id="selected-category">
                 <?php
-                // Récupérer la catégorie enfant sélectionnée dans l'URL
                 $selected_child_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
 
-                // Si une sous-catégorie est sélectionnée, afficher son nom
                 if ($selected_child_slug) {
                     $selected_category = get_category_by_slug($selected_child_slug);
                     echo esc_html($selected_category ? $selected_category->name : 'Tous les cours');
                 } else {
-                    echo 'Tous les cours'; // Valeur par défaut
+                    echo 'Tous les cours';
                 }
                 ?>
             </span>
@@ -32,7 +29,6 @@
             <?php if ($current_category): ?>
                 <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Tous les cours</a></li>
                 <?php
-                // Récupérer les sous-catégories
                 $child_categories_args = array(
                     'child_of' => $current_category->term_id,
                     'hide_empty' => false
@@ -60,7 +56,6 @@
     <!-- Wrapper pour les contenus -->
     <div class="content-wrapper">
         <?php
-        // Récupérer la catégorie actuelle et le filtre
         $child_category_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
 
         $args = array(
@@ -89,11 +84,11 @@
 
             <!-- Changer la couleur du fond selon la page -->
             <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_cours.jpg');">
-            
+
+                <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
                 <?php
-                // Réinitialiser la boucle pour le contenu dans les templates
                 while ($query->have_posts()) : $query->the_post();
                 ?>
                     <template id="post-content-<?php the_ID(); ?>">
@@ -124,6 +119,12 @@
             url.searchParams.set('child_category', categorySlug);
             window.location.href = url.toString();
         });
+    });
+
+    // Gestion du bouton "close"
+    document.getElementById('close-info').addEventListener('click', function() {
+        var infoSection = document.getElementById('info');
+        infoSection.style.display = 'none'; // Cache la section info
     });
 </script>
 
