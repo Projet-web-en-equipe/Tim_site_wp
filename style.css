@@ -599,15 +599,6 @@ main div section#info.show {
 main div section#info.hide {
   animation: slideDown 0.5s ease forwards;
 }
-main div section#info img {
-  display: block;
-  width: auto;
-  height: 50%;
-  max-width: 80vw;
-  -o-object-fit: contain;
-     object-fit: contain;
-  padding: 1rem;
-}
 main div #close-info {
   position: absolute;
   top: 0.5rem;

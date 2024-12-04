@@ -77,15 +77,6 @@ main div {
         animation: slideDown 0.5s ease forwards;
     }
 
-    section#info img {
-        display: block;
-        // margin: 0 auto;
-        width: auto;
-        height: 50%;
-        max-width: 80vw;
-        object-fit: contain;
-        padding: 1rem;
-    }
 
     /* Bouton temporaire pour fermer la zone de description */
     #close-info {
