@@ -95,9 +95,22 @@
         link.addEventListener('click', function(event) {
             event.preventDefault();
             var categorySlug = this.getAttribute('data-category-slug');
+            var categoryName = this.textContent;
+            document.getElementById('selected-category').textContent = categoryName;
+
             var url = new URL(window.location.href);
             url.searchParams.set('child_category', categorySlug);
-            window.location.href = url.toString();
+            history.pushState(null, '', url.toString());
+
+            // Fetch new posts
+            fetch(url.toString())
+                .then(response => response.text())
+                .then(html => {
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(html, 'text/html');
+                    var newContent = doc.querySelector('#carrousel').innerHTML;
+                    document.querySelector('#carrousel').innerHTML = newContent;
+                });
         });
     });
 </script>
