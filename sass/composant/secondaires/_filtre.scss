@@ -55,17 +55,13 @@ nav.nav-filtre input[type="checkbox"] {
     display: none;
 }
 
-nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
-    max-height: 132rem;
-}
-
 ul.slide {
     clear: both;
     width: 25%;
     max-height: 0;
     overflow: hidden;
     text-align: left;
-    transition: max-height 1s;
+    transition: max-height 1s ease-in-out;
     list-style-type: none;
     padding-left: 0rem;
     position: absolute;
@@ -78,6 +74,10 @@ ul.slide {
     // border-right: 0.2rem solid white;
     // border-left: 0.2rem solid white;
     box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
+}
+
+nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
+    max-height: 48rem;
 }
 
 ul.slide li {

@@ -44,7 +44,7 @@
                 ?>
                         <li>
                             <a href="#" data-category-id="<?php echo $child_category->term_id; ?>" data-category-slug="<?php echo $child_category->slug; ?>">
-                                <?php echo esc_html($child_category->name); ?>
+                                <?php echo substr(esc_html($child_category->name), 10); ?>
                             </a>
                         </li>
                 <?php

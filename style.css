@@ -269,7 +269,8 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -604,8 +605,7 @@ main div section#info img {
   width: auto;
   height: 50%;
   max-width: 80vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   padding: 1rem;
 }
 main div #close-info {
@@ -650,8 +650,7 @@ main div section#info p {
     margin-top: 2%;
     background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
     background-repeat: no-repeat;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   main div h1 {
     margin: 0 auto;
@@ -946,17 +945,13 @@ nav.nav-filtre input[type=checkbox] {
   display: none;
 }
 
-nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
-  max-height: 132rem;
-}
-
 ul.slide {
   clear: both;
   width: 25%;
   max-height: 0;
   overflow: hidden;
   text-align: left;
-  transition: max-height 1s;
+  transition: max-height 1s ease-in-out;
   list-style-type: none;
   padding-left: 0rem;
   position: absolute;
@@ -966,6 +961,10 @@ ul.slide {
   margin-top: 0;
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.9) 0px 5px 15px;
+}
+
+nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
+  max-height: 48rem;
 }
 
 ul.slide li {
@@ -1732,4 +1731,4 @@ canvas {
   #retourAccueil {
     margin: auto;
   }
-}
+}/*# sourceMappingURL=style.css.map */
