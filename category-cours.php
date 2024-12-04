@@ -97,20 +97,9 @@
             var categorySlug = this.getAttribute('data-category-slug');
             var categoryName = this.textContent;
             document.getElementById('selected-category').textContent = categoryName;
-
             var url = new URL(window.location.href);
             url.searchParams.set('child_category', categorySlug);
-            history.pushState(null, '', url.toString());
-
-            // Fetch new posts
-            fetch(url.toString())
-                .then(response => response.text())
-                .then(html => {
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(html, 'text/html');
-                    var newContent = doc.querySelector('#carrousel').innerHTML;
-                    document.querySelector('#carrousel').innerHTML = newContent;
-                });
+            window.location.href = url.toString();
         });
     });
 </script>
