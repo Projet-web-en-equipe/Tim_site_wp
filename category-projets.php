@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title(); ?></h1>
+    <!-- Titre suivi de l'icône représentative qui apparait dans le menu nav -->
+    <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-ice-cream"></i></h1>
 
     <!-- Navigation pour les filtres -->
     <nav class="nav-filtre">
@@ -11,12 +12,25 @@
         ?>
         <input type="checkbox" id="touch">
         <label for="touch">
-            <span id="selected-category">Toutes les projets</span>
+            <span id="selected-category">
+                <?php
+                // Récupérer la catégorie enfant sélectionnée dans l'URL
+                $selected_child_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
+
+                // Si une sous-catégorie est sélectionnée, afficher son nom
+                if ($selected_child_slug) {
+                    $selected_category = get_category_by_slug($selected_child_slug);
+                    echo esc_html($selected_category ? $selected_category->name : 'Tous les projets');
+                } else {
+                    echo 'Tous les projets'; // Valeur par défaut
+                }
+                ?>
+            </span>
             <div class="fleche"></div>
         </label>
         <ul class="slide">
             <?php if ($current_category): ?>
-                <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Toutes les projets</a></li>
+                <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Tous les projets</a></li>
                 <?php
                 // Récupérer les projets
                 $child_categories_args = array(
@@ -73,7 +87,9 @@
                 ?>
             </section>
 
-            <section id="info" data-active-id="">
+            <!-- Changer la couleur du fond selon la page selon sa couleur de survol dans le menu -->
+            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_projets.jpg');">
+
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
@@ -109,30 +125,6 @@
             url.searchParams.set('child_category', categorySlug);
             window.location.href = url.toString();
         });
-    });
-
-    // Gestion de l'affichage des informations dans la section #info
-    const banniereElements = document.querySelectorAll('.banniere');
-    const infoSection = document.getElementById('info');
-    const closeInfoBtn = document.getElementById('close-info');
-
-    banniereElements.forEach(banniere => {
-        banniere.addEventListener('click', function() {
-            const postId = this.getAttribute('data-id');
-            const postContent = document.getElementById(`post-content-${postId}`);
-
-            if (postContent) {
-                infoSection.querySelector('#cours-name').textContent = postContent.querySelector('h1').textContent;
-                infoSection.querySelector('.text').innerHTML = postContent.querySelector('div').innerHTML;
-                infoSection.dataset.activeId = postId;
-                infoSection.style.display = 'block';
-            }
-        });
-    });
-
-    closeInfoBtn.addEventListener('click', function() {
-        infoSection.style.display = 'none';
-        infoSection.dataset.activeId = '';
     });
 </script>
 

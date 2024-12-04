@@ -1,16 +1,39 @@
-<input type="checkbox" name="checkboxFooter" id="checkFoot" />
+<!-- input type="checkbox" name="checkboxFooter" id="checkFoot" />
 <label for="checkFoot">
+  <footer> --
+    <div class="contenuFooter"-->
+    <input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
+<label for="checkAPropos">
+  <footer id="footProp" class="footer footer-apropos">
 
-  <footer>
-    <div class="contenuFooter">
-      
-      <!-- <div class="contact">
+    <!-- <div class="contact">
         <p>3800 rue Sherbrooke Est</p>
         <p>
           <a href="https://www.cmaisonneuve.qc.ca/">Site web du Collège</a>
         </p>
       </div> -->
 
+
+
+    <div class="equipe">
+      <p>Site web réalisé Par
+        <a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia El moustarih, </a>
+        <a href="https://www.behance.net/tonyton3">Tony Ton,</a>
+        <a href="https://www.behance.net/lohanmoutquin">Lohan
+          Moutquin, </a>
+        <a href="https://e2269994.myportfolio.com/">Lenny Tran, </a>
+        <a href="https://www.behance.net/alex_ydr3dc3">Alejandro yanez Del rio</a>
+
+
+      </p>
+    </div>
+    </div>
+  </footer>
+</label>
+<input type="checkbox" class="unDesCheckbox" name="checkboxSocials" id="checkSocials" />
+<label for="checkSocials">
+  <footer id="footSoc" class="footer footer-socials">
+    <div class="contenuFooter">
 
       <div class="sociaux">
 
@@ -79,25 +102,16 @@
 
       </div>
 
-
-      <div class="equipe">
-        <p>Site web réalisé Par
-          <a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia El moustarih, </a>
-          <a href="https://www.behance.net/tonyton3">Tony Ton,</a>
-          <a href="https://www.behance.net/lohanmoutquin">Lohan
-            Moutquin, </a>
-          <a href="https://e2269994.myportfolio.com/">Lenny Tran, </a>
-          <a href="https://www.behance.net/alex_ydr3dc3">Alejandro yanez Del rio</a>
-
-
-        </p>
-      </div>
     </div>
-
-
   </footer>
+</label>
 
-  <?php wp_footer(); ?>
-  </body>
 
-  </html>
+
+
+
+
+<?php wp_footer(); ?>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <h1 id="titre"><?php single_cat_title(); ?></h1>
+    <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-lighthouse"></i></h1>
 
     <!-- Navigation pour les filtres -->
     <nav class="nav-filtre">
@@ -11,9 +11,23 @@
         ?>
         <input type="checkbox" id="touch">
         <label for="touch">
-            <span id="selected-category">Toutes les profs</span>
+            <span id="selected-category">
+                <?php
+                // Récupérer la catégorie enfant sélectionnée dans l'URL
+                $selected_child_slug = isset($_GET['child_category']) ? sanitize_text_field($_GET['child_category']) : '';
+
+                // Si une sous-catégorie est sélectionnée, afficher son nom
+                if ($selected_child_slug) {
+                    $selected_category = get_category_by_slug($selected_child_slug);
+                    echo esc_html($selected_category ? $selected_category->name : 'Toutes les profs');
+                } else {
+                    echo 'Toutes les profs'; // Valeur par défaut
+                }
+                ?>
+            </span>
             <div class="fleche"></div>
         </label>
+
         <ul class="slide">
             <?php if ($current_category): ?>
                 <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Toutes les profs</a></li>
@@ -61,19 +75,60 @@
             <section id="carrousel">
                 <?php
                 while ($query->have_posts()) : $query->the_post();
+                    $post_slug = get_post_field('post_name', get_the_ID());
+
+                    // URL du placeholder
+                    $placeholder_url = 'https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png';
+
+                    // Recherche de l'image "og-{slug}" dans la médiathèque
+                    $og_image_args = array(
+                        'post_type' => 'attachment',
+                        'post_status' => 'inherit',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => '_wp_attached_file',
+                                'value' => "og-{$post_slug}",
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    );
+                    $og_image_query = new WP_Query($og_image_args);
+                    $og_image_url = $og_image_query->have_posts() ? wp_get_attachment_url($og_image_query->posts[0]->ID) : $placeholder_url;
+
+                    // Recherche de l'image "low-{slug}" dans la médiathèque
+                    $low_image_args = array(
+                        'post_type' => 'attachment',
+                        'post_status' => 'inherit',
+                        'posts_per_page' => 1,
+                        'meta_query' => array(
+                            array(
+                                'key' => '_wp_attached_file',
+                                'value' => "low-{$post_slug}",
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    );
+                    $low_image_query = new WP_Query($low_image_args);
+                    $low_image_url = $low_image_query->have_posts() ? wp_get_attachment_url($low_image_query->posts[0]->ID) : $placeholder_url;
                 ?>
                     <div class="banniere" data-id="<?php the_ID(); ?>">
                         <div class="image-container">
-                            <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
+                            <img class="image-hover" src="<?php echo esc_url($og_image_url); ?>" alt="Image survolée de <?php echo esc_attr(get_the_title()); ?>">
+                            <img class="image-low" src="<?php echo esc_url($low_image_url); ?>" alt="Image originale de <?php echo esc_attr(get_the_title()); ?>">
                             <h2><?php the_title(); ?></h2>
                         </div>
                     </div>
                 <?php
                 endwhile;
                 ?>
+
+
             </section>
 
-            <section id="info" data-active-id="">
+            <!-- Changer la couleur du fond selon la page -->
+            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_profs.jpg');">
+           
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
@@ -109,30 +164,6 @@
             url.searchParams.set('child_category', categorySlug);
             window.location.href = url.toString();
         });
-    });
-
-    // Gestion de l'affichage des informations dans la section #info
-    const banniereElements = document.querySelectorAll('.banniere');
-    const infoSection = document.getElementById('info');
-    const closeInfoBtn = document.getElementById('close-info');
-
-    banniereElements.forEach(banniere => {
-        banniere.addEventListener('click', function() {
-            const postId = this.getAttribute('data-id');
-            const postContent = document.getElementById(`post-content-${postId}`);
-
-            if (postContent) {
-                infoSection.querySelector('#cours-name').textContent = postContent.querySelector('h1').textContent;
-                infoSection.querySelector('.text').innerHTML = postContent.querySelector('div').innerHTML;
-                infoSection.dataset.activeId = postId;
-                infoSection.style.display = 'block';
-            }
-        });
-    });
-
-    closeInfoBtn.addEventListener('click', function() {
-        infoSection.style.display = 'none';
-        infoSection.dataset.activeId = '';
     });
 </script>
 
