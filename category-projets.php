@@ -20,7 +20,7 @@
                 // Si une sous-catégorie est sélectionnée, afficher son nom
                 if ($selected_child_slug) {
                     $selected_category = get_category_by_slug($selected_child_slug);
-                    echo esc_html($selected_category ? $selected_category->name : 'Tous les projets');
+                    echo esc_html($selected_category ? substr($selected_category->name, 10) : 'Tous les projets');
                 } else {
                     echo 'Tous les projets'; // Valeur par défaut
                 }
@@ -28,11 +28,12 @@
             </span>
             <div class="fleche-filtre"></div>
         </label>
+
         <ul class="slide">
             <?php if ($current_category): ?>
                 <li><a href="#" data-category-id="<?php echo $current_category->term_id; ?>" data-category-slug="">Tous les projets</a></li>
                 <?php
-                // Récupérer les projets
+                // Récupérer les sous-catégories
                 $child_categories_args = array(
                     'child_of' => $current_category->term_id,
                     'hide_empty' => false

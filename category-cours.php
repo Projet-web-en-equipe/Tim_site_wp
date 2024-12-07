@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main>
+    <!-- Titre suivi de l'icône représentative qui apparait dans le menu nav -->
     <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-ferris-wheel"></i></h1>
 
     <!-- Navigation pour les filtres -->
@@ -19,7 +20,7 @@
                 // Si une sous-catégorie est sélectionnée, afficher son nom
                 if ($selected_child_slug) {
                     $selected_category = get_category_by_slug($selected_child_slug);
-                    echo esc_html($selected_category ? $selected_category->name : 'Tous les cours');
+                    echo esc_html($selected_category ? substr($selected_category->name, 8) : 'Tous les cours');
                 } else {
                     echo 'Tous les cours'; // Valeur par défaut
                 }
@@ -90,6 +91,7 @@
             <!-- Changer la couleur du fond selon la page -->
             <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_cours.jpg');">
             
+                <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
                 <?php
@@ -120,8 +122,8 @@
         link.addEventListener('click', function(event) {
             event.preventDefault();
             var categorySlug = this.getAttribute('data-category-slug');
-            var categoryName = this.textContent;
-            document.getElementById('selected-category').textContent = categoryName;
+            // var categoryName = this.textContent;
+            // document.getElementById('selected-category').textContent = categoryName;
             var url = new URL(window.location.href);
             url.searchParams.set('child_category', categorySlug);
             window.location.href = url.toString();
