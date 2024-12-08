@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 infoSection.style.transform = "translateY(0)"; // S'assure que la section est à sa place
             }
         }
+        //remettre les images dans le conteneur de la galerie apres avoir replacer les  elements
+        appliquerImg();
     }
 
     // Fonction pour fermer la section
@@ -58,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Réinitialise les fonctionnalités selon la taille de l'écran
     function onResize() {
-        console.log(`Taille de l'écran changée : ${window.innerWidth}px`);
-        
+        //console.log(`Taille de l'écran changée : ${window.innerWidth}px`);
+
         if (isMobile()) {
             console.log("Mode tablette ou mobile activé");
             infoSection.style.display = "none"; // Réinitialise l'affichage en mobile/tablette
