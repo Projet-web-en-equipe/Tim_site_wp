@@ -453,23 +453,28 @@ main section .image-container img {
   width: 100%;
   height: auto;
   display: block;
-  transition: opacity 0.3s ease; /* Transition pour l'effet de fondu */
+  transition: opacity 0.3s ease;
+  /* Transition pour l'effet de fondu */
 }
 
 main section .image-hover {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0; /* Cache l'image au début */
-  z-index: 1; /* Place cette image au-dessus de l'image d'origine */
+  opacity: 0;
+  /* Cache l'image au début */
+  z-index: 1;
+  /* Place cette image au-dessus de l'image d'origine */
 }
 
 main section .image-container:hover .image-hover {
-  opacity: 1; /* Affiche l'image au survol */
+  opacity: 1;
+  /* Affiche l'image au survol */
 }
 
 main section .image-container:hover .image-original {
-  opacity: 0; /* Cache l'image originale au survol */
+  opacity: 0;
+  /* Cache l'image originale au survol */
 }
 
 main section h2 {
