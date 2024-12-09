@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const checkAPropos = document.getElementById("checkAPropos");
   const checkSocials = document.getElementById("checkSocials");
+  const checkContact = document.getElementById("checkContact");
 
   //stock pour le nav
   const navMenu = document.getElementById("nav-menu"); // on va get l'air du navMenu
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //bool qui detecte quand un checkbox est checked
   var footProposChecked = false;
   var footSuisChecked = false;
+  var footContChecked = false;
 
   // fonction pour toggle la classe active (ouvrir le menu)
   function basculerMenu() {
@@ -55,29 +57,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fermerFooter(e) {
     fermerMenu();
-    if (e.target == checkAPropos || e.target == checkSocials) {
+    if (e.target == checkAPropos || e.target == checkSocials || e.target == checkContact) {
       return;
     } else if (e.target.id == "footProp" || trouverParents(e.target)) {
+      console.log("apropos");
       if (!footProposChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
+        checkContact.checked = false;
         footProposChecked = false;
         footSuisChecked = false;
+        footContChecked = false;
       }
       footProposChecked = !footProposChecked;
     } else if (e.target.id == "footSoc" || trouverParents(e.target)) {
+      console.log("suis nous");
       if (!footSuisChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
+        checkContact.checked = false;
         footProposChecked = false;
         footSuisChecked = false;
+        footContChecked = false;
       }
       footSuisChecked = !footSuisChecked;
+    } else if (e.target.id == "footCont" || trouverParents(e.target)) {
+      console.log("contact");
+      if (!footContChecked) {
+        checkAPropos.checked = false;
+        checkSocials.checked = false;
+        checkContact.checked = false;
+        footProposChecked = false;
+        footSuisChecked = false;
+        footContChecked = false;
+      }
+      footContChecked = !footContChecked;
     } else {
       checkAPropos.checked = false;
       checkSocials.checked = false;
+      checkContact.checked = false;
       footProposChecked = false;
       footSuisChecked = false;
+      footContChecked = false;
+      console.log("else");
     }
   }
 
@@ -90,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parents.push(element);
     }
     parents.forEach(parent => {
-      if (parent.id == "footProp" || parent.id == "footSoc") {
+      if (parent.id == "footProp" || parent.id == "footSoc" || parent.id == "footCont") {
         bool = true;
       }
     });

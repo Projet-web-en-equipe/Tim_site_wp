@@ -2,7 +2,13 @@
 <label for="checkFoot">
   <footer> --
     <div class="contenuFooter"-->
-    <input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
+<input type="checkbox" class="unDesCheckbox" name="checkboxContact" id="checkContact" />
+<label for="checkContact">
+  <footer id="footCont" class="footer footer-contact">
+    <h1>HALLO!</h1>
+  </footer>
+</label>
+<input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
 <label for="checkAPropos">
   <footer id="footProp" class="footer footer-apropos">
 
@@ -94,7 +100,6 @@
                 </svg>
               </span>
 
-              <!-- </a> -->
           </li>
 
         </ul>
