@@ -121,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const postId = item.getAttribute("data-id");
             dernierPostClique = postId; // Enregistre le dernier post cliqué
             afficherCours(postId);
-            appliquerImg();
         });
     });
 
