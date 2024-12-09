@@ -8,6 +8,14 @@
   <?php wp_head(); ?>
 </head>
 
+<!-- Récupération du slug de catégorie de la page affichée -->
+<?php 
+  $category = get_the_category();
+  if (!empty($category)) {
+    $category_slug = $category[0]->slug;
+  }
+?>
+
 <body class="<?php echo is_front_page() ? 'accueil' : (is_category() ? 'category-' . $category_slug : ''); ?>"> <!-- Classe dynamique ajoutée ici -->
   <header class="<?php echo is_front_page() ? 'accueil' : (is_category() ? 'category' : ''); ?>">
     <!-- Je dois absolument avoir le header et le footer en position absolute. Pour l'accueil

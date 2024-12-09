@@ -122,12 +122,20 @@
         link.addEventListener('click', function(event) {
             event.preventDefault();
             var categorySlug = this.getAttribute('data-category-slug');
-            // var categoryName = this.textContent;
-            // document.getElementById('selected-category').textContent = categoryName;
             var url = new URL(window.location.href);
             url.searchParams.set('child_category', categorySlug);
             window.location.href = url.toString();
         });
+    });
+
+    document.addEventListener('click', function(event) {
+        var checkbox = document.getElementById('touch');
+        var label = document.querySelector('label[for="touch"]');
+
+        // Check if the checkbox is checked and the click is outside the checkbox and label
+        if (checkbox.checked && !checkbox.contains(event.target) && !label.contains(event.target)) {
+            checkbox.checked = false; // Uncheck the checkbox
+        }
     });
 </script>
 
