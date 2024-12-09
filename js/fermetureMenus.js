@@ -56,11 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // autre gestion car checkbox
 
   function fermerFooter(e) {
+    console.log(e);
     fermerMenu();
     if (e.target == checkAPropos || e.target == checkSocials || e.target == checkContact) {
       return;
     } else if (e.target.id == "footProp" || trouverParents(e.target)) {
-      console.log("apropos");
       if (!footProposChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       footProposChecked = !footProposChecked;
     } else if (e.target.id == "footSoc" || trouverParents(e.target)) {
-      console.log("suis nous");
       if (!footSuisChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
@@ -82,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       footSuisChecked = !footSuisChecked;
     } else if (e.target.id == "footCont" || trouverParents(e.target)) {
-      console.log("contact");
       if (!footContChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
@@ -99,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
       footProposChecked = false;
       footSuisChecked = false;
       footContChecked = false;
-      console.log("else");
     }
   }
 
