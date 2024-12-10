@@ -7,7 +7,7 @@
   width: 62%; // je donne un width bien évidemment, mais je donne pas de hauteur, car je veux que ça prenne la hauteur dont il a besoin
   top: 15%;
   left: 50%;
-  height: 15%;
+  height: 50%; //etait a 15% a voir pourquoi mon css maarche pu. sa prend pas le height et sa prend pas le background
   transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
   background: #003d5b;
   color: #fff;
@@ -30,7 +30,8 @@
   font-weight: 700;
   font-style: normal;
   color: white;
-  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
+  font-size: clamp(0.875rem, 3vw + 0.2rem, 1.25rem);
+
   line-height: 1.2;
   padding: 2rem;
 }

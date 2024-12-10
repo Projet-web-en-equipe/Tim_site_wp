@@ -16,18 +16,32 @@
 
 
     <div class="equipe">
-      <p>Site web réalisé Par
-        <a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia El moustarih, </a>
-        <a href="https://www.behance.net/tonyton3">Tony Ton,</a>
-        <a href="https://www.behance.net/lohanmoutquin">Lohan
-          Moutquin, </a>
-        <a href="https://e2269994.myportfolio.com/">Lenny Tran, </a>
-        <a href="https://www.behance.net/alex_ydr3dc3">Alejandro yanez Del rio</a>
+      <!-- <h3>Les créateurs de ce fabuleux site!</h3> -->
+
+      <div class="conteneurApropos">
+        <div class="apropos-item" id="alejandro">Alejandro</div>
+        <div id="portraitAlejandro">
+          <img id="alejandroRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/AlejandroRond.png" alt="">
+          <img id="alejandroRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/alejandroRondBackground.png" alt="">
+        </div>
 
 
-      </p>
-    </div>
-    </div>
+        <div class="apropos-item" id="kravitz">Lenny</div>
+        <div id="portraitLenny">
+          <img id="lennyRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lennyRond.png" alt="">
+          <img id="lennyRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lennyRondBackground-1.png" alt="">
+        </div>
+        <div class="apropos-item" id="camilia">Camilia</div>
+        <div class="apropos-item" id="lohan">Lohan</div>
+        <div id="portraitLohan">
+          <img id="lohanRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lohanRond-2.png" alt="">
+          <img id="lohanRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lohanRondBackground-1.png" alt="">
+        </div>
+        <div class="apropos-item" id="antoine">Antonio</div>
+      </div>
+
+
+
   </footer>
 </label>
 <input type="checkbox" class="unDesCheckbox" name="checkboxSocials" id="checkSocials" />

@@ -18,6 +18,14 @@ nav.nav-filtre label {
     padding-left: 1rem;
     background: var(--tertiaire);
     box-sizing: border-box;
+    // border-top: 0.2rem solid white;
+    // border-right: 0.2rem solid white;
+    // border-left: 0.2rem solid white;
+    box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
+}
+
+nav.nav-filtre label:hover {
+    background: var(--secondaire);
 }
 
 nav.nav-filtre label span {
@@ -47,7 +55,7 @@ nav.nav-filtre input[type="checkbox"] {
 }
 
 nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
-    max-height: 32rem;
+    max-height: 132rem;
 }
 
 ul.slide {
@@ -62,9 +70,13 @@ ul.slide {
     position: absolute;
     top: 100%;
     background: var(--tertiaire);
-    z-index: 1;
+    z-index: 3;
     margin-top: 0;
     box-sizing: border-box;
+    // border-bottom: 0.2rem solid white;
+    // border-right: 0.2rem solid white;
+    // border-left: 0.2rem solid white;
+    box-shadow: rgba(0, 0, 0, 0.90) 0px 15px 15px;
 }
 
 ul.slide li {
@@ -84,6 +96,7 @@ ul.slide li a {
     font-family: "breakers-slab", sans-serif;
     font-style: normal;
     font-size: 2rem;
+    z-index: 100;
 }
 
 nav.nav-filtre input {

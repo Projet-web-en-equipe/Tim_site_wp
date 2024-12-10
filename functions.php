@@ -75,7 +75,7 @@ function display_category_menu()
         // Affiche chaque lien de catégorie avec chaque lettre dans un span et l'icône dans un span spécial
         echo '<li class="menu-item">';
         echo '<a href="' . get_category_link($category->term_id) . '" class="effetVague effetCouleur' . ucfirst($category->slug) . '">';
-        
+
         // Ajoute chaque lettre de la catégorie dans un <span>
         $letters = preg_split('//u', $category->name, -1, PREG_SPLIT_NO_EMPTY); // Découpe chaque caractère, y compris les espaces
         foreach ($letters as $letter) {
@@ -85,12 +85,12 @@ function display_category_menu()
                 echo '<span>' . htmlentities($letter, ENT_QUOTES, 'UTF-8') . '</span>';
             }
         }
-        
-        
+
+
 
         // Ajoute l'icône dans un span avec la classe dernierSpan
         echo '<span class="dernierSpan"><i class="fa-solid ' . $icon_class . '"></i></span>';
-        
+
         echo '</a>';
         echo '</li>';
     }
@@ -106,78 +106,3 @@ function category_menu_shortcode()
     return ob_get_clean();
 }
 add_shortcode('category_menu', 'category_menu_shortcode');
-
-function filter_category()
-{
-    // Check if category_id is set and is a valid integer
-    if (isset($_GET['category_id']) && intval($_GET['category_id']) > 0) {
-        $category_id = intval($_GET['category_id']);
-        $args = array(
-            'cat' => $category_id,
-            'posts_per_page' => -1
-        );
-
-        $query = new WP_Query($args);
-
-        if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-                $category_cours = get_category_by_slug("cours");
-?>
-                <div class="banniere" data-id="<?php the_ID(); ?>">
-                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" ?>" alt="placeholder">
-                    <h2>
-                        <?php
-                        if (has_category($category_cours->term_id)) {
-                            echo preg_replace('/\s*\(.*?\)\s*/', '', substr(get_the_title(), 7));
-                        } else {
-                            the_title();
-                        }
-                        ?>
-                    </h2>
-                </div>
-                <div id="post-content-<?php the_ID(); ?>" style="display: none;">
-                    <h1><?php the_title(); ?></h1>
-                    <div><?php the_content(); ?></div>
-                </div>
-<?php
-            endwhile;
-        else :
-            echo '<p>Aucun article disponible pour le moment.</p>';
-        endif;
-
-        wp_reset_postdata();
-    } else {
-        echo '<p>Catégorie non valide.</p>';
-    }
-
-    die();
-}
-
-add_action('wp_ajax_filter_category', 'filter_category_callback');
-add_action('wp_ajax_nopriv_filter_category', 'filter_category_callback');
-
-function filter_category_callback() {
-    $category_id = intval($_GET['category_id']);
-    
-    $args = array(
-        'cat' => $category_id,
-        'posts_per_page' => -1,
-    );
-    $query = new WP_Query($args);
-
-    if ($query->have_posts()) {
-        while ($query->have_posts()) : $query->the_post(); ?>
-            <div class="banniere" data-id="<?php the_ID(); ?>">
-                <div class="image-container">
-                    <img src="<?= "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png"; ?>" alt="placeholder">
-                    <h2><?php the_title(); ?></h2>
-                </div>
-            </div>
-        <?php
-        endwhile;
-    } else {
-        echo '<h1>Aucun cours disponible pour le moment.</h1>';
-    }
-    wp_reset_postdata();
-    wp_die(); // Terminate the function properly.
-}

@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (; element && element !== document; element = element.parentNode) {
       parents.push(element);
     }
-    parents.forEach(parent => {
+    parents.forEach((parent) => {
       if (parent.id == "footProp" || parent.id == "footSoc") {
         bool = true;
       }
