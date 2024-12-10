@@ -2,16 +2,16 @@
   position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #003d5b;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
+  //height: 30vh;
+  //bottom: -265px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 5%;
-  padding-top: 5%;
+  //padding-bottom: 5%;
+  //padding-top: 5%;
   z-index: 5;
 }
 
@@ -19,16 +19,16 @@
   position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #0aa7f5;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
+  //height: 30vh;
+  //bottom: -265px;//calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 5%;
-  padding-top: 5%;
+  //padding-bottom: 5%;
+  //padding-top: 5%;
   z-index: 5;
 }
 
@@ -36,16 +36,16 @@
   position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #d1495d;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
+  //height: 30vh;
+  //bottom: -265px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 5%;
-  padding-top: 5%;
+  //padding-bottom: 5%;
+  //padding-top: 5%;
   z-index: 5;
   .sociaux,
   .equipe {
@@ -57,6 +57,11 @@
     gap: 3%;
     // border: 1px solid white;
   }
+}
+
+.footer{
+  bottom: -280px;
+  height: 300px;
 }
 
 /* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
@@ -182,12 +187,14 @@ a propos* lorsque le footer est fermé*/
   box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 1);
 
   transition: all 0.7s ease-out;
+  z-index: 3;
 }
 
 #checkAPropos:not(:checked) + label footer.footer-apropos:hover,
 #checkSocials:not(:checked) + label footer.footer-socials:hover,
 #checkContact:not(:checked) + label footer.footer-contact:hover {
   transform: translateY(-5px);
+  z-index: 4;
 }
 
 /* quand le footer est ouvert */
@@ -365,39 +372,39 @@ footer a {
 /**********************************************************************/
 
 /************************** Pour les tablettes *****************/
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   footer {
-    bottom: -41vh; /* Adjust for tablets */
+    //bottom: -41vh; /* Adjust for tablets */
   }
 
-  .sociaux ul li {
-    width: 60px;
-    height: 60px;
-  }
+  // .sociaux ul li {
+  //   width: 60px;
+  //   height: 60px;
+  // }
 }
 
 /************************** Pour les bureaux *****************/
 @media only screen and (min-width: 1025px) {
   footer {
-    bottom: -44vh; /* Adjust for tablets */
+    //bottom: -44vh; /* Adjust for tablets */
   }
 
-  .sociaux ul li {
-    width: 80px;
-    height: 80px;
-  }
+  // .sociaux ul li {
+  //   width: 80px;
+  //   height: 80px;
+  // }
 }
 
 /************************** Pour les plus grands *****************/
 @media only screen and (min-width: 1350px) {
   footer {
-    bottom: -47vh; /* Adjust for tablets */
+    //bottom: -47vh; /* Adjust for tablets */
   }
 }
 
 /************************** Pour les plus grands *****************/
 @media only screen and (min-width: 1750px) {
   footer {
-    bottom: -50vh; /* Adjust for tablets */
+    //bottom: -50vh; /* Adjust for tablets */
   }
 }

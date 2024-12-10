@@ -58,11 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function fermerFooter(e) {
     fermerMenu();
     if (e == "menu" || e.target == checkAPropos || e.target == checkSocials || e.target == checkContact) {
-      console.log("return");
       return;
     } else if (e.target.id == "footProp" || trouverParents(e.target, "footProp")) {
       if (!footProposChecked) {
-        console.log("propos");
         checkAPropos.checked = false;
         checkSocials.checked = false;
         checkContact.checked = false;
@@ -73,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       footProposChecked = !footProposChecked;
     } else if (e.target.id == "footSoc" || trouverParents(e.target, "footSoc")) {
       if (!footSuisChecked) {
-        console.log("suivi");
         checkAPropos.checked = false;
         checkSocials.checked = false;
         checkContact.checked = false;
@@ -84,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       footSuisChecked = !footSuisChecked;
     } else if (e.target.id == "footCont" || trouverParents(e.target, "footCont")) {
       if (!footContChecked) {
-        console.log("contenu");
         checkAPropos.checked = false;
         checkSocials.checked = false;
         checkContact.checked = false;
@@ -94,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       footContChecked = !footContChecked;
     } else {
-      console.log("else");
       checkAPropos.checked = false;
       checkSocials.checked = false;
       checkContact.checked = false;
