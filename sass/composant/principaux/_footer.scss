@@ -1,5 +1,5 @@
 .footer-apropos {
-  position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
+  //position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #003d5b;
   width: 100%;
   //height: 30vh;
@@ -16,7 +16,7 @@
 }
 
 .footer-contact {
-  position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
+  //position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #0aa7f5;
   width: 100%;
   //height: 30vh;
@@ -33,7 +33,7 @@
 }
 
 .footer-socials {
-  position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
+  //position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #d1495d;
   width: 100%;
   //height: 30vh;
@@ -60,6 +60,7 @@
 }
 
 .footer{
+  position: fixed;
   bottom: -280px;
   height: 300px;
 }

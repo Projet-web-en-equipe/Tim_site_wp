@@ -1191,7 +1191,6 @@ nav.nav-filtre input {
 }
 /*Composants principaux*/
 .footer-apropos {
-  position: absolute;
   background-color: #003d5b;
   width: 100%;
   display: flex;
@@ -1204,7 +1203,6 @@ nav.nav-filtre input {
 }
 
 .footer-contact {
-  position: absolute;
   background-color: #0aa7f5;
   width: 100%;
   display: flex;
@@ -1217,7 +1215,6 @@ nav.nav-filtre input {
 }
 
 .footer-socials {
-  position: absolute;
   background-color: #d1495d;
   width: 100%;
   display: flex;
@@ -1238,6 +1235,7 @@ nav.nav-filtre input {
 }
 
 .footer {
+  position: fixed;
   bottom: -280px;
   height: 300px;
 }

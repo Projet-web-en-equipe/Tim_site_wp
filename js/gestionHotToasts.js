@@ -50,6 +50,10 @@ window.addEventListener("load", () => {
     const arrierePlan = document.getElementById("arrierePlan");
     arrierePlan.style.visibility = "hidden"; // Rendre invisible
     arrierePlan.style.opacity = "0"; // Masquer visuellement
+    //mettre eric directement sur l'ile sans animation
+    if(document.getElementById("ile") != null){
+      pseudoVal = 0;
+    }
   }
 
   /*************************************************************/
