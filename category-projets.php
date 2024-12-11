@@ -88,7 +88,7 @@
             </section>
 
             <!-- Changer la couleur du fond selon la page selon sa couleur de survol dans le menu -->
-            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_projets.jpg');">
+            <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/bg_lowPoly_projets.jpg');">
 
                 <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
