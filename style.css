@@ -572,6 +572,7 @@ main div section#info {
   position: absolute;
   bottom: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 90vh;
   width: 98vw;
   background: rgba(255, 255, 255, 0.774);
