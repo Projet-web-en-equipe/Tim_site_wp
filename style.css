@@ -148,9 +148,23 @@ header ul li a:hover {
   }
 }
 body {
+  background: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
   background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
   background-size: cover;
   background-repeat: repeat;
+  margin: 0%;
+  padding: 0%;
+}
+
+body:before {
+  content: "";
+  background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /*Composants secondaires*/
@@ -1188,36 +1202,38 @@ nav.nav-filtre input {
 }
 /*Composants principaux*/
 .footer-apropos {
-  position: absolute;
   background-color: #003d5b;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 5%;
-  padding-top: 5%;
+  z-index: 5;
+}
+
+.footer-contact {
+  background-color: #0aa7f5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.7s ease-out;
+  color: white;
   z-index: 5;
 }
 
 .footer-socials {
-  position: absolute;
   background-color: #d1495d;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 5%;
-  padding-top: 5%;
   z-index: 5;
 }
 .footer-socials .sociaux,
@@ -1227,6 +1243,12 @@ nav.nav-filtre input {
   justify-content: center;
   align-items: center;
   gap: 3%;
+}
+
+.footer {
+  position: fixed;
+  bottom: -280px;
+  height: 300px;
 }
 
 /* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
@@ -1265,6 +1287,40 @@ a propos* lorsque le footer est fermé*/
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
+.footer-contact::after {
+  content: "CONTACT";
+  position: absolute;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -50px;
+  left: 25%;
+  transform: translateX(-50%);
+  background-color: #0aa7f5;
+  padding: 1rem 1rem 1rem 3.5rem;
+  border-radius: 8px 8px 0 0; /* For tab effect */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-contact::before {
+  content: "\f06e"; /* icone oeil unichose */
+  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  color: white;
+  position: absolute;
+  z-index: 3;
+  top: -35px;
+  left: calc(25% - 63px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+}
+
 .footer-socials::after {
   content: "Suis-nous!";
   position: absolute;
@@ -1274,7 +1330,7 @@ a propos* lorsque le footer est fermé*/
   color: white;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   top: -50px;
-  left: 20%;
+  left: 75%;
   transform: translateX(-50%);
   background-color: #d1495d;
   padding: 1rem 1rem 1rem 3.5rem;
@@ -1295,7 +1351,7 @@ a propos* lorsque le footer est fermé*/
   position: absolute;
   z-index: 3;
   top: -35px;
-  left: calc(20% - 63px); /* pour tricher */
+  left: calc(75% - 63px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
@@ -1303,21 +1359,26 @@ a propos* lorsque le footer est fermé*/
 /************************ ici je vais travailler sur le checkbox ***************************/
 /*******************************************************************************************/
 #checkAPropos,
-#checkSocials {
+#checkSocials,
+#checkContact {
   display: none;
 }
 
 /* ça me montre le footer quand qu'y est checked*/
 #checkAPropos:checked + label footer.footer-apropos,
-#checkSocials:checked + label footer.footer-socials {
+#checkSocials:checked + label footer.footer-socials,
+#checkContact:checked + label footer.footer-contact {
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgb(0, 0, 0);
   transition: all 0.7s ease-out;
+  z-index: 3;
 }
 
 #checkAPropos:not(:checked) + label footer.footer-apropos:hover,
-#checkSocials:not(:checked) + label footer.footer-socials:hover {
+#checkSocials:not(:checked) + label footer.footer-socials:hover,
+#checkContact:not(:checked) + label footer.footer-contact:hover {
   transform: translateY(-5px);
+  z-index: 4;
 }
 
 /* quand le footer est ouvert */
@@ -1475,42 +1536,14 @@ footer a {
 /************************** Ajustement des resolutions *****************/
 /**********************************************************************/
 /************************** Pour les tablettes *****************/
-@media only screen and (min-width: 768px) {
-  footer {
-    bottom: -41vh; /* Adjust for tablets */
-  }
-  .sociaux ul li {
-    width: 60px;
-    height: 60px;
-  }
-}
 /************************** Pour les bureaux *****************/
-@media only screen and (min-width: 1025px) {
-  footer {
-    bottom: -44vh; /* Adjust for tablets */
-  }
-  .sociaux ul li {
-    width: 80px;
-    height: 80px;
-  }
-}
 /************************** Pour les plus grands *****************/
-@media only screen and (min-width: 1350px) {
-  footer {
-    bottom: -47vh; /* Adjust for tablets */
-  }
-}
 /************************** Pour les plus grands *****************/
-@media only screen and (min-width: 1750px) {
-  footer {
-    bottom: -50vh; /* Adjust for tablets */
-  }
-}
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: hidden;
   width: 100vw;
   height: 100vh;
 }
@@ -1606,42 +1639,6 @@ header.category {
 .fa-campfire {
   --fa-primary-color: #ff5733;
   --fa-secondary-color: #3333ff;
-}
-
-html,
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  z-index: -1000;
-}
-
-html {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-canvas {
-  display: block;
-  position: absolute;
-  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/ileSansFond.png);
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 /*couleurs*/

@@ -1,15 +1,19 @@
 body {
+    background: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
     background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
     background-size: cover;
     background-repeat: repeat;
+    margin: 0%;
+    padding: 0%;
 }
 
-// Test changement couleur avec hue de Simon
-// body.category-profs {
-//     backdrop-filter: hue-rotate(150deg);
-// }
-
-
-// body.category-cours {
-//     backdrop-filter: hue-rotate(70deg);
-// }
+body:before {
+    content: "";
+    background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const checkAPropos = document.getElementById("checkAPropos");
   const checkSocials = document.getElementById("checkSocials");
+  const checkContact = document.getElementById("checkContact");
 
   //stock pour le nav
   const navMenu = document.getElementById("nav-menu"); // on va get l'air du navMenu
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //bool qui detecte quand un checkbox est checked
   var footProposChecked = false;
   var footSuisChecked = false;
+  var footContChecked = false;
 
   // fonction pour toggle la classe active (ouvrir le menu)
   function basculerMenu() {
@@ -55,42 +57,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fermerFooter(e) {
     fermerMenu();
-    if (e.target == checkAPropos || e.target == checkSocials) {
+    if (e == "menu" || e.target == checkAPropos || e.target == checkSocials || e.target == checkContact) {
       return;
-    } else if (e.target.id == "footProp" || trouverParents(e.target)) {
+    } else if (e.target.id == "footProp" || trouverParents(e.target, "footProp")) {
       if (!footProposChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
+        checkContact.checked = false;
         footProposChecked = false;
         footSuisChecked = false;
+        footContChecked = false;
       }
       footProposChecked = !footProposChecked;
-    } else if (e.target.id == "footSoc" || trouverParents(e.target)) {
+    } else if (e.target.id == "footSoc" || trouverParents(e.target, "footSoc")) {
       if (!footSuisChecked) {
         checkAPropos.checked = false;
         checkSocials.checked = false;
+        checkContact.checked = false;
         footProposChecked = false;
         footSuisChecked = false;
+        footContChecked = false;
       }
       footSuisChecked = !footSuisChecked;
+    } else if (e.target.id == "footCont" || trouverParents(e.target, "footCont")) {
+      if (!footContChecked) {
+        checkAPropos.checked = false;
+        checkSocials.checked = false;
+        checkContact.checked = false;
+        footProposChecked = false;
+        footSuisChecked = false;
+        footContChecked = false;
+      }
+      footContChecked = !footContChecked;
     } else {
       checkAPropos.checked = false;
       checkSocials.checked = false;
+      checkContact.checked = false;
       footProposChecked = false;
       footSuisChecked = false;
+      footContChecked = false;
     }
   }
 
   //fonction qui permet de trouver tout les parents d'un element et verifier si le id footProp ou footSoc est dans ses parents
   //https://gomakethings.com/how-to-get-all-parent-elements-with-vanilla-javascript/#:~:text=Get%20all%20parents%20%23&text=var%20getParents%20%3D%20function%20(elem),parent%20array%20return%20parents%3B%20%7D%3B
-  function trouverParents(element) {
+  function trouverParents(element, nom) {
     var parents = [];
     var bool = false;
     for (; element && element !== document; element = element.parentNode) {
       parents.push(element);
     }
     parents.forEach(parent => {
-      if (parent.id == "footProp" || parent.id == "footSoc") {
+      if (parent.id == nom) {
         bool = true;
       }
     });

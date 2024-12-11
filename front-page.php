@@ -1,5 +1,5 @@
 <?php
-get_header();
+    get_header();
 ?>
 <!-- une div vide pour gérer l'animation de l'arrière plan différemment -->
 <div id="arrierePlan"></div>
@@ -40,5 +40,5 @@ get_header();
 
 
 <?php
-get_footer();
+    get_footer();
 ?>
