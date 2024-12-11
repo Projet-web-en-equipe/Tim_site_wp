@@ -74,6 +74,7 @@ ul.slide {
     border-radius: 0.25rem;
 }
 
+// Affichage de la liste de sous-catégories
 div.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
     max-height: 20rem;
 }
