@@ -1,23 +1,271 @@
+.footer {
+  position: fixed;
+  bottom: -300px;
+  height: 300px;
+}
+
 .footer-apropos {
-  //position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
+  //position: absolute;
   background-color: #003d5b;
   width: 100%;
+
   //height: 30vh;
-  //bottom: -265px;
+  //bottom: calc(-265px - 5vw);
   display: flex;
-  flex-direction: column;
+  flex-direction: row; // column...
   align-items: center;
-  justify-content: center;
+  justify-content: center; //center
   transition: all 0.7s ease-out;
   color: white;
-  //padding-bottom: 5%;
-  //padding-top: 5%;
+  //padding: 5%;
   z-index: 5;
+
+  .equipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding-right: 10%;
+
+    h3 {
+      transform: translateX(6%);
+    }
+
+    .conteneurApropos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      //gap: 10px; /* Reduced gap for smaller blocks */
+      //border: 1px solid white;
+      transform: translateX(6%);
+
+      width: 100%;
+      height: 100%;
+
+      .apropos-item {
+        font-family: "hwt-artz", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        position: relative;
+        display: block;
+        width: clamp(120px, 15vw, 200px); /* Responsive block width */
+        height: clamp(40px, 6vw, 80px); /* Smaller responsive block height */
+        line-height: clamp(40px, 6vw, 80px);
+        background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest6.jpg);
+        background-size: cover;
+        //background-color: #009e99;
+        text-align: center;
+
+        transform: rotate(-30deg) skew(25deg) translate(0, 0);
+        transition: all 0.5s;
+        box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.5); /* Smaller shadow */
+        // font-family: "hwt-artz", sans-serif;
+        // font-weight: 700;
+        //font-style: normal;
+
+        cursor: pointer;
+
+        a {
+          font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+        }
+      }
+
+      .apropos-item::before,
+      .apropos-item::after {
+        content: "";
+        position: absolute;
+        background: #b1b1b1;
+        transition: 0.5s;
+      }
+
+      .apropos-item::before {
+        top: 5px; /* Adjusted for smaller blocks */
+        left: -10px;
+        height: 100%;
+        width: 10px; /* Narrower width for smaller blocks */
+        transform: rotate(0deg) skewY(-45deg);
+      }
+
+      .apropos-item::after {
+        bottom: -10px;
+        left: -5px;
+        height: 10px;
+        width: 100%; /* Adjusted width */
+        transform: rotate(0deg) skewX(-45deg);
+      }
+
+      .apropos-item:hover {
+        transform: rotate(-30deg) skew(25deg) translate(10px, -8px); /* Adjusted hover effect */
+        box-shadow: -40px 40px 40px rgba(0, 0, 0, 0.5); /* Enhanced hover shadow */
+        transition: all 0.5s;
+      }
+
+      .apropos-item:hover::before {
+        background: #444;
+      }
+
+      .apropos-item:hover::after {
+        background: #666;
+      }
+
+      #alejandro:hover {
+        background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest5.jpg);
+        background-size: cover;
+
+        // background: #3b5998; /* Facebook Blue */
+      }
+
+      #portraitAlejandro,
+      #portraitLenny,
+      #portraitLohan,
+      #portraitCamilia,
+      #portraitAntoine {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        top: -400px; /* Adjust to place above footer */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 247px; /* Adjust size as needed */
+        height: 247px;
+        border-radius: 50%;
+        box-shadow: 0px 20px 30px rgba(0, 0, 0, 1);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+
+        #alejandroRond {
+          left: -0.3px;
+          z-index: 5;
+          width: 229px;
+          height: 247px;
+        }
+
+        #lennyRond {
+          position: absolute;
+          left: 2px;
+          bottom: -2px;
+          z-index: 5;
+          width: 240px;
+          height: 240px;
+        }
+
+        #lohanRond {
+          position: absolute;
+          left: 17px;
+          bottom: -3.5px;
+          z-index: 5;
+          width: 200px;
+          height: 220px;
+        }
+
+        #antoineRond {
+          position: absolute;
+          left: 13px;
+          bottom: -3.5px;
+          z-index: 5;
+          width: 225px;
+          height: 220px;
+        }
+
+        #camiliaRond {
+          position: absolute;
+          left: 8px;
+          bottom: -3px;
+          z-index: 5;
+          width: 220px;
+          height: 220px;
+        }
+
+        #alejandroRondBackground,
+        #lennyRondBackground,
+        #camiliaRondBackground,
+        #antoineRondBackground {
+          position: absolute;
+          animation: rotateInfinite 20s linear infinite;
+          width: 253px;
+          height: 253px;
+        }
+
+        #lohanRondBackground {
+          position: absolute;
+          left: -2px;
+          top: -2px;
+          animation: rotateInfinite 20s linear infinite;
+          width: 251px;
+          height: 251px;
+        }
+      }
+
+      @keyframes rotateInfinite {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      #alejandro:hover + #portraitAlejandro {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #kravitz:hover {
+        background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest4.jpg);
+        background-size: cover;
+        //background: #00aced; /* Twitter Blue */
+      }
+
+      #kravitz:hover + #portraitLenny {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #camilia:hover {
+        background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest3.jpg);
+        background-size: cover;
+        //  background: #dd4b39; /* Google Red */
+      }
+
+      #camilia:hover + #portraitCamilia {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #lohan:hover {
+        background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest2.jpg);
+        background-size: cover;
+        //  background: #e4405f; /* Instagram Pink */
+      }
+
+      #lohan:hover + #portraitLohan {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #antoine:hover {
+        background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest.jpg);
+        background-size: cover;
+        // background: #9b59b6; /* Custom Purple */
+      }
+
+      #antoine:hover + #portraitAntoine {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .footer-contact {
   //position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
-  background-color: #0aa7f5;
+  background-color: #ff9d00;
   width: 100%;
   //height: 30vh;
   //bottom: -265px;//calc(-265px - 5vw);
@@ -27,42 +275,59 @@
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
+
   //padding-bottom: 5%;
   //padding-top: 5%;
   z-index: 5;
+
+  .contenuFooter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 1%;
+
+    h3 {
+      padding-bottom: 3%;
+    }
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+
+      i {
+        padding-right: 2%;
+        color: #003d5b;
+      }
+    }
+  }
 }
 
 .footer-socials {
   //position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
   background-color: #d1495d;
   width: 100%;
-  //height: 30vh;
-  //bottom: -265px;
+  // height: 30vh;
+  // bottom: calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  //padding-bottom: 5%;
+  // padding-bottom: 5%;
   //padding-top: 5%;
   z-index: 5;
-  .sociaux,
-  .equipe {
-    //  padding: 1%; le footer fait déjà la job.
+
+  .sociaux {
     width: 90%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3%;
-    // border: 1px solid white;
   }
-}
-
-.footer{
-  position: fixed;
-  bottom: -280px;
-  height: 300px;
 }
 
 /* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
@@ -102,39 +367,7 @@ a propos* lorsque le footer est fermé*/
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
-.footer-contact::after {
-  content: "CONTACT";
-  position: absolute;
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-  top: -50px;
-  left: 25%;
-  transform: translateX(-50%);
-  background-color: #0aa7f5;
-  padding: 1rem 1rem 1rem 3.5rem;
-  border-radius: 8px 8px 0 0; /* For tab effect */
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.footer-contact::before {
-  content: "\f06e"; /* icone oeil unichose */
-  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
-  font-weight: 900;
-  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-  color: white;
-  position: absolute;
-  z-index: 3;
-  top: -35px;
-  left: calc(25% - 63px); /* pour tricher */
-  transition: opacity 0.3s ease, content 0.3s ease;
-}
+/* icone et tire dans l'onglet pour le footer socials*/
 
 .footer-socials::after {
   content: "Suis-nous!";
@@ -145,9 +378,43 @@ a propos* lorsque le footer est fermé*/
   color: white;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   top: -50px;
-  left: 75%;
+  left: 20%;
   transform: translateX(-50%);
   background-color: #d1495d;
+  padding: 1rem 1rem 1rem 3.5rem;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-socials::before {
+  content: "\f0c0"; /* icone pour usagers */
+  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  color: white;
+  position: absolute;
+  z-index: 3;
+  top: -35px;
+  left: calc(20% - 63px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+}
+
+.footer-contact::after {
+  content: "CONTACT";
+  position: absolute;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -50px;
+  left: 78%;
+  transform: translateX(-50%);
+  background-color: #ff9d00;
   padding: 1rem 1rem 1rem 3.5rem;
   border-radius: 8px 8px 0 0; /* For tab effect */
   cursor: pointer;
@@ -157,8 +424,8 @@ a propos* lorsque le footer est fermé*/
   transition: background-color 0.3s ease;
 }
 
-.footer-socials::before {
-  content: "\f06e"; /* icone oeil unichose */
+.footer-contact::before {
+  content: "\f095"; /* icone phone unichose */
   font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
@@ -166,7 +433,7 @@ a propos* lorsque le footer est fermé*/
   position: absolute;
   z-index: 3;
   top: -35px;
-  left: calc(75% - 63px); /* pour tricher */
+  left: calc(80% - 64px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
@@ -188,61 +455,62 @@ a propos* lorsque le footer est fermé*/
   box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 1);
 
   transition: all 0.7s ease-out;
-  z-index: 3;
+  // z-index: 3; // ?
 }
 
 #checkAPropos:not(:checked) + label footer.footer-apropos:hover,
 #checkSocials:not(:checked) + label footer.footer-socials:hover,
 #checkContact:not(:checked) + label footer.footer-contact:hover {
   transform: translateY(-5px);
-  z-index: 4;
+  // z-index: 4; // ?
 }
 
-/* quand le footer est ouvert */
-#checkAPropos:checked + label.footer-apropos::before {
-  content: "\f070"; /* je ferme loeil */
+#checkAPropos:checked + label > footer.footer-apropos::before {
+  content: "\f070"; /* Unicode for "closed eye" */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   position: absolute;
-  z-index: 3; //sinon sa sort apres lautre
-  //top: -14%;
+  z-index: 3;
   left: calc(50% - 63px);
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -35px;
+  //top: -35px;
   color: #d1495d;
 }
 
-#checkSocials:checked + label.footer-socials::before {
-  content: "\f070"; /* je ferme loeil */
+#checkContact:checked + label > footer.footer-contact::before {
+  content: "\f3dd"; /* Unicode for "slashed users" */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   position: absolute;
-  z-index: 3; //sinon sa sort apres lautre
-  //top: -14%;
-  left: calc(20% - 63px);
+  z-index: 3;
+  left: calc(80% - 64px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -35px;
-  //color: #d1495d;
+  //top: -35px;
+  color: #003d5b;
 }
 
+#checkSocials:checked + label > footer.footer-socials::before {
+  content: "\e073"; /* Unicode for "slashed users" */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  position: absolute;
+  z-index: 3;
+
+  left: calc(20% - 63px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+  //top: -35px;
+  color: #003d5b;
+}
 /* pour garder la forme de longlet 
 #checkFoot:checked + label footer::after {
   padding: 1rem 2rem 3rem 3.5rem;
 }*/
 
 footer p {
-  font-family: "breakers-slab", sans-serif;
-  // font-weight: 400;
-  font-style: normal;
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
-}
-
-footer a {
   //width: 60%;
   font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
   cursor: pointer;
   font-family: "breakers-slab", sans-serif;
-  // border: 1px solid red;
 }
 
 /*******************************************************************************************/
@@ -252,8 +520,11 @@ footer a {
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 2%;
+  align-items: center;
+  // gap: 2%;
   width: 100%;
+  height: 100%;
+  //border: 2px solid white;
   //border: 1px solid red;
   //transform: rotate(-25deg) skew(25deg);
   transform-style: preserve-3d; // pour donner effet 3d genr
@@ -264,7 +535,9 @@ footer a {
   list-style: none;
   width: 40px;
   height: 40px;
-  margin: 20px 20px;
+
+  margin: 30px 30px;
+
   //border: 1px solid red;
   // border: 1px solid red;
   // border: 1px solid white;
@@ -277,13 +550,14 @@ footer a {
 .sociaux ul li span {
   /*le social media insta linkedin behance*/
   position: absolute;
+
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 140%;
+  height: 140%;
   display: flex;
   background: #2a2a2a;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: white;
   font-size: 30px;
@@ -344,12 +618,12 @@ footer a {
 .contenuFooter {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-  // border: 1px solid orange;
+  //border: 1px solid white;
 }
 
 /* je dois cacher le contenu du footer, car si la resolution est trop grande, on voit un peu le contenu et c'est horrible */
@@ -372,40 +646,73 @@ footer a {
 /************************** Ajustement des resolutions *****************/
 /**********************************************************************/
 
-/************************** Pour les tablettes *****************/
-@media only screen and (max-width: 768px) {
-  footer {
-    //bottom: -41vh; /* Adjust for tablets */
+@media only screen and (min-width: 768px) {
+  .sociaux ul li {
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+
+    margin: 50px 50px;
+
+    //border: 1px solid red;
+    // border: 1px solid red;
+    // border: 1px solid white;
   }
 
-  // .sociaux ul li {
-  //   width: 60px;
-  //   height: 60px;
-  // }
+  .sociaux ul li span {
+    width: 160%;
+    height: 160%;
+    font-size: 50px;
+  }
+
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 70px); /* pour tricher */
+  }
 }
 
-/************************** Pour les bureaux *****************/
+@media only screen and (min-width: 1025px) {
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 80px); /* pour tricher */
+  }
+}
+
+/************************** Pour les tablettes ****************
+@media only screen and (min-width: 768px) {
+  footer {
+    bottom: -41vh; /* Adjust for tablets 
+  }
+
+  .sociaux ul li {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/************************** Pour les bureaux ****************
 @media only screen and (min-width: 1025px) {
   footer {
-    //bottom: -44vh; /* Adjust for tablets */
+    bottom: -44vh; /* Adjust for tablets 
   }
 
-  // .sociaux ul li {
-  //   width: 80px;
-  //   height: 80px;
-  // }
+  .sociaux ul li {
+    width: 80px;
+    height: 80px;
+  }
 }
 
-/************************** Pour les plus grands *****************/
+/************************** Pour les plus grands ****************
 @media only screen and (min-width: 1350px) {
   footer {
-    //bottom: -47vh; /* Adjust for tablets */
+    bottom: -47vh; /* Adjust for tablets 
   }
 }
 
-/************************** Pour les plus grands *****************/
+/************************** Pour les plus grands ****************
 @media only screen and (min-width: 1750px) {
   footer {
-    //bottom: -50vh; /* Adjust for tablets */
+    bottom: -50vh; /* Adjust for tablets 
   }
-}
+}*/

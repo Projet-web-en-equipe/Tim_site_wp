@@ -64,7 +64,7 @@ a {
 
 h3,
 p {
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
 }
 
 p {
@@ -120,10 +120,6 @@ header ul li a:hover {
   a {
     font-size: clamp(1.5rem, 2.5vw + 0.75rem, 3rem);
   }
-  h3,
-  p {
-    font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
-  }
 }
 /* Pour les ordinateurs de bureau */
 @media only screen and (min-width: 1025px) {
@@ -141,10 +137,6 @@ header ul li a:hover {
   h2,
   a {
     font-size: clamp(1.5rem, 3vw + 1rem, 3rem);
-  }
-  h3,
-  p {
-    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
   }
 }
 body {
@@ -587,6 +579,7 @@ main div section#info {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px 10px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   background-repeat: no-repeat;
   transition: height 0.5s ease;
   z-index: 2;
@@ -1076,7 +1069,7 @@ nav.nav-filtre input {
   width: 62%;
   top: 15%;
   left: 50%;
-  height: 15%;
+  height: 50%;
   transform: translateX(-50%) translateX(-100%); /* Start off-screen to the left */
   background: #003d5b;
   color: #fff;
@@ -1098,7 +1091,7 @@ nav.nav-filtre input {
   font-weight: 700;
   font-style: normal;
   color: white;
-  font-size: clamp(1rem, 4vw + 0.25rem, 1.5rem);
+  font-size: clamp(0.875rem, 3vw + 0.2rem, 1.25rem);
   line-height: 1.2;
   padding: 2rem;
 }
@@ -1201,8 +1194,262 @@ nav.nav-filtre input {
   }
 }
 /*Composants principaux*/
+.footer {
+  position: fixed;
+  bottom: -300px;
+  height: 300px;
+}
+
 .footer-apropos {
   background-color: #003d5b;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.7s ease-out;
+  color: white;
+  z-index: 5;
+}
+.footer-apropos .equipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-right: 10%;
+}
+.footer-apropos .equipe h3 {
+  transform: translateX(6%);
+}
+.footer-apropos .equipe .conteneurApropos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(6%);
+  width: 100%;
+  height: 100%;
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item {
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  position: relative;
+  display: block;
+  width: clamp(120px, 15vw, 200px); /* Responsive block width */
+  height: clamp(40px, 6vw, 80px); /* Smaller responsive block height */
+  line-height: clamp(40px, 6vw, 80px);
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest6.jpg);
+  background-size: cover;
+  text-align: center;
+  transform: rotate(-30deg) skew(25deg) translate(0, 0);
+  transition: all 0.5s;
+  box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.5); /* Smaller shadow */
+  cursor: pointer;
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item a {
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item::before,
+.footer-apropos .equipe .conteneurApropos .apropos-item::after {
+  content: "";
+  position: absolute;
+  background: #b1b1b1;
+  transition: 0.5s;
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item::before {
+  top: 5px; /* Adjusted for smaller blocks */
+  left: -10px;
+  height: 100%;
+  width: 10px; /* Narrower width for smaller blocks */
+  transform: rotate(0deg) skewY(-45deg);
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item::after {
+  bottom: -10px;
+  left: -5px;
+  height: 10px;
+  width: 100%; /* Adjusted width */
+  transform: rotate(0deg) skewX(-45deg);
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item:hover {
+  transform: rotate(-30deg) skew(25deg) translate(10px, -8px); /* Adjusted hover effect */
+  box-shadow: -40px 40px 40px rgba(0, 0, 0, 0.5); /* Enhanced hover shadow */
+  transition: all 0.5s;
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item:hover::before {
+  background: #444;
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item:hover::after {
+  background: #666;
+}
+.footer-apropos .equipe .conteneurApropos #alejandro:hover {
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest5.jpg);
+  background-size: cover;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro,
+.footer-apropos .equipe .conteneurApropos #portraitLenny,
+.footer-apropos .equipe .conteneurApropos #portraitLohan,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  top: -400px; /* Adjust to place above footer */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 247px; /* Adjust size as needed */
+  height: 247px;
+  border-radius: 50%;
+  box-shadow: 0px 20px 30px rgb(0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #alejandroRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #alejandroRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #alejandroRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #alejandroRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #alejandroRond {
+  left: -0.3px;
+  z-index: 5;
+  width: 229px;
+  height: 247px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #lennyRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #lennyRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #lennyRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #lennyRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lennyRond {
+  position: absolute;
+  left: 2px;
+  bottom: -2px;
+  z-index: 5;
+  width: 240px;
+  height: 240px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #lohanRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #lohanRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #lohanRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #lohanRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lohanRond {
+  position: absolute;
+  left: 17px;
+  bottom: -3.5px;
+  z-index: 5;
+  width: 200px;
+  height: 220px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #antoineRond {
+  position: absolute;
+  left: 13px;
+  bottom: -3.5px;
+  z-index: 5;
+  width: 225px;
+  height: 220px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #camiliaRond {
+  position: absolute;
+  left: 8px;
+  bottom: -3px;
+  z-index: 5;
+  width: 220px;
+  height: 220px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #alejandroRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #lennyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #camiliaRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #antoineRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #alejandroRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #lennyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #camiliaRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #antoineRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #alejandroRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #lennyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #camiliaRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #antoineRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #alejandroRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #lennyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #camiliaRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #antoineRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #alejandroRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lennyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #camiliaRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #antoineRondBackground {
+  position: absolute;
+  animation: rotateInfinite 20s linear infinite;
+  width: 253px;
+  height: 253px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #lohanRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #lohanRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #lohanRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #lohanRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lohanRondBackground {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  animation: rotateInfinite 20s linear infinite;
+  width: 251px;
+  height: 251px;
+}
+@keyframes rotateInfinite {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.footer-apropos .equipe .conteneurApropos #alejandro:hover + #portraitAlejandro {
+  opacity: 1;
+  visibility: visible;
+}
+.footer-apropos .equipe .conteneurApropos #kravitz:hover {
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest4.jpg);
+  background-size: cover;
+}
+.footer-apropos .equipe .conteneurApropos #kravitz:hover + #portraitLenny {
+  opacity: 1;
+  visibility: visible;
+}
+.footer-apropos .equipe .conteneurApropos #camilia:hover {
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest3.jpg);
+  background-size: cover;
+}
+.footer-apropos .equipe .conteneurApropos #camilia:hover + #portraitCamilia {
+  opacity: 1;
+  visibility: visible;
+}
+.footer-apropos .equipe .conteneurApropos #lohan:hover {
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest2.jpg);
+  background-size: cover;
+}
+.footer-apropos .equipe .conteneurApropos #lohan:hover + #portraitLohan {
+  opacity: 1;
+  visibility: visible;
+}
+.footer-apropos .equipe .conteneurApropos #antoine:hover {
+  background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest.jpg);
+  background-size: cover;
+}
+.footer-apropos .equipe .conteneurApropos #antoine:hover + #portraitAntoine {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footer-contact {
+  background-color: #ff9d00;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1212,17 +1459,25 @@ nav.nav-filtre input {
   color: white;
   z-index: 5;
 }
-
-.footer-contact {
-  background-color: #0aa7f5;
-  width: 100%;
+.footer-contact .contenuFooter {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
+  gap: 1%;
+}
+.footer-contact .contenuFooter h3 {
+  padding-bottom: 3%;
+}
+.footer-contact .contenuFooter p {
+  display: flex;
   justify-content: center;
-  transition: all 0.7s ease-out;
-  color: white;
-  z-index: 5;
+  align-items: center;
+  width: 50%;
+}
+.footer-contact .contenuFooter p i {
+  padding-right: 2%;
+  color: #003d5b;
 }
 
 .footer-socials {
@@ -1236,19 +1491,13 @@ nav.nav-filtre input {
   color: white;
   z-index: 5;
 }
-.footer-socials .sociaux,
-.footer-socials .equipe {
+.footer-socials .sociaux {
   width: 90%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3%;
-}
-
-.footer {
-  position: fixed;
-  bottom: -280px;
-  height: 300px;
 }
 
 /* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
@@ -1287,6 +1536,41 @@ a propos* lorsque le footer est fermé*/
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
+/* icone et tire dans l'onglet pour le footer socials*/
+.footer-socials::after {
+  content: "Suis-nous!";
+  position: absolute;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -50px;
+  left: 20%;
+  transform: translateX(-50%);
+  background-color: #d1495d;
+  padding: 1rem 1rem 1rem 3.5rem;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-socials::before {
+  content: "\f0c0"; /* icone pour usagers */
+  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  color: white;
+  position: absolute;
+  z-index: 3;
+  top: -35px;
+  left: calc(20% - 63px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+}
+
 .footer-contact::after {
   content: "CONTACT";
   position: absolute;
@@ -1296,9 +1580,9 @@ a propos* lorsque le footer est fermé*/
   color: white;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   top: -50px;
-  left: 25%;
+  left: 78%;
   transform: translateX(-50%);
-  background-color: #0aa7f5;
+  background-color: #ff9d00;
   padding: 1rem 1rem 1rem 3.5rem;
   border-radius: 8px 8px 0 0; /* For tab effect */
   cursor: pointer;
@@ -1309,7 +1593,7 @@ a propos* lorsque le footer est fermé*/
 }
 
 .footer-contact::before {
-  content: "\f06e"; /* icone oeil unichose */
+  content: "\f095"; /* icone phone unichose */
   font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
@@ -1317,41 +1601,7 @@ a propos* lorsque le footer est fermé*/
   position: absolute;
   z-index: 3;
   top: -35px;
-  left: calc(25% - 63px); /* pour tricher */
-  transition: opacity 0.3s ease, content 0.3s ease;
-}
-
-.footer-socials::after {
-  content: "Suis-nous!";
-  position: absolute;
-  font-family: "hwt-artz", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-  top: -50px;
-  left: 75%;
-  transform: translateX(-50%);
-  background-color: #d1495d;
-  padding: 1rem 1rem 1rem 3.5rem;
-  border-radius: 8px 8px 0 0; /* For tab effect */
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.footer-socials::before {
-  content: "\f06e"; /* icone oeil unichose */
-  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
-  font-weight: 900;
-  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
-  color: white;
-  position: absolute;
-  z-index: 3;
-  top: -35px;
-  left: calc(75% - 63px); /* pour tricher */
+  left: calc(80% - 64px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
@@ -1371,38 +1621,45 @@ a propos* lorsque le footer est fermé*/
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgb(0, 0, 0);
   transition: all 0.7s ease-out;
-  z-index: 3;
 }
 
 #checkAPropos:not(:checked) + label footer.footer-apropos:hover,
 #checkSocials:not(:checked) + label footer.footer-socials:hover,
 #checkContact:not(:checked) + label footer.footer-contact:hover {
   transform: translateY(-5px);
-  z-index: 4;
 }
 
-/* quand le footer est ouvert */
-#checkAPropos:checked + label.footer-apropos::before {
-  content: "\f070"; /* je ferme loeil */
+#checkAPropos:checked + label > footer.footer-apropos::before {
+  content: "\f070"; /* Unicode for "closed eye" */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   position: absolute;
   z-index: 3;
   left: calc(50% - 63px);
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -35px;
   color: #d1495d;
 }
 
-#checkSocials:checked + label.footer-socials::before {
-  content: "\f070"; /* je ferme loeil */
+#checkContact:checked + label > footer.footer-contact::before {
+  content: "\f3dd"; /* Unicode for "slashed users" */
   font-weight: 900;
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   position: absolute;
   z-index: 3;
-  left: calc(20% - 63px);
+  left: calc(80% - 64px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -35px;
+  color: #003d5b;
+}
+
+#checkSocials:checked + label > footer.footer-socials::before {
+  content: "\e073"; /* Unicode for "slashed users" */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  position: absolute;
+  z-index: 3;
+  left: calc(20% - 63px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+  color: #003d5b;
 }
 
 /* pour garder la forme de longlet 
@@ -1410,12 +1667,6 @@ a propos* lorsque le footer est fermé*/
   padding: 1rem 2rem 3rem 3.5rem;
 }*/
 footer p {
-  font-family: "breakers-slab", sans-serif;
-  font-style: normal;
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
-}
-
-footer a {
   font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
   cursor: pointer;
   font-family: "breakers-slab", sans-serif;
@@ -1428,8 +1679,9 @@ footer a {
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 2%;
+  align-items: center;
   width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
 }
 
@@ -1438,7 +1690,7 @@ footer a {
   list-style: none;
   width: 40px;
   height: 40px;
-  margin: 20px 20px;
+  margin: 30px 30px;
 }
 
 /***********************************************************************
@@ -1449,11 +1701,11 @@ footer a {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 140%;
+  height: 140%;
   display: flex;
   background: #2a2a2a;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: white;
   font-size: 30px;
@@ -1513,7 +1765,7 @@ footer a {
 .contenuFooter {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -1535,10 +1787,67 @@ footer a {
 /**********************************************************************/
 /************************** Ajustement des resolutions *****************/
 /**********************************************************************/
-/************************** Pour les tablettes *****************/
-/************************** Pour les bureaux *****************/
-/************************** Pour les plus grands *****************/
-/************************** Pour les plus grands *****************/
+@media only screen and (min-width: 768px) {
+  .sociaux ul li {
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    margin: 50px 50px;
+  }
+  .sociaux ul li span {
+    width: 160%;
+    height: 160%;
+    font-size: 50px;
+  }
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 70px); /* pour tricher */
+  }
+}
+@media only screen and (min-width: 1025px) {
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 80px); /* pour tricher */
+  }
+}
+/************************** Pour les tablettes ****************
+@media only screen and (min-width: 768px) {
+  footer {
+    bottom: -41vh; /* Adjust for tablets 
+  }
+
+  .sociaux ul li {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/************************** Pour les bureaux ****************
+@media only screen and (min-width: 1025px) {
+  footer {
+    bottom: -44vh; /* Adjust for tablets 
+  }
+
+  .sociaux ul li {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/************************** Pour les plus grands ****************
+@media only screen and (min-width: 1350px) {
+  footer {
+    bottom: -47vh; /* Adjust for tablets 
+  }
+}
+
+/************************** Pour les plus grands ****************
+@media only screen and (min-width: 1750px) {
+  footer {
+    bottom: -50vh; /* Adjust for tablets 
+  }
+}*/
 main {
   display: flex;
   flex-direction: column;

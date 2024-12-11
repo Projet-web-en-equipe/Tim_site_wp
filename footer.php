@@ -2,30 +2,66 @@
 <label for="checkFoot">
   <footer> --
     <div class="contenuFooter"-->
+
 <input type="checkbox" class="unDesCheckbox" name="checkboxContact" id="checkContact" />
 <label for="checkContact">
   <footer id="footCont" class="footer footer-contact">
-    <h1>HALLO!</h1>
+    <div class="contenuFooter">
+
+      <h3>Si tu as des questions contacte-nous! <i class="fa-solid fa-paper-plane"></i></h3>
+      <p><i class="fa-solid fa-user-tag"></i>Stéphanie Pouliot & David Ross</p>
+      <p><i class="fa-solid fa-phone-rotary"></i>téléphone</p>
+      <p><i class="fa-solid fa-envelope"></i>e-mail</p>
+      <p><i class="fa-solid fa-location-dot"></i>3800 rue Sherbrooke Est</p>
+
+    </div>
   </footer>
 </label>
+
 <input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
 <label for="checkAPropos">
   <footer id="footProp" class="footer footer-apropos">
 
-
     <div class="equipe">
-      <p>Site web réalisé Par
-        <a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia El moustarih, </a>
-        <a href="https://www.behance.net/tonyton3">Tony Ton,</a>
-        <a href="https://www.behance.net/lohanmoutquin">Lohan
-          Moutquin, </a>
-        <a href="https://e2269994.myportfolio.com/">Lenny Tran, </a>
-        <a href="https://www.behance.net/alex_ydr3dc3">Alejandro yanez Del rio</a>
+      <h3> Click sur leurs noms pour aller voir leurs porfolios!</h3>
+
+      <div class="conteneurApropos">
 
 
-      </p>
-    </div>
-    </div>
+        <div class="apropos-item" id="alejandro"> <a href="https://www.behance.net/alex_ydr3dc3"> Alejandro </a></div>
+        <div id="portraitAlejandro">
+          <img id="alejandroRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/AlejandroRond.png" alt="">
+          <img id="alejandroRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/alejandroRondBackground.png" alt="">
+        </div>
+
+
+        <div class="apropos-item" id="kravitz"><a href="https://e2269994.myportfolio.com/">Lenny </a></div>
+        <div id="portraitLenny">
+          <img id="lennyRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lennyRond.png" alt="">
+          <img id="lennyRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lennyRondBackground-1.png" alt="">
+        </div>
+
+        <div class="apropos-item" id="camilia"><a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia </a></div>
+        <div id="portraitCamilia">
+          <img id="camiliaRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/camilliaRond.png" alt="">
+          <img id="camiliaRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/camiliaRondBackground-1.png" alt="">
+        </div>
+
+        <div class="apropos-item" id="lohan"><a href="https://www.behance.net/lohanmoutquin">Lohan
+          </a></div>
+        <div id="portraitLohan">
+          <img id="lohanRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lohanRond-2.png" alt="">
+          <img id="lohanRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lohanRondBackground-1.png" alt="">
+        </div>
+        <div class="apropos-item" id="antoine"><a href="https://www.behance.net/tonyton3">Tony</a></div>
+        <div id="portraitAntoine">
+          <img id="antoineRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/antoineRond.png" alt="">
+          <img id="antoineRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/antoineRondBackground.png" alt="">
+        </div>
+      </div>
+
+
+
   </footer>
 </label>
 <input type="checkbox" class="unDesCheckbox" name="checkboxSocials" id="checkSocials" />
@@ -95,6 +131,7 @@
           </li>
 
         </ul>
+
 
 
       </div>
