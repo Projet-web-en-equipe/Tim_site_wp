@@ -19,25 +19,37 @@
       <!-- <h3>Les créateurs de ce fabuleux site!</h3> -->
 
       <div class="conteneurApropos">
-        <div class="apropos-item" id="alejandro">Alejandro</div>
+
+        <div class="apropos-item" id="alejandro"> <a href="https://www.behance.net/alex_ydr3dc3"> Alejandro </a></div>
         <div id="portraitAlejandro">
           <img id="alejandroRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/AlejandroRond.png" alt="">
           <img id="alejandroRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/alejandroRondBackground.png" alt="">
         </div>
 
 
-        <div class="apropos-item" id="kravitz">Lenny</div>
+        <div class="apropos-item" id="kravitz"><a href="https://e2269994.myportfolio.com/">Lenny </a></div>
         <div id="portraitLenny">
           <img id="lennyRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lennyRond.png" alt="">
           <img id="lennyRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lennyRondBackground-1.png" alt="">
         </div>
-        <div class="apropos-item" id="camilia">Camilia</div>
-        <div class="apropos-item" id="lohan">Lohan</div>
+
+        <div class="apropos-item" id="camilia"><a href="https://camiliaelmoustarih.wixsite.com/ecamiliaportfolio">Camilia </a></div>
+        <div id="portraitCamilia">
+          <img id="camiliaRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/camilliaRond.png" alt="">
+          <img id="camiliaRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/camiliaRondBackground-1.png" alt="">
+        </div>
+
+        <div class="apropos-item" id="lohan"><a href="https://www.behance.net/lohanmoutquin">Lohan
+          </a></div>
         <div id="portraitLohan">
           <img id="lohanRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lohanRond-2.png" alt="">
           <img id="lohanRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/lohanRondBackground-1.png" alt="">
         </div>
-        <div class="apropos-item" id="antoine">Antonio</div>
+        <div class="apropos-item" id="antoine"><a href="https://www.behance.net/tonyton3">Tony</a></div>
+        <div id="portraitAntoine">
+          <img id="antoineRond" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/antoineRond.png" alt="">
+          <img id="antoineRondBackground" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/antoineRondBackground.png" alt="">
+        </div>
       </div>
 
 

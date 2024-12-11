@@ -47,7 +47,6 @@
         background-size: cover;
         //background-color: #009e99;
         text-align: center;
-        font-size: clamp(0.75rem, 1vw, 1rem); /* Clamp for text size */
 
         transform: rotate(-30deg) skew(25deg) translate(0, 0);
         transition: all 0.5s;
@@ -56,8 +55,11 @@
         // font-weight: 700;
         //font-style: normal;
 
-        font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
         cursor: pointer;
+
+        a {
+          font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
+        }
       }
 
       .apropos-item::before,
@@ -109,7 +111,7 @@
       #portraitLenny,
       #portraitLohan,
       #portraitCamilia,
-      #portraitTony {
+      #portraitAntoine {
         position: absolute;
         display: flex;
         justify-content: center;
@@ -150,10 +152,28 @@
           height: 220px;
         }
 
+        #antoineRond {
+          position: absolute;
+          left: 13px;
+          bottom: -3.5px;
+          z-index: 5;
+          width: 225px;
+          height: 220px;
+        }
+
+        #camiliaRond {
+          position: absolute;
+          left: 8px;
+          bottom: -3px;
+          z-index: 5;
+          width: 220px;
+          height: 220px;
+        }
+
         #alejandroRondBackground,
         #lennyRondBackground,
         #camiliaRondBackground,
-        #tonyRondBackground {
+        #antoineRondBackground {
           position: absolute;
           animation: rotateInfinite 20s linear infinite;
           width: 250px;
@@ -223,7 +243,7 @@
         // background: #9b59b6; /* Custom Purple */
       }
 
-      #antoine:hover + #portraitTony {
+      #antoine:hover + #portraitAntoine {
         opacity: 1;
         visibility: visible;
       }

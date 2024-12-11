@@ -1230,12 +1230,13 @@ nav.nav-filtre input {
   background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest6.jpg);
   background-size: cover;
   text-align: center;
-  font-size: clamp(0.75rem, 1vw, 1rem); /* Clamp for text size */
   transform: rotate(-30deg) skew(25deg) translate(0, 0);
   transition: all 0.5s;
   box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.5); /* Smaller shadow */
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
   cursor: pointer;
+}
+.footer-apropos .equipe .conteneurApropos .apropos-item a {
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
 }
 .footer-apropos .equipe .conteneurApropos .apropos-item::before,
 .footer-apropos .equipe .conteneurApropos .apropos-item::after {
@@ -1277,7 +1278,7 @@ nav.nav-filtre input {
 .footer-apropos .equipe .conteneurApropos #portraitLenny,
 .footer-apropos .equipe .conteneurApropos #portraitLohan,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia,
-.footer-apropos .equipe .conteneurApropos #portraitTony {
+.footer-apropos .equipe .conteneurApropos #portraitAntoine {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -1297,7 +1298,7 @@ nav.nav-filtre input {
 .footer-apropos .equipe .conteneurApropos #portraitLenny #alejandroRond,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #alejandroRond,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #alejandroRond,
-.footer-apropos .equipe .conteneurApropos #portraitTony #alejandroRond {
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #alejandroRond {
   left: -0.3px;
   z-index: 5;
   width: 229px;
@@ -1307,7 +1308,7 @@ nav.nav-filtre input {
 .footer-apropos .equipe .conteneurApropos #portraitLenny #lennyRond,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #lennyRond,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #lennyRond,
-.footer-apropos .equipe .conteneurApropos #portraitTony #lennyRond {
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lennyRond {
   position: absolute;
   left: 2px;
   bottom: -2px;
@@ -1319,7 +1320,7 @@ nav.nav-filtre input {
 .footer-apropos .equipe .conteneurApropos #portraitLenny #lohanRond,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #lohanRond,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #lohanRond,
-.footer-apropos .equipe .conteneurApropos #portraitTony #lohanRond {
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lohanRond {
   position: absolute;
   left: 17px;
   bottom: -3.5px;
@@ -1327,26 +1328,50 @@ nav.nav-filtre input {
   width: 200px;
   height: 220px;
 }
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #antoineRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #antoineRond {
+  position: absolute;
+  left: 13px;
+  bottom: -3.5px;
+  z-index: 5;
+  width: 225px;
+  height: 220px;
+}
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #camiliaRond,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #camiliaRond {
+  position: absolute;
+  left: 8px;
+  bottom: -3px;
+  z-index: 5;
+  width: 220px;
+  height: 220px;
+}
 .footer-apropos .equipe .conteneurApropos #portraitAlejandro #alejandroRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitAlejandro #lennyRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitAlejandro #camiliaRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitAlejandro #tonyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAlejandro #antoineRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLenny #alejandroRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLenny #lennyRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLenny #camiliaRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitLenny #tonyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLenny #antoineRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #alejandroRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #lennyRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #camiliaRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitLohan #tonyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitLohan #antoineRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #alejandroRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #lennyRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #camiliaRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitCamilia #tonyRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitTony #alejandroRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitTony #lennyRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitTony #camiliaRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitTony #tonyRondBackground {
+.footer-apropos .equipe .conteneurApropos #portraitCamilia #antoineRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #alejandroRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lennyRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #camiliaRondBackground,
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #antoineRondBackground {
   position: absolute;
   animation: rotateInfinite 20s linear infinite;
   width: 250px;
@@ -1356,7 +1381,7 @@ nav.nav-filtre input {
 .footer-apropos .equipe .conteneurApropos #portraitLenny #lohanRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitLohan #lohanRondBackground,
 .footer-apropos .equipe .conteneurApropos #portraitCamilia #lohanRondBackground,
-.footer-apropos .equipe .conteneurApropos #portraitTony #lohanRondBackground {
+.footer-apropos .equipe .conteneurApropos #portraitAntoine #lohanRondBackground {
   position: absolute;
   left: -2px;
   top: -2px;
@@ -1404,7 +1429,7 @@ nav.nav-filtre input {
   background-image: url(https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/12/newTest.jpg);
   background-size: cover;
 }
-.footer-apropos .equipe .conteneurApropos #antoine:hover + #portraitTony {
+.footer-apropos .equipe .conteneurApropos #antoine:hover + #portraitAntoine {
   opacity: 1;
   visibility: visible;
 }
