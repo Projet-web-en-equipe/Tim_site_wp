@@ -269,8 +269,7 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -574,7 +573,6 @@ main div section#info {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px 10px 0 0;
-  border: 1px solid rgba(255, 255, 255, 0.18);
   background-repeat: no-repeat;
   transition: height 0.5s ease;
   z-index: 2;
@@ -604,14 +602,6 @@ main div section#info.show {
 }
 main div section#info.hide {
   animation: slideDown 0.5s ease forwards;
-}
-main div section#info img {
-  display: block;
-  width: auto;
-  height: 50%;
-  max-width: 80vw;
-  object-fit: contain;
-  padding: 1rem;
 }
 main div #close-info {
   position: absolute;
@@ -650,12 +640,14 @@ main div section#info p {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 70vw;
+    width: 65vw;
     border-radius: 10px;
     margin-top: 2%;
     background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
     background-repeat: no-repeat;
-    object-fit: cover;
+    box-shadow: 0px 2px 22px 4px rgba(0, 0, 0, 0.75);
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   main div h1 {
     margin: 0 auto;
@@ -1546,7 +1538,8 @@ main #titre {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 0 0.5rem;
+  padding: 0.5rem 0.5rem;
+  box-shadow: 6px -4px 21px -8px rgb(0, 0, 0);
 }
 
 @media only screen and (min-width: 1025px) {
@@ -1739,4 +1732,4 @@ canvas {
   #retourAccueil {
     margin: auto;
   }
-}/*# sourceMappingURL=style.css.map */
+}
