@@ -1,16 +1,22 @@
+.footer {
+  bottom: -300px;
+  height: 300px;
+}
+
 .footer-apropos {
   position: absolute;
   background-color: #003d5b;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
+
+  //height: 30vh;
+  //bottom: calc(-265px - 5vw);
   display: flex;
-  flex-direction: row;
+  flex-direction: row; // column...
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; //center
   transition: all 0.7s ease-out;
   color: white;
-  padding: 5%;
+  //padding: 5%;
   z-index: 5;
 
   .equipe {
@@ -23,13 +29,18 @@
     height: 100%;
     padding-right: 10%;
 
+    h3 {
+      transform: translateX(6%);
+    }
+
     .conteneurApropos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       //gap: 10px; /* Reduced gap for smaller blocks */
-      // padding: 10px;
+      //border: 1px solid white;
+      transform: translateX(6%);
 
       width: 100%;
       height: 100%;
@@ -116,7 +127,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        top: -350px; /* Adjust to place above footer */
+        top: -400px; /* Adjust to place above footer */
         left: 50%;
         transform: translateX(-50%);
         width: 247px; /* Adjust size as needed */
@@ -176,8 +187,8 @@
         #antoineRondBackground {
           position: absolute;
           animation: rotateInfinite 20s linear infinite;
-          width: 250px;
-          height: 250px;
+          width: 253px;
+          height: 253px;
         }
 
         #lohanRondBackground {
@@ -251,21 +262,71 @@
   }
 }
 
-.footer-socials {
+.footer-contact {
   position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
-  background-color: #d1495d;
+  background-color: #ff9d00;
   width: 100%;
-  height: 30vh;
-  bottom: calc(-265px - 5vw);
+  //height: 30vh;
+  //bottom: -265px;//calc(-265px - 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.7s ease-out;
   color: white;
-  padding-bottom: 5%;
-  padding-top: 5%;
+
+  //padding-bottom: 5%;
+  //padding-top: 5%;
   z-index: 5;
+
+  .contenuFooter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 1%;
+
+    h3 {
+      padding-bottom: 3%;
+    }
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+
+      i {
+        padding-right: 2%;
+        color: #003d5b;
+      }
+    }
+  }
+}
+
+.footer-socials {
+  position: absolute; // pour pouvoir le cacher,svp eddy, on veut pas perdre des points.
+  background-color: #d1495d;
+  width: 100%;
+  // height: 30vh;
+  // bottom: calc(-265px - 5vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.7s ease-out;
+  color: white;
+  // padding-bottom: 5%;
+  //padding-top: 5%;
+  z-index: 5;
+
+  .sociaux {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+  }
 }
 
 /* longlet est ici, dans lequel il y a l'icone oeil ouvert et 
@@ -341,27 +402,66 @@ a propos* lorsque le footer est fermé*/
   transition: opacity 0.3s ease, content 0.3s ease;
 }
 
+.footer-contact::after {
+  content: "CONTACT";
+  position: absolute;
+  font-family: "hwt-artz", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  top: -50px;
+  left: 78%;
+  transform: translateX(-50%);
+  background-color: #ff9d00;
+  padding: 1rem 1rem 1rem 3.5rem;
+  border-radius: 8px 8px 0 0; /* For tab effect */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-contact::before {
+  content: "\f095"; /* icone phone unichose */
+  font-family: "Font Awesome 6 Pro"; /* je transforme en font awesome */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  color: white;
+  position: absolute;
+  z-index: 3;
+  top: -35px;
+  left: calc(80% - 64px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+}
+
 /*******************************************************************************************/
 /************************ ici je vais travailler sur le checkbox ***************************/
 /*******************************************************************************************/
 
 #checkAPropos,
-#checkSocials {
+#checkSocials,
+#checkContact {
   display: none;
 }
 
 /* ça me montre le footer quand qu'y est checked*/
 #checkAPropos:checked + label footer.footer-apropos,
-#checkSocials:checked + label footer.footer-socials {
+#checkSocials:checked + label footer.footer-socials,
+#checkContact:checked + label footer.footer-contact {
   bottom: 0;
   box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 1);
 
   transition: all 0.7s ease-out;
+  // z-index: 3; // ?
 }
 
 #checkAPropos:not(:checked) + label footer.footer-apropos:hover,
-#checkSocials:not(:checked) + label footer.footer-socials:hover {
+#checkSocials:not(:checked) + label footer.footer-socials:hover,
+#checkContact:not(:checked) + label footer.footer-contact:hover {
   transform: translateY(-5px);
+  // z-index: 4; // ?
 }
 
 #checkAPropos:checked + label > footer.footer-apropos::before {
@@ -372,8 +472,20 @@ a propos* lorsque le footer est fermé*/
   z-index: 3;
   left: calc(50% - 63px);
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -35px;
+  //top: -35px;
   color: #d1495d;
+}
+
+#checkContact:checked + label > footer.footer-contact::before {
+  content: "\f3dd"; /* Unicode for "slashed users" */
+  font-weight: 900;
+  font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
+  position: absolute;
+  z-index: 3;
+  left: calc(80% - 64px); /* pour tricher */
+  transition: opacity 0.3s ease, content 0.3s ease;
+  //top: -35px;
+  color: #003d5b;
 }
 
 #checkSocials:checked + label > footer.footer-socials::before {
@@ -382,10 +494,11 @@ a propos* lorsque le footer est fermé*/
   font-size: clamp(1rem, 4.5vw + 0.4rem, 1.5rem);
   position: absolute;
   z-index: 3;
+
   left: calc(20% - 63px); /* pour tricher */
   transition: opacity 0.3s ease, content 0.3s ease;
-  top: -35px;
-  color: #e3d59c;
+  //top: -35px;
+  color: #003d5b;
 }
 /* pour garder la forme de longlet 
 #checkFoot:checked + label footer::after {
@@ -422,7 +535,7 @@ footer p {
   width: 40px;
   height: 40px;
 
-  margin: 20px 20px;
+  margin: 30px 30px;
 
   //border: 1px solid red;
   // border: 1px solid red;
@@ -436,13 +549,14 @@ footer p {
 .sociaux ul li span {
   /*le social media insta linkedin behance*/
   position: absolute;
+
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 140%;
+  height: 140%;
   display: flex;
   background: #2a2a2a;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: white;
   font-size: 30px;
@@ -531,10 +645,43 @@ footer p {
 /************************** Ajustement des resolutions *****************/
 /**********************************************************************/
 
-/************************** Pour les tablettes *****************/
+@media only screen and (min-width: 768px) {
+  .sociaux ul li {
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+
+    margin: 50px 50px;
+
+    //border: 1px solid red;
+    // border: 1px solid red;
+    // border: 1px solid white;
+  }
+
+  .sociaux ul li span {
+    width: 160%;
+    height: 160%;
+    font-size: 50px;
+  }
+
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 70px); /* pour tricher */
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 80px); /* pour tricher */
+  }
+}
+
+/************************** Pour les tablettes ****************
 @media only screen and (min-width: 768px) {
   footer {
-    bottom: -41vh; /* Adjust for tablets */
+    bottom: -41vh; /* Adjust for tablets 
   }
 
   .sociaux ul li {
@@ -543,10 +690,10 @@ footer p {
   }
 }
 
-/************************** Pour les bureaux *****************/
+/************************** Pour les bureaux ****************
 @media only screen and (min-width: 1025px) {
   footer {
-    bottom: -44vh; /* Adjust for tablets */
+    bottom: -44vh; /* Adjust for tablets 
   }
 
   .sociaux ul li {
@@ -555,16 +702,16 @@ footer p {
   }
 }
 
-/************************** Pour les plus grands *****************/
+/************************** Pour les plus grands ****************
 @media only screen and (min-width: 1350px) {
   footer {
-    bottom: -47vh; /* Adjust for tablets */
+    bottom: -47vh; /* Adjust for tablets 
   }
 }
 
-/************************** Pour les plus grands *****************/
+/************************** Pour les plus grands ****************
 @media only screen and (min-width: 1750px) {
   footer {
-    bottom: -50vh; /* Adjust for tablets */
+    bottom: -50vh; /* Adjust for tablets 
   }
-}
+}*/

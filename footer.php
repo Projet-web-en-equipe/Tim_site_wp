@@ -2,23 +2,31 @@
 <label for="checkFoot">
   <footer> --
     <div class="contenuFooter"-->
+
+<input type="checkbox" class="unDesCheckbox" name="checkboxContact" id="checkContact" />
+<label for="checkContact">
+  <footer id="footCont" class="footer footer-contact">
+    <div class="contenuFooter">
+
+      <h3>Si tu as des questions contacte-nous! <i class="fa-solid fa-paper-plane"></i></h3>
+      <p><i class="fa-solid fa-user-tag"></i>Stéphanie Pouliot & David Ross</p>
+      <p><i class="fa-solid fa-phone-rotary"></i>téléphone</p>
+      <p><i class="fa-solid fa-envelope"></i>e-mail</p>
+      <p><i class="fa-solid fa-location-dot"></i>3800 rue Sherbrooke Est</p>
+
+    </div>
+  </footer>
+</label>
+
 <input type="checkbox" class="unDesCheckbox" name="checkboxAPropos" id="checkAPropos" />
 <label for="checkAPropos">
   <footer id="footProp" class="footer footer-apropos">
 
-    <!-- <div class="contact">
-        <p>3800 rue Sherbrooke Est</p>
-        <p>
-          <a href="https://www.cmaisonneuve.qc.ca/">Site web du Collège</a>
-        </p>
-      </div> -->
-
-
-
     <div class="equipe">
-      <!-- <h3>Les créateurs de ce fabuleux site!</h3> -->
+      <h3> Click sur leurs noms pour aller voir leurs porfolios!</h3>
 
       <div class="conteneurApropos">
+
 
         <div class="apropos-item" id="alejandro"> <a href="https://www.behance.net/alex_ydr3dc3"> Alejandro </a></div>
         <div id="portraitAlejandro">
@@ -124,6 +132,7 @@
           </li>
 
         </ul>
+
 
 
       </div>
