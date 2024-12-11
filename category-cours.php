@@ -128,11 +128,11 @@
         });
     });
 
+    // Fermeture du filtre sans avoir à directement cliquer sur le label
     document.addEventListener('click', function(event) {
         var checkbox = document.getElementById('touch');
         var label = document.querySelector('label[for="touch"]');
 
-        // Check if the checkbox is checked and the click is outside the checkbox and label
         if (checkbox.checked && !checkbox.contains(event.target) && !label.contains(event.target)) {
             checkbox.checked = false; // Uncheck the checkbox
         }
