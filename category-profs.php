@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main>
+    <!-- Titre suivi de l'icône représentative qui apparait dans le menu nav -->
     <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-lighthouse"></i></h1>
 
     <!-- Navigation pour les filtres -->
@@ -19,13 +20,13 @@
                 // Si une sous-catégorie est sélectionnée, afficher son nom
                 if ($selected_child_slug) {
                     $selected_category = get_category_by_slug($selected_child_slug);
-                    echo esc_html($selected_category ? $selected_category->name : 'Toutes les profs');
+                    echo esc_html($selected_category ? substr($selected_category->name, 8) : 'Tous les profs');
                 } else {
-                    echo 'Toutes les profs'; // Valeur par défaut
+                    echo 'Tous les profs'; // Valeur par défaut
                 }
                 ?>
             </span>
-            <div class="fleche"></div>
+            <div class="fleche-filtre"></div>
         </label>
 
         <ul class="slide">
@@ -44,7 +45,7 @@
                 ?>
                         <li>
                             <a href="#" data-category-id="<?php echo $child_category->term_id; ?>" data-category-slug="<?php echo $child_category->slug; ?>">
-                                <?php echo esc_html($child_category->name); ?>
+                                <?php echo substr(esc_html($child_category->name), 8); ?>
                             </a>
                         </li>
                 <?php

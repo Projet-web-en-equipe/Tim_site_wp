@@ -22,6 +22,8 @@ nav.nav-filtre label {
     // border-right: 0.2rem solid white;
     // border-left: 0.2rem solid white;
     box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
 }
 
 nav.nav-filtre label:hover {
@@ -36,16 +38,17 @@ nav.nav-filtre label span {
     font-size: 2rem;
 }
 
-nav.nav-filtre div {
+nav.nav-filtre label .fleche-filtre {
     width: 0;
     height: 0;
     border-left: 1rem solid transparent;
     border-right: 1rem solid transparent;
     border-top: 1rem solid white;
     margin-right: 1rem;
+    transition: all 0.5s;
 }
 
-nav.nav-filtre input[type="checkbox"]:checked ~ label .fleche {
+nav.nav-filtre input[type="checkbox"]:checked ~ label .fleche-filtre {
     border-top: 0rem solid white;
     border-bottom: 1rem solid white;
 }
@@ -54,17 +57,13 @@ nav.nav-filtre input[type="checkbox"] {
     display: none;
 }
 
-nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
-    max-height: 132rem;
-}
-
 ul.slide {
     clear: both;
     width: 25%;
     max-height: 0;
     overflow: hidden;
     text-align: left;
-    transition: max-height 1s;
+    transition: max-height 1s ease-in-out;
     list-style-type: none;
     padding-left: 0rem;
     position: absolute;
@@ -76,7 +75,12 @@ ul.slide {
     // border-bottom: 0.2rem solid white;
     // border-right: 0.2rem solid white;
     // border-left: 0.2rem solid white;
-    box-shadow: rgba(0, 0, 0, 0.90) 0px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
+    border-radius: 0.25rem;
+}
+
+nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
+    max-height: 20rem;
 }
 
 ul.slide li {
@@ -109,7 +113,7 @@ nav.nav-filtre input {
     nav.nav-filtre {
         display: flex;
         align-items: center;
-        margin: 2rem 0rem 2rem 0rem;
+        margin: 4rem 0rem 2rem 0rem;
     }
 
     nav.nav-filtre label {

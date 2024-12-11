@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main>
+    <!-- Titre suivi de l'icône représentative qui apparait dans le menu nav -->
     <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-ferris-wheel"></i></h1>
 
     <!-- Navigation pour les filtres -->
@@ -16,13 +17,13 @@
 
                 if ($selected_child_slug) {
                     $selected_category = get_category_by_slug($selected_child_slug);
-                    echo esc_html($selected_category ? $selected_category->name : 'Tous les cours');
+                    echo esc_html($selected_category ? substr($selected_category->name, 8) : 'Tous les cours');
                 } else {
                     echo 'Tous les cours';
                 }
                 ?>
             </span>
-            <div class="fleche"></div>
+            <div class="fleche-filtre"></div>
         </label>
 
         <ul class="slide">
