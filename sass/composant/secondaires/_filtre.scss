@@ -76,7 +76,7 @@ ul.slide {
 
 // Affichage de la liste de sous-catégories
 div.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
-    max-height: 20rem;
+    max-height: 40rem;
 }
 
 ul.slide li {
