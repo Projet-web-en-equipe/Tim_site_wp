@@ -1,15 +1,14 @@
-nav.nav-filtre {
+div.nav-filtre {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     position: relative;
     width: 100%;
     margin: 2rem 0rem 2rem 4rem;
-    //height: 5%;
 }
 
-nav.nav-filtre label {
+div.nav-filtre label {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,19 +17,17 @@ nav.nav-filtre label {
     padding-left: 1rem;
     background: var(--tertiaire);
     box-sizing: border-box;
-    // border-top: 0.2rem solid white;
-    // border-right: 0.2rem solid white;
-    // border-left: 0.2rem solid white;
     box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
     margin-bottom: 1rem;
     border-radius: 0.25rem;
+    // height: auto;
 }
 
-nav.nav-filtre label:hover {
+div.nav-filtre label:hover {
     background: var(--secondaire);
 }
 
-nav.nav-filtre label span {
+div.nav-filtre label span {
     color: white;
     font-variant: small-caps;
     font-family: "breakers-slab", sans-serif;
@@ -38,7 +35,7 @@ nav.nav-filtre label span {
     font-size: 2rem;
 }
 
-nav.nav-filtre label .fleche-filtre {
+div.nav-filtre label .fleche-filtre {
     width: 0;
     height: 0;
     border-left: 1rem solid transparent;
@@ -48,12 +45,12 @@ nav.nav-filtre label .fleche-filtre {
     transition: all 0.5s;
 }
 
-nav.nav-filtre input[type="checkbox"]:checked ~ label .fleche-filtre {
+div.nav-filtre input[type="checkbox"]:checked ~ label .fleche-filtre {
     border-top: 0rem solid white;
     border-bottom: 1rem solid white;
 }
 
-nav.nav-filtre input[type="checkbox"] {
+div.nav-filtre input[type="checkbox"] {
     display: none;
 }
 
@@ -67,19 +64,17 @@ ul.slide {
     list-style-type: none;
     padding-left: 0rem;
     position: absolute;
-    top: 100%;
     background: var(--tertiaire);
     z-index: 3;
-    margin-top: 0;
+    margin-top: 1rem;
+    top: 100%;
+    //margin-top: calc(1rem + 1rem);
     box-sizing: border-box;
-    // border-bottom: 0.2rem solid white;
-    // border-right: 0.2rem solid white;
-    // border-left: 0.2rem solid white;
     box-shadow: rgba(0, 0, 0, 0.90) 0px 5px 15px;
     border-radius: 0.25rem;
 }
 
-nav.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
+div.nav-filtre input[type="checkbox"]:checked ~ ul.slide {
     max-height: 20rem;
 }
 
@@ -103,20 +98,20 @@ ul.slide li a {
     z-index: 100;
 }
 
-nav.nav-filtre input {
+div.nav-filtre input {
     position: absolute;
     opacity: 0;
     height: 0;
 }
 
 @media only screen and (max-width: 1025px) {
-    nav.nav-filtre {
+    div.nav-filtre {
         display: flex;
         align-items: center;
         margin: 4rem 0rem 2rem 0rem;
     }
 
-    nav.nav-filtre label {
+    div.nav-filtre label {
         display: flex;
         width: 50%;
     }
