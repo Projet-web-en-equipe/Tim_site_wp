@@ -119,8 +119,30 @@
                             <?php else : ?>
                                 <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" alt="placeholder">
                             <?php endif; ?>
+                            
+                            <h2>
+                                <?php
+                                // Récupérer le titre du post
+                                $title = get_the_title();
 
-                            <h2><?php the_title(); ?></h2>
+                                // Vérifier si les 8 premiers caractères contiennent un chiffre
+                                if (preg_match('/\d/', substr($title, 0, 8))) {
+                                    // Si les 8 premiers caractères contiennent un chiffre, les supprimer
+                                    $title = substr($title, 8);
+                                }
+
+                                // Vérifier si le texte entre parenthèses contient un chiffre
+                                if (preg_match('/\([^)]*\d[^)]*\)/', $title)) {
+                                    // Si le texte entre parenthèses contient un chiffre, supprimer ce texte
+                                    $title = preg_replace('/\([^)]*\)/', '', $title);
+                                }
+
+                                // Afficher le titre modifié
+                                echo esc_html($title);
+                                ?>
+                            </h2>
+
+
                         </div>
                     </div>
                 <?php endwhile; ?>
