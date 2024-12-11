@@ -17,7 +17,6 @@
             <section id="carrousel">
                 <?php
                 while ($query->have_posts()) : $query->the_post();
-
                     // Définir l'URL de l'image selon le slug du post
                     $slug = get_post_field('post_name', get_post()); // Récupère le slug du post
                     if ($slug == 'stages') {
@@ -66,3 +65,7 @@
 
         wp_reset_postdata();
         ?>
+    </div>
+</main>
+
+<?php get_footer(); ?>
