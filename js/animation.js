@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 infoSection.style.transform = "translateY(0)"; // S'assure que la section est à sa place
             }
         }
+        appliquerImg();
     }
 
     // Fonction pour fermer la section
