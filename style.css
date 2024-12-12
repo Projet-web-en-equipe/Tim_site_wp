@@ -1468,7 +1468,7 @@ nav.nav-filtre input {
   gap: 1%;
 }
 .footer-contact .contenuFooter h3 {
-  padding-bottom: 3%;
+  padding-bottom: 20px;
 }
 .footer-contact .contenuFooter p {
   display: flex;
