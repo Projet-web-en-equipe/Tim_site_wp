@@ -1812,6 +1812,12 @@ footer p {
     left: calc(80% - 80px); /* pour tricher */
   }
 }
+@media only screen and (min-width: 1450px) {
+  .footer-contact::before,
+  #checkContact:checked + label > footer.footer-contact::before {
+    left: calc(80% - 95px); /* pour tricher */
+  }
+}
 /************************** Pour les tablettes ****************
 @media only screen and (min-width: 768px) {
   footer {
@@ -2039,4 +2045,4 @@ header.category {
   #retourAccueil {
     margin: auto;
   }
-}
+}/*# sourceMappingURL=style.css.map */
