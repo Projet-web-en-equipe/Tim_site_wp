@@ -5,6 +5,7 @@
     <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-ferris-wheel"></i></h1>
 
     <!-- Navigation pour les filtres -->
+    <!-- Test -->
     <nav class="nav-filtre">
         <?php
         $current_category = get_queried_object();
