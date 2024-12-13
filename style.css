@@ -172,7 +172,7 @@ body.category-projets main {
 }
 
 body.category-evenements main {
-  backdrop-filter: hue-rotate(150deg);
+  backdrop-filter: hue-rotate(0deg);
 }
 
 body.category-futur main {
