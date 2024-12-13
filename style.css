@@ -171,6 +171,18 @@ body.category-projets main {
   backdrop-filter: hue-rotate(126deg);
 }
 
+body.category-evenements main {
+  backdrop-filter: hue-rotate(150deg);
+}
+
+body.category-futur main {
+  backdrop-filter: hue-rotate(322deg);
+}
+
+body.category-vie-etudiante main {
+  backdrop-filter: hue-rotate(213deg);
+}
+
 /*Composants secondaires*/
 div#burger {
   width: 6%; /* relative to header */
