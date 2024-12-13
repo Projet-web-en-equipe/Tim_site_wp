@@ -159,6 +159,18 @@ body:before {
   height: 100%;
 }
 
+body.category-profs main {
+  backdrop-filter: hue-rotate(150deg);
+}
+
+body.category-cours main {
+  backdrop-filter: hue-rotate(342deg);
+}
+
+body.category-projets main {
+  backdrop-filter: hue-rotate(126deg);
+}
+
 /*Composants secondaires*/
 div#burger {
   width: 6%; /* relative to header */
