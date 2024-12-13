@@ -6,7 +6,7 @@
 
     <!-- Navigation pour les filtres -->
     <!-- Test -->
-    <nav class="nav-filtre">
+    <div class="nav-filtre">
         <?php
         $current_category = get_queried_object();
         ?>
@@ -56,8 +56,7 @@
                 ?>
             <?php endif; ?>
         </ul>
-
-    </nav>
+    </div>
 
     <!-- Wrapper pour les contenus -->
     <div class="content-wrapper">
@@ -121,7 +120,7 @@
                             <?php else : ?>
                                 <img src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/placeholder.png" alt="placeholder">
                             <?php endif; ?>
-                            
+
                             <h2>
                                 <?php
                                 // Récupérer le titre du post
@@ -154,7 +153,7 @@
 
             <!-- Changer la couleur du fond selon la page -->
             <section id="info" data-active-id="" style="background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly_cours.jpg');">
-            <button id="close-info" class="close-btn"></button>
+                <button id="close-info" class="close-btn"></button>
                 <h1 id="cours-name"></h1>
                 <div class="text"></div>
                 <?php

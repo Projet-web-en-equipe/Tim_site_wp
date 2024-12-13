@@ -275,7 +275,8 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -654,8 +655,7 @@ main div section#info p {
     background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
     background-repeat: no-repeat;
     box-shadow: 0px 2px 22px 4px rgba(0, 0, 0, 0.75);
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   main div h1 {
     margin: 0 auto;
@@ -897,17 +897,17 @@ vh et vw, derrière l'animation ctnAnim, pour aisni l'animer séparemment*/
   padding: 0 1%;
 }
 
-nav.nav-filtre {
+div.nav-filtre {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   position: relative;
   width: 100%;
   margin: 2rem 0rem 2rem 4rem;
 }
 
-nav.nav-filtre label {
+div.nav-filtre label {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -921,11 +921,11 @@ nav.nav-filtre label {
   border-radius: 0.25rem;
 }
 
-nav.nav-filtre label:hover {
+div.nav-filtre label:hover {
   background: var(--secondaire);
 }
 
-nav.nav-filtre label span {
+div.nav-filtre label span {
   color: white;
   font-variant: small-caps;
   font-family: "breakers-slab", sans-serif;
@@ -933,7 +933,7 @@ nav.nav-filtre label span {
   font-size: 2rem;
 }
 
-nav.nav-filtre label .fleche-filtre {
+div.nav-filtre label .fleche-filtre {
   width: 0;
   height: 0;
   border-left: 1rem solid transparent;
@@ -943,12 +943,12 @@ nav.nav-filtre label .fleche-filtre {
   transition: all 0.5s;
 }
 
-nav.nav-filtre input[type=checkbox]:checked ~ label .fleche-filtre {
+div.nav-filtre input[type=checkbox]:checked ~ label .fleche-filtre {
   border-top: 0rem solid white;
   border-bottom: 1rem solid white;
 }
 
-nav.nav-filtre input[type=checkbox] {
+div.nav-filtre input[type=checkbox] {
   display: none;
 }
 
@@ -962,17 +962,17 @@ ul.slide {
   list-style-type: none;
   padding-left: 0rem;
   position: absolute;
-  top: 100%;
   background: var(--tertiaire);
   z-index: 3;
-  margin-top: 0;
+  margin-top: 1rem;
+  top: 100%;
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.9) 0px 5px 15px;
   border-radius: 0.25rem;
 }
 
-nav.nav-filtre input[type=checkbox]:checked ~ ul.slide {
-  max-height: 20rem;
+div.nav-filtre input[type=checkbox]:checked ~ ul.slide {
+  max-height: 40rem;
 }
 
 ul.slide li {
@@ -995,19 +995,19 @@ ul.slide li a {
   z-index: 100;
 }
 
-nav.nav-filtre input {
+div.nav-filtre input {
   position: absolute;
   opacity: 0;
   height: 0;
 }
 
 @media only screen and (max-width: 1025px) {
-  nav.nav-filtre {
+  div.nav-filtre {
     display: flex;
     align-items: center;
     margin: 4rem 0rem 2rem 0rem;
   }
-  nav.nav-filtre label {
+  div.nav-filtre label {
     display: flex;
     width: 50%;
   }

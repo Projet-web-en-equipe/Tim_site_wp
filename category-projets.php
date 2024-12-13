@@ -5,7 +5,7 @@
     <h1 id="titre"><?php single_cat_title(); ?><i class="fa-solid fa-ice-cream"></i></h1>
 
     <!-- Navigation pour les filtres -->
-    <nav class="nav-filtre">
+    <div class="nav-filtre">
         <?php
         // Récupérer la catégorie principale courante
         $current_category = get_queried_object();
@@ -56,7 +56,7 @@
                 ?>
             <?php endif; ?>
         </ul>
-    </nav>
+    </div>
 
     <!-- Wrapper pour les contenus -->
     <div class="content-wrapper">
