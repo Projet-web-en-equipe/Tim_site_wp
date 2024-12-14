@@ -19,25 +19,25 @@ body:before {
 }
 
 body.category-profs main {
-    backdrop-filter: hue-rotate(150deg);
+    backdrop-filter: hue-rotate(150deg) saturate(0.4) brightness(1.4);
 }
 
-body.category-cours main{
-    backdrop-filter: hue-rotate(342deg);
+body.category-cours main {
+    backdrop-filter: hue-rotate(84deg) saturate(0.4) brightness(1.4);
 }
 
-body.category-projets main{
-    backdrop-filter: hue-rotate(126deg);
+body.category-projets main {
+    backdrop-filter: hue-rotate(111deg) saturate(0.4) brightness(1.4);
 }
 
 body.category-evenements main {
-    backdrop-filter: hue-rotate(0deg);
+    backdrop-filter: hue-rotate(0deg) saturate(0.4) brightness(1.4);
 }
 
-body.category-futur main{
-    backdrop-filter: hue-rotate(322deg);
+body.category-futur main {
+    backdrop-filter: hue-rotate(173deg) saturate(0.4) brightness(1.4);
 }
 
-body.category-vie-etudiante main{
-    backdrop-filter: hue-rotate(213deg);
+body.category-vie-etudiante main {
+    backdrop-filter: hue-rotate(213deg) saturate(0.4) brightness(1.4);
 }
