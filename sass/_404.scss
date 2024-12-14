@@ -11,6 +11,23 @@
     z-index: 1; /* S'assurer que le texte est au-dessus de la bordure */
 }
 
+/* Pour que la position du logo TIM soit au bon endroit comme les autres pages */
+div#logo {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;     
+    right: 0;         
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    z-index: 4;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 #texteErreur h2, #texteErreur p {
     margin: 0; /* Éliminer les marges par défaut */
 }
@@ -25,7 +42,7 @@
     height: 40%; 
     margin: 0 auto;
     padding-top: 2%;
-    margin-top: 5%;
+    margin-top: 25%;
     background-color: var(--couleur-bleu-fonce);
     background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg'); /* Image de fond de Eric noyé */
     background-size: cover; /* Couvre toute la section */
