@@ -1,87 +1,84 @@
 /* Styles pour la div contenant le message d'erreur */
-#titre404 {
-    color: var(--couleur-rouge-clair);
-}
-div#burger{
-    margin: 1rem;
-}
-#texteErreur {
-    color: var(--couleur-or-clair);
-    left: 0; 
-    right: 0; 
-    margin-bottom: -190px; /* Déplacer le texte vers la bordure inférieure */
-    z-index: 1; /* S'assurer que le texte est au-dessus de la bordure */
-}
 
-/* Pour que la position du logo TIM soit au bon endroit comme les autres pages */
-div#logo {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: fixed;     
-    right: 0;         
-    cursor: pointer;
-    transition: transform 0.5s ease;
-    z-index: 4;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
 
-#texteErreur h2, #texteErreur p {
-    margin: 0; /* Éliminer les marges par défaut */
+main section h2 {
+    background-color: transparent;
 }
 
 /* Conteneur pour le message d'erreur avec l'image correspondante affichée en dessous */
+
 #erreur_404 {
-    display: flex;
-    flex-direction: column; /* Aligner les items verticalement */
-    align-items: center;
-    justify-content: flex-end;
-    width: 40%;
-    height: 40%; 
-    margin: 0 auto;
-    padding-top: 2%;
-    margin-top: 25%;
+    width: 15rem;
+    height: 15rem;
+    margin-top: 30%;
+    position: relative;
     background-color: var(--couleur-bleu-fonce);
-    background-image: url('https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/RenduVoilierCasseERIC.jpg'); /* Image de fond de Eric noyé */
-    background-size: cover; /* Couvre toute la section */
-    background-position: center center; 
-    background-repeat: no-repeat; 
     transform: rotate(-5deg);
     border: 6px solid #FFFFFF;
-    border-bottom: 190px solid #FFFFFF; /* Bordure inférieure blanche style polaroid*/
+    border-bottom: 190px solid #FFFFFF;
     text-align: center;
-    position: relative; /* Pour que le texte soit bien positionné à l'intérieur */
-    overflow: visible; /* S'assurer que le texte peut dépasser la bordure */
+    overflow: visible;
+
+
+    #texteErreur {
+        color: var(--couleur-or-clair);
+        left: 0;
+        right: 0;
+        margin-bottom: -190px;
+        z-index: 1;
+
+        #titre404 {
+            color: var(--couleur-rouge-clair);
+        }
+
+        p {
+            font-size: 1.1rem;
+        }
+    }
+
+    div#imageVoilier {
+        display: flex;
+
+        img {
+            width: 15rem;
+            height: 15rem;
+        }
+
+    }
 }
 
-/*Media query pour la version mobile responsive*/
-@media screen and (max-width: 1000px) {
-    #erreur_404{
-        margin-top: 45%;
-        width: 80%;
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+    #erreur_404 {
+        width: 30rem;
+        height: 30rem;
     }
 
-    #erreur_404 section {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    #erreur_404 div#imageVoilier img {
+        width: 30rem;
+        height: 30rem;
     }
 
-    #texteErreur{
-        position: absolute;
-        bottom: 0;
+}
+
+@media only screen and (min-width: 1025px) {
+    #erreur_404 {
+        border: 20px solid #FFFFFF;
+        border-bottom: 190px solid #FFFFFF;
+        margin-top: 0;
+        width: 30rem;
+        height: 30rem;
+
+        section#texteErreur {
+            p {
+                font-size: 1.5rem;
+            }
+        }
     }
 
-    #menu-piedpage {
-        display: none;
-    }
 
-    #retourAccueil {
-        margin: auto;
+
+    #erreur_404 div#imageVoilier img {
+        width: 30rem;
+        height: 30rem;
     }
 }
