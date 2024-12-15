@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Récupère la hauteur de la section
             const sectionHeight = infoSection.offsetHeight;
 
-            if (deltaY > sectionHeight / 2) {
+            if (deltaY > sectionHeight /5) {
                 // Si on a glissé plus de 50% de la hauteur, fermer la section
                 fermerCours();
             } else {
