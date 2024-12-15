@@ -1938,6 +1938,7 @@ header.category {
   justify-content: space-between;
   margin: 1%;
   position: absolute;
+  z-index: 1000;
 }
 
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
