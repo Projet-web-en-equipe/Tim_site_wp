@@ -27,6 +27,7 @@ main section#carrousel {
 main div.content-wrapper {
     overflow: scroll;
 }
+
 main section .banniere {
     position: relative;
     width: 50vw;
@@ -89,12 +90,14 @@ main section h2 {
     main section h2 {
         font-size: 2rem;
     }
-
+    main div.content-wrapper {
+        overflow:hidden;
+    }
     main section#carrousel {
         padding: 0;
         margin: 2rem;
         max-height: 80vh;
-        // overflow-y: scroll;
+        overflow-y: scroll;
         scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
         width: 25%;
     }
