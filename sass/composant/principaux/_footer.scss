@@ -528,6 +528,11 @@ footer p {
   //border: 1px solid red;
   //transform: rotate(-25deg) skew(25deg);
   transform-style: preserve-3d; // pour donner effet 3d genr
+  padding: 0%;
+
+  :first-child{
+    margin-left: 0;
+  }
 }
 
 .sociaux ul li {
@@ -555,6 +560,8 @@ footer p {
   left: 0;
   width: 140%;
   height: 140%;
+  min-width: 60px;
+  min-height: 60px;
   display: flex;
   background: #2a2a2a;
   justify-content: space-around;
