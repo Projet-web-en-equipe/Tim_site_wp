@@ -290,6 +290,7 @@ div#burger div.barre.active:nth-child(3) {
   animation: float 6s ease-in-out infinite;
   animation-play-state: running;
   transition: transform 0.5s ease;
+  z-index: 1000;
 }
 
 #logo:hover {
@@ -333,7 +334,7 @@ div#logo a:hover {
   height: 100%;
   background-color: #333;
   opacity: 0;
-  z-index: 4;
+  z-index: 1001;
   transition: left 0.5s ease, opacity 0.5s ease;
   background: #003d5b;
   backdrop-filter: blur(4px);
@@ -1938,6 +1939,7 @@ header.category {
   justify-content: space-between;
   margin: 1%;
   position: absolute;
+  z-index: 1000;
 }
 
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
@@ -2049,9 +2051,6 @@ header.category {
   }
   #erreur_404 div#imageVoilier img {
     width: 30rem;
-    height: 30rem;
-  }
-}idth: 30rem;
     height: 30rem;
   }
 }

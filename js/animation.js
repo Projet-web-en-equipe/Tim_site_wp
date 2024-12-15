@@ -89,9 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Calcul de la distance glissée et translation de l'élément
             const deltaY = touchMoveY - touchStartY;
+
+            // Applique la translation uniquement si le glissement est vertical
             if (deltaY > 0) {
                 infoSection.style.transform = `translateY(${deltaY}px)`;
             }
+
+            // Empêche le défilement de la page
+            e.preventDefault();
         });
 
         infoSection.addEventListener("touchend", () => {
@@ -100,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Récupère la hauteur de la section
             const sectionHeight = infoSection.offsetHeight;
 
-            if (deltaY > sectionHeight /5) {
-                // Si on a glissé plus de 50% de la hauteur, fermer la section
+            if (deltaY > sectionHeight / 5) {
+                // Si on a glissé plus de 20% de la hauteur, fermer la section
                 fermerCours();
             } else {
                 // Sinon, revenir à la position initiale

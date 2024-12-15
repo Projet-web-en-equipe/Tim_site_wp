@@ -5,7 +5,7 @@ div.nav-filtre {
     align-items: flex-start;
     position: relative;
     width: 100%;
-    margin: 2rem 0rem 2rem 4rem;
+    margin: 2rem 0rem 2rem 2rem;
 }
 
 div.nav-filtre label {
@@ -105,30 +105,30 @@ div.nav-filtre input {
     height: 0;
 }
 
-@media only screen and (max-width: 1025px) {
-    div.nav-filtre {
-        display: flex;
-        align-items: center;
-        margin: 4rem 0rem 2rem 0rem;
-    }
+// @media only screen and (max-width: 1025px) {
+//     div.nav-filtre {
+//         display: flex;
+//         align-items: center;
+//         margin: 4rem 0rem 2rem 0rem;
+//     }
 
-    div.nav-filtre label {
-        display: flex;
-        width: 50%;
-    }
+//     div.nav-filtre label {
+//         display: flex;
+//         width: 50%;
+//     }
 
-    ul.slide {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 50%;
-    }
+//     ul.slide {
+//         display: flex;
+//         align-items: center;
+//         flex-direction: column;
+//         justify-content: center;
+//         width: 50%;
+//     }
 
-    ul.slide li {
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        padding-left: 2rem;
-    }
-}
+//     ul.slide li {
+//         display: flex;
+//         justify-content: flex-start;
+//         width: 100%;
+//         padding-left: 2rem;
+//     }
+// }
