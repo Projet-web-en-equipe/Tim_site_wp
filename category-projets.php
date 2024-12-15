@@ -104,7 +104,6 @@
                 <?php
                 endwhile;
                 ?>
-                ?>
             </section>
 
             <!-- Changer la couleur du fond selon la page selon sa couleur de survol dans le menu -->

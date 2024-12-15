@@ -43,9 +43,9 @@ main section .image-container img {
     width: 100%;
     height: auto;
     display: block;
-    transition: opacity 0.3s ease;
-    /* Transition pour l'effet de fondu */
+    transition: opacity 0.3s ease-in-out; /* Un peu plus doux */
 }
+
 
 main section .image-hover {
     position: absolute;
