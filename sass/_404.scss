@@ -1,10 +1,5 @@
 /* Styles pour la div contenant le message d'erreur */
 
-
-main section h2 {
-    background-color: transparent;
-}
-
 /* Conteneur pour le message d'erreur avec l'image correspondante affichée en dessous */
 
 #erreur_404 {
@@ -14,10 +9,11 @@ main section h2 {
     position: relative;
     background-color: var(--couleur-bleu-fonce);
     transform: rotate(-5deg);
-    border: 6px solid #FFFFFF;
+    border: 20px solid #FFFFFF;
     border-bottom: 190px solid #FFFFFF;
     text-align: center;
     overflow: visible;
+    box-shadow: 5px 5px 18px 4px rgba(0, 0, 0, 0.58);
 
 
     #texteErreur {
@@ -62,8 +58,6 @@ main section h2 {
 
 @media only screen and (min-width: 1025px) {
     #erreur_404 {
-        border: 20px solid #FFFFFF;
-        border-bottom: 190px solid #FFFFFF;
         margin-top: 0;
         width: 30rem;
         height: 30rem;
