@@ -160,27 +160,33 @@ body:before {
 }
 
 body.category-profs main {
-  backdrop-filter: hue-rotate(150deg) saturate(0.4) brightness(1.4);
+  -webkit-backdrop-filter: hue-rotate(150deg) saturate(0.4) brightness(1.4);
+          backdrop-filter: hue-rotate(150deg) saturate(0.4) brightness(1.4);
 }
 
 body.category-cours main {
-  backdrop-filter: hue-rotate(84deg) saturate(0.4) brightness(1.4);
+  -webkit-backdrop-filter: hue-rotate(84deg) saturate(0.4) brightness(1.4);
+          backdrop-filter: hue-rotate(84deg) saturate(0.4) brightness(1.4);
 }
 
 body.category-projets main {
-  backdrop-filter: hue-rotate(111deg) saturate(0.4) brightness(1.4);
+  -webkit-backdrop-filter: hue-rotate(111deg) saturate(0.4) brightness(1.4);
+          backdrop-filter: hue-rotate(111deg) saturate(0.4) brightness(1.4);
 }
 
 body.category-evenements main {
-  backdrop-filter: hue-rotate(0deg) saturate(0.4) brightness(1.4);
+  -webkit-backdrop-filter: hue-rotate(0deg) saturate(0.4) brightness(1.4);
+          backdrop-filter: hue-rotate(0deg) saturate(0.4) brightness(1.4);
 }
 
 body.category-futur main {
-  backdrop-filter: hue-rotate(173deg) saturate(0.4) brightness(1.4);
+  -webkit-backdrop-filter: hue-rotate(173deg) saturate(0.4) brightness(1.4);
+          backdrop-filter: hue-rotate(173deg) saturate(0.4) brightness(1.4);
 }
 
 body.category-vie-etudiante main {
-  backdrop-filter: hue-rotate(213deg) saturate(0.4) brightness(1.4);
+  -webkit-backdrop-filter: hue-rotate(213deg) saturate(0.4) brightness(1.4);
+          backdrop-filter: hue-rotate(213deg) saturate(0.4) brightness(1.4);
 }
 
 /*Composants secondaires*/
@@ -299,8 +305,7 @@ div#logo a {
   transition: transform 0.5s ease;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -679,7 +684,8 @@ main div section#info p {
     background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/11/bg_lowPoly.jpg");
     background-repeat: no-repeat;
     box-shadow: 0px 2px 22px 4px rgba(0, 0, 0, 0.75);
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   main div h1 {
     margin: 0 auto;
@@ -1934,7 +1940,8 @@ main #titre {
     width: 100%;
   }
 }
-header.accueil {
+header.accueil,
+header.page-404 {
   height: 10%;
   width: 98%;
   display: flex;
@@ -2011,6 +2018,10 @@ header.category {
   color: var(--couleur-rouge-clair);
 }
 
+div#burger {
+  margin: 1rem;
+}
+
 #texteErreur {
   color: var(--couleur-or-clair);
   left: 0;
@@ -2032,7 +2043,6 @@ div#logo {
   z-index: 4;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -2086,4 +2096,4 @@ div#logo {
   #retourAccueil {
     margin: auto;
   }
-}/*# sourceMappingURL=style.css.map */
+}

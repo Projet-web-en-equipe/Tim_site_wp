@@ -1,4 +1,5 @@
-header.accueil {
+header.accueil,
+header.page-404 {
   //j'ai enlevé toutes les positions absolutes et tout rendu en flex pour que ça soit fluide.
   //border: 1px solid red;
   height: 10%; //en pourcentage et adaptatif
@@ -23,6 +24,7 @@ header.category {
   margin: 1%; // je décolle du bord de la page.
   position: absolute; // en positionnement absolute, sinon ça fuck le canvas.
 }
+
 /* j'ai enlevé ceci... si on utilise les positions, ce n'est pas adaptatif.
   header section {
     position: relative;
