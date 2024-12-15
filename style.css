@@ -139,6 +139,10 @@ header ul li a:hover {
     font-size: clamp(1.5rem, 3vw + 1rem, 3rem);
   }
 }
+* {
+  overscroll-behavior: none;
+}
+
 body {
   background: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
   background-image: url("https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/eau_hd1080.jpg");
@@ -146,7 +150,6 @@ body {
   background-repeat: repeat;
   margin: 0%;
   padding: 0%;
-  overscroll-behavior: none;
 }
 
 body:before {

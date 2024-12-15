@@ -17,6 +17,7 @@ function enqueue_script_style()
     // Charge les scripts dans tout les pages
     wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/1afe500f9a.js', array(), NULL, true);
     wp_enqueue_script('menu', get_theme_file_uri('/js/fermetureMenus.js'), array(), NULL, true);
+    wp_enqueue_script('clickPortfolio', get_theme_file_uri('/js/eventClickFooter.js'), array(), NULL, true);
 
     // Charge les styles dans tout les pages
     wp_enqueue_style('font1', '//use.typekit.net/hez6hsh.css');
