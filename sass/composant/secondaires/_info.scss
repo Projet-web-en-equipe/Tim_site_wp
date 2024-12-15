@@ -5,8 +5,10 @@ main div {
         display: none;
         position: absolute;
         bottom: 0;
-        overflow-y: auto; /* Permet le défilement vertical */
-        -webkit-overflow-scrolling: touch; /* Améliore le scroll sur iOS */
+        overflow-y: auto;
+        /* Permet le défilement vertical */
+        -webkit-overflow-scrolling: touch;
+        /* Améliore le scroll sur iOS */
         overflow-x: hidden;
         height: 90vh;
         width: 100vw;
@@ -25,15 +27,15 @@ main div {
             margin: 1rem auto;
             width: 90%;
             padding: 2%;
-            padding-bottom:3rem;
+            padding-bottom: 10rem;
         }
     }
 
     /* Bouton temporaire pour fermer la zone de description */
     #close-info {
-        position: absolute;
+        position: sticky;
         top: 0.5rem;
-        right: 0.5rem;
+        left: 0.5rem;
         background-color: var(--accent);
         border: none;
         border-radius: 25%;
@@ -112,6 +114,7 @@ main div {
             width: 90%;
             padding: 2%;
             background-color: rgba(255, 255, 255, 0.274);
+            padding-bottom: 0;
         }
 
         section#info p {

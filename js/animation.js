@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const coursText = document.querySelector(".text");
 
     let dernierPostClique = null;
-    let touchStartY = 0;
-    let touchMoveY = 0;
 
     // Fonction pour afficher les informations d'un post
     function afficherCours(postId) {
@@ -76,47 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 afficherCours(firstPostId);
             }
         }
-    }
-
-    // Gestion des interactions tactiles
-    if (isMobile()) {
-        infoSection.addEventListener("touchstart", (e) => {
-            touchStartY = e.touches[0].clientY; // Enregistre la position de départ
-        });
-
-        infoSection.addEventListener("touchmove", (e) => {
-            touchMoveY = e.touches[0].clientY; // Enregistre la position actuelle
-
-            // Calcul de la distance glissée et translation de l'élément
-            const deltaY = touchMoveY - touchStartY;
-
-            // Applique la translation uniquement si le glissement est vertical
-            if (deltaY > 0) {
-                infoSection.style.transform = `translateY(${deltaY}px)`;
-            }
-
-            // Empêche le défilement de la page
-            e.preventDefault();
-        });
-
-        infoSection.addEventListener("touchend", () => {
-            const deltaY = touchMoveY - touchStartY;
-
-            // Récupère la hauteur de la section
-            const sectionHeight = infoSection.offsetHeight;
-
-            if (deltaY > sectionHeight / 5) {
-                // Si on a glissé plus de 20% de la hauteur, fermer la section
-                fermerCours();
-            } else {
-                // Sinon, revenir à la position initiale
-                infoSection.style.transform = "translateY(0)";
-            }
-
-            // Réinitialise les valeurs tactiles
-            touchStartY = 0;
-            touchMoveY = 0;
-        });
     }
 
     // Ajoute un événement au clic pour chaque bannière

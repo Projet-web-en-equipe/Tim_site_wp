@@ -48,7 +48,7 @@ h1 {
 }
 
 h1#cours-name {
-  padding-top: 15%;
+  padding-top: 10%;
   text-align: center;
   padding-bottom: 5%;
 }
@@ -112,7 +112,7 @@ header ul li a:hover {
     font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
   }
   h1#cours-name {
-    padding-top: 15%;
+    padding-top: 10%;
     text-align: center;
     width: 70%; /* Pour donner un bon espace au titre centré */
   }
@@ -587,8 +587,10 @@ main div section#info {
   display: none;
   position: absolute;
   bottom: 0;
-  overflow-y: auto; /* Permet le défilement vertical */
-  -webkit-overflow-scrolling: touch; /* Améliore le scroll sur iOS */
+  overflow-y: auto;
+  /* Permet le défilement vertical */
+  -webkit-overflow-scrolling: touch;
+  /* Améliore le scroll sur iOS */
   overflow-x: hidden;
   height: 90vh;
   width: 100vw;
@@ -606,12 +608,12 @@ main div section#info div.text {
   margin: 1rem auto;
   width: 90%;
   padding: 2%;
-  padding-bottom: 3rem;
+  padding-bottom: 10rem;
 }
 main div #close-info {
-  position: absolute;
+  position: sticky;
   top: 0.5rem;
-  right: 0.5rem;
+  left: 0.5rem;
   background-color: var(--accent);
   border: none;
   border-radius: 25%;
@@ -676,6 +678,7 @@ main div section#info p {
     width: 90%;
     padding: 2%;
     background-color: rgba(255, 255, 255, 0.274);
+    padding-bottom: 0;
   }
   main div section#info p {
     margin: 0 auto;
