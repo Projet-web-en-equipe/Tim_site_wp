@@ -1,4 +1,6 @@
-/*# sourceMappingURL=style.css.map */TIM
+@charset "UTF-8";
+/*
+Theme Name: siteTIM
 Theme URI: https://referenced.ca
 Authors: Tony, Lenny, Lohan, Camilia, Alejandro
 Author URI: https://wordpress.org/
@@ -144,6 +146,7 @@ body {
   background-repeat: repeat;
   margin: 0%;
   padding: 0%;
+  overscroll-behavior: none;
 }
 
 body:before {
