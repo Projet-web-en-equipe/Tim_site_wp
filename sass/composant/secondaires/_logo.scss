@@ -20,7 +20,7 @@
   animation: float 6s ease-in-out infinite;
   animation-play-state: running;
   transition: transform 0.5s ease;
-  // z-index: 1000000000;
+  z-index: 1000;
 }
 
 #logo:hover {
