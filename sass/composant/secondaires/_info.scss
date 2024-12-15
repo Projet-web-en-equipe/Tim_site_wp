@@ -5,7 +5,8 @@ main div {
         display: none;
         position: absolute;
         bottom: 0;
-        overflow-y: auto;
+        overflow-y: auto; /* Permet le défilement vertical */
+        -webkit-overflow-scrolling: touch; /* Améliore le scroll sur iOS */
         overflow-x: hidden;
         height: 90vh;
         width: 100vw;
@@ -19,10 +20,12 @@ main div {
         transition: height 0.5s ease;
         z-index: 2;
 
+
         div.text {
             margin: 1rem auto;
             width: 90%;
             padding: 2%;
+            padding-bottom:3rem;
         }
     }
 

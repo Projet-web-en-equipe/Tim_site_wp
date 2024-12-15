@@ -5,7 +5,7 @@ Theme URI: https://referenced.ca
 Authors: Tony, Lenny, Lohan, Camilia, Alejandro
 Author URI: https://wordpress.org/
 Description: Thème de base développé dans le cours 5w5
-Version: 3.0
+Version: 4.0
 
 Requires PHP: 7.0
 License: GNU General Public License v2 or later
@@ -587,7 +587,8 @@ main div section#info {
   display: none;
   position: absolute;
   bottom: 0;
-  overflow-y: auto;
+  overflow-y: auto; /* Permet le défilement vertical */
+  -webkit-overflow-scrolling: touch; /* Améliore le scroll sur iOS */
   overflow-x: hidden;
   height: 90vh;
   width: 100vw;
@@ -605,6 +606,7 @@ main div section#info div.text {
   margin: 1rem auto;
   width: 90%;
   padding: 2%;
+  padding-bottom: 3rem;
 }
 main div #close-info {
   position: absolute;
