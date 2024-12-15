@@ -474,6 +474,10 @@ main section#carrousel::-webkit-scrollbar-thumb {
   background-color: #202020;
 }
 
+main div.content-wrapper {
+  overflow: scroll;
+}
+
 main section .banniere {
   position: relative;
   width: 50vw;
@@ -539,7 +543,6 @@ main section h2 {
     padding: 0;
     margin: 2rem;
     max-height: 80vh;
-    overflow-y: scroll;
     scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
     width: 25%;
   }
@@ -562,7 +565,6 @@ main section h2 {
     padding: 0;
     margin: 2rem;
     max-height: 80vh;
-    overflow-y: scroll;
     scrollbar-color: var(--couleur-bleu-fonce) rgba(255, 255, 255, 0.6235294118);
     width: 25%;
   }
@@ -570,26 +572,6 @@ main section h2 {
     position: relative;
     width: 15vw;
     margin: 0 auto;
-  }
-}
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes slideDown {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
   }
 }
 main div {
@@ -634,13 +616,6 @@ main div section#info::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #535353;
 }
-main div section#info.show {
-  display: block;
-  animation: slideUp 0.5s ease forwards;
-}
-main div section#info.hide {
-  animation: slideDown 0.5s ease forwards;
-}
 main div #close-info {
   position: absolute;
   top: 0.5rem;
@@ -657,7 +632,7 @@ main div #close-info {
   align-items: center;
 }
 main div #close-info::before {
-  content: "v";
+  content: "x";
   font-size: 2rem;
   color: white;
   font-weight: bolder;
@@ -1889,6 +1864,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: hidden;
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;

@@ -1,6 +1,5 @@
 main section#carrousel {
     position: relative;
-    ;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -25,6 +24,9 @@ main section#carrousel {
     }
 }
 
+main div.content-wrapper {
+    overflow: scroll;
+}
 main section .banniere {
     position: relative;
     width: 50vw;
@@ -92,7 +94,7 @@ main section h2 {
         padding: 0;
         margin: 2rem;
         max-height: 80vh;
-        overflow-y: scroll;
+        // overflow-y: scroll;
         scrollbar-color: var(--couleur-bleu-fonce) var(--couleur-rouge-clair);
         width: 25%;
     }
@@ -120,7 +122,7 @@ main section h2 {
         padding: 0;
         margin: 2rem;
         max-height: 80vh;
-        overflow-y: scroll;
+        // overflow-y: scroll;
         scrollbar-color: var(--couleur-bleu-fonce) #ffffff9f;
         width: 25%;
     }
