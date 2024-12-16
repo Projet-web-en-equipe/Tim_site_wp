@@ -10,16 +10,7 @@
 
 ## Description du Sprint.
 
-Dans le sprint 3 nous désirons finaliser le scss du site. Nous voulons également afficher toutes les pages sur le site wordpress et ce avec nos bandes de données. Nous voulons Afficher la page 404, les filtres et tester la mape dans le wordpress.
-
-## tâches non-complétées:
-
-- dans l'animation du début il y a un glitch qu'on arrive pas à arranger. il faudra trouver une solition
-- après avoir refresh la page, eric tombe du ciel. va falloir faire l'animation d'eric seulement une fois et ce
-  avec sessionStorage.
-- le hot toast marche en version desktop, mais pas en version mobile. à arranger.
-
-# issues:
+Finir les petits détailles du site web incluant le scss, les images manquante, finitions de l'affichage de l'information dans les sections info.
 
 ## lien github page
 
